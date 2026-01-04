@@ -295,7 +295,7 @@ const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) 
     },
     { 
       title: "Vendas e Comissões Automatizadas", 
-      desc: "Formalize vendas com rapidez e segurança. O sistema gera automaticamente o pedido de venda digital, o contrato e o recibo. Configure regras de comissão flexíveis (porcentagem, valor fixo, escalonada) para vendedores, gerentes e captadores/parceiros. O cálculo é feito automaticamente no fechamento da venda, gerando um extrato financeiro de comissões a pagar transparente, eliminando planilhas paralelas, erros de cálculo e disputas com a equipe comercial no final do mês." 
+      desc: "Formalize vendas com rapidez e segurança. O sistema registra a venda e calcula comissões automaticamente. Configure regras de comissão flexíveis (porcentagem, valor fixo, escalonada) para vendedores, gerentes e captadores/parceiros. O cálculo é feito automaticamente no fechamento da venda, gerando um extrato financeiro de comissões a pagar transparente, eliminando planilhas paralelas, erros de cálculo e disputas com a equipe comercial no final do mês." 
     },
     { 
       title: "Gestão Profissional de Garantia", 
@@ -331,15 +331,15 @@ const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) 
     },
     { 
       title: "Configurações Personalizáveis", 
-      desc: "O Velostock se adapta à sua loja, e não o contrário. Personalize o sistema para refletir a realidade do seu negócio. Cadastre suas próprias categorias de despesas, origens de leads, bancos financiadores parceiros, formas de pagamento e metas de vendas mensais. Configure os dados fiscais e visuais da sua empresa para que saiam automaticamente padronizados em todos os documentos e contratos gerados." 
+      desc: "O Velostock se adapta à sua loja, e não o contrário. Personalize o sistema para refletir a realidade do seu negócio. Cadastre suas próprias categorias de despesas, origens de leads, bancos financiadores parceiros, formas de pagamento e metas de vendas mensais. Configure os dados visuais da sua empresa para que saiam padronizados na plataforma." 
     },
     { 
       title: "Relatórios Gerenciais Avançados", 
-      desc: "Vá além do básico com relatórios detalhados para análise profunda. Gere DRE (Demonstrativo de Resultado do Exercício) gerencial automático, Curva ABC de estoque (quais carros dão mais lucro ou giram mais rápido), Ranking de Vendas e Relatório de Custos por Categoria. Filtre por período, exporte tudo para PDF ou Excel para reuniões de diretoria e envio para a contabilidade, facilitando a gestão tributária." 
+      desc: "Vá além do básico com relatórios detalhados para análise profunda. Gere DRE (Demonstrativo de Resultado do Exercício) gerencial automático, Curva ABC de estoque (quais carros dão mais lucro ou giram mais rápido), Ranking de Vendas e Relatório de Custos por Categoria. Filtre por período, exporte tudo para PDF ou Excel para reuniões de diretoria e análise de performance." 
     },
     { 
-      title: "Geração Automática de Documentos", 
-      desc: "Abandone o Word e o preenchimento manual propenso a erros. Gere contratos de compra e venda, recibos de sinal, termos de garantia, procurações e propostas comerciais automaticamente, puxando os dados do cliente e do veículo direto do sistema. Padronize a identidade visual da documentação da loja, ganhe agilidade no fechamento da venda e transmita muito mais profissionalismo e segurança jurídica ao cliente." 
+      title: "Gestão e Armazenamento de Documentos", 
+      desc: "Mantenha a documentação organizada e acessível. Armazene documentos digitalizados como CRLV, laudos de vistoria, contratos e notas fiscais vinculados diretamente ao cadastro do veículo ou do cliente. Centralize o histórico documental da loja em um ambiente seguro na nuvem, eliminando arquivos físicos bagunçados e facilitando a consulta rápida por qualquer membro da equipe autorizado." 
     },
     { 
       title: "Checklists Digitais (Entrada e Saída)", 
@@ -582,7 +582,7 @@ const Slide5_Diferencial = ({ onImageClick }: { onImageClick: (src: string) => v
                  <CheckCircle className="text-secondary w-5 h-5 shrink-0" />
                  <div>
                    <span className="font-bold block">Visão 360°</span>
-                   <span className="text-sm text-slate-400">Estoque + Fiscal + Publicidade + Operação</span>
+                   <span className="text-sm text-slate-400">Estoque + Publicidade + Operação</span>
                  </div>
                </li>
                <li className="flex items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/5">
@@ -609,7 +609,7 @@ const Slide5_Diferencial = ({ onImageClick }: { onImageClick: (src: string) => v
               <img src={imgObs} alt="Observações Gerais" className="w-full opacity-90 hover:opacity-100 transition-opacity" />
               <div className="p-4 bg-black/80 backdrop-blur absolute bottom-0 w-full border-t border-white/10 pointer-events-none">
                  <p className="text-xs text-slate-300">
-                   <strong className="text-secondary">Exclusivo:</strong> Gerencie desde a compra de café até a manutenção do portão da loja. Nenhum concorrente faz isso.
+                   <strong className="text-secondary">Controle Total:</strong> Gerencie desde a compra de café até a manutenção do portão da loja.
                  </p>
               </div>
           </div>
@@ -899,7 +899,7 @@ export default function PresentationPage() {
     const features = [
         { title: "Gestão de Veículos (Kanban)", desc: "Visualize e organize todo o seu estoque através de um quadro Kanban intuitivo." },
         { title: "Controle de Custos Detalhado", desc: "Registre cada centavo investido no veículo para saber o lucro real." },
-        { title: "Vendas e Comissões Automatizadas", desc: "O sistema gera automaticamente o pedido de venda e calcula comissões." },
+        { title: "Vendas e Comissões Automatizadas", desc: "O sistema registra a venda e calcula comissões automaticamente." },
         { title: "Gestão Profissional de Garantia", desc: "Gerencie prazos de garantia legal e estendida com alertas automáticos." },
         { title: "Observações Internas", desc: "Notas internas sigilosas vinculadas a cada veículo ou cliente." },
         { title: "Financeiro Integrado", desc: "Contas a pagar e receber alimentados automaticamente pela operação." },
@@ -910,7 +910,7 @@ export default function PresentationPage() {
         { title: "Controle de Acesso", desc: "Perfis granulares (Vendedor, Gerente) para proteger dados sensíveis." },
         { title: "Configurações Personalizáveis", desc: "Adapte categorias de despesas e metas à realidade da loja." },
         { title: "Relatórios Avançados", desc: "DRE, Curva ABC e Ranking de Vendas." },
-        { title: "Documentos Automáticos", desc: "Contratos e recibos gerados com um clique." },
+        { title: "Gestão de Documentos Digitais", desc: "Organização e armazenamento seguro de documentos (CRLV, Laudos)." },
         { title: "Checklists Digitais", desc: "Vistorias de entrada e saída padronizadas." }
     ];
 
@@ -947,7 +947,7 @@ export default function PresentationPage() {
     slide.addText("Focam apenas em estoque e anúncios basicos.", { x: 1, y: 2.5, w: "40%", fontSize: 14, color: "CCCCCC" });
     
     slide.addText("Velostock", { x: 5.5, y: 2, fontSize: 20, color: "007AFF", bold: true });
-    slide.addText("Visão 360°: Estoque + Fiscal + Publicidade + Operação.", { x: 5.5, y: 2.5, w: "40%", fontSize: 14, color: "CCCCCC" });
+    slide.addText("Visão 360°: Estoque + Publicidade + Operação.", { x: 5.5, y: 2.5, w: "40%", fontSize: 14, color: "CCCCCC" });
     slide.addText("IA Contextual que ajuda a vender.", { x: 5.5, y: 3.5, w: "40%", fontSize: 14, color: "CCCCCC" });
 
     // 7. Mercado (New Slide)
