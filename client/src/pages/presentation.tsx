@@ -29,7 +29,9 @@ import {
   Server,
   Database,
   Globe,
-  Code
+  Code,
+  Cpu,
+  Code2
 } from "lucide-react";
 import { 
   BarChart, 
@@ -375,111 +377,123 @@ const Slide_Ciclo = () => (
 
 // 4. Arquitetura (New)
 const Slide4_Arquitetura = () => (
-  <div className="w-full h-full flex flex-col p-12 lg:p-24 bg-background relative overflow-hidden">
-    <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
-    <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] pointer-events-none" />
+  <div className="w-full h-full flex flex-col items-center justify-center p-8 lg:p-20 bg-background relative overflow-hidden">
+     <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] pointer-events-none" />
+     <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] pointer-events-none" />
 
-    <div className="mb-12 relative z-10">
-      <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block">ARQUITETURA DO SISTEMA</span>
-      <h2 className="text-4xl lg:text-5xl font-display font-bold text-white">
-        Tecnologia de Ponta a Ponta
-      </h2>
-      <p className="text-lg text-slate-400 mt-4 max-w-3xl">
-        O VeloStock é um SaaS multi-tenant robusto, desenhado para isolamento total de dados e alta performance.
-      </p>
-    </div>
+     <div className="mb-12 text-center relative z-10">
+        <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">STACK TECNOLÓGICA</span>
+        <h2 className="text-4xl lg:text-6xl font-display font-black text-white mb-4">Engenharia de Alta Performance</h2>
+        <p className="text-slate-400 max-w-2xl mx-auto text-sm">
+           Desenvolvido com tecnologias modernas para garantir escalabilidade horizontal, 
+           segurança de dados e uma experiência de usuário fluida.
+        </p>
+     </div>
 
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10 flex-1">
-      <div className="space-y-6">
-        <div className="bg-card border border-white/5 p-6 rounded-2xl hover:border-primary/30 transition-all">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-              <Layers className="text-primary w-5 h-5" />
-            </div>
-            <h3 className="text-xl font-bold text-white">Frontend & UI</h3>
-          </div>
-          <ul className="grid grid-cols-2 gap-3">
-            {[
-              "React + TypeScript",
-              "Tailwind CSS",
-              "Shadcn/UI",
-              "TanStack Query",
-              "Wouter",
-              "Framer Motion"
-            ].map(tech => (
-              <li key={tech} className="flex items-center gap-2 text-sm text-slate-400">
-                <div className="w-1 h-1 rounded-full bg-primary" />
-                {tech}
-              </li>
-            ))}
-          </ul>
+     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-7xl relative z-10">
+        {/* Frontend */}
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="bg-card/40 backdrop-blur-xl border border-white/10 p-8 rounded-[2rem] shadow-xl group hover:border-primary/50 transition-all"
+        >
+           <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <Layers className="text-primary w-6 h-6" />
+           </div>
+           <h3 className="text-xl font-bold text-white mb-4">Frontend & Interface</h3>
+           <ul className="space-y-3">
+              {[
+                { name: "React 18 + TypeScript", desc: "Tipagem estrita e UI declarativa" },
+                { name: "Tailwind CSS", desc: "Estilização utilitária de alta performance" },
+                { name: "Shadcn/UI + Radix", desc: "Componentes acessíveis e consistentes" },
+                { name: "Framer Motion", desc: "Animações fluidas de 60 FPS" },
+                { name: "TanStack Query", desc: "Gerenciamento de estado e cache" }
+              ].map((item, i) => (
+                <li key={i} className="flex flex-col">
+                   <span className="text-white text-sm font-bold">{item.name}</span>
+                   <span className="text-slate-500 text-[10px] uppercase">{item.desc}</span>
+                </li>
+              ))}
+           </ul>
+        </motion.div>
+
+        {/* Backend */}
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.1 }}
+          className="bg-card/40 backdrop-blur-xl border border-white/10 p-8 rounded-[2rem] shadow-xl group hover:border-secondary/50 transition-all"
+        >
+           <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <Cpu className="text-secondary w-6 h-6" />
+           </div>
+           <h3 className="text-xl font-bold text-white mb-4">Backend & APIs</h3>
+           <ul className="space-y-3">
+              {[
+                { name: "Node.js + Express", desc: "Runtime assíncrono e escalável" },
+                { name: "Drizzle ORM", desc: "Type-safe SQL e performance máxima" },
+                { name: "Passport.js", desc: "Autenticação segura e robusta" },
+                { name: "Zod", desc: "Validação de dados em tempo de execução" },
+                { name: "Socket.io", desc: "Comunicação real-time bidirecional" }
+              ].map((item, i) => (
+                <li key={i} className="flex flex-col">
+                   <span className="text-white text-sm font-bold">{item.name}</span>
+                   <span className="text-slate-500 text-[10px] uppercase">{item.desc}</span>
+                </li>
+              ))}
+           </ul>
+        </motion.div>
+
+        {/* Infra & DB */}
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="bg-card/40 backdrop-blur-xl border border-white/10 p-8 rounded-[2rem] shadow-xl group hover:border-green-500/50 transition-all"
+        >
+           <div className="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <Database className="text-green-500 w-6 h-6" />
+           </div>
+           <h3 className="text-xl font-bold text-white mb-4">Dados & Infra</h3>
+           <ul className="space-y-3">
+              {[
+                { name: "PostgreSQL (Railway)", desc: "Banco de dados relacional de alta escala" },
+                { name: "Multi-Tenancy", desc: "Isolamento lógico total por empresa" },
+                { name: "Railway Hosting", desc: "Infraestrutura Cloud CI/CD moderna" },
+                { name: "OpenAI API", desc: "Inteligência Artificial generativa" },
+                { name: "SSL/TLS Everywhere", desc: "Criptografia de ponta a ponta" }
+              ].map((item, i) => (
+                <li key={i} className="flex flex-col">
+                   <span className="text-white text-sm font-bold">{item.name}</span>
+                   <span className="text-slate-500 text-[10px] uppercase">{item.desc}</span>
+                </li>
+              ))}
+           </ul>
+        </motion.div>
+     </div>
+
+     {/* Code Organization */}
+     <motion.div 
+       initial={{ y: 20, opacity: 0 }}
+       animate={{ y: 0, opacity: 1 }}
+       transition={{ delay: 0.3 }}
+       className="mt-8 w-full max-w-7xl bg-black/40 backdrop-blur-md border border-white/5 p-6 rounded-2xl flex items-center justify-between"
+     >
+        <div className="flex items-center gap-4">
+           <div className="p-2 bg-blue-500/10 rounded-lg">
+              <Code2 className="text-blue-500 w-5 h-5" />
+           </div>
+           <div>
+              <p className="text-white font-bold text-sm">Arquitetura de Código Limpo</p>
+              <p className="text-slate-500 text-[10px] uppercase">Padronização seguindo princípios SOLID e DRY</p>
+           </div>
         </div>
-
-        <div className="bg-card border border-white/5 p-6 rounded-2xl hover:border-secondary/30 transition-all">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center">
-              <Server className="text-secondary w-5 h-5" />
-            </div>
-            <h3 className="text-xl font-bold text-white">Backend & APIs</h3>
-          </div>
-          <p className="text-sm text-slate-400 mb-4">
-            API RESTful escalável com Node.js e Express, integrando serviços inteligentes.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {[
-              "Drizzle ORM",
-              "Passport.js",
-              "Socket.IO",
-              "OpenAI API",
-              "FIPE API",
-              "SendGrid"
-            ].map(tech => (
-              <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-slate-300">
-                {tech}
-              </span>
-            ))}
-          </div>
+        <div className="flex gap-4 text-[10px] font-mono text-slate-400">
+           <span className="bg-white/5 px-3 py-1 rounded">/shared/schema.ts</span>
+           <span className="bg-white/5 px-3 py-1 rounded">/server/routes.ts</span>
+           <span className="bg-white/5 px-3 py-1 rounded">/client/src/pages</span>
         </div>
-      </div>
-
-      <div className="space-y-6">
-        <div className="bg-card border border-white/5 p-6 rounded-2xl hover:border-blue-500/30 transition-all">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
-              <Database className="text-blue-500 w-5 h-5" />
-            </div>
-            <h3 className="text-xl font-bold text-white">Dados & Segurança</h3>
-          </div>
-          <div className="space-y-4">
-            <div className="flex items-start gap-3">
-              <ShieldCheck className="w-5 h-5 text-blue-400 mt-1" />
-              <div>
-                <h4 className="text-white font-medium text-sm">Multi-Tenancy Nativo</h4>
-                <p className="text-xs text-slate-500">Isolamento físico e lógico por empresaId. Dados 100% seguros.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <Zap className="w-5 h-5 text-yellow-400 mt-1" />
-              <div>
-                <h4 className="text-white font-medium text-sm">PostgreSQL (Neon)</h4>
-                <p className="text-xs text-slate-500">Banco de dados serverless de alta performance e disponibilidade.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-gradient-to-br from-primary/20 to-secondary/20 border border-white/10 p-6 rounded-2xl">
-          <h3 className="text-white font-bold mb-3 flex items-center gap-2">
-            <Code className="w-5 h-5" /> Organização de Código
-          </h3>
-          <div className="text-xs text-slate-300 space-y-2 font-mono">
-            <p className="text-blue-400">/shared/schema.ts <span className="text-slate-500">// O "Coração" do sistema (Zod + Drizzle)</span></p>
-            <p className="text-purple-400">/server/routes.ts <span className="text-slate-500">// Lógica de Negócio & RBAC</span></p>
-            <p className="text-green-400">/client/src/pages <span className="text-slate-500">// UI seguindo design "Notion/Linear"</span></p>
-          </div>
-        </div>
-      </div>
-    </div>
+     </motion.div>
   </div>
 );
 
