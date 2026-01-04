@@ -531,30 +531,33 @@ const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) 
   );
 };
 
-// 4.5. Admin Panel
+// 4.5. Admin Panel & Bug Management
 const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) => {
   const [selectedFeatureIndex, setSelectedFeatureIndex] = useState<number | null>(null);
 
   const adminFeatures = [
     { t: "Dashboard de Métricas", d: "Acompanhe a saúde do seu SaaS em tempo real. Visualize o MRR (Receita Recorrente Mensal), Taxa de Churn (Cancelamento), LTV (Valor do Tempo de Vida) e o crescimento total de empresas ativas. Gráficos intuitivos para tomada de decisão rápida." },
     { t: "Gestão de Empresas", d: "Tenha controle total sobre seus clientes. Visualize todas as empresas cadastradas, status da assinatura (Ativo, Trial, Bloqueado), histórico de pagamentos e dados de contato. Estenda períodos de teste ou bloqueie acesso de inadimplentes com um clique." },
+    { t: "Gestão Proativa de Bugs", d: "O segredo de uma plataforma estável é como ela lida com imprevistos. Nosso painel administrativo permite que erros sejam reportados, triados e resolvidos antes que afetem a operação da revenda. Usuários reportam bugs com logs automáticos do sistema, facilitando a reprodução e correção imediata. A triagem inteligente permite categorizar bugs como 'Críticos', 'Funcionais' ou 'Sugestões' e acompanhar o status em tempo real, garantindo que o lojista nunca pare por falhas técnicas." },
     { t: "Códigos de Convite", d: "Crie campanhas de aquisição controladas. Gere códigos de convite com parâmetros específicos (ex: '7 dias grátis', '30 dias grátis', 'Promoção Black Friday'). Monitore quais códigos foram usados e por quem, facilitando a gestão de parcerias e afiliados." },
     { t: "Gestão de Admins", d: "Controle quem tem acesso ao painel administrativo. Crie níveis de permissão granulares (Master vs. Visualizador). O Admin Master tem acesso total, enquanto Visualizadores podem apenas ver métricas sem alterar configurações críticas ou dados financeiros." },
-    { t: "Reports de Bugs", d: "Sistema de tickets integrado para suporte ágil. Receba notificações de erros reportados pelos usuários diretamente no painel. Acompanhe o status da resolução, priorize correções críticas e mantenha seus clientes informados sobre as melhorias." },
     { t: "Financeiro Global", d: "Visão consolidada de todas as transações. Liste todas as assinaturas, identifique pagamentos falhos, gere notas fiscais e controle a inadimplência geral do sistema. Exporte dados para contabilidade e mantenha a saúde financeira do seu SaaS em dia." }
   ];
 
   return (
-    <div className="w-full h-full p-12 lg:p-20 bg-background flex flex-col overflow-y-auto custom-scrollbar">
-      <div className="flex justify-between items-end mb-12 shrink-0">
+    <div className="w-full h-full p-12 lg:p-20 bg-[#0a0a0a] flex flex-col overflow-y-auto custom-scrollbar relative">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      
+      <div className="flex justify-between items-end mb-12 shrink-0 relative z-10">
         <div>
-           <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-2 block">Backoffice</span>
+           <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-2 block">Backoffice & Qualidade</span>
            <h2 className="text-4xl font-display font-bold text-white">Painel Administrativo</h2>
-           <p className="text-slate-400 mt-2">Gestão completa do SaaS: Métricas, Clientes e Segurança.</p>
+           <p className="text-slate-400 mt-2">Gestão completa do SaaS: Métricas, Suporte Proativo e Segurança.</p>
         </div>
         <div className="flex gap-4">
-           <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 text-xs text-slate-300">
-             <span className="text-secondary font-bold">Autenticação:</span> Token Único ou Credenciais Admin
+           <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 text-xs text-slate-300 flex items-center gap-2">
+             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+             <span className="text-secondary font-bold">Uptime:</span> 99.9% Garantido
            </div>
            <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 text-xs text-slate-300">
              <span className="text-secondary font-bold">Segurança:</span> Rate Limiting & HTTPS
@@ -562,21 +565,21 @@ const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) 
         </div>
       </div>
 
-      <div className="grid grid-cols-12 gap-8 flex-1 shrink-0 min-h-[500px]">
+      <div className="grid grid-cols-12 gap-8 flex-1 shrink-0 min-h-[600px] relative z-10">
          {/* Visuals - Left */}
          <div className="col-span-7 flex flex-col gap-6 h-full">
-            <div className="flex-1 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in min-h-[200px]" onClick={() => onImageClick(imgAdminDash)}>
+            <div className="flex-1 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in min-h-[300px]" onClick={() => onImageClick(imgAdminDash)}>
                <div className="absolute top-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-bold text-white z-10 border border-white/10">Dashboard Global (MRR & Clientes)</div>
                <img src={imgAdminDash} className="w-full h-full object-contain bg-black/50 opacity-90 group-hover:opacity-100 transition-opacity" />
             </div>
-            <div className="h-1/3 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in min-h-[150px]" onClick={() => onImageClick(imgAdminBugs)}>
-               <div className="absolute top-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-bold text-white z-10 border border-white/10">Gestão de Bugs</div>
+            <div className="h-1/2 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in min-h-[250px]" onClick={() => onImageClick(imgAdminBugs)}>
+               <div className="absolute top-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-bold text-white z-10 border border-white/10">Gestão Proativa de Bugs</div>
                <img src={imgAdminBugs} className="w-full h-full object-contain bg-black/50 opacity-90 group-hover:opacity-100 transition-opacity" />
             </div>
          </div>
 
          {/* Features - Right (Accordion Style) */}
-         <div className="col-span-5 flex flex-col gap-2 overflow-y-auto pr-2 custom-scrollbar h-full relative">
+         <div className="col-span-5 flex flex-col gap-3 overflow-y-auto pr-2 custom-scrollbar h-full relative">
             {adminFeatures.map((item, i) => (
               <motion.div
                 key={i}
@@ -591,19 +594,19 @@ const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) 
               >
                  <button 
                     onClick={() => setSelectedFeatureIndex(selectedFeatureIndex === i ? null : i)}
-                    className="w-full flex items-center gap-3 p-3 text-left focus:outline-none"
+                    className="w-full flex items-center gap-4 p-4 text-left focus:outline-none"
                  >
-                    <div className={`w-1.5 h-1.5 rounded-full shrink-0 transition-transform duration-300 ${
-                       selectedFeatureIndex === i ? "bg-primary scale-150" : "bg-primary"
+                    <div className={`w-2 h-2 rounded-full shrink-0 transition-transform duration-300 ${
+                       selectedFeatureIndex === i ? "bg-primary scale-150 shadow-[0_0_10px_rgba(255,59,48,0.5)]" : "bg-primary/50"
                     }`} />
                     
-                    <span className={`text-sm font-bold transition-colors ${
+                    <span className={`text-base font-bold transition-colors ${
                        selectedFeatureIndex === i ? "text-white" : "text-slate-200 group-hover:text-white"
                     }`}>
                       {item.t}
                     </span>
                     
-                    <ChevronRight className={`w-4 h-4 text-slate-500 ml-auto transition-transform duration-300 ${
+                    <ChevronRight className={`w-5 h-5 text-slate-500 ml-auto transition-transform duration-300 ${
                        selectedFeatureIndex === i ? "rotate-90 text-primary" : ""
                     }`} />
                  </button>
@@ -617,10 +620,10 @@ const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) 
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="px-4 pb-6 pt-0 text-slate-300 text-xs leading-relaxed border-t border-white/5 mt-1">
-                          <div className="h-2" />
+                        <div className="px-5 pb-6 pt-0 text-slate-300 text-sm leading-relaxed border-t border-white/5 mt-1 bg-black/20">
+                          <div className="h-3" />
                           {item.d}
-                          <div className="h-2" /> {/* Bottom Spacer */}
+                          <div className="h-3" /> {/* Bottom Spacer */}
                         </div>
                       </motion.div>
                     )}
@@ -628,14 +631,14 @@ const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) 
               </motion.div>
             ))}
             
-            <div className="mt-auto pt-6 border-t border-white/10 shrink-0">
-               <h4 className="font-bold text-white text-sm mb-3">Fluxo de Criação</h4>
-               <div className="flex items-center gap-2 text-xs text-slate-400">
-                 <span className="bg-white/10 px-2 py-1 rounded">Admin cria código</span>
-                 <ChevronRight size={12} />
-                 <span className="bg-white/10 px-2 py-1 rounded">Cliente usa no Signup</span>
-                 <ChevronRight size={12} />
-                 <span className="bg-green-500/20 text-green-400 px-2 py-1 rounded">Empresa Criada</span>
+            <div className="mt-auto pt-8 border-t border-white/10 shrink-0">
+               <h4 className="font-bold text-white text-sm mb-4">Fluxo de Criação & Escala</h4>
+               <div className="flex items-center gap-3 text-xs text-slate-400">
+                 <span className="bg-white/10 px-3 py-1.5 rounded border border-white/5">Admin cria código</span>
+                 <ChevronRight size={14} className="text-primary" />
+                 <span className="bg-white/10 px-3 py-1.5 rounded border border-white/5">Cliente usa no Signup</span>
+                 <ChevronRight size={14} className="text-primary" />
+                 <span className="bg-green-500/20 text-green-400 px-3 py-1.5 rounded border border-green-500/20 font-bold">Empresa Ativa</span>
                </div>
             </div>
          </div>
