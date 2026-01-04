@@ -545,7 +545,7 @@ const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) 
   ];
 
   return (
-    <div className="w-full h-full p-12 lg:p-20 bg-[#0a0a0a] flex flex-col overflow-y-auto custom-scrollbar relative">
+    <div className="w-full h-full p-12 lg:p-20 bg-[#0a0a0a] flex flex-col relative">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
       
       <div className="flex justify-between items-end mb-12 shrink-0 relative z-10">
@@ -565,14 +565,14 @@ const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) 
         </div>
       </div>
 
-      <div className="grid grid-cols-12 gap-8 flex-1 shrink-0 min-h-[600px] relative z-10">
+      <div className="grid grid-cols-12 gap-8 flex-1 relative z-10 min-h-0">
          {/* Visuals - Left */}
-         <div className="col-span-7 flex flex-col gap-6 h-full">
-            <div className="flex-1 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in min-h-[300px]" onClick={() => onImageClick(imgAdminDash)}>
+         <div className="col-span-7 flex flex-col gap-6 h-full overflow-hidden">
+            <div className="flex-1 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in" onClick={() => onImageClick(imgAdminDash)}>
                <div className="absolute top-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-bold text-white z-10 border border-white/10">Dashboard Global (MRR & Clientes)</div>
                <img src={imgAdminDash} className="w-full h-full object-contain bg-black/50 opacity-90 group-hover:opacity-100 transition-opacity" />
             </div>
-            <div className="h-1/2 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in min-h-[250px]" onClick={() => onImageClick(imgAdminBugs)}>
+            <div className="flex-1 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in" onClick={() => onImageClick(imgAdminBugs)}>
                <div className="absolute top-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-bold text-white z-10 border border-white/10">Gestão Proativa de Bugs</div>
                <img src={imgAdminBugs} className="w-full h-full object-contain bg-black/50 opacity-90 group-hover:opacity-100 transition-opacity" />
             </div>
