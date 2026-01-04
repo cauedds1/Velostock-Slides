@@ -331,7 +331,7 @@ const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) 
     },
     { 
       title: "Configurações Personalizáveis", 
-      desc: "O Velostock se adapta à sua loja, e não o contrário. Personalize o sistema para refletir a realidade do seu negócio. Cadastre suas próprias categorias de despesas, origens de leads, bancos financiadores parceiros, formas de pagamento e metas de vendas mensais. Configure os dados visuais da sua empresa para que saiam padronizados na plataforma." 
+      desc: "O Velostock se adapta à sua loja, e não o contrário. Personalize o sistema para refletir a realidade do seu negócio. Cadastre suas próprias categorias de despesas, origens de leads, formas de pagamento e metas de vendas mensais. Configure os dados visuais da sua empresa para que saiam padronizados na plataforma." 
     },
     { 
       title: "Relatórios Gerenciais Avançados", 
