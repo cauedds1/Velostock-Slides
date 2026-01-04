@@ -291,29 +291,29 @@ const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) 
           <div className="space-y-4">
              <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgVeiculos)}>
                 <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Gestão de Veículos</div>
-                <img src={imgVeiculos} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
+                <img src={imgVeiculos} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
              </div>
              <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgLead)}>
                 <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">CRM & Leads</div>
-                <img src={imgLead} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
+                <img src={imgLead} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
              </div>
              <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgFinanceiro)}>
                 <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Financeiro</div>
-                <img src={imgFinanceiro} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
+                <img src={imgFinanceiro} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
              </div>
           </div>
           <div className="space-y-4 mt-8">
              <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgGarantia)}>
                 <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Garantia</div>
-                <img src={imgGarantia} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
+                <img src={imgGarantia} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
              </div>
              <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgCustos)}>
                 <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Controle de Custos</div>
-                <img src={imgCustos} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
+                <img src={imgCustos} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
              </div>
               <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgRelatorio)}>
                 <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Relatórios</div>
-                <img src={imgRelatorio} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
+                <img src={imgRelatorio} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
              </div>
           </div>
        </div>
@@ -377,11 +377,11 @@ const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) 
        <div className="col-span-7 flex flex-col gap-6 h-full">
           <div className="flex-1 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in" onClick={() => onImageClick(imgAdminDash)}>
              <div className="absolute top-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-bold text-white z-10 border border-white/10">Dashboard Global (MRR & Clientes)</div>
-             <img src={imgAdminDash} className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity" />
+             <img src={imgAdminDash} className="w-full h-full object-contain bg-black/50 opacity-90 group-hover:opacity-100 transition-opacity" />
           </div>
           <div className="h-1/3 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in" onClick={() => onImageClick(imgAdminBugs)}>
              <div className="absolute top-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-bold text-white z-10 border border-white/10">Gestão de Bugs</div>
-             <img src={imgAdminBugs} className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity" />
+             <img src={imgAdminBugs} className="w-full h-full object-contain bg-black/50 opacity-90 group-hover:opacity-100 transition-opacity" />
           </div>
        </div>
 
