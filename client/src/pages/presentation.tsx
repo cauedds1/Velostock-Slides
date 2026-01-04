@@ -225,15 +225,17 @@ const Slide3_Solucao = () => (
     </div>
     <div className="w-full lg:w-1/2 bg-black relative flex items-center justify-center overflow-hidden p-12">
        {/* Feature Showcase Grid */}
-       <div className="grid grid-cols-2 gap-4 w-full h-full relative z-10 opacity-90 rotate-[-2deg] scale-95 hover:rotate-0 hover:scale-100 transition-all duration-700 ease-out">
-          <div className="row-span-2 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-             <img src={imgHome} alt="Home Screen" className="w-full h-full object-cover" />
+       <div className="grid grid-cols-1 gap-6 w-full h-full relative z-10 opacity-90 rotate-[-2deg] scale-95 hover:rotate-0 hover:scale-100 transition-all duration-700 ease-out justify-center content-center">
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative group">
+             <img src={imgHome} alt="Home Screen" className="w-full h-auto object-contain" />
           </div>
-          <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-             <img src={imgDashboard} alt="Dashboard" className="w-full h-full object-cover" />
-          </div>
-          <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-             <img src={imgPipeline} alt="Pipeline" className="w-full h-full object-cover" />
+          <div className="grid grid-cols-2 gap-4">
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+               <img src={imgDashboard} alt="Dashboard" className="w-full h-full object-cover object-left-top" />
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+               <img src={imgPipeline} alt="Pipeline" className="w-full h-full object-cover object-left-top" />
+            </div>
           </div>
        </div>
        <div className="absolute inset-0 bg-gradient-to-l from-background via-transparent to-transparent pointer-events-none" />
