@@ -355,8 +355,8 @@ const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) 
 
 // 4.5. Admin Panel
 const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) => (
-  <div className="w-full h-full p-12 lg:p-20 bg-background flex flex-col">
-    <div className="flex justify-between items-end mb-12">
+  <div className="w-full h-full p-12 lg:p-20 bg-background flex flex-col overflow-y-auto custom-scrollbar">
+    <div className="flex justify-between items-end mb-12 shrink-0">
       <div>
          <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-2 block">Backoffice</span>
          <h2 className="text-4xl font-display font-bold text-white">Painel Administrativo</h2>
@@ -372,21 +372,21 @@ const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) 
       </div>
     </div>
 
-    <div className="grid grid-cols-12 gap-8 flex-1 overflow-hidden">
+    <div className="grid grid-cols-12 gap-8 flex-1 shrink-0 min-h-[500px]">
        {/* Visuals - Left */}
        <div className="col-span-7 flex flex-col gap-6 h-full">
-          <div className="flex-1 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in" onClick={() => onImageClick(imgAdminDash)}>
+          <div className="flex-1 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in min-h-[200px]" onClick={() => onImageClick(imgAdminDash)}>
              <div className="absolute top-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-bold text-white z-10 border border-white/10">Dashboard Global (MRR & Clientes)</div>
              <img src={imgAdminDash} className="w-full h-full object-contain bg-black/50 opacity-90 group-hover:opacity-100 transition-opacity" />
           </div>
-          <div className="h-1/3 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in" onClick={() => onImageClick(imgAdminBugs)}>
+          <div className="h-1/3 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in min-h-[150px]" onClick={() => onImageClick(imgAdminBugs)}>
              <div className="absolute top-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-bold text-white z-10 border border-white/10">Gestão de Bugs</div>
              <img src={imgAdminBugs} className="w-full h-full object-contain bg-black/50 opacity-90 group-hover:opacity-100 transition-opacity" />
           </div>
        </div>
 
        {/* Features - Right */}
-       <div className="col-span-5 flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar">
+       <div className="col-span-5 flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar h-full">
           {[
             { t: "Dashboard de Métricas", d: "MRR, Churn Rate, LTV e total de empresas ativas em tempo real." },
             { t: "Gestão de Empresas", d: "Controle total: estender trial, bloquear acesso e ver histórico." },
@@ -400,7 +400,7 @@ const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) 
                initial={{ opacity: 0, x: 20 }}
                animate={{ opacity: 1, x: 0 }}
                transition={{ delay: 0.1 * i }}
-               className="bg-white/5 p-4 rounded-xl border border-white/5 hover:border-primary/50 transition-colors"
+               className="bg-white/5 p-4 rounded-xl border border-white/5 hover:border-primary/50 transition-colors shrink-0"
              >
                 <h4 className="font-bold text-white text-sm mb-1 flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -410,7 +410,7 @@ const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) 
              </motion.div>
           ))}
           
-          <div className="mt-auto pt-6 border-t border-white/10">
+          <div className="mt-auto pt-6 border-t border-white/10 shrink-0">
              <h4 className="font-bold text-white text-sm mb-3">Fluxo de Criação</h4>
              <div className="flex items-center gap-2 text-xs text-slate-400">
                <span className="bg-white/10 px-2 py-1 rounded">Admin cria código</span>
