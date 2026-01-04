@@ -824,71 +824,152 @@ const Slide7_Mercado = () => (
 
 // 8. Monetização
 const Slide8_Monetizacao = () => (
-  <div className="w-full h-full flex flex-col items-center justify-center p-12 lg:p-24 bg-background">
-     <div className="text-center mb-16">
+  <div className="w-full h-full flex flex-col items-center justify-center p-12 lg:p-24 bg-background relative overflow-hidden">
+     {/* Decorative elements */}
+     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+     <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />
+
+     <div className="text-center mb-16 relative z-10">
         <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block">MODELO DE NEGÓCIO</span>
-        <h2 className="text-4xl lg:text-5xl font-display font-bold text-white">SaaS: Simples & Escalável</h2>
+        <h2 className="text-4xl lg:text-6xl font-display font-black text-white mb-4">SaaS: Simples & Escalável</h2>
+        <div className="h-1.5 w-24 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
      </div>
      
-     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full max-w-5xl">
+     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full max-w-6xl relative z-10">
         <div className="flex flex-col justify-center">
-           <div className="bg-card border border-white/5 p-8 rounded-[2rem] shadow-2xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-primary/20 transition-all" />
+           <motion.div 
+             initial={{ x: -30, opacity: 0 }}
+             animate={{ x: 0, opacity: 1 }}
+             className="bg-card/40 backdrop-blur-xl border border-white/10 p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden group"
+           >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-primary/30 transition-all" />
               <div className="relative z-10">
-                 <h3 className="text-slate-400 font-bold text-sm uppercase mb-4 tracking-widest">Plano VeloFull</h3>
-                 <div className="flex items-baseline gap-2 mb-6">
-                    <span className="text-4xl text-white font-light">R$</span>
-                    <span className="text-7xl text-white font-black tracking-tighter">149</span>
-                    <span className="text-slate-500 font-medium">/mês</span>
+                 <div className="flex justify-between items-start mb-6">
+                    <div>
+                       <h3 className="text-slate-400 font-bold text-sm uppercase mb-1 tracking-widest">Plano VeloFull</h3>
+                       <div className="flex items-baseline gap-2">
+                          <span className="text-4xl text-white font-light">R$</span>
+                          <span className="text-7xl text-white font-black tracking-tighter">149</span>
+                          <span className="text-slate-500 font-medium">/mês</span>
+                       </div>
+                    </div>
+                    <div className="px-4 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-[10px] font-black text-primary uppercase tracking-widest">Mais Popular</div>
                  </div>
                  
-                 <div className="space-y-4 mb-8">
-                    {["Usuários Ilimitados", "Veículos Ilimitados", "VeloBot IA Incluso", "Suporte VIP", "Update constantes"].map((t, i) => (
-                      <div key={i} className="flex items-center gap-3 text-slate-300">
-                        <CheckCircle className="text-primary w-4 h-4" />
-                        <span>{t}</span>
+                 <div className="grid grid-cols-1 gap-4 mb-10">
+                    {[
+                      { text: "Usuários Ilimitados", desc: "Toda sua equipe conectada" },
+                      { text: "Veículos Ilimitados", desc: "Sem travas de crescimento" },
+                      { text: "VeloBot IA Incluso", desc: "Anúncios e preços inteligentes" },
+                      { text: "Suporte Especializado", desc: "Apoio direto na operação" },
+                      { text: "Updates Semanais", desc: "Novas funcionalidades grátis" }
+                    ].map((t, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <div className="mt-1 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                          <CheckCircle className="text-primary w-3 h-3" />
+                        </div>
+                        <div>
+                           <p className="text-white font-bold text-sm leading-none mb-1">{t.text}</p>
+                           <p className="text-slate-500 text-[10px] uppercase tracking-tighter">{t.desc}</p>
+                        </div>
                       </div>
                     ))}
                  </div>
                  
-                 <Button className="w-full py-6 text-lg font-bold bg-primary hover:bg-primary/90 rounded-xl shadow-lg shadow-primary/20">
-                   Começar agora
+                 <Button className="w-full py-8 text-xl font-black bg-primary hover:bg-primary/90 rounded-2xl shadow-xl shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98]">
+                   COMEÇAR TESTE GRÁTIS
                  </Button>
+                 <p className="text-center text-slate-500 text-[10px] mt-4 uppercase tracking-widest font-bold">Sem fidelidade • Cancele quando quiser</p>
               </div>
-           </div>
+           </motion.div>
         </div>
         
-        <div className="flex flex-col justify-center space-y-8">
-           <div className="p-6 rounded-2xl bg-white/5 border border-white/5">
-              <h4 className="text-white font-bold mb-2 flex items-center gap-2">
-                <DollarSign className="text-green-500 w-5 h-5" /> Baixo Churn
-              </h4>
-              <p className="text-slate-400 text-sm">
-                Uma vez que a operação da loja está dentro do sistema (checklists, custos, comissões), a ferramenta se torna indispensável.
-              </p>
-           </div>
-           
-           <div className="p-6 rounded-2xl bg-white/5 border border-white/5">
-              <h4 className="text-white font-bold mb-2 flex items-center gap-2">
-                <Maximize2 className="text-blue-500 w-5 h-5" /> Escalabilidade
-              </h4>
-              <p className="text-slate-400 text-sm">
-                Arquitetura SaaS permite adicionar 1.000 novos clientes com custo marginal de infraestrutura quase nulo.
-              </p>
+        <div className="flex flex-col justify-center space-y-6">
+           <div className="grid grid-cols-1 gap-6">
+              <motion.div 
+                initial={{ x: 30, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="p-8 rounded-3xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group"
+              >
+                 <h4 className="text-white font-bold mb-3 flex items-center gap-3 text-lg">
+                   <div className="p-2 rounded-lg bg-green-500/10"><DollarSign className="text-green-500 w-5 h-5" /></div>
+                   Retenção & LTV
+                 </h4>
+                 <p className="text-slate-400 text-sm leading-relaxed font-light">
+                   Uma vez que o <span className="text-white font-medium">workflow operacional</span> (custos, vistorias e comissões) está no VeloStock, o sistema se torna o sistema nervoso da loja, garantindo uma retenção orgânica altíssima.
+                 </p>
+              </motion.div>
+              
+              <motion.div 
+                initial={{ x: 30, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="p-8 rounded-3xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group"
+              >
+                 <h4 className="text-white font-bold mb-3 flex items-center gap-3 text-lg">
+                   <div className="p-2 rounded-lg bg-blue-500/10"><Maximize2 className="text-blue-500 w-5 h-5" /></div>
+                   Escalabilidade Marginal
+                 </h4>
+                 <p className="text-slate-400 text-sm leading-relaxed font-light">
+                   Arquitetura <span className="text-white font-medium">Cloud-Native Multi-Tenant</span> permite o onboarding de centenas de lojas simultaneamente com impacto mínimo em custos de servidor, maximizando a margem bruta do SaaS.
+                 </p>
+              </motion.div>
            </div>
 
-           <div className="relative h-32 w-full mt-4">
-              <ResponsiveContainer width="100%" height="100%">
-                 <BarChart data={revenueData}>
-                    <Bar dataKey="value" fill="#007AFF" radius={[4, 4, 0, 0]} />
-                 </BarChart>
-              </ResponsiveContainer>
-              <div className="absolute -bottom-2 w-full flex justify-between text-[10px] text-slate-500 font-bold uppercase tracking-widest px-2">
-                 <span>Ano 1</span>
-                 <span>Ano 2</span>
-                 <span>Ano 3 (Projeção)</span>
+           <motion.div 
+             initial={{ y: 30, opacity: 0 }}
+             animate={{ y: 0, opacity: 1 }}
+             transition={{ delay: 0.4 }}
+             className="bg-card/30 border border-white/5 p-8 rounded-3xl relative overflow-hidden"
+           >
+              <div className="flex justify-between items-center mb-6">
+                 <div>
+                    <h4 className="text-white font-bold text-sm uppercase tracking-widest">Projeção de Escala</h4>
+                    <p className="text-slate-500 text-[10px] uppercase">Crescimento sustentável do ecossistema</p>
+                 </div>
+                 <TrendingUp className="text-primary w-5 h-5 animate-pulse" />
               </div>
-           </div>
+
+              <div className="relative h-40 w-full">
+                 <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={revenueData}>
+                       <defs>
+                          <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+                             <stop offset="0%" stopColor="var(--primary)" stopOpacity={1} />
+                             <stop offset="100%" stopColor="var(--secondary)" stopOpacity={1} />
+                          </linearGradient>
+                       </defs>
+                       <Bar 
+                         dataKey="value" 
+                         fill="url(#barGradient)" 
+                         radius={[8, 8, 0, 0]} 
+                         animationDuration={2000}
+                       >
+                          {revenueData.map((entry, index) => (
+                             <Cell key={`cell-${index}`} fillOpacity={0.6 + (index * 0.2)} />
+                          ))}
+                       </Bar>
+                    </BarChart>
+                 </ResponsiveContainer>
+                 <div className="absolute -bottom-2 w-full flex justify-between text-[10px] text-slate-500 font-black uppercase tracking-[0.2em] px-2">
+                    <span>Fase 1</span>
+                    <span>Fase 2</span>
+                    <span>Fase 3</span>
+                 </div>
+              </div>
+              
+              <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-center">
+                 <div className="text-center flex-1 border-r border-white/5">
+                    <p className="text-[10px] text-slate-500 uppercase font-bold mb-1">Ponto de Equilíbrio</p>
+                    <p className="text-lg font-black text-white">Baixo</p>
+                 </div>
+                 <div className="text-center flex-1">
+                    <p className="text-[10px] text-slate-500 uppercase font-bold mb-1">Margem Operacional</p>
+                    <p className="text-lg font-black text-primary">Elevada</p>
+                 </div>
+              </div>
+           </motion.div>
         </div>
      </div>
   </div>
