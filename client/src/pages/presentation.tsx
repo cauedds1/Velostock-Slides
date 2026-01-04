@@ -856,7 +856,7 @@ const Slide8_Monetizacao = () => (
                     <div className="px-4 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-[10px] font-black text-primary uppercase tracking-widest">Mais Popular</div>
                  </div>
                  
-                 <div className="grid grid-cols-1 gap-4 mb-10">
+                 <div className="grid grid-cols-1 gap-4">
                     {[
                       { text: "Usuários Ilimitados", desc: "Toda sua equipe conectada" },
                       { text: "Veículos Ilimitados", desc: "Sem travas de crescimento" },
@@ -875,11 +875,6 @@ const Slide8_Monetizacao = () => (
                       </div>
                     ))}
                  </div>
-                 
-                 <Button className="w-full py-8 text-xl font-black bg-primary hover:bg-primary/90 rounded-2xl shadow-xl shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98]">
-                   COMEÇAR TESTE GRÁTIS
-                 </Button>
-                 <p className="text-center text-slate-500 text-[10px] mt-4 uppercase tracking-widest font-bold">Sem fidelidade • Cancele quando quiser</p>
               </div>
            </motion.div>
         </div>
