@@ -646,7 +646,7 @@ const Slide6_Publico = () => (
              </div>
              <div className="bg-white/5 p-6 rounded-xl text-center">
                <div className="text-4xl font-bold text-white mb-1">R$ 12B</div>
-               <div className="text-xs text-slate-400 uppercase">TAM (SaaS Auto)</div>
+               <div className="text-xs text-slate-400 uppercase">Potencial de Mercado (TAM)</div>
              </div>
           </div>
        </div>
