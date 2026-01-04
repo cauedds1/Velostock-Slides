@@ -24,7 +24,12 @@ import {
   Sparkles,
   Camera,
   Megaphone,
-  Repeat
+  Repeat,
+  Layers,
+  Server,
+  Database,
+  Globe,
+  Code
 } from "lucide-react";
 import { 
   BarChart, 
@@ -58,7 +63,7 @@ import imgAdminDash from "@assets/image_1767534073146.png";
 import imgAdminBugs from "@assets/image_1767534076137.png";
 import imgLogo from "@assets/WhatsApp_Image_2026-01-04_at_11.17.29_1767536263145.jpeg";
 import pptxgen from "pptxgenjs";
-import { Download, Code } from "lucide-react";
+import { Download } from "lucide-react";
 import { useLocation } from "wouter";
 
 // --- Data ---
@@ -68,13 +73,14 @@ const slidesData = [
   { id: 1, label: "A Dor" },
   { id: 2, label: "A Solução" },
   { id: 3, label: "Ciclo" },
-  { id: 4, label: "Funcionalidades" },
-  { id: 5, label: "Admin Panel" },
-  { id: 6, label: "Diferencial" },
-  { id: 7, label: "Mercado" },
-  { id: 8, label: "Monetização" },
-  { id: 9, label: "Desafios" },
-  { id: 10, label: "Encerramento" },
+  { id: 4, label: "Arquitetura" },
+  { id: 5, label: "Funcionalidades" },
+  { id: 6, label: "Admin Panel" },
+  { id: 7, label: "Diferencial" },
+  { id: 8, label: "Mercado" },
+  { id: 9, label: "Monetização" },
+  { id: 10, label: "Desafios" },
+  { id: 11, label: "Encerramento" },
 ];
 
 const efficiencyData = [
@@ -367,8 +373,118 @@ const Slide_Ciclo = () => (
   </div>
 );
 
-// 4. Funcionalidades
-const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) => void }) => {
+// 4. Arquitetura (New)
+const Slide4_Arquitetura = () => (
+  <div className="w-full h-full flex flex-col p-12 lg:p-24 bg-background relative overflow-hidden">
+    <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+    <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] pointer-events-none" />
+
+    <div className="mb-12 relative z-10">
+      <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block">ARQUITETURA DO SISTEMA</span>
+      <h2 className="text-4xl lg:text-5xl font-display font-bold text-white">
+        Tecnologia de Ponta a Ponta
+      </h2>
+      <p className="text-lg text-slate-400 mt-4 max-w-3xl">
+        O VeloStock é um SaaS multi-tenant robusto, desenhado para isolamento total de dados e alta performance.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10 flex-1">
+      <div className="space-y-6">
+        <div className="bg-card border border-white/5 p-6 rounded-2xl hover:border-primary/30 transition-all">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+              <Layers className="text-primary w-5 h-5" />
+            </div>
+            <h3 className="text-xl font-bold text-white">Frontend & UI</h3>
+          </div>
+          <ul className="grid grid-cols-2 gap-3">
+            {[
+              "React + TypeScript",
+              "Tailwind CSS",
+              "Shadcn/UI",
+              "TanStack Query",
+              "Wouter",
+              "Framer Motion"
+            ].map(tech => (
+              <li key={tech} className="flex items-center gap-2 text-sm text-slate-400">
+                <div className="w-1 h-1 rounded-full bg-primary" />
+                {tech}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="bg-card border border-white/5 p-6 rounded-2xl hover:border-secondary/30 transition-all">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center">
+              <Server className="text-secondary w-5 h-5" />
+            </div>
+            <h3 className="text-xl font-bold text-white">Backend & APIs</h3>
+          </div>
+          <p className="text-sm text-slate-400 mb-4">
+            API RESTful escalável com Node.js e Express, integrando serviços inteligentes.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {[
+              "Drizzle ORM",
+              "Passport.js",
+              "Socket.IO",
+              "OpenAI API",
+              "FIPE API",
+              "SendGrid"
+            ].map(tech => (
+              <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-slate-300">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-6">
+        <div className="bg-card border border-white/5 p-6 rounded-2xl hover:border-blue-500/30 transition-all">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
+              <Database className="text-blue-500 w-5 h-5" />
+            </div>
+            <h3 className="text-xl font-bold text-white">Dados & Segurança</h3>
+          </div>
+          <div className="space-y-4">
+            <div className="flex items-start gap-3">
+              <ShieldCheck className="w-5 h-5 text-blue-400 mt-1" />
+              <div>
+                <h4 className="text-white font-medium text-sm">Multi-Tenancy Nativo</h4>
+                <p className="text-xs text-slate-500">Isolamento físico e lógico por empresaId. Dados 100% seguros.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <Zap className="w-5 h-5 text-yellow-400 mt-1" />
+              <div>
+                <h4 className="text-white font-medium text-sm">PostgreSQL (Neon)</h4>
+                <p className="text-xs text-slate-500">Banco de dados serverless de alta performance e disponibilidade.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-gradient-to-br from-primary/20 to-secondary/20 border border-white/10 p-6 rounded-2xl">
+          <h3 className="text-white font-bold mb-3 flex items-center gap-2">
+            <Code className="w-5 h-5" /> Organização de Código
+          </h3>
+          <div className="text-xs text-slate-300 space-y-2 font-mono">
+            <p className="text-blue-400">/shared/schema.ts <span className="text-slate-500">// O "Coração" do sistema (Zod + Drizzle)</span></p>
+            <p className="text-purple-400">/server/routes.ts <span className="text-slate-500">// Lógica de Negócio & RBAC</span></p>
+            <p className="text-green-400">/client/src/pages <span className="text-slate-500">// UI seguindo design "Notion/Linear"</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// 5. Funcionalidades
+const Slide5_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) => void }) => {
   const [selectedFeatureIndex, setSelectedFeatureIndex] = useState<number | null>(null);
 
   const features = [
@@ -434,428 +550,380 @@ const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) 
     }
   ];
 
-  return (
-    <div className="w-full h-full p-8 lg:p-12 bg-background relative flex flex-col">
-      <div className="text-center mb-8 shrink-0">
-        <h2 className="text-3xl font-display font-bold text-white mb-2">15 Funcionalidades Principais</h2>
-        <p className="text-slate-400">O stack completo para a operação. Clique para expandir os detalhes.</p>
-      </div>
+  const handleFeatureClick = (index: number) => {
+    setSelectedFeatureIndex(index);
+  };
 
-      <div className="flex-1 grid grid-cols-12 gap-6 h-full overflow-hidden pb-4">
-         {/* Left Column: Visual Showcase */}
-         <div className="col-span-12 lg:col-span-7 grid grid-cols-2 gap-4 h-full overflow-y-auto pr-2 custom-scrollbar">
-            <div className="space-y-4">
-               <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgVeiculos)}>
-                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Gestão de Veículos</div>
-                  <img src={imgVeiculos} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
-               </div>
-               <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgLead)}>
-                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">CRM & Leads</div>
-                  <img src={imgLead} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
-               </div>
-               <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgFinanceiro)}>
-                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Financeiro</div>
-                  <img src={imgFinanceiro} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
-               </div>
-            </div>
-            <div className="space-y-4 mt-8">
-               <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgGarantia)}>
-                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Garantia</div>
-                  <img src={imgGarantia} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
-               </div>
-               <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgCustos)}>
-                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Controle de Custos</div>
-                  <img src={imgCustos} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
-               </div>
-                <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgRelatorio)}>
-                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Relatórios</div>
-                  <img src={imgRelatorio} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
-               </div>
-            </div>
-         </div>
-
-         {/* Right Column: Feature List - Accordion Style */}
-         <div className="col-span-12 lg:col-span-5 flex flex-col gap-2 overflow-y-auto pr-2 custom-scrollbar relative">
-            {features.map((feature, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.03 }}
-                className={`rounded-xl border transition-all duration-300 overflow-hidden shrink-0 ${
-                  selectedFeatureIndex === i 
-                    ? "bg-white/10 border-primary/50 shadow-lg" 
-                    : "bg-transparent border-transparent hover:bg-white/5 hover:border-white/10"
-                }`}
-              >
-                <button 
-                  onClick={() => setSelectedFeatureIndex(selectedFeatureIndex === i ? null : i)}
-                  className="w-full flex items-center gap-3 p-3 text-left focus:outline-none"
-                >
-                   <div className={`w-2 h-2 rounded-full shrink-0 transition-transform duration-300 ${
-                     selectedFeatureIndex === i ? "bg-primary scale-125" : "bg-secondary group-hover:scale-110"
-                   }`} />
-                   
-                   <span className={`text-sm font-medium transition-colors ${
-                     selectedFeatureIndex === i ? "text-white font-bold" : "text-slate-300 group-hover:text-white"
-                   }`}>
-                     {feature.title}
-                   </span>
-                   
-                   <ChevronRight className={`w-4 h-4 text-slate-500 ml-auto transition-transform duration-300 ${
-                     selectedFeatureIndex === i ? "rotate-90 text-primary" : ""
-                   }`} />
-                </button>
-
-                <AnimatePresence>
-                  {selectedFeatureIndex === i && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-4 pb-6 pt-0 text-slate-300 text-sm leading-relaxed border-t border-white/5 mt-1">
-                        <div className="h-2" /> {/* Spacer */}
-                        {feature.desc}
-                        <div className="h-2" /> {/* Bottom Spacer to prevent cutoff */}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-         </div>
-      </div>
-    </div>
-  );
-};
-
-// 4.5. Admin Panel & Bug Management
-const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) => {
-  const [selectedFeatureIndex, setSelectedFeatureIndex] = useState<number | null>(null);
-
-  const adminFeatures = [
-    { t: "Dashboard de Métricas", d: "Acompanhe a saúde do seu SaaS em tempo real. Visualize o MRR (Receita Recorrente Mensal), Taxa de Churn (Cancelamento), LTV (Valor do Tempo de Vida) e o crescimento total de empresas ativas. Gráficos intuitivos para tomada de decisão rápida." },
-    { t: "Gestão de Empresas", d: "Tenha controle total sobre seus clientes. Visualize todas as empresas cadastradas, status da assinatura (Ativo, Trial, Bloqueado), histórico de pagamentos e dados de contato. Estenda períodos de teste ou bloqueie acesso de inadimplentes com um clique." },
-    { t: "Gestão Proativa de Bugs", d: "O segredo de uma plataforma estável é como ela lida com imprevistos. Nosso painel administrativo permite que erros sejam reportados, triados e resolvidos antes que afetem a operação da revenda. Usuários reportam bugs com logs automáticos do sistema, facilitando a reprodução e correção imediata. A triagem inteligente permite categorizar bugs como 'Críticos', 'Funcionais' ou 'Sugestões' e acompanhar o status em tempo real, garantindo que o lojista nunca pare por falhas técnicas." },
-    { t: "Códigos de Convite", d: "Crie campanhas de aquisição controladas. Gere códigos de convite com parâmetros específicos (ex: '7 dias grátis', '30 dias grátis', 'Promoção Black Friday'). Monitore quais códigos foram usados e por quem, facilitando a gestão de parcerias e afiliados." },
-    { t: "Gestão de Admins", d: "Controle quem tem acesso ao painel administrativo. Crie níveis de permissão granulares (Master vs. Visualizador). O Admin Master tem acesso total, enquanto Visualizadores podem apenas ver métricas sem alterar configurações críticas ou dados financeiros." },
-    { t: "Financeiro Global", d: "Visão consolidada de todas as transações. Liste todas as assinaturas, identifique pagamentos falhos, gere notas fiscais e controle a inadimplência geral do sistema. Exporte dados para contabilidade e mantenha a saúde financeira do seu SaaS em dia." }
-  ];
+  const closeFeatureModal = () => {
+    setSelectedFeatureIndex(null);
+  };
 
   return (
-    <div className="w-full h-full p-12 lg:p-20 bg-[#0a0a0a] flex flex-col relative">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+    <div className="w-full h-full flex flex-col p-8 lg:p-12 bg-background relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/30 via-secondary/30 to-primary/30 animate-pulse-slow" />
       
-      <div className="flex justify-between items-end mb-12 shrink-0 relative z-10">
+      <div className="flex justify-between items-end mb-8 relative z-10">
         <div>
-           <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-2 block">Backoffice & Qualidade</span>
-           <h2 className="text-4xl font-display font-bold text-white">Painel Administrativo</h2>
-           <p className="text-slate-400 mt-2">Gestão completa do SaaS: Métricas, Suporte Proativo e Segurança.</p>
+          <span className="text-secondary font-bold tracking-widest uppercase text-xs mb-2 block">DIFERENCIAIS OPERACIONAIS</span>
+          <h2 className="text-4xl font-display font-bold text-white">Funcionalidades do VeloStock</h2>
         </div>
-        <div className="flex gap-4">
-           <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 text-xs text-slate-300 flex items-center gap-2">
-             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-             <span className="text-secondary font-bold">Uptime:</span> 99.9% Garantido
-           </div>
-           <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 text-xs text-slate-300">
-             <span className="text-secondary font-bold">Segurança:</span> Rate Limiting & HTTPS
-           </div>
+        <div className="hidden lg:flex gap-2">
+           <div className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-bold text-primary uppercase tracking-tighter">SaaS Multi-Tenant</div>
+           <div className="px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-[10px] font-bold text-secondary uppercase tracking-tighter">Cloud Native</div>
         </div>
       </div>
 
-      <div className="grid grid-cols-12 gap-8 flex-1 relative z-10 min-h-0">
-         {/* Visuals - Left */}
-         <div className="col-span-7 flex flex-col gap-6 h-full overflow-hidden">
-            <div className="flex-1 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in" onClick={() => onImageClick(imgAdminDash)}>
-               <div className="absolute top-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-bold text-white z-10 border border-white/10">Dashboard Global (MRR & Clientes)</div>
-               <img src={imgAdminDash} className="w-full h-full object-contain bg-black/50 opacity-90 group-hover:opacity-100 transition-opacity" />
-            </div>
-            <div className="flex-1 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in" onClick={() => onImageClick(imgAdminBugs)}>
-               <div className="absolute top-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-bold text-white z-10 border border-white/10">Gestão Proativa de Bugs</div>
-               <img src={imgAdminBugs} className="w-full h-full object-contain bg-black/50 opacity-90 group-hover:opacity-100 transition-opacity" />
-            </div>
-         </div>
-
-         {/* Features - Right (Accordion Style) */}
-         <div className="col-span-5 flex flex-col gap-3 overflow-y-auto pr-2 custom-scrollbar h-full relative">
-            {adminFeatures.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1 * i }}
-                className={`rounded-xl border transition-all duration-300 overflow-hidden shrink-0 ${
-                  selectedFeatureIndex === i 
-                    ? "bg-white/10 border-primary/50 shadow-lg" 
-                    : "bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/10"
-                }`}
-              >
-                 <button 
-                    onClick={() => setSelectedFeatureIndex(selectedFeatureIndex === i ? null : i)}
-                    className="w-full flex items-center gap-4 p-4 text-left focus:outline-none"
-                 >
-                    <div className={`w-2 h-2 rounded-full shrink-0 transition-transform duration-300 ${
-                       selectedFeatureIndex === i ? "bg-primary scale-150 shadow-[0_0_10px_rgba(255,59,48,0.5)]" : "bg-primary/50"
-                    }`} />
-                    
-                    <span className={`text-base font-bold transition-colors ${
-                       selectedFeatureIndex === i ? "text-white" : "text-slate-200 group-hover:text-white"
-                    }`}>
-                      {item.t}
-                    </span>
-                    
-                    <ChevronRight className={`w-5 h-5 text-slate-500 ml-auto transition-transform duration-300 ${
-                       selectedFeatureIndex === i ? "rotate-90 text-primary" : ""
-                    }`} />
-                 </button>
-
-                 <AnimatePresence>
-                    {selectedFeatureIndex === i && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-5 pb-6 pt-0 text-slate-300 text-sm leading-relaxed border-t border-white/5 mt-1 bg-black/20">
-                          <div className="h-3" />
-                          {item.d}
-                          <div className="h-3" /> {/* Bottom Spacer */}
-                        </div>
-                      </motion.div>
-                    )}
-                 </AnimatePresence>
-              </motion.div>
-            ))}
-            
-            <div className="mt-auto pt-8 border-t border-white/10 shrink-0">
-               <h4 className="font-bold text-white text-sm mb-4">Fluxo de Criação & Escala</h4>
-               <div className="flex items-center gap-3 text-xs text-slate-400">
-                 <span className="bg-white/10 px-3 py-1.5 rounded border border-white/5">Admin cria código</span>
-                 <ChevronRight size={14} className="text-primary" />
-                 <span className="bg-white/10 px-3 py-1.5 rounded border border-white/5">Cliente usa no Signup</span>
-                 <ChevronRight size={14} className="text-primary" />
-                 <span className="bg-green-500/20 text-green-400 px-3 py-1.5 rounded border border-green-500/20 font-bold">Empresa Ativa</span>
-               </div>
-            </div>
-         </div>
-      </div>
-    </div>
-  );
-};
-
-// 5. Diferencial
-const Slide5_Diferencial = ({ onImageClick }: { onImageClick: (src: string) => void }) => (
-  <div className="w-full h-full p-12 lg:p-24 bg-background flex flex-col items-center">
-    <h2 className="text-4xl font-display font-bold text-white mb-12">Diferencial Competitivo</h2>
-    
-    <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-       <div className="space-y-8">
-          <div className="relative pl-8 border-l border-white/10">
-             <div className="absolute -left-3 top-0 w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs text-slate-500">VS</div>
-             <h3 className="text-2xl font-bold text-slate-500 mb-4">Concorrentes</h3>
-             <ul className="space-y-3 text-slate-500">
-               <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-red-500"/> Focam apenas em estoque e anúncios</li>
-               <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-red-500"/> Interface complexa e antiga</li>
-               <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-red-500"/> Sem gestão de tarefas internas</li>
-             </ul>
-          </div>
-
-          <div className="relative pl-8 border-l-4 border-primary">
-             <h3 className="text-3xl font-bold text-white mb-4">Velostock</h3>
-             <ul className="space-y-4 text-white">
-               <li className="flex items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/5">
-                 <CheckCircle className="text-secondary w-5 h-5 shrink-0" />
-                 <div>
-                   <span className="font-bold block">Visão 360°</span>
-                   <span className="text-sm text-slate-400">Estoque + Publicidade + Operação</span>
-                 </div>
-               </li>
-               <li className="flex items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/5">
-                 <BrainCircuit className="text-primary w-5 h-5 shrink-0" />
-                 <div>
-                   <span className="font-bold block">IA Contextual</span>
-                   <span className="text-sm text-slate-400">VeloBot entende o negócio e ajuda a vender</span>
-                 </div>
-               </li>
-             </ul>
-          </div>
-       </div>
-
-       <div className="relative">
-          <div className="absolute -inset-4 bg-gradient-to-r from-primary/30 to-secondary/30 blur-2xl rounded-full opacity-50" />
-          <div className="relative z-10 bg-card border border-white/10 rounded-2xl overflow-hidden shadow-2xl cursor-zoom-in" onClick={() => onImageClick(imgObs)}>
-              <div className="bg-black/50 p-4 border-b border-white/10 flex justify-between items-center">
-                 <span className="font-bold text-white text-sm">Observações da Loja</span>
-                 <div className="flex gap-2">
-                    <div className="w-2 h-2 rounded-full bg-red-500" />
-                    <div className="w-2 h-2 rounded-full bg-yellow-500" />
-                 </div>
+      <div className="flex-1 overflow-y-auto pr-4 custom-scrollbar relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05 }}
+              onClick={() => handleFeatureClick(index)}
+              className="bg-card/50 hover:bg-card border border-white/5 hover:border-primary/30 p-4 rounded-xl cursor-pointer transition-all duration-300 group flex flex-col justify-between h-40"
+            >
+              <div>
+                <h3 className="text-white font-bold text-sm mb-2 group-hover:text-primary transition-colors leading-tight">
+                  {feature.title}
+                </h3>
+                <p className="text-slate-500 text-xs line-clamp-3 leading-relaxed">
+                  {feature.desc}
+                </p>
               </div>
-              <img src={imgObs} alt="Observações Gerais" className="w-full opacity-90 hover:opacity-100 transition-opacity" />
-              <div className="p-4 bg-black/80 backdrop-blur absolute bottom-0 w-full border-t border-white/10 pointer-events-none">
-                 <p className="text-xs text-slate-300">
-                   <strong className="text-secondary">Controle Total:</strong> Gerencie desde a compra de café até a manutenção do portão da loja.
+              <div className="flex justify-end">
+                <div className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+                  <ChevronRight size={14} />
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {selectedFeatureIndex !== null && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 lg:p-12"
+            onClick={closeFeatureModal}
+          >
+            <motion.div 
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              className="bg-card border border-white/10 w-full max-w-2xl p-8 rounded-3xl shadow-2xl relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={closeFeatureModal}
+                className="absolute top-4 right-4 text-slate-400 hover:text-white rounded-full"
+              >
+                <X size={20} />
+              </Button>
+              
+              <div className="mb-6">
+                 <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                    <Zap className="text-primary w-6 h-6" />
+                 </div>
+                 <h2 className="text-3xl font-display font-bold text-white mb-4">
+                   {features[selectedFeatureIndex].title}
+                 </h2>
+                 <div className="h-1 w-20 bg-primary rounded-full mb-8" />
+                 <p className="text-slate-300 text-lg leading-relaxed font-light italic">
+                   "{features[selectedFeatureIndex].desc}"
                  </p>
               </div>
-          </div>
+              
+              <div className="pt-8 border-t border-white/5 flex justify-between items-center">
+                 <div className="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest">
+                   <Target size={14} /> Funcionalidade Core
+                 </div>
+                 <Button onClick={closeFeatureModal}>Fechar Detalhes</Button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+// 5. Admin Panel (New)
+const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) => (
+  <div className="w-full h-full flex flex-col lg:flex-row bg-background overflow-hidden">
+    <div className="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center z-10">
+       <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4">CONTROLE MESTRE</span>
+       <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-8 leading-tight">
+         Painel Administrativo: O Backoffice do SaaS
+       </h2>
+       <p className="text-lg text-slate-300 mb-10 leading-relaxed">
+         Uma visão completa para os gestores da plataforma. Controle MRR, gerencie clientes, bugs e infraestrutura em um só lugar.
+       </p>
+       
+       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+         <div className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-primary/30 transition-all group">
+            <TrendingUp className="text-primary w-6 h-6 mb-3 group-hover:scale-110 transition-transform" />
+            <h4 className="text-white font-bold mb-1 text-sm uppercase tracking-wide">Métricas Globais</h4>
+            <p className="text-slate-500 text-xs">Monitore MRR, Churn e crescimento em tempo real.</p>
+         </div>
+         <div className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-secondary/30 transition-all group">
+            <Users className="text-secondary w-6 h-6 mb-3 group-hover:scale-110 transition-transform" />
+            <h4 className="text-white font-bold mb-1 text-sm uppercase tracking-wide">Gestão de Tenancy</h4>
+            <p className="text-slate-500 text-xs">Gerencie contas, trials e permissões de empresas.</p>
+         </div>
+         <div className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-yellow-500/30 transition-all group">
+            <Zap className="text-yellow-500 w-6 h-6 mb-3 group-hover:scale-110 transition-transform" />
+            <h4 className="text-white font-bold mb-1 text-sm uppercase tracking-wide">Convites Controlados</h4>
+            <p className="text-slate-500 text-xs">Gere códigos de convite para expansão estratégica.</p>
+         </div>
+         <div className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-red-500/30 transition-all group">
+            <AlertTriangle className="text-red-500 w-6 h-6 mb-3 group-hover:scale-110 transition-transform" />
+            <h4 className="text-white font-bold mb-1 text-sm uppercase tracking-wide">Central de Bugs</h4>
+            <p className="text-slate-500 text-xs">Suporte integrado e resolução rápida de problemas.</p>
+         </div>
        </div>
+    </div>
+    
+    <div className="w-full lg:w-1/2 bg-black/50 relative p-12 lg:p-24 flex items-center justify-center">
+       <div className="relative w-full h-full flex flex-col items-center justify-center gap-8 z-10">
+          <motion.div 
+            whileHover={{ scale: 1.05, rotate: 1 }}
+            className="w-full max-w-md relative cursor-zoom-in"
+            onClick={() => onImageClick(imgAdminDash)}
+          >
+            <div className="absolute -inset-4 bg-primary/20 blur-2xl rounded-full opacity-50" />
+            <img 
+              src={imgAdminDash} 
+              alt="Admin Dashboard" 
+              className="w-full h-auto rounded-2xl shadow-2xl border border-white/10 relative z-10"
+            />
+            <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Dashboard Admin</div>
+          </motion.div>
+          
+          <motion.div 
+            whileHover={{ scale: 1.05, rotate: -1 }}
+            className="w-full max-w-md relative cursor-zoom-in self-end lg:-mr-12"
+            onClick={() => onImageClick(imgAdminBugs)}
+          >
+            <div className="absolute -inset-4 bg-secondary/20 blur-2xl rounded-full opacity-50" />
+            <img 
+              src={imgAdminBugs} 
+              alt="Admin Bugs Support" 
+              className="w-full h-auto rounded-2xl shadow-2xl border border-white/10 relative z-10"
+            />
+            <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Suporte & Tickets</div>
+          </motion.div>
+       </div>
+       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(0,122,255,0.1)_0%,transparent_100%)]" />
     </div>
   </div>
 );
 
-// 6. Público Alvo
-const Slide6_Publico = () => (
-  <div className="w-full h-full flex flex-col items-center justify-center p-12 lg:p-24 relative bg-background">
-     <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
+// 6. Diferencial
+const Slide6_Diferencial = () => (
+  <div className="w-full h-full flex items-center justify-center p-12 lg:p-24 bg-background overflow-hidden relative">
+     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,122,255,0.05)_0%,transparent_70%)]" />
      
-     <h2 className="text-4xl font-display font-bold text-white mb-16 z-10">Público Alvo & Mercado</h2>
-     
-     <div className="flex flex-col lg:flex-row gap-12 w-full max-w-6xl z-10">
-       <div className="flex-1 space-y-8">
-          <div className="bg-card border border-white/5 p-8 rounded-2xl hover:border-secondary/50 transition-colors">
-            <div className="flex items-center gap-4 mb-4">
-              <Users className="text-secondary w-8 h-8" />
-              <h3 className="text-2xl font-bold text-white">O Cliente Ideal</h3>
-            </div>
-            <p className="text-slate-300 leading-relaxed">
-              Lojas de seminovos independentes, com estoque entre <strong className="text-white">20 e 200 carros</strong>.
-              <br/><br/>
-              Eles já faturam bem, mas perdem dinheiro na desorganização e falta de controle. Buscam profissionalização.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 gap-4">
-             <div className="bg-white/5 p-6 rounded-xl text-center">
-               <div className="text-4xl font-bold text-white mb-1">45k+</div>
-               <div className="text-xs text-slate-400 uppercase">Revendas no Brasil</div>
-             </div>
-             <div className="bg-white/5 p-6 rounded-xl text-center">
-               <div className="text-4xl font-bold text-white mb-1">R$ 12B</div>
-               <div className="text-xs text-slate-400 uppercase">Potencial de Mercado</div>
-             </div>
-          </div>
-       </div>
-
-       <div className="flex-1 bg-white/5 rounded-2xl p-8 flex flex-col justify-center">
-          <h3 className="text-xl font-bold text-white mb-6">Estratégia de Expansão</h3>
-          <div className="space-y-6 relative">
-             <div className="absolute left-3 top-2 bottom-2 w-0.5 bg-gradient-to-b from-secondary to-slate-800" />
-             
-             <div className="flex gap-6 relative">
-               <div className="w-6 h-6 rounded-full bg-secondary border-4 border-background shrink-0 z-10" />
-               <div>
-                 <h4 className="font-bold text-white">Nicho Inicial</h4>
-                 <p className="text-sm text-slate-400">Lojas Familiares & Médias em SP/SUL</p>
-               </div>
-             </div>
-             
-             <div className="flex gap-6 relative">
-               <div className="w-6 h-6 rounded-full bg-slate-700 border-4 border-background shrink-0 z-10" />
-               <div>
-                 <h4 className="font-bold text-slate-300">Fase 2</h4>
-                 <p className="text-sm text-slate-500">Expansão Nacional & Integrações Bancárias</p>
-               </div>
-             </div>
-             
-             <div className="flex gap-6 relative">
-               <div className="w-6 h-6 rounded-full bg-slate-800 border-4 border-background shrink-0 z-10" />
-               <div>
-                 <h4 className="font-bold text-slate-400">Fase 3</h4>
-                 <p className="text-sm text-slate-600">Marketplace B2B & Enterprise (Concessionárias)</p>
-               </div>
-             </div>
-          </div>
-       </div>
+     <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-10">
+        <div className="space-y-8">
+           <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block">DIFERENCIAL</span>
+           <h2 className="text-5xl lg:text-6xl font-display font-black text-white leading-tight">
+             Por que o<br/>
+             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Velostock?</span>
+           </h2>
+           <p className="text-xl text-slate-400 font-light leading-relaxed">
+             Não somos apenas mais um software de estoque. Somos a inteligência operacional da sua loja.
+           </p>
+           
+           <div className="space-y-4">
+              {[
+                "IA Integrada que entende o contexto do veículo.",
+                "Gestão baseada em processos (Kanban), não em listas.",
+                "Foco absoluto no lucro real, não apenas faturamento.",
+                "Interface moderna e ultra-rápida inspirada no Linear."
+              ].map((text, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
+                    <CheckCircle className="text-green-500 w-3 h-3" />
+                  </div>
+                  <span className="text-slate-300">{text}</span>
+                </div>
+              ))}
+           </div>
+        </div>
+        
+        <div className="bg-card border border-white/10 p-8 lg:p-12 rounded-[2.5rem] relative">
+           <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl" />
+           
+           <div className="space-y-10">
+              <div className="relative">
+                 <h3 className="text-slate-500 text-xs font-bold uppercase tracking-[0.2em] mb-4">Eficiência Operacional</h3>
+                 <div className="flex items-end gap-6 h-40">
+                    {efficiencyData.map((d, i) => (
+                       <div key={i} className="flex-1 flex flex-col items-center">
+                          <motion.div 
+                            initial={{ height: 0 }}
+                            animate={{ height: `${d.value}%` }}
+                            transition={{ duration: 1, delay: 0.5 + (i * 0.2) }}
+                            className={`w-full rounded-t-xl relative ${i === 0 ? 'bg-slate-800' : 'bg-gradient-to-t from-primary to-secondary shadow-lg shadow-primary/30'}`}
+                          >
+                             <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-white font-bold">{d.value}%</span>
+                          </motion.div>
+                          <span className="text-[10px] text-slate-500 mt-4 text-center font-bold uppercase">{d.name}</span>
+                       </div>
+                    ))}
+                 </div>
+              </div>
+              
+              <div className="p-6 rounded-2xl bg-white/5 border border-white/5">
+                 <p className="text-slate-400 text-sm italic leading-relaxed">
+                   "A Velostock automatiza tarefas que hoje consomem 3 horas diárias de um gerente, devolvendo tempo para o que importa: vender."
+                 </p>
+              </div>
+           </div>
+        </div>
      </div>
   </div>
 );
 
-// 7. Monetização & Projeções
-const Slide7_Monetizacao = () => (
-  <div className="w-full h-full flex flex-col items-center justify-center p-8 bg-background relative overflow-hidden">
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-    
-    <div className="text-center mb-12 z-10">
-      <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4">VIABILIDADE E CRESCIMENTO</span>
-      <h2 className="text-4xl lg:text-5xl font-display font-bold text-white">
-        Modelo de Negócio e Projeções
-      </h2>
-      <p className="text-lg text-slate-400 mt-4 max-w-2xl mx-auto">
-        O VeloStock foi desenhado para escalabilidade massiva com baixo custo operacional e alta retenção.
-      </p>
-    </div>
+// 7. Mercado
+const Slide7_Mercado = () => (
+  <div className="w-full h-full flex flex-col lg:flex-row bg-background">
+     <div className="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-card relative z-10">
+        <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4">MERCADO & PÚBLICO</span>
+        <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-8">
+          Quem é o nosso cliente?
+        </h2>
+        
+        <div className="space-y-8">
+           <div className="flex gap-6">
+              <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
+                 <Target className="text-primary w-8 h-8" />
+              </div>
+              <div>
+                 <h4 className="text-white font-bold text-xl mb-2">Revendas Independentes</h4>
+                 <p className="text-slate-400">Lojas multimarcas médias (20-200 carros no pátio) que hoje operam no limite do caos administrativo.</p>
+              </div>
+           </div>
+           
+           <div className="flex gap-6">
+              <div className="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center shrink-0">
+                 <Users className="text-secondary w-8 h-8" />
+              </div>
+              <div>
+                 <h4 className="text-white font-bold text-xl mb-2">Equipes em Crescimento</h4>
+                 <p className="text-slate-400">Lojas que precisam profissionalizar processos para escalar sem aumentar o overhead administrativo.</p>
+              </div>
+           </div>
 
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full max-w-6xl z-10">
-      {/* Estratégia de Receita */}
-      <Card className="bg-white/5 border-white/10 p-8 flex flex-col justify-center">
-        <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-          <DollarSign className="text-primary" /> Estratégia de Receita
-        </h3>
-        <div className="space-y-6">
-          <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
-            <h4 className="text-white font-bold text-lg">Assinatura SaaS (Plano Único)</h4>
-            <p className="text-3xl font-black text-primary mt-2">R$ 149<span className="text-sm font-normal text-slate-400"> /mês</span></p>
-            <p className="text-sm text-slate-400 mt-2">Valor altamente competitivo para garantir entrada rápida no mercado de revendas médias.</p>
-          </div>
-          <div className="space-y-4">
-            <div className="flex items-center gap-3 text-slate-300">
-              <CheckCircle className="text-green-500 w-5 h-5" />
-              <span>Sem taxa de setup ou cancelamento</span>
-            </div>
-            <div className="flex items-center gap-3 text-slate-300">
-              <CheckCircle className="text-green-500 w-5 h-5" />
-              <span>Upsell futuro com módulos de IA avançada</span>
-            </div>
-          </div>
+           <div className="flex gap-6">
+              <div className="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center shrink-0">
+                 <TrendingUp className="text-purple-500 w-8 h-8" />
+              </div>
+              <div>
+                 <h4 className="text-white font-bold text-xl mb-2">Mercado Gigantesco</h4>
+                 <p className="text-slate-400">Só no Brasil existem +45.000 revendas ativas. Menos de 15% utilizam sistemas de gestão operacional real.</p>
+              </div>
+           </div>
         </div>
-      </Card>
-
-      {/* Projeções de Crescimento */}
-      <Card className="bg-white/5 border-white/10 p-8">
-        <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-          <TrendingUp className="text-secondary" /> Projeção 2026
-        </h3>
-        <div className="h-64 w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={[
-              { name: "Q1", users: 150, rev: 22000 },
-              { name: "Q2", users: 380, rev: 56000 },
-              { name: "Q3", users: 650, rev: 96000 },
-              { name: "Q4", users: 1000, rev: 149000 },
-            ]}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-              <XAxis dataKey="name" stroke="#888" />
-              <YAxis stroke="#888" />
-              <Tooltip 
-                contentStyle={{ backgroundColor: "#1a1a1a", border: "1px solid #333", color: "#fff" }}
-                itemStyle={{ color: "#007AFF" }}
-              />
-              <Bar dataKey="users" name="Assinaturas" fill="#007AFF" radius={[4, 4, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
+     </div>
+     
+     <div className="w-full lg:w-1/2 flex items-center justify-center p-12 bg-black relative">
+        <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
+        
+        <div className="relative z-10 text-center space-y-4">
+           <div className="text-7xl font-display font-black text-white mb-2">45.000+</div>
+           <div className="text-xl text-primary font-bold uppercase tracking-widest">Revendas Potenciais</div>
+           <div className="w-20 h-1 bg-white/20 mx-auto my-8" />
+           <p className="text-slate-400 max-w-sm mx-auto">
+             A maioria das lojas usa apenas "postadores" de anúncio. A Velostock entra no coração da operação.
+           </p>
         </div>
-        <div className="mt-6 grid grid-cols-2 gap-4">
-          <div className="text-center p-3 rounded-lg bg-white/5 border border-white/5">
-            <p className="text-xs text-slate-500 uppercase font-bold">Meta 2026</p>
-            <p className="text-xl font-bold text-white">1.000 Assinaturas</p>
-          </div>
-          <div className="text-center p-3 rounded-lg bg-white/5 border border-white/5">
-            <p className="text-xs text-slate-500 uppercase font-bold">MRR Projetado</p>
-            <p className="text-xl font-bold text-secondary">R$ 149.000</p>
-          </div>
-        </div>
-      </Card>
-    </div>
+     </div>
   </div>
 );
 
-// 8. Desafios
-const Slide8_Desafios = () => (
+// 8. Monetização
+const Slide8_Monetizacao = () => (
+  <div className="w-full h-full flex flex-col items-center justify-center p-12 lg:p-24 bg-background">
+     <div className="text-center mb-16">
+        <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block">MODELO DE NEGÓCIO</span>
+        <h2 className="text-4xl lg:text-5xl font-display font-bold text-white">SaaS: Simples & Escalável</h2>
+     </div>
+     
+     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full max-w-5xl">
+        <div className="flex flex-col justify-center">
+           <div className="bg-card border border-white/5 p-8 rounded-[2rem] shadow-2xl relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-primary/20 transition-all" />
+              <div className="relative z-10">
+                 <h3 className="text-slate-400 font-bold text-sm uppercase mb-4 tracking-widest">Plano VeloFull</h3>
+                 <div className="flex items-baseline gap-2 mb-6">
+                    <span className="text-4xl text-white font-light">R$</span>
+                    <span className="text-7xl text-white font-black tracking-tighter">149</span>
+                    <span className="text-slate-500 font-medium">/mês</span>
+                 </div>
+                 
+                 <div className="space-y-4 mb-8">
+                    {["Usuários Ilimitados", "Veículos Ilimitados", "VeloBot IA Incluso", "Suporte VIP", "Update constantes"].map((t, i) => (
+                      <div key={i} className="flex items-center gap-3 text-slate-300">
+                        <CheckCircle className="text-primary w-4 h-4" />
+                        <span>{t}</span>
+                      </div>
+                    ))}
+                 </div>
+                 
+                 <Button className="w-full py-6 text-lg font-bold bg-primary hover:bg-primary/90 rounded-xl shadow-lg shadow-primary/20">
+                   Começar agora
+                 </Button>
+              </div>
+           </div>
+        </div>
+        
+        <div className="flex flex-col justify-center space-y-8">
+           <div className="p-6 rounded-2xl bg-white/5 border border-white/5">
+              <h4 className="text-white font-bold mb-2 flex items-center gap-2">
+                <DollarSign className="text-green-500 w-5 h-5" /> Baixo Churn
+              </h4>
+              <p className="text-slate-400 text-sm">
+                Uma vez que a operação da loja está dentro do sistema (checklists, custos, comissões), a ferramenta se torna indispensável.
+              </p>
+           </div>
+           
+           <div className="p-6 rounded-2xl bg-white/5 border border-white/5">
+              <h4 className="text-white font-bold mb-2 flex items-center gap-2">
+                <Maximize2 className="text-blue-500 w-5 h-5" /> Escalabilidade
+              </h4>
+              <p className="text-slate-400 text-sm">
+                Arquitetura SaaS permite adicionar 1.000 novos clientes com custo marginal de infraestrutura quase nulo.
+              </p>
+           </div>
+
+           <div className="relative h-32 w-full mt-4">
+              <ResponsiveContainer width="100%" height="100%">
+                 <BarChart data={revenueData}>
+                    <Bar dataKey="value" fill="#007AFF" radius={[4, 4, 0, 0]} />
+                 </BarChart>
+              </ResponsiveContainer>
+              <div className="absolute -bottom-2 w-full flex justify-between text-[10px] text-slate-500 font-bold uppercase tracking-widest px-2">
+                 <span>Ano 1</span>
+                 <span>Ano 2</span>
+                 <span>Ano 3 (Projeção)</span>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+);
+
+// 9. Desafios
+const Slide9_Desafios = () => (
   <div className="w-full h-full flex items-center justify-center p-12 lg:p-24 bg-background">
      <div className="max-w-4xl w-full">
        <h2 className="text-4xl font-display font-bold text-white mb-12">Nossos Desafios Atuais</h2>
@@ -890,8 +958,8 @@ const Slide8_Desafios = () => (
   </div>
 );
 
-// 9. Encerramento
-const Slide9_Encerramento = () => (
+// 10. Encerramento
+const Slide10_Encerramento = () => (
   <div className="w-full h-full flex flex-col items-center justify-center bg-black relative overflow-hidden">
      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-black to-secondary/20 animate-pulse-slow" />
      
@@ -941,24 +1009,18 @@ export default function PresentationPage() {
     Slide2_Dor,
     Slide3_Solucao,
     Slide_Ciclo,
-    Slide4_Funcionalidades,
+    Slide4_Arquitetura,
+    Slide5_Funcionalidades,
     Slide_Admin,
-    Slide5_Diferencial,
-    Slide6_Publico,
-    Slide7_Monetizacao,
-    Slide8_Desafios,
-    Slide9_Encerramento
+    Slide6_Diferencial,
+    Slide7_Mercado,
+    Slide8_Monetizacao,
+    Slide9_Desafios,
+    Slide10_Encerramento
   ];
 
-  const CurrentSlideComponent = slides[currentSlide];
-
-  const nextSlide = () => {
-    if (currentSlide < slides.length - 1) setCurrentSlide(c => c + 1);
-  };
-
-  const prevSlide = () => {
-    if (currentSlide > 0) setCurrentSlide(c => c - 1);
-  };
+  const handleNext = () => setCurrentSlide((prev) => (prev + 1) % 12);
+  const handlePrev = () => setCurrentSlide((prev) => (prev - 1 + 12) % 12);
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
@@ -1006,171 +1068,6 @@ export default function PresentationPage() {
     slide.addText("2. Venda & Marketing: Anúncios automáticos e CRM.", { x: 1, y: 3.5, w: "80%", fontSize: 16, color: "CCCCCC" });
     slide.addText("3. Pós-Venda & Financeiro: Gestão de garantia e DRE.", { x: 1, y: 4.5, w: "80%", fontSize: 16, color: "CCCCCC" });
 
-    // 3.5 Ciclo Operacional (New)
-const Slide_Ciclo = () => (
-  <div className="w-full h-full flex flex-col items-center justify-center p-8 bg-background relative overflow-hidden">
-     {/* Background decorative elements */}
-     <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-y-1/2" />
-     
-     <div className="text-center mb-16 relative z-10">
-       <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4">FLUXO INTELIGENTE</span>
-       <h2 className="text-4xl lg:text-5xl font-display font-bold text-white">
-         O Ciclo da Revenda
-       </h2>
-       <p className="text-lg text-slate-400 mt-4 max-w-2xl mx-auto">
-         Acompanhe cada etapa da jornada do veículo, desde a entrada até a venda, com controle total em cada fase.
-       </p>
-     </div>
-
-     <div className="flex w-full max-w-7xl justify-between items-center relative z-10 px-8">
-        {[
-          { icon: Car, label: "Chegada", sub: "Cadastro Inicial" },
-          { icon: ClipboardCheck, label: "Vistoria", sub: "Checklist Entrada" },
-          { icon: Wrench, label: "Revisão", sub: "Mecânica/Peças" },
-          { icon: Sparkles, label: "Estética", sub: "Higienização" },
-          { icon: Camera, label: "Marketing", sub: "Fotos/Anúncios" },
-          { icon: Megaphone, label: "Venda", sub: "Apresentação" }
-        ].map((step, i) => (
-          <div key={i} className="flex flex-col items-center group relative">
-             {/* Connector Line */}
-             {i < 5 && (
-               <div className="absolute top-8 left-1/2 w-[200%] h-0.5 bg-gradient-to-r from-white/10 to-white/5 -z-10" />
-             )}
-             
-             <motion.div 
-               initial={{ scale: 0, opacity: 0 }}
-               animate={{ scale: 1, opacity: 1 }}
-               transition={{ delay: i * 0.15 }}
-               className="w-16 h-16 rounded-2xl bg-card border border-white/10 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(0,0,0,0.5)] group-hover:border-primary/50 group-hover:shadow-[0_0_30px_rgba(0,122,255,0.3)] transition-all duration-500 z-10"
-             >
-               <step.icon className="w-8 h-8 text-white group-hover:text-primary transition-colors duration-300" />
-             </motion.div>
-             
-             <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ delay: 0.5 + (i * 0.1) }}
-               className="text-center"
-             >
-               <h3 className="text-white font-bold mb-1">{step.label}</h3>
-               <p className="text-xs text-slate-500 uppercase tracking-wide">{step.sub}</p>
-             </motion.div>
-             
-             {/* Step Number Bubble */}
-             <div className="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[10px] font-bold text-slate-400">
-               {i + 1}
-             </div>
-          </div>
-        ))}
-     </div>
-
-     {/* Cycle explanation box */}
-     <motion.div 
-       initial={{ opacity: 0, y: 30 }}
-       animate={{ opacity: 1, y: 0 }}
-       transition={{ delay: 1.5 }}
-       className="mt-20 p-6 rounded-xl bg-white/5 border border-white/10 max-w-3xl w-full flex items-center gap-6"
-     >
-       <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
-         <Repeat className="text-green-500 w-6 h-6" />
-       </div>
-       <div>
-         <h4 className="text-white font-bold text-lg mb-1">Ciclo Integrado</h4>
-         <p className="text-slate-400 text-sm leading-relaxed">
-           No Velostock, cada etapa libera automaticamente a próxima. O carro não vai para o pátio sem vistoria, e não é anunciado sem revisão de custos. Isso garante que nenhum veículo seja vendido com prejuízo invisível.
-         </p>
-       </div>
-     </motion.div>
-  </div>
-);
-
-// 4. Funcionalidades (Detailed)
-    // We will split features across multiple slides to fit text
-    const features = [
-        { title: "Gestão de Veículos (Kanban)", desc: "Visualize e organize todo o seu estoque através de um quadro Kanban intuitivo." },
-        { title: "Controle de Custos Detalhado", desc: "Registre cada centavo investido no veículo para saber o lucro real." },
-        { title: "Vendas e Comissões Automatizadas", desc: "O sistema registra a venda e calcula comissões automaticamente." },
-        { title: "Gestão Profissional de Garantia", desc: "Controle de retornos, ocorrências e custos de reparo pós-venda." },
-        { title: "Observações Internas", desc: "Notas internas sigilosas vinculadas a cada veículo ou cliente." },
-        { title: "Financeiro Integrado", desc: "Contas a pagar e receber alimentados automaticamente pela operação." },
-        { title: "CRM e Gestão de Leads", desc: "Pipeline de vendas centralizado com distribuição automática de leads." },
-        { title: "Follow-ups Inteligentes", desc: "Lembretes automáticos para não deixar o cliente esfriar." },
-        { title: "IA (VeloBot)", desc: "Assistente virtual que gera descrições de anúncios e sugere preços." },
-        { title: "Dashboard de Indicadores", desc: "KPIs em tempo real: Ticket Médio, Giro, Lucratividade." },
-        { title: "Controle de Acesso", desc: "Perfis granulares (Vendedor, Gerente) para proteger dados sensíveis." },
-        { title: "Configurações Personalizáveis", desc: "Adapte categorias de despesas e metas à realidade da loja." },
-        { title: "Relatórios Avançados", desc: "DRE, Curva ABC e Ranking de Vendas." },
-        { title: "Gestão de Documentos Digitais", desc: "Organização e armazenamento seguro de documentos (CRLV, Laudos)." },
-        { title: "Checklists Digitais", desc: "Vistorias de entrada e saída padronizadas." }
-    ];
-
-    // Create summary slides for features
-    for (let i = 0; i < features.length; i += 5) {
-        slide = pres.addSlide();
-        slide.background = { color: "000000" };
-        slide.addText(`Funcionalidades (${i + 1}-${Math.min(i + 5, features.length)})`, { x: 0.5, y: 0.5, fontSize: 24, color: "FFFFFF", bold: true });
-        
-        const chunk = features.slice(i, i + 5);
-        chunk.forEach((feat, idx) => {
-            slide.addText(feat.title, { x: 0.5, y: 1.5 + (idx * 1.0), fontSize: 18, color: "007AFF", bold: true });
-            slide.addText(feat.desc, { x: 0.5, y: 1.8 + (idx * 1.0), w: "90%", fontSize: 14, color: "CCCCCC" });
-        });
-    }
-
-    // 5. Admin Panel
-    slide = pres.addSlide();
-    slide.background = { color: "000000" };
-    slide.addText("Painel Administrativo (Backoffice)", { x: 0.5, y: 0.5, fontSize: 32, color: "FFFFFF", bold: true });
-    slide.addText("Gestão completa do SaaS", { x: 0.5, y: 1.0, fontSize: 18, color: "CCCCCC" });
-    
-    slide.addText("• Dashboard Global (MRR, Churn)", { x: 1, y: 2, fontSize: 16, color: "FFFFFF" });
-    slide.addText("• Gestão de Clientes e Trials", { x: 1, y: 2.5, fontSize: 16, color: "FFFFFF" });
-    slide.addText("• Códigos de Convite Controlados", { x: 1, y: 3, fontSize: 16, color: "FFFFFF" });
-    slide.addText("• Sistema de Tickets/Bugs", { x: 1, y: 3.5, fontSize: 16, color: "FFFFFF" });
-
-    // 6. Diferencial
-    slide = pres.addSlide();
-    slide.background = { color: "000000" };
-    slide.addText("Diferencial Competitivo", { x: 0.5, y: 0.5, fontSize: 32, color: "FFFFFF", bold: true });
-    
-    slide.addText("Concorrentes", { x: 1, y: 2, fontSize: 20, color: "FF3B30", bold: true });
-    slide.addText("Focam apenas em estoque e anúncios basicos.", { x: 1, y: 2.5, w: "40%", fontSize: 14, color: "CCCCCC" });
-    
-    slide.addText("Velostock", { x: 5.5, y: 2, fontSize: 20, color: "007AFF", bold: true });
-    slide.addText("Visão 360°: Estoque + Publicidade + Operação.", { x: 5.5, y: 2.5, w: "40%", fontSize: 14, color: "CCCCCC" });
-    slide.addText("IA Contextual que ajuda a vender.", { x: 5.5, y: 3.5, w: "40%", fontSize: 14, color: "CCCCCC" });
-
-    // 7. Mercado (New Slide)
-    slide = pres.addSlide();
-    slide.background = { color: "000000" };
-    slide.addText("Público Alvo & Mercado", { x: 0.5, y: 0.5, fontSize: 32, color: "FFFFFF", bold: true });
-    
-    slide.addText("O Cliente Ideal", { x: 1, y: 1.5, fontSize: 18, color: "007AFF", bold: true });
-    slide.addText("Lojas de seminovos independentes (20-200 carros).", { x: 1, y: 2.0, w: "80%", fontSize: 14, color: "CCCCCC" });
-    slide.addText("Buscam profissionalização e controle.", { x: 1, y: 2.5, w: "80%", fontSize: 14, color: "CCCCCC" });
-    
-    slide.addText("Números do Mercado", { x: 1, y: 3.5, fontSize: 18, color: "007AFF", bold: true });
-    slide.addText("45k+ Revendas no Brasil", { x: 1, y: 4.0, fontSize: 16, color: "FFFFFF" });
-    slide.addText("R$ 12B Potencial de Mercado", { x: 5, y: 4.0, fontSize: 16, color: "FFFFFF" });
-
-    // 8. Monetização
-    slide = pres.addSlide();
-    slide.background = { color: "000000" };
-    slide.addText("Monetização", { x: 0.5, y: 0.5, fontSize: 32, color: "FFFFFF", bold: true });
-    
-    slide.addShape(pres.ShapeType.rect, { x: 3, y: 1.5, w: 4, h: 3.5, fill: { color: "1A1A1A" }, line: { color: "007AFF", width: 2 } });
-    slide.addText("Plano Único", { x: 3.5, y: 2, w: 3, fontSize: 24, color: "FFFFFF", align: "center", bold: true });
-    slide.addText("R$ 149 / mês", { x: 3.5, y: 2.8, w: 3, fontSize: 40, color: "FFFFFF", align: "center", bold: true });
-    slide.addText("Tudo Incluso. Sem taxas.", { x: 3.5, y: 4, w: 3, fontSize: 16, color: "CCCCCC", align: "center" });
-
-    // 8. Encerramento
-    slide = pres.addSlide();
-    slide.background = { color: "000000" };
-    slide.addText("O Futuro é Agora.", { x: 1, y: 2.5, w: "80%", fontSize: 50, color: "FFFFFF", align: "center", bold: true });
-    slide.addText("VELOSTOCK", { x: 1, y: 3.5, w: "80%", fontSize: 30, color: "007AFF", align: "center", bold: true });
-    slide.addText("Agende uma demo exclusiva", { x: 1, y: 4.5, w: "80%", fontSize: 20, color: "CCCCCC", align: "center" });
-
-
     pres.writeFile({ fileName: "Apresentacao_Velostock.pptx" });
   };
 
@@ -1183,93 +1080,110 @@ const Slide_Ciclo = () => (
         return;
       }
 
-      if (e.key === "ArrowRight" || e.key === "Space") nextSlide();
-      if (e.key === "ArrowLeft") prevSlide();
+      if (e.key === "ArrowRight" || e.key === " ") handleNext();
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "f") toggleFullscreen();
+      if (e.key === "Escape" && isFullscreen) setIsFullscreen(false);
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [currentSlide, selectedImage]);
+  }, [currentSlide, isFullscreen, selectedImage]);
+
+  const CurrentSlideComponent = slides[currentSlide];
 
   return (
-    <div className="w-screen h-screen bg-black text-white overflow-hidden flex flex-col items-center justify-center font-sans">
-      
-      {/* Image Modal */}
-      <AnimatePresence>
-        {selectedImage && (
-          <ImageModal src={selectedImage} onClose={() => setSelectedImage(null)} />
-        )}
-      </AnimatePresence>
-
-      {/* Presentation Container */}
-      <div className="relative w-full h-full max-w-[1920px] max-h-[1080px] bg-background shadow-2xl overflow-hidden">
-        
-        {/* Slide Content */}
-        <div className="w-full h-full relative">
-           <AnimatePresence mode="wait">
-             <motion.div
-               key={currentSlide}
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
-               exit={{ opacity: 0 }}
-               transition={{ duration: 0.4 }}
-               className="w-full h-full"
-             >
-               {/* Pass onImageClick to all slides; only those that use it will consume it */}
-               {/* TypeScript might complain if we don't type it properly, but here we can just cast or ignore if strictness allows, 
-                   or better, ensure all components accept the prop (even if optional) or check which one we are rendering.
-                   For simplicity in this file-rewrite, I updated relevant components to accept it.
-                   Components without the prop will just ignore extra args if called as functions, but React Components expect exact props.
-                   Let's safely render.
-               */}
-               <CurrentSlideComponent onImageClick={setSelectedImage} />
-             </motion.div>
-           </AnimatePresence>
-        </div>
-
-        {/* Overlay Controls (Hide in print/export if needed, but useful for interactive) */}
-        <div className="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end bg-gradient-to-t from-black/80 to-transparent z-50 pointer-events-none">
-           <div className="pointer-events-auto flex items-center gap-4">
-             <div className="text-xs font-bold text-slate-500 uppercase tracking-widest">
-               {slidesData[currentSlide].label}
-             </div>
-           </div>
-           
-           <div className="pointer-events-auto flex items-center gap-4 relative z-50">
-              <span className="text-sm font-mono text-slate-500">
-                {currentSlide + 1} / {slides.length}
-              </span>
-              <div className="flex gap-2 bg-white/10 backdrop-blur rounded-full p-1 cursor-pointer">
-                 <Button variant="ghost" size="icon" onClick={prevSlide} disabled={currentSlide === 0} className="rounded-full hover:bg-white/10 w-8 h-8 text-white z-50 cursor-pointer pointer-events-auto">
-                   <ChevronLeft size={16} />
-                 </Button>
-                 <Button variant="ghost" size="icon" onClick={nextSlide} disabled={currentSlide === slides.length - 1} className="rounded-full hover:bg-white/10 w-8 h-8 text-white z-50 cursor-pointer pointer-events-auto">
-                   <ChevronRight size={16} />
-                 </Button>
-              </div>
-              <Button variant="ghost" size="icon" onClick={toggleFullscreen} className="rounded-full hover:bg-white/10 text-white z-50 cursor-pointer pointer-events-auto">
-                 {isFullscreen ? <Minimize2 size={16}/> : <Maximize2 size={16}/>}
-              </Button>
-              <Button onClick={() => setLocation("/code")} className="ml-2 bg-secondary hover:bg-secondary/90 text-white rounded-full px-4 py-2 flex items-center gap-2 pointer-events-auto shadow-lg">
-                <Code size={16} />
-                <span className="text-xs font-bold">Ver Código</span>
-              </Button>
-              <Button onClick={handleDownloadPPTX} className="ml-2 bg-primary hover:bg-primary/90 text-white rounded-full px-4 py-2 flex items-center gap-2 pointer-events-auto shadow-lg">
-                <Download size={16} />
-                <span className="text-xs font-bold">Baixar PPTX</span>
-              </Button>
-           </div>
-        </div>
-
-        {/* Progress Line */}
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-white/10">
-           <motion.div 
-             className="h-full bg-gradient-to-r from-primary to-secondary"
-             initial={{ width: "0%" }}
-             animate={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
-           />
-        </div>
-
+    <div className={`relative w-full h-screen bg-background overflow-hidden font-sans ${isFullscreen ? 'fixed inset-0 z-[100]' : ''}`}>
+      {/* Dynamic Background */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,39,1)_0%,rgba(3,7,18,1)_100%)]" />
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
       </div>
+
+      <ImageModal src={selectedImage} onClose={() => setSelectedImage(null)} />
+
+      <header className="absolute top-0 left-0 w-full z-50 p-6 flex justify-between items-center pointer-events-none">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex items-center gap-4 pointer-events-auto"
+        >
+          <img src={imgLogo} alt="Logo" className="h-10 w-auto rounded shadow-lg border border-white/10" />
+          <div className="h-6 w-px bg-white/10" />
+          <span className="text-xs font-bold tracking-[0.3em] text-slate-500 uppercase">Apresentação Estratégica</span>
+        </motion.div>
+
+        <div className="flex items-center gap-2 pointer-events-auto">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={toggleFullscreen}
+            className="text-slate-400 hover:text-white"
+          >
+            {isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}
+          </Button>
+        </div>
+      </header>
+
+      {/* Progress Bar */}
+      <div className="absolute top-0 left-0 w-full h-1 z-[60] bg-white/5">
+        <motion.div 
+          className="h-full bg-gradient-to-r from-primary to-secondary"
+          initial={{ width: 0 }}
+          animate={{ width: `${((currentSlide + 1) / 12) * 100}%` }}
+          transition={{ type: "spring", stiffness: 100, damping: 20 }}
+        />
+      </div>
+
+      <main className="w-full h-full relative z-10 flex items-center justify-center pt-20">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, scale: 0.98, x: 20 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            exit={{ opacity: 0, scale: 1.02, x: -20 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="w-full h-full"
+          >
+            <CurrentSlideComponent onImageClick={setSelectedImage} />
+          </motion.div>
+        </AnimatePresence>
+      </main>
+
+      <footer className="absolute bottom-0 left-0 w-full z-50 p-6 flex justify-between items-end">
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-1">
+             {slidesData.map((s, i) => (
+               <button 
+                 key={s.id} 
+                 onClick={() => setCurrentSlide(i)}
+                 className={`h-1.5 transition-all duration-500 rounded-full ${currentSlide === i ? 'w-8 bg-primary shadow-[0_0_10px_rgba(0,122,255,0.5)]' : 'w-1.5 bg-white/20 hover:bg-white/40'}`}
+               />
+             ))}
+          </div>
+          <span className="text-[10px] font-mono text-slate-600 uppercase tracking-widest">
+            Slide {currentSlide + 1} / 12 — {slidesData[currentSlide].label}
+          </span>
+        </div>
+
+        <div className="flex gap-3">
+          <Button 
+            variant="outline" 
+            size="icon" 
+            onClick={handlePrev}
+            className="bg-black/50 backdrop-blur border-white/10 hover:bg-white/10 text-white rounded-full w-12 h-12"
+          >
+            <ChevronLeft size={24} />
+          </Button>
+          <Button 
+            variant="default" 
+            size="icon" 
+            onClick={handleNext}
+            className="bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 rounded-full w-12 h-12"
+          >
+            <ChevronRight size={24} />
+          </Button>
+        </div>
+      </footer>
     </div>
   );
 }
