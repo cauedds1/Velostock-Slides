@@ -1,0 +1,38 @@
+O VeloStock é um sistema SaaS multi-tenant robusto, desenvolvido com tecnologias modernas de ponta a ponta. Aqui está um resumo claro e completo da arquitetura e das integrações:
+
+1. Tecnologias e Linguagens (Stack)
+O sistema foi construído utilizando a Stack Full-Stack JavaScript/TypeScript:
+
+Frontend (Interface):
+React + TypeScript: Para uma interface de usuário tipada, segura e rápida.
+Tailwind CSS: Para estilização moderna e responsiva.
+Shadcn/UI: Componentes de interface de alta qualidade (baseados em Radix UI).
+TanStack Query (React Query): Gerenciamento eficiente de estado do servidor e cache de dados.
+Wouter: Roteamento leve e focado em performance.
+Backend (Servidor):
+Node.js com Express: API RESTful rápida e escalável.
+Drizzle ORM: Uma camada de banco de dados extremamente rápida e com segurança de tipos (Type-safe).
+Passport.js: Gerenciamento de autenticação segura.
+Banco de Dados:
+PostgreSQL (Neon): Banco de dados relacional serverless para armazenamento de dados críticos.
+2. Integrações com APIs Externas
+O sistema utiliza inteligência e dados externos para automatizar tarefas:
+
+OpenAI (GPT-4o-mini):
+Geração de Anúncios: Cria textos otimizados para redes sociais e portais de venda em diferentes estilos.
+Sugestão de Preço: Analisa dados do veículo para sugerir valores competitivos.
+VeloBot: Um assistente omnisciente que entende todo o contexto do veículo e ajuda na tomada de decisão.
+FIPE API:
+Integração em tempo real para buscar preços de referência de mercado baseados na marca, modelo e ano do veículo.
+SendGrid/Resend:
+Sistemas de mensageria para envio de e-mails de verificação, recuperação de senha e notificações.
+Socket.IO:
+Comunicação em tempo real para atualizações instantâneas no dashboard e notificações.
+3. Arquitetura do Código
+O código está organizado de forma modular para facilitar a manutenção:
+
+/shared/schema.ts: O "coração" dos dados. Define todas as tabelas e regras de validação (Zod) que tanto o frontend quanto o backend utilizam. Isso garante que não existam erros de comunicação entre as partes.
+/server/routes.ts & /server/routes/: Onde a lógica de negócio reside. Cada módulo (Veículos, Leads, Admin, Financeiro) tem suas próprias rotas protegidas por middleware de RBAC (Controle de Acesso Baseado em Funções).
+/client/src/pages/ & /client/src/components/: Interface organizada em páginas principais e componentes reutilizáveis, seguindo o princípio de design de "Linear/Notion" (limpo e funcional).
+Multi-Tenancy (Segurança): O sistema isola os dados por empresaId. Um usuário de uma loja jamais conseguirá acessar os dados de outra, garantindo segurança total em um ambiente SaaS.
+Em resumo, o VeloStock é focado em controle operacional, transformando o caos de uma concessionária (checklists, custos picados, movimentação física) em um fluxo de trabalho (Kanban) organizado e inteligente.

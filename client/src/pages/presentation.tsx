@@ -58,7 +58,8 @@ import imgAdminDash from "@assets/image_1767534073146.png";
 import imgAdminBugs from "@assets/image_1767534076137.png";
 import imgLogo from "@assets/WhatsApp_Image_2026-01-04_at_11.17.29_1767536263145.jpeg";
 import pptxgen from "pptxgenjs";
-import { Download } from "lucide-react";
+import { Download, Code } from "lucide-react";
+import { useLocation } from "wouter";
 
 // --- Data ---
 
@@ -1226,6 +1227,10 @@ const Slide_Ciclo = () => (
               </div>
               <Button variant="ghost" size="icon" onClick={toggleFullscreen} className="rounded-full hover:bg-white/10 text-white z-50 cursor-pointer pointer-events-auto">
                  {isFullscreen ? <Minimize2 size={16}/> : <Maximize2 size={16}/>}
+              </Button>
+              <Button onClick={() => setLocation("/code")} className="ml-2 bg-secondary hover:bg-secondary/90 text-white rounded-full px-4 py-2 flex items-center gap-2 pointer-events-auto shadow-lg">
+                <Code size={16} />
+                <span className="text-xs font-bold">Ver Código</span>
               </Button>
               <Button onClick={handleDownloadPPTX} className="ml-2 bg-primary hover:bg-primary/90 text-white rounded-full px-4 py-2 flex items-center gap-2 pointer-events-auto shadow-lg">
                 <Download size={16} />
