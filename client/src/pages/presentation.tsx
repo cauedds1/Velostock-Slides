@@ -278,80 +278,120 @@ const Slide3_Solucao = ({ onImageClick }: { onImageClick: (src: string) => void 
 );
 
 // 4. Funcionalidades
-const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) => void }) => (
-  <div className="w-full h-full p-8 lg:p-12 bg-background relative flex flex-col">
-    <div className="text-center mb-8 shrink-0">
-      <h2 className="text-3xl font-display font-bold text-white mb-2">15 Funcionalidades Principais</h2>
-      <p className="text-slate-400">O stack completo para a operação</p>
-    </div>
+const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) => void }) => {
+  const [selectedFeature, setSelectedFeature] = useState<{title: string, desc: string} | null>(null);
 
-    <div className="flex-1 grid grid-cols-12 gap-6 h-full overflow-hidden pb-4">
-       {/* Left Column: Visual Showcase */}
-       <div className="col-span-12 lg:col-span-7 grid grid-cols-2 gap-4 h-full overflow-y-auto pr-2 custom-scrollbar">
-          <div className="space-y-4">
-             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgVeiculos)}>
-                <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Gestão de Veículos</div>
-                <img src={imgVeiculos} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
-             </div>
-             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgLead)}>
-                <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">CRM & Leads</div>
-                <img src={imgLead} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
-             </div>
-             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgFinanceiro)}>
-                <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Financeiro</div>
-                <img src={imgFinanceiro} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
-             </div>
-          </div>
-          <div className="space-y-4 mt-8">
-             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgGarantia)}>
-                <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Garantia</div>
-                <img src={imgGarantia} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
-             </div>
-             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgCustos)}>
-                <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Controle de Custos</div>
-                <img src={imgCustos} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
-             </div>
-              <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgRelatorio)}>
-                <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Relatórios</div>
-                <img src={imgRelatorio} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
-             </div>
-          </div>
-       </div>
+  const features = [
+    { title: "Gestão de Veículos (Kanban)", desc: "Organize seu estoque visualmente. Arraste e solte carros entre estágios (Preparação, Venda, Entrega) como um quadro Trello." },
+    { title: "Controle de Custos", desc: "Registre cada centavo gasto no carro (peças, funilaria, lavagem) para saber o lucro real líquido na venda." },
+    { title: "Vendas e Comissões", desc: "Calcula automaticamente comissões de vendedores e parceiros no momento da venda, evitando erros de fechamento." },
+    { title: "Garantia", desc: "Controle prazos legais e estendidos. Saiba quais carros ainda estão cobertos e histórico de acionamentos." },
+    { title: "Obs. Internas", desc: "Comunicação interna vinculada ao carro. 'Trocar pneu', 'Cliente X interessado'. Nada se perde no WhatsApp." },
+    { title: "Contas a Pagar/Receber", desc: "Financeiro integrado. Vendeu o carro? O sistema lança o recebível. Gastou na oficina? Lança o a pagar." },
+    { title: "CRM e Leads", desc: "Centralize leads de portais e site. Pipeline de vendas para acompanhar cada negociação e não perder clientes." },
+    { title: "Follow-ups", desc: "Lembretes automáticos para ligar para clientes. 'O cliente ficou de voltar dia 10'. O sistema te cobra." },
+    { title: "IA (VeloBot)", desc: "Seu assistente virtual. Gera descrições de anúncios persuasivas e responde dúvidas sobre o estoque." },
+    { title: "Dashboard", desc: "Visão de piloto de avião. MRR, carros parados há muito tempo, fluxo de caixa e performance da loja em uma tela." },
+    { title: "Usuários/Permissões", desc: "Controle quem vê o que. Vendedor não vê lucro, Gerente vê tudo. Segurança total nos dados." },
+    { title: "Configurações", desc: "Personalize o sistema. Categorias de gastos, origens de leads, metas de vendas e dados da empresa." },
+    { title: "Relatórios", desc: "Dados para decisão. DRE, Curva ABC de estoque, performance por vendedor e relatório de custos." },
+    { title: "Documentos", desc: "Geração automática de contratos, recibos e termos de garantia. Menos papelada, mais vendas." },
+    { title: "Checklists", desc: "Padronize a entrada e saída. Checklist de avaliação na compra e checklist de entrega para o cliente." }
+  ];
 
-       {/* Right Column: Feature List */}
-       <div className="col-span-12 lg:col-span-5 flex flex-col justify-center gap-2">
-          {[
-            "Gestão de Veículos (Kanban)",
-            "Controle de Custos",
-            "Vendas e Comissões",
-            "Garantia",
-            "Obs. Internas",
-            "Contas a Pagar/Receber",
-            "CRM e Leads",
-            "Follow-ups",
-            "IA (VeloBot)",
-            "Dashboard",
-            "Usuários/Permissões",
-            "Configurações",
-            "Relatórios",
-            "Documentos",
-            "Checklists"
-          ].map((func, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.03 }}
-              className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors"
-            >
-               <div className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
-               <span className="text-sm text-slate-300 font-medium">{func}</span>
-            </motion.div>
-          ))}
-       </div>
+  return (
+    <div className="w-full h-full p-8 lg:p-12 bg-background relative flex flex-col">
+      <div className="text-center mb-8 shrink-0">
+        <h2 className="text-3xl font-display font-bold text-white mb-2">15 Funcionalidades Principais</h2>
+        <p className="text-slate-400">O stack completo para a operação. Clique para detalhes.</p>
+      </div>
+
+      <div className="flex-1 grid grid-cols-12 gap-6 h-full overflow-hidden pb-4">
+         {/* Left Column: Visual Showcase */}
+         <div className="col-span-12 lg:col-span-7 grid grid-cols-2 gap-4 h-full overflow-y-auto pr-2 custom-scrollbar">
+            <div className="space-y-4">
+               <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgVeiculos)}>
+                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Gestão de Veículos</div>
+                  <img src={imgVeiculos} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
+               </div>
+               <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgLead)}>
+                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">CRM & Leads</div>
+                  <img src={imgLead} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
+               </div>
+               <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgFinanceiro)}>
+                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Financeiro</div>
+                  <img src={imgFinanceiro} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
+               </div>
+            </div>
+            <div className="space-y-4 mt-8">
+               <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgGarantia)}>
+                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Garantia</div>
+                  <img src={imgGarantia} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
+               </div>
+               <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgCustos)}>
+                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Controle de Custos</div>
+                  <img src={imgCustos} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
+               </div>
+                <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgRelatorio)}>
+                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Relatórios</div>
+                  <img src={imgRelatorio} className="w-full object-contain bg-black/50 opacity-80 group-hover:opacity-100 transition-opacity" />
+               </div>
+            </div>
+         </div>
+
+         {/* Right Column: Feature List */}
+         <div className="col-span-12 lg:col-span-5 flex flex-col gap-2 overflow-y-auto pr-2 custom-scrollbar relative">
+            {features.map((feature, i) => (
+              <motion.button 
+                key={i}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.03 }}
+                onClick={() => setSelectedFeature(feature)}
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors w-full text-left group border border-transparent hover:border-white/10 focus:outline-none focus:border-primary/50"
+              >
+                 <div className="w-2 h-2 rounded-full bg-secondary shrink-0 group-hover:scale-125 transition-transform" />
+                 <span className="text-sm text-slate-300 font-medium group-hover:text-white">{feature.title}</span>
+                 <ChevronRight className="w-4 h-4 text-slate-600 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+              </motion.button>
+            ))}
+         </div>
+      </div>
+
+      {/* Feature Modal */}
+      <AnimatePresence>
+        {selectedFeature && (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="absolute inset-0 z-20 flex items-center justify-center bg-black/60 backdrop-blur-sm p-8"
+            onClick={() => setSelectedFeature(null)}
+          >
+             <div 
+               className="bg-card border border-white/10 rounded-2xl p-8 max-w-lg w-full shadow-2xl relative"
+               onClick={(e) => e.stopPropagation()}
+             >
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={() => setSelectedFeature(null)}
+                  className="absolute top-4 right-4 text-slate-400 hover:text-white"
+                >
+                  <X size={20} />
+                </Button>
+                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-6">
+                   <Zap className="text-primary w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">{selectedFeature.title}</h3>
+                <p className="text-slate-300 leading-relaxed text-lg">{selectedFeature.desc}</p>
+             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
-  </div>
-);
+  );
+};
 
 // 4.5. Admin Panel
 const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) => (
@@ -554,45 +594,56 @@ const Slide6_Publico = () => (
 
 // 7. Monetização
 const Slide7_Monetizacao = () => (
-  <div className="w-full h-full flex flex-col items-center justify-center p-12 bg-background">
-     <h2 className="text-4xl font-display font-bold text-white mb-12">Como Ganhamos Dinheiro</h2>
+  <div className="w-full h-full flex flex-col items-center justify-center p-12 bg-background relative overflow-hidden">
+     <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background pointer-events-none" />
+     <h2 className="text-4xl font-display font-bold text-white mb-16 relative z-10">Simplicidade Comercial</h2>
 
-     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full max-w-5xl">
-        <div className="bg-card border border-white/5 p-8 rounded-2xl flex flex-col items-center text-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-           <h3 className="text-slate-400 font-bold mb-4 uppercase tracking-widest text-sm">Plano Basic</h3>
-           <div className="text-3xl font-bold text-white mb-2">R$ 397<span className="text-sm font-normal text-slate-500">/mês</span></div>
-           <p className="text-xs text-slate-500 mb-8">Pequenas lojas (até 30 carros)</p>
-           <ul className="text-sm text-slate-400 space-y-2">
-             <li>Gestão de Estoque</li>
-             <li>Integrações Básicas</li>
-             <li>3 Usuários</li>
-           </ul>
-        </div>
+     <div className="relative z-10 w-full max-w-lg">
+        <motion.div 
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="bg-gradient-to-br from-card to-background border border-primary/30 p-12 rounded-3xl flex flex-col items-center text-center shadow-[0_0_50px_rgba(255,59,48,0.2)] relative group"
+        >
+           <div className="absolute -top-4 bg-primary text-white text-sm font-bold px-6 py-2 rounded-full shadow-lg">
+             TUDO INCLUSO
+           </div>
+           
+           <h3 className="text-slate-400 font-bold mb-6 uppercase tracking-widest text-lg">Plano Único</h3>
+           
+           <div className="flex items-baseline justify-center mb-2">
+             <span className="text-2xl text-slate-400 mr-2">R$</span>
+             <span className="text-7xl font-display font-black text-white">149</span>
+             <span className="text-2xl text-slate-400 ml-1">/mês</span>
+           </div>
+           
+           <p className="text-slate-400 mb-10 text-sm">Sem taxas de implantação. Cancele quando quiser.</p>
+           
+           <div className="w-full space-y-4 mb-10">
+              <div className="flex items-center gap-4 text-left">
+                <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
+                  <CheckCircle className="text-green-500 w-5 h-5" />
+                </div>
+                <span className="text-white text-lg">Acesso Total às 15 Funcionalidades</span>
+              </div>
+              <div className="flex items-center gap-4 text-left">
+                <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
+                  <CheckCircle className="text-green-500 w-5 h-5" />
+                </div>
+                <span className="text-white text-lg">Usuários Ilimitados</span>
+              </div>
+              <div className="flex items-center gap-4 text-left">
+                <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
+                  <CheckCircle className="text-green-500 w-5 h-5" />
+                </div>
+                <span className="text-white text-lg">Suporte Prioritário WhatsApp</span>
+              </div>
+           </div>
 
-        <div className="bg-gradient-to-b from-primary/10 to-card border border-primary p-8 rounded-2xl flex flex-col items-center text-center shadow-2xl shadow-primary/10 transform scale-105 z-10">
-           <div className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full mb-4">RECOMENDADO</div>
-           <h3 className="text-primary font-bold mb-4 uppercase tracking-widest text-sm">Plano Growth</h3>
-           <div className="text-5xl font-bold text-white mb-2">R$ 697<span className="text-lg font-normal text-slate-500">/mês</span></div>
-           <p className="text-xs text-slate-400 mb-8">Lojas em crescimento (até 150 carros)</p>
-           <ul className="text-sm text-white space-y-3 font-medium">
-             <li className="flex items-center gap-2"><CheckCircle size={14} className="text-secondary"/> Tudo do Basic</li>
-             <li className="flex items-center gap-2"><CheckCircle size={14} className="text-secondary"/> IA VeloBot Completa</li>
-             <li className="flex items-center gap-2"><CheckCircle size={14} className="text-secondary"/> Aprovação de Custos</li>
-             <li className="flex items-center gap-2"><CheckCircle size={14} className="text-secondary"/> CRM Avançado</li>
-             <li className="flex items-center gap-2"><CheckCircle size={14} className="text-secondary"/> 10 Usuários</li>
-           </ul>
-        </div>
-
-        <div className="bg-card border border-white/5 p-8 rounded-2xl flex flex-col items-center text-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-           <h3 className="text-slate-400 font-bold mb-4 uppercase tracking-widest text-sm">Enterprise</h3>
-           <div className="text-3xl font-bold text-white mb-2">Sob Consulta</div>
-           <p className="text-xs text-slate-500 mb-8">Redes e Concessionárias</p>
-           <ul className="text-sm text-slate-400 space-y-2">
-             <li>API Personalizada</li>
-             <li>Onboarding Dedicado</li>
-             <li>Multi-CNPJ</li>
-           </ul>
-        </div>
+           <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold h-14 rounded-xl text-lg shadow-lg shadow-primary/20">
+             Começar Teste Grátis (7 Dias)
+           </Button>
+        </motion.div>
      </div>
   </div>
 );
