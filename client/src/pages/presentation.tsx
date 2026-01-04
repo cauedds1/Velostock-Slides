@@ -385,7 +385,7 @@ const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) 
     },
     { 
       title: "Gestão Profissional de Garantia", 
-      desc: "Proteja sua loja juridicamente e financeiramente. Gerencie prazos de garantia legal (90 dias) e garantias estendidas contratuais. O sistema alerta automaticamente sobre o vencimento de garantias. Registre todas as ocorrências, aprovações de reparo e custos pós-venda vinculados à venda original. Tenha um histórico completo da qualidade do seu estoque e descubra qual modelo de carro ou fornecedor está gerando mais custo de garantia para o seu negócio." 
+      desc: "Controle total sobre veículos que retornam para garantia. Registre o problema reportado pelo cliente, o diagnóstico da oficina e os custos de reparo (peças e mão de obra). O sistema calcula automaticamente o gasto total com garantias por veículo e por período, permitindo identificar quais modelos ou fornecedores geram mais prejuízo pós-venda, protegendo a margem real da loja." 
     },
     { 
       title: "Observações Internas Centralizadas", 
@@ -1065,7 +1065,7 @@ const Slide_Ciclo = () => (
         { title: "Gestão de Veículos (Kanban)", desc: "Visualize e organize todo o seu estoque através de um quadro Kanban intuitivo." },
         { title: "Controle de Custos Detalhado", desc: "Registre cada centavo investido no veículo para saber o lucro real." },
         { title: "Vendas e Comissões Automatizadas", desc: "O sistema registra a venda e calcula comissões automaticamente." },
-        { title: "Gestão Profissional de Garantia", desc: "Gerencie prazos de garantia legal e estendida com alertas automáticos." },
+        { title: "Gestão Profissional de Garantia", desc: "Controle de retornos, ocorrências e custos de reparo pós-venda." },
         { title: "Observações Internas", desc: "Notas internas sigilosas vinculadas a cada veículo ou cliente." },
         { title: "Financeiro Integrado", desc: "Contas a pagar e receber alimentados automaticamente pela operação." },
         { title: "CRM e Gestão de Leads", desc: "Pipeline de vendas centralizado com distribuição automática de leads." },
