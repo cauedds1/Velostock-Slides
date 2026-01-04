@@ -775,59 +775,82 @@ const Slide6_Publico = () => (
   </div>
 );
 
-// 7. Monetização
+// 7. Monetização & Projeções
 const Slide7_Monetizacao = () => (
-  <div className="w-full h-full flex flex-col items-center justify-center p-12 bg-background relative overflow-hidden">
-     <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background pointer-events-none" />
-     <h2 className="text-4xl font-display font-bold text-white mb-16 relative z-10">Simplicidade Comercial</h2>
+  <div className="w-full h-full flex flex-col items-center justify-center p-8 bg-background relative overflow-hidden">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+    
+    <div className="text-center mb-12 z-10">
+      <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4">VIABILIDADE E CRESCIMENTO</span>
+      <h2 className="text-4xl lg:text-5xl font-display font-bold text-white">
+        Modelo de Negócio e Projeções
+      </h2>
+      <p className="text-lg text-slate-400 mt-4 max-w-2xl mx-auto">
+        O VeloStock foi desenhado para escalabilidade massiva com baixo custo operacional e alta retenção.
+      </p>
+    </div>
 
-     <div className="relative z-10 w-full max-w-lg">
-        <motion.div 
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="bg-gradient-to-br from-card to-background border border-primary/30 p-12 rounded-3xl flex flex-col items-center text-center shadow-[0_0_50px_rgba(255,59,48,0.2)] relative group"
-        >
-           <div className="absolute -top-4 bg-primary text-white text-sm font-bold px-6 py-2 rounded-full shadow-lg">
-             TUDO INCLUSO
-           </div>
-           
-           <h3 className="text-slate-400 font-bold mb-6 uppercase tracking-widest text-lg">Plano Único</h3>
-           
-           <div className="flex items-baseline justify-center mb-2">
-             <span className="text-2xl text-slate-400 mr-2">R$</span>
-             <span className="text-7xl font-display font-black text-white">149</span>
-             <span className="text-2xl text-slate-400 ml-1">/mês</span>
-           </div>
-           
-           <p className="text-slate-400 mb-10 text-sm">Sem taxas de implantação. Cancele quando quiser.</p>
-           
-           <div className="w-full space-y-4 mb-10">
-              <div className="flex items-center gap-4 text-left">
-                <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
-                  <CheckCircle className="text-green-500 w-5 h-5" />
-                </div>
-                <span className="text-white text-lg">Acesso Total às 15 Funcionalidades</span>
-              </div>
-              <div className="flex items-center gap-4 text-left">
-                <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
-                  <CheckCircle className="text-green-500 w-5 h-5" />
-                </div>
-                <span className="text-white text-lg">Usuários Ilimitados</span>
-              </div>
-              <div className="flex items-center gap-4 text-left">
-                <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
-                  <CheckCircle className="text-green-500 w-5 h-5" />
-                </div>
-                <span className="text-white text-lg">Suporte Prioritário WhatsApp</span>
-              </div>
-           </div>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full max-w-6xl z-10">
+      {/* Estratégia de Receita */}
+      <Card className="bg-white/5 border-white/10 p-8 flex flex-col justify-center">
+        <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+          <DollarSign className="text-primary" /> Estratégia de Receita
+        </h3>
+        <div className="space-y-6">
+          <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
+            <h4 className="text-white font-bold text-lg">Assinatura SaaS (Plano Único)</h4>
+            <p className="text-3xl font-black text-primary mt-2">R$ 149<span className="text-sm font-normal text-slate-400"> /mês</span></p>
+            <p className="text-sm text-slate-400 mt-2">Valor altamente competitivo para garantir entrada rápida no mercado de revendas médias.</p>
+          </div>
+          <div className="space-y-4">
+            <div className="flex items-center gap-3 text-slate-300">
+              <CheckCircle className="text-green-500 w-5 h-5" />
+              <span>Sem taxa de setup ou cancelamento</span>
+            </div>
+            <div className="flex items-center gap-3 text-slate-300">
+              <CheckCircle className="text-green-500 w-5 h-5" />
+              <span>Upsell futuro com módulos de IA avançada</span>
+            </div>
+          </div>
+        </div>
+      </Card>
 
-           <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold h-14 rounded-xl text-lg shadow-lg shadow-primary/20">
-             Começar Teste Grátis (7 Dias)
-           </Button>
-        </motion.div>
-     </div>
+      {/* Projeções de Crescimento */}
+      <Card className="bg-white/5 border-white/10 p-8">
+        <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+          <TrendingUp className="text-secondary" /> Projeção 2026
+        </h3>
+        <div className="h-64 w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={[
+              { name: "Q1", users: 150, rev: 22000 },
+              { name: "Q2", users: 380, rev: 56000 },
+              { name: "Q3", users: 650, rev: 96000 },
+              { name: "Q4", users: 1000, rev: 149000 },
+            ]}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#333" />
+              <XAxis dataKey="name" stroke="#888" />
+              <YAxis stroke="#888" />
+              <Tooltip 
+                contentStyle={{ backgroundColor: "#1a1a1a", border: "1px solid #333", color: "#fff" }}
+                itemStyle={{ color: "#007AFF" }}
+              />
+              <Bar dataKey="users" name="Assinaturas" fill="#007AFF" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="mt-6 grid grid-cols-2 gap-4">
+          <div className="text-center p-3 rounded-lg bg-white/5 border border-white/5">
+            <p className="text-xs text-slate-500 uppercase font-bold">Meta 2026</p>
+            <p className="text-xl font-bold text-white">1.000 Assinaturas</p>
+          </div>
+          <div className="text-center p-3 rounded-lg bg-white/5 border border-white/5">
+            <p className="text-xs text-slate-500 uppercase font-bold">MRR Projetado</p>
+            <p className="text-xl font-bold text-secondary">R$ 149.000</p>
+          </div>
+        </div>
+      </Card>
+    </div>
   </div>
 );
 
@@ -910,6 +933,7 @@ export default function PresentationPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [, setLocation] = useLocation();
 
   // Components mapping
   const slides = [
@@ -926,9 +950,6 @@ export default function PresentationPage() {
     Slide9_Encerramento
   ];
 
-  // We need to pass onImageClick to components that accept it.
-  // We can render them using cloneElement if they were instances, but here they are functions.
-  // We can just call them with props.
   const CurrentSlideComponent = slides[currentSlide];
 
   const nextSlide = () => {
