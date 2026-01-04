@@ -17,7 +17,14 @@ import {
   DollarSign,
   Maximize2,
   Minimize2,
-  X
+  X,
+  Car,
+  ClipboardCheck,
+  Wrench,
+  Sparkles,
+  Camera,
+  Megaphone,
+  Repeat
 } from "lucide-react";
 import { 
   BarChart, 
@@ -59,13 +66,14 @@ const slidesData = [
   { id: 0, label: "Abertura" },
   { id: 1, label: "A Dor" },
   { id: 2, label: "A Solução" },
-  { id: 3, label: "Funcionalidades" },
-  { id: 4, label: "Admin Panel" },
-  { id: 5, label: "Diferencial" },
-  { id: 6, label: "Mercado" },
-  { id: 7, label: "Monetização" },
-  { id: 8, label: "Desafios" },
-  { id: 9, label: "Encerramento" },
+  { id: 3, label: "Ciclo" },
+  { id: 4, label: "Funcionalidades" },
+  { id: 5, label: "Admin Panel" },
+  { id: 6, label: "Diferencial" },
+  { id: 7, label: "Mercado" },
+  { id: 8, label: "Monetização" },
+  { id: 9, label: "Desafios" },
+  { id: 10, label: "Encerramento" },
 ];
 
 const efficiencyData = [
@@ -277,6 +285,84 @@ const Slide3_Solucao = ({ onImageClick }: { onImageClick: (src: string) => void 
        </div>
        <div className="absolute inset-0 bg-gradient-to-l from-background via-transparent to-transparent pointer-events-none" />
     </div>
+  </div>
+);
+
+// 3.5 Ciclo Operacional (New)
+const Slide_Ciclo = () => (
+  <div className="w-full h-full flex flex-col items-center justify-center p-8 bg-background relative overflow-hidden">
+     {/* Background decorative elements */}
+     <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-y-1/2" />
+     
+     <div className="text-center mb-16 relative z-10">
+       <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4">FLUXO INTELIGENTE</span>
+       <h2 className="text-4xl lg:text-5xl font-display font-bold text-white">
+         O Ciclo da Revenda
+       </h2>
+       <p className="text-lg text-slate-400 mt-4 max-w-2xl mx-auto">
+         Acompanhe cada etapa da jornada do veículo, desde a entrada até a venda, com controle total em cada fase.
+       </p>
+     </div>
+
+     <div className="flex w-full max-w-7xl justify-between items-center relative z-10 px-8">
+        {[
+          { icon: Car, label: "Chegada", sub: "Cadastro Inicial" },
+          { icon: ClipboardCheck, label: "Vistoria", sub: "Checklist Entrada" },
+          { icon: Wrench, label: "Revisão", sub: "Mecânica/Peças" },
+          { icon: Sparkles, label: "Estética", sub: "Higienização" },
+          { icon: Camera, label: "Marketing", sub: "Fotos/Anúncios" },
+          { icon: Megaphone, label: "Venda", sub: "Apresentação" }
+        ].map((step, i) => (
+          <div key={i} className="flex flex-col items-center group relative">
+             {/* Connector Line */}
+             {i < 5 && (
+               <div className="absolute top-8 left-1/2 w-[200%] h-0.5 bg-gradient-to-r from-white/10 to-white/5 -z-10" />
+             )}
+             
+             <motion.div 
+               initial={{ scale: 0, opacity: 0 }}
+               animate={{ scale: 1, opacity: 1 }}
+               transition={{ delay: i * 0.15 }}
+               className="w-16 h-16 rounded-2xl bg-card border border-white/10 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(0,0,0,0.5)] group-hover:border-primary/50 group-hover:shadow-[0_0_30px_rgba(0,122,255,0.3)] transition-all duration-500 z-10"
+             >
+               <step.icon className="w-8 h-8 text-white group-hover:text-primary transition-colors duration-300" />
+             </motion.div>
+             
+             <motion.div
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ delay: 0.5 + (i * 0.1) }}
+               className="text-center"
+             >
+               <h3 className="text-white font-bold mb-1">{step.label}</h3>
+               <p className="text-xs text-slate-500 uppercase tracking-wide">{step.sub}</p>
+             </motion.div>
+             
+             {/* Step Number Bubble */}
+             <div className="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[10px] font-bold text-slate-400">
+               {i + 1}
+             </div>
+          </div>
+        ))}
+     </div>
+
+     {/* Cycle explanation box */}
+     <motion.div 
+       initial={{ opacity: 0, y: 30 }}
+       animate={{ opacity: 1, y: 0 }}
+       transition={{ delay: 1.5 }}
+       className="mt-20 p-6 rounded-xl bg-white/5 border border-white/10 max-w-3xl w-full flex items-center gap-6"
+     >
+       <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
+         <Repeat className="text-green-500 w-6 h-6" />
+       </div>
+       <div>
+         <h4 className="text-white font-bold text-lg mb-1">Ciclo Integrado</h4>
+         <p className="text-slate-400 text-sm leading-relaxed">
+           No Velostock, cada etapa libera automaticamente a próxima. O carro não vai para o pátio sem vistoria, e não é anunciado sem revisão de custos. Isso garante que nenhum veículo seja vendido com prejuízo invisível.
+         </p>
+       </div>
+     </motion.div>
   </div>
 );
 
@@ -826,6 +912,7 @@ export default function PresentationPage() {
     Slide1_Abertura,
     Slide2_Dor,
     Slide3_Solucao,
+    Slide_Ciclo,
     Slide4_Funcionalidades,
     Slide_Admin,
     Slide5_Diferencial,
@@ -894,7 +981,85 @@ export default function PresentationPage() {
     slide.addText("2. Venda & Marketing: Anúncios automáticos e CRM.", { x: 1, y: 3.5, w: "80%", fontSize: 16, color: "CCCCCC" });
     slide.addText("3. Pós-Venda & Financeiro: Gestão de garantia e DRE.", { x: 1, y: 4.5, w: "80%", fontSize: 16, color: "CCCCCC" });
 
-    // 4. Funcionalidades (Detailed)
+    // 3.5 Ciclo Operacional (New)
+const Slide_Ciclo = () => (
+  <div className="w-full h-full flex flex-col items-center justify-center p-8 bg-background relative overflow-hidden">
+     {/* Background decorative elements */}
+     <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-y-1/2" />
+     
+     <div className="text-center mb-16 relative z-10">
+       <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4">FLUXO INTELIGENTE</span>
+       <h2 className="text-4xl lg:text-5xl font-display font-bold text-white">
+         O Ciclo da Revenda
+       </h2>
+       <p className="text-lg text-slate-400 mt-4 max-w-2xl mx-auto">
+         Acompanhe cada etapa da jornada do veículo, desde a entrada até a venda, com controle total em cada fase.
+       </p>
+     </div>
+
+     <div className="flex w-full max-w-7xl justify-between items-center relative z-10 px-8">
+        {[
+          { icon: Car, label: "Chegada", sub: "Cadastro Inicial" },
+          { icon: ClipboardCheck, label: "Vistoria", sub: "Checklist Entrada" },
+          { icon: Wrench, label: "Revisão", sub: "Mecânica/Peças" },
+          { icon: Sparkles, label: "Estética", sub: "Higienização" },
+          { icon: Camera, label: "Marketing", sub: "Fotos/Anúncios" },
+          { icon: Megaphone, label: "Venda", sub: "Apresentação" }
+        ].map((step, i) => (
+          <div key={i} className="flex flex-col items-center group relative">
+             {/* Connector Line */}
+             {i < 5 && (
+               <div className="absolute top-8 left-1/2 w-[200%] h-0.5 bg-gradient-to-r from-white/10 to-white/5 -z-10" />
+             )}
+             
+             <motion.div 
+               initial={{ scale: 0, opacity: 0 }}
+               animate={{ scale: 1, opacity: 1 }}
+               transition={{ delay: i * 0.15 }}
+               className="w-16 h-16 rounded-2xl bg-card border border-white/10 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(0,0,0,0.5)] group-hover:border-primary/50 group-hover:shadow-[0_0_30px_rgba(0,122,255,0.3)] transition-all duration-500 z-10"
+             >
+               <step.icon className="w-8 h-8 text-white group-hover:text-primary transition-colors duration-300" />
+             </motion.div>
+             
+             <motion.div
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ delay: 0.5 + (i * 0.1) }}
+               className="text-center"
+             >
+               <h3 className="text-white font-bold mb-1">{step.label}</h3>
+               <p className="text-xs text-slate-500 uppercase tracking-wide">{step.sub}</p>
+             </motion.div>
+             
+             {/* Step Number Bubble */}
+             <div className="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[10px] font-bold text-slate-400">
+               {i + 1}
+             </div>
+          </div>
+        ))}
+     </div>
+
+     {/* Cycle explanation box */}
+     <motion.div 
+       initial={{ opacity: 0, y: 30 }}
+       animate={{ opacity: 1, y: 0 }}
+       transition={{ delay: 1.5 }}
+       className="mt-20 p-6 rounded-xl bg-white/5 border border-white/10 max-w-3xl w-full flex items-center gap-6"
+     >
+       <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
+         <Repeat className="text-green-500 w-6 h-6" />
+       </div>
+       <div>
+         <h4 className="text-white font-bold text-lg mb-1">Ciclo Integrado</h4>
+         <p className="text-slate-400 text-sm leading-relaxed">
+           No Velostock, cada etapa libera automaticamente a próxima. O carro não vai para o pátio sem vistoria, e não é anunciado sem revisão de custos. Isso garante que nenhum veículo seja vendido com prejuízo invisível.
+         </p>
+       </div>
+     </motion.div>
+  </div>
+);
+
+// 4. Funcionalidades (Detailed)
     // We will split features across multiple slides to fit text
     const features = [
         { title: "Gestão de Veículos (Kanban)", desc: "Visualize e organize todo o seu estoque através de um quadro Kanban intuitivo." },
