@@ -1,0 +1,105 @@
+Foco em gestao OPERACIONAL (nao apenas estoque)
+
+Resolve problemas que Boom/365 nao resolvem
+
+2. Comparativo com Concorrentes
+
+ConcorrentesVeloStockEstoque + Fiscal + PublicidadeOperacao + Rastreio + CRM + FinanceiroPublica anuncios automaticoGera textos, nao publicaSem gestao de tarefasTarefas da loja completasSem rastreio 100%Timeline completa de cada veiculoCRM basicoCRM com IA assistente
+
+3. Todas as 15 Funcionalidades
+
+Veiculos (Kanban, checklist, documentos)
+
+Custos com aprovacao
+
+Vendas e comissoes
+
+Garantia
+
+Observacoes da loja
+
+Contas a pagar/receber
+
+Leads e CRM
+
+Follow-ups
+
+IA (VeloBot, anuncios, preco, coaching)
+
+Dashboard e metricas
+
+Usuarios e permissoes
+
+Configuracoes
+
+Relatorios
+
+Documentos
+
+Checklists customizados
+
+4. Arquitetura Tecnica
+
+Stack completo (React, Express, PostgreSQL)
+
+Estrutura de pastas
+
+34 tabelas do banco
+
+Backend (rotas, middleware, RBAC)
+
+Frontend (roteamento, queries, i18n)
+
+Integracoes (OpenAI, FIPE, SendGrid)
+
+5. Multi-Tenant e Seguranca
+
+Isolamento de dados por empresa
+
+Autenticacao dupla (usuarios e admin)
+
+Permissoes granulares
+
+6. Deploy
+
+Railway com PostgreSQL Neon
+
+Variaveis de ambiente
+
+Scripts de build
+
+Documentacao atualizada:
+
+VELOSTOCK_COMPLETO.md - Tudo sobre o sistema
+
+GUIA_USUARIO.md - Para usuarios finais
+
+GUIA_ADMIN.md - Para administradores
+
+COMO_TESTAR_IA.md - Para testar IA
+
+
+
+
+
+Resumo Adicionado
+
+As 15 Funcionalidades Principais
+
+#FuncionalidadeO Que Faz1Gestao de VeiculosCadastro completo com fotos, documentos, checklist. Pipeline Kanban visual (Entrada -> Reparos -> Pronto -> Vendido). Rastreia localizacao fisica em tempo real. Historico de TUDO que aconteceu com o veiculo.2Controle de CustosRegistra cada gasto por veiculo (mecanica, estetica, documentacao). Custos grandes precisam aprovacao do gerente. Calcula margem de lucro automaticamente.3Vendas e ComissoesWorkflow simplificado de venda. Calcula comissao automaticamente (% ou valor fixo). Controla pagamento de comissoes. Define metas mensais.4GarantiaRastreia veiculos que voltam com defeito apos a venda. Registra diagnostico, reparos e custos. Cria custo automatico com prefixo [GARANTIA].5Observacoes da LojaTarefas do dia-a-dia: "comprar cafe", "chamar eletricista", "trocar lampada". Registra custo e forma de pagamento quando resolvido.6Contas a Pagar/ReceberOrganiza financeiro: aluguel, salarios, fornecedores, vendas parceladas. Suporta parcelamento e recorrencia. Dashboard com resumo.7Leads e CRMCada vendedor gerencia seus clientes. Status do lead (Novo -> Contatado -> Proposta -> Convertido). Vincula ao veiculo de interesse.8Follow-upsLembretes de contato com clientes. Agenda retornos. Registra resultado do contato.9VeloBot (IA)Assistente que conhece TODOS os dados da loja: veiculos, leads, custos, vendas. Responde perguntas e ajuda na operacao.10Geracao de AnunciosIA gera textos para 6 plataformas (Instagram, Facebook, OLX, WhatsApp). 3 estilos: profissional, emocional, urgencia.11Sugestao de PrecoConsulta tabela FIPE e sugere preco de venda baseado em km, estado e opcionais.12DashboardVisao geral: veiculos por status, valor em estoque, vendas do mes, lucro, alertas de veiculos parados, metas.13Usuarios e Permissoes5 papeis (Proprietario, Gerente, Financeiro, Vendedor, Motorista). Permissoes granulares por usuario.14ConfiguracoesPersonaliza cores, logo, locais fisicos, categorias de custo, checklist. Cada empresa tem sua identidade.15RelatoriosFinanceiro, por vendedor, por veiculo. Exporta PDF. Filtra por periodo.
+
+Diferenciais Unicos
+
+Rastreio 100%: Sabe tudo que aconteceu com cada veiculo
+
+Tarefas da Loja: Gerencia o dia-a-dia (cafe, material, manutencao)
+
+VeloBot com Contexto Total: IA que conhece todos os dados
+
+Garantia Pos-Venda: Rastreia defeitos de veiculos vendidos
+
+Aprovacao de Custos: Controle de gastos com autorizacao
+
+Coaching para Vendedores: Dicas diarias personalizadas
+
+O documento agora tem o resumo com todas as funcionalidades explicadas logo no inicio, seguido do conteudo tecnico detalhado.

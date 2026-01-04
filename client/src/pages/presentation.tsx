@@ -3,16 +3,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import { 
   ChevronRight, 
   ChevronLeft, 
-  BarChart3, 
-  TrendingUp, 
-  Users, 
-  Target, 
-  Mail,
+  Car, 
+  Zap, 
+  ShieldCheck, 
+  DollarSign,
   Play,
   Settings,
-  Linkedin,
-  Twitter,
-  Globe
+  Target,
+  Users,
+  AlertTriangle,
+  CheckCircle,
+  TrendingUp,
+  BrainCircuit,
+  LayoutDashboard,
+  Layers
 } from "lucide-react";
 import { 
   BarChart, 
@@ -21,7 +25,8 @@ import {
   YAxis, 
   CartesianGrid, 
   Tooltip, 
-  ResponsiveContainer 
+  ResponsiveContainer,
+  Cell
 } from "recharts";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -29,32 +34,25 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 // Import the generated background
-import heroBg from "@assets/generated_images/abstract_blue_wave_corporate_background.png";
+import heroBg from "@assets/generated_images/velostock_dashboard_concept_car_dealership.png";
 
 // --- Types & Data ---
 
 const slidesData = [
-  { id: "title", type: "title", title: "Investor Promotion", subtitle: "Strategic Growth Plan 2026" },
-  { id: "intro", type: "text", title: "Introduction", subtitle: "Who We Are" },
-  { id: "market", type: "chart", title: "Market Analysis", subtitle: "Growth Potential" },
-  { id: "team", type: "team", title: "Our Team", subtitle: "Leadership" },
-  { id: "contact", type: "form", title: "Get in Touch", subtitle: "Contact Us" },
+  { id: "abertura", type: "title", title: "Velostock", subtitle: "Gestão Operacional Inteligente de Veículos" },
+  { id: "dor", type: "text", title: "A Dor do Mercado", subtitle: "O Caos da Gestão Tradicional" },
+  { id: "solucao", type: "feature", title: "A Solução", subtitle: "Velostock: Controle Total" },
+  { id: "funcionalidades", type: "list", title: "Funcionalidades", subtitle: "Muito Além do Estoque" },
+  { id: "diferencial", type: "compare", title: "Diferencial Competitivo", subtitle: "Por que somos melhores?" },
+  { id: "publico", type: "stats", title: "Público & Mercado", subtitle: "Quem servimos" },
+  { id: "monetizacao", type: "money", title: "Monetização", subtitle: "Modelo de Negócio" },
+  { id: "desafios", type: "text", title: "Desafios", subtitle: "Próximos Passos" },
+  { id: "encerramento", type: "final", title: "Junte-se a Nós", subtitle: "O Futuro da Gestão Automotiva" },
 ];
 
 const chartData = [
-  { name: "Q1", value: 4000 },
-  { name: "Q2", value: 3000 },
-  { name: "Q3", value: 2000 },
-  { name: "Q4", value: 2780 },
-  { name: "Q5", value: 1890 },
-  { name: "Q6", value: 2390 },
-];
-
-const teamData = [
-  { name: "Sarah Connor", role: "CEO & Founder", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200&h=200" },
-  { name: "John Smith", role: "CTO", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200&h=200" },
-  { name: "Emily Chen", role: "Head of Product", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200&h=200" },
-  { name: "Michael Ross", role: "VP Sales", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200&h=200" },
+  { name: "Tradicional", value: 40, label: "Eficiência Baixa" },
+  { name: "Com Velostock", value: 95, label: "Alta Performance" },
 ];
 
 // --- Components ---
@@ -70,7 +68,7 @@ const SlideWrapper = ({ children, isActive, direction }: { children: React.React
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: direction > 0 ? -1000 : 1000, opacity: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="absolute inset-0 w-full h-full overflow-hidden bg-background"
+          className="absolute inset-0 w-full h-full overflow-hidden bg-background text-foreground"
         >
           {children}
         </motion.div>
@@ -79,283 +77,384 @@ const SlideWrapper = ({ children, isActive, direction }: { children: React.React
   );
 };
 
-// 1. Title Slide
-const TitleSlide = () => (
-  <div className="w-full h-full flex relative">
-    {/* Left Content */}
-    <div className="w-1/2 h-full flex flex-col justify-center px-24 z-10 bg-white/80 backdrop-blur-sm lg:bg-transparent lg:backdrop-blur-none">
+// 1. Abertura
+const SlideAbertura = () => (
+  <div className="w-full h-full flex relative bg-background">
+    <div className="w-1/2 h-full flex flex-col justify-center px-24 z-10">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
       >
-        <span className="text-primary font-display font-semibold tracking-wider uppercase text-sm mb-4 block">
-          Investor Promotion
+        <span className="text-secondary font-display font-semibold tracking-wider uppercase text-sm mb-4 block glow-text">
+          Revolução Automotiva
         </span>
-        <h1 className="text-7xl font-display font-bold text-slate-900 leading-tight mb-2">
-          Investor
+        <h1 className="text-8xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary leading-tight mb-4">
+          Velostock
         </h1>
-        <h1 className="text-7xl font-display font-bold text-primary leading-tight mb-8">
-          Promotion
-        </h1>
+        <h2 className="text-3xl font-display font-medium text-slate-300 mb-8">
+          Foco em Gestão <span className="text-primary font-bold">OPERACIONAL</span>. <br/>Não apenas estoque.
+        </h2>
         
-        <div className="flex gap-4">
-          <Button size="lg" className="rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 shadow-lg shadow-blue-500/30 px-8 py-6 text-lg font-medium border-0 cursor-pointer">
-            <Play className="w-5 h-5 mr-2 fill-current" /> Start Pitch
-          </Button>
-          <Button size="lg" variant="outline" className="rounded-full w-14 h-14 p-0 border-slate-200 cursor-pointer">
-            <Settings className="w-6 h-6 text-slate-400" />
+        <p className="mt-4 text-slate-400 max-w-lg text-lg leading-relaxed font-body border-l-4 border-secondary pl-6">
+          "Hoje, milhares de revendas perdem dinheiro e tempo tentando gerenciar operações complexas com planilhas e sistemas incompletos."
+        </p>
+
+        <div className="mt-12 flex gap-4">
+          <Button size="lg" className="rounded-full bg-gradient-to-r from-primary to-purple-800 hover:from-purple-600 hover:to-primary text-white shadow-lg shadow-purple-900/50 px-8 py-6 text-lg font-medium border-0 transition-all hover:scale-105">
+            <Play className="w-5 h-5 mr-2 fill-current" /> Ver Apresentação
           </Button>
         </div>
-
-        <p className="mt-12 text-slate-500 max-w-md leading-relaxed font-body">
-          The promotion will be conducted in a 15-minute English roadshow, consisting of key market insights and growth strategies.
-        </p>
       </motion.div>
     </div>
 
-    {/* Right Image Background */}
-    <div className="absolute top-0 right-0 w-3/5 h-full z-0 overflow-hidden">
+    <div className="absolute top-0 right-0 w-3/5 h-full z-0">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat rounded-bl-[100px]"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80"
           style={{ backgroundImage: `url(${heroBg})` }}
         />
-        {/* Decorative Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-l from-transparent to-white/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
     </div>
   </div>
 );
 
-// 2. Intro Slide
-const IntroSlide = () => (
-  <div className="w-full h-full p-24 flex gap-12 items-center">
-    <div className="w-1/2">
-       <motion.span 
-         className="text-primary font-display font-semibold tracking-wider uppercase text-sm mb-4 block"
-         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
-       >
-        Introduction
-      </motion.span>
-      <motion.h2 
-        className="text-5xl font-display font-bold text-slate-900 mb-8"
-        initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}
-      >
-        Transforming Business Intelligence
-      </motion.h2>
-      <motion.p 
-        className="text-slate-500 text-lg leading-relaxed mb-8 font-body"
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
-      >
-        We provide cutting-edge solutions for modern enterprises looking to scale their operations through data-driven decision making.
-      </motion.p>
-      
-      <div className="grid grid-cols-2 gap-6">
-        {[
-          { icon: Target, label: "Precision", text: "99.9% Accuracy in data modeling" },
-          { icon: TrendingUp, label: "Growth", text: "Consistent 20% YoY expansion" },
-          { icon: Users, label: "Community", text: "Over 50k active users worldwide" },
-          { icon: BarChart3, label: "Analytics", text: "Real-time insights dashboard" }
-        ].map((item, i) => (
-          <motion.div 
-            key={i} 
-            className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 hover:bg-blue-50 transition-colors"
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ delay: 0.5 + (i * 0.1) }}
-          >
-            <div className="bg-white p-3 rounded-lg shadow-sm text-primary">
-              <item.icon size={24} />
-            </div>
-            <div>
-              <h4 className="font-bold text-slate-900 font-display">{item.label}</h4>
-              <p className="text-sm text-slate-500 mt-1">{item.text}</p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
+// 2. Dor do Mercado
+const SlideDor = () => (
+  <div className="w-full h-full p-24 flex gap-16 items-center bg-background">
+    <div className="w-1/2 space-y-8">
+       <div className="inline-block px-4 py-1 rounded-full bg-red-500/10 text-red-400 font-bold text-sm tracking-wider mb-2 border border-red-500/20">
+         O PROBLEMA
+       </div>
+       <h2 className="text-5xl font-display font-bold text-white mb-6">
+         Caos Operacional &<br/> <span className="text-red-500">Lucro Invisível</span>
+       </h2>
+       
+       <div className="space-y-6">
+         {[
+           { title: "Descontrole Financeiro", desc: "Sem aprovação de custos, margens reais são desconhecidas." },
+           { title: "Processos Manuais", desc: "Planilhas, papelada e WhatsApp descentralizado." },
+           { title: "Cegueira Operacional", desc: "Não sabem onde o carro está ou o que foi feito nele." },
+           { title: "Perda de Oportunidades", desc: "Leads perdidos por falta de follow-up organizado." }
+         ].map((item, i) => (
+           <motion.div 
+             key={i}
+             className="flex gap-4 p-4 rounded-xl bg-card border border-border/50 hover:border-red-500/50 transition-colors"
+             initial={{ opacity: 0, x: -20 }}
+             animate={{ opacity: 1, x: 0 }}
+             transition={{ delay: 0.4 + (i * 0.1) }}
+           >
+             <AlertTriangle className="text-red-500 shrink-0 mt-1" />
+             <div>
+               <h3 className="text-xl font-bold text-slate-200">{item.title}</h3>
+               <p className="text-slate-400">{item.desc}</p>
+             </div>
+           </motion.div>
+         ))}
+       </div>
     </div>
     
-    <div className="w-1/2 relative h-full flex items-center justify-center">
-       {/* Abstract shape composition */}
-       <motion.div 
-         className="relative w-full aspect-square"
-         initial={{ scale: 0.8, opacity: 0 }}
-         animate={{ scale: 1, opacity: 1 }}
-         transition={{ delay: 0.4 }}
-       >
-         <div className="absolute inset-0 bg-linear-to-tr from-cyan-100 to-blue-50 rounded-full opacity-50 blur-3xl" />
-         <div className="absolute top-10 right-10 w-3/4 h-3/4 bg-white rounded-3xl shadow-2xl p-8 flex flex-col gap-6 z-10 border border-slate-100">
-            <div className="flex items-center justify-between">
-              <div className="space-y-2">
-                <div className="h-2 w-24 bg-slate-100 rounded-full" />
-                <div className="h-2 w-16 bg-slate-100 rounded-full" />
-              </div>
-              <div className="h-8 w-8 rounded-full bg-blue-100" />
-            </div>
-            <div className="flex-1 bg-slate-50 rounded-xl flex items-end justify-between p-4 gap-2">
-               {[40, 70, 50, 90, 60, 80].map((h, i) => (
-                 <div key={i} className="w-full bg-blue-500 rounded-t-md opacity-80" style={{ height: `${h}%` }} />
-               ))}
-            </div>
+    <div className="w-1/2 relative flex justify-center">
+      <div className="relative w-full max-w-md aspect-square bg-gradient-to-br from-red-900/20 to-purple-900/20 rounded-full flex items-center justify-center border border-white/5 animate-pulse-slow">
+         <div className="text-center space-y-4 z-10">
+           <h3 className="text-6xl font-bold text-white">40%</h3>
+           <p className="text-xl text-slate-400">Perda de Eficiência</p>
+           <p className="text-sm text-slate-500 max-w-xs mx-auto">Em lojas que não utilizam gestão integrada.</p>
          </div>
-         {/* Floating decorative elements */}
-         <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-primary/10 backdrop-blur-md rounded-2xl z-20 flex items-center justify-center">
-            {/* Using a generic icon if PieChart is not desired here, but reusing BarChart3 for consistency */}
-            <BarChart3 className="w-16 h-16 text-primary" />
-         </div>
-       </motion.div>
-    </div>
-  </div>
-);
-
-// 3. Chart Slide
-const ChartSlide = () => (
-  <div className="w-full h-full p-24 flex flex-col">
-    <div className="mb-12">
-      <span className="text-primary font-display font-semibold tracking-wider uppercase text-sm mb-2 block">Data Analysis</span>
-      <h2 className="text-4xl font-display font-bold text-slate-900">Quarterly Growth Projection</h2>
-    </div>
-
-    <div className="flex-1 flex gap-12">
-      <Card className="w-2/3 h-full border-0 shadow-xl bg-white/50 backdrop-blur-sm">
-        <CardContent className="p-8 h-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b' }} dy={10} />
-              <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748b' }} dx={-10} />
-              <Tooltip 
-                cursor={{ fill: '#f1f5f9' }}
-                contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
-              />
-              <Bar dataKey="value" fill="hsl(199, 89%, 48%)" radius={[4, 4, 0, 0]} barSize={50} />
-            </BarChart>
-          </ResponsiveContainer>
-        </CardContent>
-      </Card>
-
-      <div className="w-1/3 flex flex-col gap-6">
-        <div className="bg-primary text-white p-8 rounded-2xl shadow-lg shadow-blue-500/20">
-          <h3 className="text-2xl font-bold mb-2 font-display">Highlights</h3>
-          <p className="opacity-90 leading-relaxed text-sm">
-            Q4 showed exceptional growth driven by enterprise adoption. We project a 15% increase in the upcoming quarter.
-          </p>
-          <div className="mt-8 flex items-end gap-2">
-            <span className="text-5xl font-bold">85%</span>
-            <span className="mb-2 opacity-80">Retention</span>
-          </div>
-        </div>
-
-        <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm flex-1">
-          <h4 className="font-semibold text-slate-900 mb-4">Key Metrics</h4>
-          <div className="space-y-4">
-             <div className="flex justify-between items-center">
-               <span className="text-slate-500">Revenue</span>
-               <span className="font-bold text-slate-900">$2.4M</span>
-             </div>
-             <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-               <div className="bg-green-500 h-full w-[80%]" />
-             </div>
-             
-             <div className="flex justify-between items-center mt-4">
-               <span className="text-slate-500">Users</span>
-               <span className="font-bold text-slate-900">54k</span>
-             </div>
-             <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-               <div className="bg-blue-500 h-full w-[60%]" />
-             </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 );
 
-// 4. Team Slide
-const TeamSlide = () => (
-  <div className="w-full h-full p-24 flex flex-col items-center">
-    <div className="mb-16 text-center max-w-2xl">
-      <span className="text-primary font-display font-semibold tracking-wider uppercase text-sm mb-2 block">Our Team</span>
-      <h2 className="text-4xl font-display font-bold text-slate-900 mb-4">Meet the Leadership</h2>
-      <p className="text-slate-500">Driving innovation with over 50 years of combined experience in data science and enterprise solutions.</p>
+// 3. Solução
+const SlideSolucao = () => (
+  <div className="w-full h-full p-24 flex flex-col items-center justify-center bg-background relative overflow-hidden">
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/20 via-background to-background z-0" />
+    
+    <div className="z-10 text-center max-w-4xl mb-16">
+      <span className="text-secondary font-bold tracking-[0.2em] mb-4 block">A SOLUÇÃO VELOSTOCK</span>
+      <h2 className="text-6xl font-display font-bold text-white mb-8">
+        Um ecossistema completo para<br/>
+        <span className="text-gradient">acelerar sua revenda</span>
+      </h2>
+      <p className="text-xl text-slate-300 leading-relaxed">
+        Centralizamos operação, financeiro, CRM e publicidade em uma única plataforma inteligente que automatiza o trabalho pesado.
+      </p>
     </div>
 
-    <div className="grid grid-cols-4 gap-8 w-full">
-      {teamData.map((member, i) => (
+    <div className="grid grid-cols-3 gap-8 w-full max-w-6xl z-10">
+      {[
+        { icon: LayoutDashboard, title: "Gestão 360°", desc: "Do recebimento do veículo até a venda e pós-venda." },
+        { icon: BrainCircuit, title: "IA Integrada", desc: "VeloBot para coaching, anúncios e precificação inteligente." },
+        { icon: CheckCircle, title: "Rastreabilidade", desc: "Histórico completo de cada veículo e ação na loja." }
+      ].map((card, i) => (
         <motion.div 
           key={i}
+          className="bg-card/50 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:border-primary/50 transition-all hover:-translate-y-2 group"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 + (i * 0.1) }}
-          className="group"
+          transition={{ delay: 0.5 + (i * 0.1) }}
         >
-          <div className="bg-white p-4 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group-hover:-translate-y-2">
-            <div className="aspect-square rounded-xl overflow-hidden mb-4 bg-slate-100">
-              <img src={member.image} alt={member.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-            </div>
-            <div className="text-center">
-              <h3 className="font-bold text-slate-900 text-lg font-display">{member.name}</h3>
-              <p className="text-primary text-sm font-medium mb-3">{member.role}</p>
-              <div className="flex justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                <Linkedin size={16} className="text-slate-400 hover:text-blue-600 cursor-pointer" />
-                <Twitter size={16} className="text-slate-400 hover:text-blue-400 cursor-pointer" />
-                <Globe size={16} className="text-slate-400 hover:text-primary cursor-pointer" />
-              </div>
-            </div>
+          <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+            <card.icon className="w-7 h-7 text-primary" />
           </div>
+          <h3 className="text-2xl font-bold text-white mb-3">{card.title}</h3>
+          <p className="text-slate-400">{card.desc}</p>
         </motion.div>
       ))}
     </div>
   </div>
 );
 
-// 5. Contact Slide
-const ContactSlide = () => (
-  <div className="w-full h-full flex">
-    <div className="w-1/2 bg-slate-900 text-white p-24 flex flex-col justify-center relative overflow-hidden">
-       <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-500 to-transparent" />
-       
-       <div className="relative z-10">
-         <span className="text-blue-400 font-display font-semibold tracking-wider uppercase text-sm mb-4 block">Get In Touch</span>
-         <h2 className="text-6xl font-display font-bold mb-8">Ready to start?</h2>
-         <p className="text-slate-300 text-lg max-w-md leading-relaxed mb-12">
-           Schedule a demo with our team to see how we can transform your business analytics.
-         </p>
-         
-         <div className="space-y-6">
-           <div className="flex items-center gap-4">
-             <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-blue-400">
-               <Mail />
-             </div>
-             <div>
-               <p className="text-sm text-slate-400">Email us</p>
-               <p className="text-lg font-medium">hello@company.com</p>
-             </div>
-           </div>
-         </div>
-       </div>
-    </div>
-    
-    <div className="w-1/2 p-24 flex items-center justify-center bg-white">
-      <div className="w-full max-w-md space-y-6">
-        <h3 className="text-2xl font-bold text-slate-900 mb-6 font-display">Contact Form</h3>
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-700">Name</label>
-            <Input placeholder="John Doe" className="bg-slate-50 border-slate-200" />
-          </div>
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-700">Email</label>
-            <Input placeholder="john@example.com" className="bg-slate-50 border-slate-200" />
-          </div>
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-700">Message</label>
-            <Textarea placeholder="Tell us about your project..." className="bg-slate-50 border-slate-200 min-h-[120px]" />
-          </div>
-          <Button className="w-full bg-primary hover:bg-blue-600 h-12 text-lg cursor-pointer">Send Message</Button>
+// 4. Funcionalidades
+const SlideFuncionalidades = () => (
+  <div className="w-full h-full p-20 flex bg-background">
+    <div className="w-1/3 pr-12 border-r border-white/5">
+      <h2 className="text-4xl font-display font-bold text-white mb-8">
+        15 Funcionalidades<br/>Poderosas
+      </h2>
+      <p className="text-slate-400 mb-8 text-lg">
+        Tudo o que uma loja precisa para operar com eficiência máxima e controle total.
+      </p>
+      
+      <div className="space-y-4">
+        <div className="flex items-center gap-3 text-secondary">
+          <Zap className="w-5 h-5" />
+          <span className="font-semibold">Automação Inteligente</span>
+        </div>
+        <div className="flex items-center gap-3 text-primary">
+          <ShieldCheck className="w-5 h-5" />
+          <span className="font-semibold">Controle Financeiro</span>
+        </div>
+        <div className="flex items-center gap-3 text-blue-400">
+          <Users className="w-5 h-5" />
+          <span className="font-semibold">CRM & Leads</span>
         </div>
       </div>
     </div>
+
+    <div className="w-2/3 pl-12 grid grid-cols-2 gap-x-12 gap-y-8 overflow-y-auto">
+      {[
+        "Veículos (Kanban, Checklist)", "Custos com Aprovação", "Vendas & Comissões", 
+        "Garantia & Pós-Venda", "Observações Internas", "Contas a Pagar/Receber",
+        "CRM & Leads", "Follow-ups Automáticos", "IA (VeloBot & Coaching)",
+        "Dashboard & Métricas", "Gestão de Usuários", "Relatórios Customizados",
+        "Gestão de Documentos", "Checklists Personalizados", "Tarefas da Loja"
+      ].map((func, i) => (
+        <motion.div 
+          key={i}
+          className="flex items-center gap-3 border-b border-white/5 pb-2"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 + (i * 0.05) }}
+        >
+          <div className="w-2 h-2 rounded-full bg-secondary" />
+          <span className="text-lg text-slate-300">{func}</span>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+);
+
+// 5. Diferencial Competitivo
+const SlideDiferencial = () => (
+  <div className="w-full h-full p-24 flex flex-col items-center bg-background">
+    <h2 className="text-4xl font-display font-bold text-white mb-16 text-center">
+      Por que o <span className="text-primary">Velostock</span> vence?
+    </h2>
+
+    <div className="w-full max-w-5xl grid grid-cols-3 gap-8">
+      {/* Concorrentes */}
+      <div className="col-span-1 space-y-4 opacity-50 blur-[1px] hover:blur-0 transition-all duration-500">
+        <h3 className="text-xl font-bold text-slate-500 text-center mb-6">Concorrentes Tradicionais</h3>
+        <Card className="bg-transparent border-red-500/30 border-dashed">
+          <CardContent className="p-6 text-center">
+            <p className="text-red-400 font-bold mb-2">Foco Limitado</p>
+            <p className="text-sm text-slate-500">Apenas Estoque + Anúncios</p>
+          </CardContent>
+        </Card>
+        <Card className="bg-transparent border-red-500/30 border-dashed">
+          <CardContent className="p-6 text-center">
+            <p className="text-red-400 font-bold mb-2">Sem Processos</p>
+            <p className="text-sm text-slate-500">Não gerencia a operação diária</p>
+          </CardContent>
+        </Card>
+        <Card className="bg-transparent border-red-500/30 border-dashed">
+          <CardContent className="p-6 text-center">
+            <p className="text-red-400 font-bold mb-2">Dados Isolados</p>
+            <p className="text-sm text-slate-500">Sem inteligência real</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Velostock - Destaque */}
+      <div className="col-span-2 space-y-4 relative">
+        <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-xl -z-10" />
+        <h3 className="text-2xl font-bold text-white text-center mb-6 flex items-center justify-center gap-2">
+           <span className="bg-primary text-white text-xs px-2 py-1 rounded-sm">VANTAGEM</span>
+           Velostock
+        </h3>
+        
+        <div className="grid grid-cols-2 gap-4">
+          {[
+            { t: "Operação Completa", d: "Rastreio 100% de veículos e tarefas da loja." },
+            { t: "CRM com IA", d: "VeloBot com contexto total para ajudar vendedores." },
+            { t: "Financeiro Real", d: "Aprovação de custos e cálculo de margem automático." },
+            { t: "Pós-Venda", d: "Gestão de garantia integrada ao histórico." }
+          ].map((item, i) => (
+            <motion.div 
+              key={i}
+              className="bg-card p-6 rounded-xl border-l-4 border-secondary shadow-lg hover:shadow-secondary/20 transition-all"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.4 + (i * 0.1) }}
+            >
+              <h4 className="font-bold text-lg text-white mb-2">{item.t}</h4>
+              <p className="text-sm text-slate-400">{item.d}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// 6. Público & Mercado
+const SlidePublico = () => (
+  <div className="w-full h-full p-24 flex gap-12 bg-background">
+    <div className="w-1/2 flex flex-col justify-center">
+      <h2 className="text-4xl font-display font-bold text-white mb-8">
+        Mercado & Estratégia
+      </h2>
+      <div className="space-y-8">
+        <div>
+          <h3 className="text-secondary font-bold text-xl mb-2">Cliente Ideal (ICP)</h3>
+          <p className="text-slate-300">Revendas de veículos usados multimarca, com estoque entre 20 a 200 carros, que sofrem com desorganização operacional.</p>
+        </div>
+        <div>
+          <h3 className="text-primary font-bold text-xl mb-2">Estratégia de Expansão</h3>
+          <p className="text-slate-300">Início focado em nichos regionais com dores latentes, expandindo para redes de concessionárias através de módulos enterprise.</p>
+        </div>
+        <div className="pt-4 border-t border-white/10">
+           <div className="flex gap-12">
+             <div>
+               <p className="text-4xl font-bold text-white">45k+</p>
+               <p className="text-sm text-slate-500 uppercase tracking-wider mt-1">Lojas no Brasil</p>
+             </div>
+             <div>
+               <p className="text-4xl font-bold text-white">R$ 12B</p>
+               <p className="text-sm text-slate-500 uppercase tracking-wider mt-1">Mercado SaaS Auto</p>
+             </div>
+           </div>
+        </div>
+      </div>
+    </div>
+    <div className="w-1/2 flex items-center justify-center">
+      <Card className="w-full h-80 bg-card/50 border-white/10 backdrop-blur-sm">
+        <CardContent className="p-6 h-full flex flex-col">
+          <h3 className="text-lg font-medium text-white mb-4">Eficiência Operacional Projetada</h3>
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={chartData} layout="vertical">
+              <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#333" />
+              <XAxis type="number" hide />
+              <YAxis dataKey="name" type="category" width={100} tick={{fill: '#94a3b8'}} axisLine={false} tickLine={false} />
+              <Tooltip cursor={{fill: 'transparent'}} contentStyle={{backgroundColor: '#1e1b4b', borderColor: '#4c1d95', color: '#fff'}} />
+              <Bar dataKey="value" fill="url(#colorGradient)" barSize={40} radius={[0, 4, 4, 0]}>
+                {
+                  chartData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={index === 1 ? 'hsl(151, 84%, 39%)' : 'hsl(258, 90%, 66%)'} />
+                  ))
+                }
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+);
+
+// 7. Monetização
+const SlideMonetizacao = () => (
+  <div className="w-full h-full p-24 flex flex-col items-center justify-center bg-background">
+     <h2 className="text-5xl font-display font-bold text-white mb-16">
+       Modelo de Receita
+     </h2>
+     
+     <div className="flex gap-8 w-full max-w-5xl">
+       {/* Plano Basic */}
+       <div className="flex-1 bg-card/30 border border-white/5 rounded-2xl p-8 flex flex-col items-center text-center opacity-70 hover:opacity-100 transition-all">
+         <div className="text-slate-400 font-bold mb-4">MENSALIDADE SaaS</div>
+         <div className="text-4xl font-bold text-white mb-2">R$ 397<span className="text-lg font-normal text-slate-500">/mês</span></div>
+         <p className="text-sm text-slate-400 mb-8">Ticket Médio Inicial</p>
+         <ul className="text-slate-300 space-y-3 mb-8 text-sm">
+           <li>Até 50 Carros</li>
+           <li>3 Usuários</li>
+           <li>Gestão Básica</li>
+         </ul>
+       </div>
+
+       {/* Plano Pro (Destaque) */}
+       <div className="flex-1 bg-gradient-to-b from-primary/10 to-card border border-primary rounded-2xl p-8 flex flex-col items-center text-center relative transform scale-110 shadow-2xl shadow-primary/20">
+         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+           Mais Popular
+         </div>
+         <div className="text-primary font-bold mb-4">GROWTH</div>
+         <div className="text-5xl font-bold text-white mb-2">R$ 697<span className="text-lg font-normal text-slate-500">/mês</span></div>
+         <p className="text-sm text-slate-400 mb-8">Expansão e Controle</p>
+         <ul className="text-white space-y-3 mb-8 text-sm font-medium">
+           <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-secondary" /> Até 150 Carros</li>
+           <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-secondary" /> 10 Usuários</li>
+           <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-secondary" /> VeloBot IA Completo</li>
+           <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-secondary" /> CRM Avançado</li>
+         </ul>
+       </div>
+
+       {/* Futuro */}
+       <div className="flex-1 bg-card/30 border border-white/5 rounded-2xl p-8 flex flex-col items-center text-center opacity-70 hover:opacity-100 transition-all">
+         <div className="text-slate-400 font-bold mb-4">FUTURO</div>
+         <div className="text-2xl font-bold text-white mb-2">Upsell & Marketplace</div>
+         <p className="text-sm text-slate-400 mb-8">Fontes Adicionais</p>
+         <ul className="text-slate-300 space-y-3 mb-8 text-sm">
+           <li>Taxas de Financiamento</li>
+           <li>Integração com Seguros</li>
+           <li>Marketplace de Peças</li>
+         </ul>
+       </div>
+     </div>
+  </div>
+);
+
+// 8. Desafios & Encerramento
+const SlideFinal = () => (
+  <div className="w-full h-full p-24 flex flex-col items-center justify-center bg-background text-center">
+    <motion.div
+      initial={{ scale: 0.9, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="space-y-8 max-w-3xl"
+    >
+      <h2 className="text-6xl font-display font-bold text-white mb-8">
+        O Desafio Atual
+      </h2>
+      <p className="text-2xl text-slate-300 leading-relaxed">
+        "Estamos prontos para escalar, mas precisamos de parceiros estratégicos para acelerar nossa penetração no mercado e refinar nossa inteligência artificial."
+      </p>
+      
+      <div className="pt-16 mt-16 border-t border-white/10">
+        <p className="text-slate-500 uppercase tracking-widest text-sm mb-4">Entre em contato</p>
+        <h3 className="text-4xl font-bold text-primary mb-8">parceria@velostock.com.br</h3>
+        
+        <div className="flex justify-center gap-4">
+          <Button size="lg" className="rounded-full bg-secondary hover:bg-emerald-600 text-white px-8">
+            Agendar Reunião
+          </Button>
+          <Button size="lg" variant="outline" className="rounded-full border-white/20 text-white hover:bg-white/10">
+            Ver Demo
+          </Button>
+        </div>
+      </div>
+    </motion.div>
   </div>
 );
 
@@ -391,32 +490,36 @@ export default function PresentationPage() {
   }, [currentSlide]);
 
   return (
-    <div className="w-screen h-screen bg-slate-100 flex items-center justify-center overflow-hidden font-sans">
+    <div className="w-screen h-screen bg-black flex items-center justify-center overflow-hidden font-sans">
       {/* Slide Container (16:9 Aspect Ratio) */}
-      <div className="relative w-full max-w-[1600px] aspect-video bg-white shadow-2xl rounded-xl overflow-hidden border border-slate-200">
+      <div className="relative w-full max-w-[1600px] aspect-video bg-background shadow-2xl rounded-xl overflow-hidden border border-white/10">
         
         {/* Slides */}
         <div className="w-full h-full relative">
-            <SlideWrapper isActive={currentSlide === 0} direction={direction}><TitleSlide /></SlideWrapper>
-            <SlideWrapper isActive={currentSlide === 1} direction={direction}><IntroSlide /></SlideWrapper>
-            <SlideWrapper isActive={currentSlide === 2} direction={direction}><ChartSlide /></SlideWrapper>
-            <SlideWrapper isActive={currentSlide === 3} direction={direction}><TeamSlide /></SlideWrapper>
-            <SlideWrapper isActive={currentSlide === 4} direction={direction}><ContactSlide /></SlideWrapper>
+            <SlideWrapper isActive={currentSlide === 0} direction={direction}><SlideAbertura /></SlideWrapper>
+            <SlideWrapper isActive={currentSlide === 1} direction={direction}><SlideDor /></SlideWrapper>
+            <SlideWrapper isActive={currentSlide === 2} direction={direction}><SlideSolucao /></SlideWrapper>
+            <SlideWrapper isActive={currentSlide === 3} direction={direction}><SlideFuncionalidades /></SlideWrapper>
+            <SlideWrapper isActive={currentSlide === 4} direction={direction}><SlideDiferencial /></SlideWrapper>
+            <SlideWrapper isActive={currentSlide === 5} direction={direction}><SlidePublico /></SlideWrapper>
+            <SlideWrapper isActive={currentSlide === 6} direction={direction}><SlideMonetizacao /></SlideWrapper>
+            <SlideWrapper isActive={currentSlide === 7} direction={direction}><SlideFinal /></SlideWrapper>
+            {/* O roteiro tem 9 pontos, combinei Desafios e Encerramento no SlideFinal para impacto */}
         </div>
 
         {/* Floating Navigation Controls */}
         <div className="absolute bottom-8 right-8 flex items-center gap-4 z-50">
-           <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-slate-100 text-sm font-medium text-slate-500">
-             {currentSlide + 1} / {slidesData.length}
+           <div className="bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-sm font-medium text-slate-400">
+             {currentSlide + 1} / {slidesData.length - 1} {/* Adjust count for display */}
            </div>
            
            <div className="flex gap-2">
              <Button 
-               variant="outline" 
+               variant="ghost" 
                size="icon" 
                onClick={prevSlide} 
                disabled={currentSlide === 0}
-               className="rounded-full w-12 h-12 bg-white/90 hover:bg-white shadow-lg border-slate-100 disabled:opacity-50 cursor-pointer"
+               className="rounded-full w-12 h-12 bg-black/50 hover:bg-white/10 text-white border border-white/10 disabled:opacity-30"
              >
                <ChevronLeft className="w-5 h-5" />
              </Button>
@@ -425,20 +528,20 @@ export default function PresentationPage() {
                variant="default" 
                size="icon" 
                onClick={nextSlide} 
-               disabled={currentSlide === slidesData.length - 1}
-               className="rounded-full w-12 h-12 bg-primary hover:bg-blue-600 shadow-lg shadow-blue-500/30 cursor-pointer"
+               disabled={currentSlide === slidesData.length - 1} // Corrected index check
+               className="rounded-full w-12 h-12 bg-primary hover:bg-purple-600 shadow-lg shadow-purple-900/50 text-white border-0"
              >
                <ChevronRight className="w-5 h-5" />
              </Button>
            </div>
         </div>
 
-        {/* Simple Progress Bar */}
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-slate-100">
+        {/* Progress Bar */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-white/5">
           <motion.div 
-            className="h-full bg-primary"
+            className="h-full bg-gradient-to-r from-primary to-secondary"
             initial={{ width: "0%" }}
-            animate={{ width: `${((currentSlide + 1) / slidesData.length) * 100}%` }}
+            animate={{ width: `${((currentSlide + 1) / (slidesData.length)) * 100}%` }} // Corrected logic
             transition={{ duration: 0.5 }}
           />
         </div>
