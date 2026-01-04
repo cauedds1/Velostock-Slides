@@ -16,7 +16,8 @@ import {
   TrendingUp,
   DollarSign,
   Maximize2,
-  Minimize2
+  Minimize2,
+  X
 } from "lucide-react";
 import { 
   BarChart, 
@@ -75,10 +76,42 @@ const revenueData = [
   { name: "Ano 3", value: 8.0 },
 ];
 
+// --- Components ---
+
+const ImageModal = ({ src, onClose }: { src: string | null, onClose: () => void }) => {
+  if (!src) return null;
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+      className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-8 cursor-zoom-out"
+    >
+      <motion.img 
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        src={src} 
+        className="max-w-full max-h-full object-contain rounded-lg shadow-2xl border border-white/10"
+        onClick={(e) => e.stopPropagation()} 
+      />
+      <Button 
+        variant="ghost" 
+        size="icon" 
+        onClick={onClose} 
+        className="absolute top-4 right-4 text-white hover:bg-white/10 rounded-full w-12 h-12"
+      >
+        <X size={24} />
+      </Button>
+    </motion.div>
+  );
+};
+
 // --- Slide Components ---
 
 // 1. Abertura
-const Slide1_Abertura = () => (
+const Slide1_Abertura = ({ onImageClick }: { onImageClick: (src: string) => void }) => (
   <div className="w-full h-full flex flex-col lg:flex-row relative z-10">
     <div className="w-full lg:w-1/2 h-full flex flex-col justify-center px-12 lg:px-24">
       <motion.div 
@@ -121,7 +154,8 @@ const Slide1_Abertura = () => (
           <img 
             src={imgDashboard} 
             alt="Velostock Dashboard" 
-            className="w-full h-auto object-contain rounded-xl shadow-2xl border border-white/10 rotate-[-2deg] hover:rotate-0 transition-transform duration-700" 
+            onClick={() => onImageClick(imgDashboard)}
+            className="w-full h-auto object-contain rounded-xl shadow-2xl border border-white/10 rotate-[-2deg] hover:rotate-0 transition-transform duration-700 cursor-zoom-in hover:scale-[1.02]" 
           />
        </div>
     </div>
@@ -180,7 +214,7 @@ const Slide2_Dor = () => (
 );
 
 // 3. Solução
-const Slide3_Solucao = () => (
+const Slide3_Solucao = ({ onImageClick }: { onImageClick: (src: string) => void }) => (
   <div className="w-full h-full flex flex-col lg:flex-row">
     <div className="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-background z-10">
        <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4">A SOLUÇÃO</span>
@@ -226,15 +260,15 @@ const Slide3_Solucao = () => (
     <div className="w-full lg:w-1/2 bg-black relative flex items-center justify-center overflow-hidden p-12">
        {/* Feature Showcase Grid */}
        <div className="grid grid-cols-1 gap-6 w-full h-full relative z-10 opacity-90 rotate-[-2deg] scale-95 hover:rotate-0 hover:scale-100 transition-all duration-700 ease-out justify-center content-center">
-          <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative group">
-             <img src={imgHome} alt="Home Screen" className="w-full h-auto object-contain" />
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative group cursor-zoom-in" onClick={() => onImageClick(imgHome)}>
+             <img src={imgHome} alt="Home Screen" className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform" />
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-               <img src={imgDashboard} alt="Dashboard" className="w-full h-full object-cover object-left-top" />
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 cursor-zoom-in group" onClick={() => onImageClick(imgDashboard)}>
+               <img src={imgDashboard} alt="Dashboard" className="w-full h-full object-cover object-left-top group-hover:scale-[1.02] transition-transform" />
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-               <img src={imgPipeline} alt="Pipeline" className="w-full h-full object-cover object-left-top" />
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 cursor-zoom-in group" onClick={() => onImageClick(imgPipeline)}>
+               <img src={imgPipeline} alt="Pipeline" className="w-full h-full object-cover object-left-top group-hover:scale-[1.02] transition-transform" />
             </div>
           </div>
        </div>
@@ -244,7 +278,7 @@ const Slide3_Solucao = () => (
 );
 
 // 4. Funcionalidades
-const Slide4_Funcionalidades = () => (
+const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) => void }) => (
   <div className="w-full h-full p-8 lg:p-12 bg-background relative flex flex-col">
     <div className="text-center mb-8 shrink-0">
       <h2 className="text-3xl font-display font-bold text-white mb-2">15 Funcionalidades Principais</h2>
@@ -255,29 +289,29 @@ const Slide4_Funcionalidades = () => (
        {/* Left Column: Visual Showcase */}
        <div className="col-span-12 lg:col-span-7 grid grid-cols-2 gap-4 h-full overflow-y-auto pr-2 custom-scrollbar">
           <div className="space-y-4">
-             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all">
+             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgVeiculos)}>
                 <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Gestão de Veículos</div>
                 <img src={imgVeiculos} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
              </div>
-             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all">
+             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgLead)}>
                 <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">CRM & Leads</div>
                 <img src={imgLead} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
              </div>
-             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all">
+             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgFinanceiro)}>
                 <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Financeiro</div>
                 <img src={imgFinanceiro} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
              </div>
           </div>
           <div className="space-y-4 mt-8">
-             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all">
+             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgGarantia)}>
                 <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Garantia</div>
                 <img src={imgGarantia} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
              </div>
-             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all">
+             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgCustos)}>
                 <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Controle de Custos</div>
                 <img src={imgCustos} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
              </div>
-              <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all">
+              <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all cursor-zoom-in" onClick={() => onImageClick(imgRelatorio)}>
                 <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Relatórios</div>
                 <img src={imgRelatorio} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
              </div>
@@ -320,7 +354,7 @@ const Slide4_Funcionalidades = () => (
 );
 
 // 4.5. Admin Panel
-const Slide_Admin = () => (
+const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) => (
   <div className="w-full h-full p-12 lg:p-20 bg-background flex flex-col">
     <div className="flex justify-between items-end mb-12">
       <div>
@@ -341,11 +375,11 @@ const Slide_Admin = () => (
     <div className="grid grid-cols-12 gap-8 flex-1 overflow-hidden">
        {/* Visuals - Left */}
        <div className="col-span-7 flex flex-col gap-6 h-full">
-          <div className="flex-1 bg-card rounded-xl border border-white/10 overflow-hidden relative group">
+          <div className="flex-1 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in" onClick={() => onImageClick(imgAdminDash)}>
              <div className="absolute top-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-bold text-white z-10 border border-white/10">Dashboard Global (MRR & Clientes)</div>
              <img src={imgAdminDash} className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity" />
           </div>
-          <div className="h-1/3 bg-card rounded-xl border border-white/10 overflow-hidden relative group">
+          <div className="h-1/3 bg-card rounded-xl border border-white/10 overflow-hidden relative group cursor-zoom-in" onClick={() => onImageClick(imgAdminBugs)}>
              <div className="absolute top-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-bold text-white z-10 border border-white/10">Gestão de Bugs</div>
              <img src={imgAdminBugs} className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity" />
           </div>
@@ -392,7 +426,7 @@ const Slide_Admin = () => (
 );
 
 // 5. Diferencial
-const Slide5_Diferencial = () => (
+const Slide5_Diferencial = ({ onImageClick }: { onImageClick: (src: string) => void }) => (
   <div className="w-full h-full p-12 lg:p-24 bg-background flex flex-col items-center">
     <h2 className="text-4xl font-display font-bold text-white mb-12">Diferencial Competitivo</h2>
     
@@ -431,7 +465,7 @@ const Slide5_Diferencial = () => (
 
        <div className="relative">
           <div className="absolute -inset-4 bg-gradient-to-r from-primary/30 to-secondary/30 blur-2xl rounded-full opacity-50" />
-          <div className="relative z-10 bg-card border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+          <div className="relative z-10 bg-card border border-white/10 rounded-2xl overflow-hidden shadow-2xl cursor-zoom-in" onClick={() => onImageClick(imgObs)}>
               <div className="bg-black/50 p-4 border-b border-white/10 flex justify-between items-center">
                  <span className="font-bold text-white text-sm">Observações da Loja</span>
                  <div className="flex gap-2">
@@ -439,8 +473,8 @@ const Slide5_Diferencial = () => (
                     <div className="w-2 h-2 rounded-full bg-yellow-500" />
                  </div>
               </div>
-              <img src={imgObs} alt="Observações Gerais" className="w-full opacity-90" />
-              <div className="p-4 bg-black/80 backdrop-blur absolute bottom-0 w-full border-t border-white/10">
+              <img src={imgObs} alt="Observações Gerais" className="w-full opacity-90 hover:opacity-100 transition-opacity" />
+              <div className="p-4 bg-black/80 backdrop-blur absolute bottom-0 w-full border-t border-white/10 pointer-events-none">
                  <p className="text-xs text-slate-300">
                    <strong className="text-secondary">Exclusivo:</strong> Gerencie desde a compra de café até a manutenção do portão da loja. Nenhum concorrente faz isso.
                  </p>
@@ -635,6 +669,7 @@ const Slide9_Encerramento = () => (
 export default function PresentationPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   // Components mapping
   const slides = [
@@ -650,6 +685,9 @@ export default function PresentationPage() {
     Slide9_Encerramento
   ];
 
+  // We need to pass onImageClick to components that accept it.
+  // We can render them using cloneElement if they were instances, but here they are functions.
+  // We can just call them with props.
   const CurrentSlideComponent = slides[currentSlide];
 
   const nextSlide = () => {
@@ -675,16 +713,29 @@ export default function PresentationPage() {
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Disable slide navigation if image modal is open (Escape closes modal)
+      if (selectedImage) {
+        if (e.key === "Escape") setSelectedImage(null);
+        return;
+      }
+
       if (e.key === "ArrowRight" || e.key === "Space") nextSlide();
       if (e.key === "ArrowLeft") prevSlide();
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [currentSlide]);
+  }, [currentSlide, selectedImage]);
 
   return (
     <div className="w-screen h-screen bg-black text-white overflow-hidden flex flex-col items-center justify-center font-sans">
       
+      {/* Image Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <ImageModal src={selectedImage} onClose={() => setSelectedImage(null)} />
+        )}
+      </AnimatePresence>
+
       {/* Presentation Container */}
       <div className="relative w-full h-full max-w-[1920px] max-h-[1080px] bg-background shadow-2xl overflow-hidden">
         
@@ -699,7 +750,14 @@ export default function PresentationPage() {
                transition={{ duration: 0.4 }}
                className="w-full h-full"
              >
-               <CurrentSlideComponent />
+               {/* Pass onImageClick to all slides; only those that use it will consume it */}
+               {/* TypeScript might complain if we don't type it properly, but here we can just cast or ignore if strictness allows, 
+                   or better, ensure all components accept the prop (even if optional) or check which one we are rendering.
+                   For simplicity in this file-rewrite, I updated relevant components to accept it.
+                   Components without the prop will just ignore extra args if called as functions, but React Components expect exact props.
+                   Let's safely render.
+               */}
+               <CurrentSlideComponent onImageClick={setSelectedImage} />
              </motion.div>
            </AnimatePresence>
         </div>
