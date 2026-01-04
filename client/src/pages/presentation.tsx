@@ -89,7 +89,7 @@ const Slide1_Abertura = () => (
         <span className="text-secondary font-display font-bold tracking-widest uppercase text-sm mb-6 block glow-text">
           Revolução na Gestão Automotiva
         </span>
-        <h1 className="text-6xl lg:text-7xl font-display font-black text-white leading-none mb-6">
+        <h1 className="text-5xl lg:text-7xl font-display font-black text-white leading-none mb-6">
           VELO<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">STOCK</span>
         </h1>
         <h2 className="text-2xl lg:text-3xl font-light text-slate-300 mb-8 border-l-4 border-primary pl-6 py-2">
@@ -703,26 +703,26 @@ export default function PresentationPage() {
         </div>
 
         {/* Overlay Controls (Hide in print/export if needed, but useful for interactive) */}
-        <div className="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end bg-gradient-to-t from-black/80 to-transparent pointer-events-none">
+        <div className="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end bg-gradient-to-t from-black/80 to-transparent z-50 pointer-events-none">
            <div className="pointer-events-auto flex items-center gap-4">
              <div className="text-xs font-bold text-slate-500 uppercase tracking-widest">
                {slidesData[currentSlide].label}
              </div>
            </div>
            
-           <div className="pointer-events-auto flex items-center gap-4">
+           <div className="pointer-events-auto flex items-center gap-4 relative z-50">
               <span className="text-sm font-mono text-slate-500">
                 {currentSlide + 1} / {slides.length}
               </span>
-              <div className="flex gap-2 bg-white/10 backdrop-blur rounded-full p-1">
-                 <Button variant="ghost" size="icon" onClick={prevSlide} disabled={currentSlide === 0} className="rounded-full hover:bg-white/10 w-8 h-8 text-white">
+              <div className="flex gap-2 bg-white/10 backdrop-blur rounded-full p-1 cursor-pointer">
+                 <Button variant="ghost" size="icon" onClick={prevSlide} disabled={currentSlide === 0} className="rounded-full hover:bg-white/10 w-8 h-8 text-white z-50 cursor-pointer pointer-events-auto">
                    <ChevronLeft size={16} />
                  </Button>
-                 <Button variant="ghost" size="icon" onClick={nextSlide} disabled={currentSlide === slides.length - 1} className="rounded-full hover:bg-white/10 w-8 h-8 text-white">
+                 <Button variant="ghost" size="icon" onClick={nextSlide} disabled={currentSlide === slides.length - 1} className="rounded-full hover:bg-white/10 w-8 h-8 text-white z-50 cursor-pointer pointer-events-auto">
                    <ChevronRight size={16} />
                  </Button>
               </div>
-              <Button variant="ghost" size="icon" onClick={toggleFullscreen} className="rounded-full hover:bg-white/10 text-white">
+              <Button variant="ghost" size="icon" onClick={toggleFullscreen} className="rounded-full hover:bg-white/10 text-white z-50 cursor-pointer pointer-events-auto">
                  {isFullscreen ? <Minimize2 size={16}/> : <Maximize2 size={16}/>}
               </Button>
            </div>
