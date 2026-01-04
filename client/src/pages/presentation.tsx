@@ -36,6 +36,16 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 import heroBg from "@assets/generated_images/velostock_dashboard_concept_car_dealership.png";
+import imgHome from "@assets/image_1767533322826.png";
+import imgDashboard from "@assets/image_1767533379093.png";
+import imgPipeline from "@assets/image_1767533417621.png";
+import imgVeiculos from "@assets/image_1767533439129.png";
+import imgLead from "@assets/image_1767533495120.png";
+import imgGarantia from "@assets/image_1767533511714.png";
+import imgFinanceiro from "@assets/image_1767533541756.png";
+import imgRelatorio from "@assets/image_1767533606589.png";
+import imgCustos from "@assets/image_1767533643852.png";
+import imgObs from "@assets/image_1767533726985.png";
 
 // --- Data ---
 
@@ -203,90 +213,95 @@ const Slide3_Solucao = () => (
          </div>
        </div>
     </div>
-    <div className="w-full lg:w-1/2 bg-white/5 relative flex items-center justify-center overflow-hidden">
-       {/* Abstract visualization of the system */}
-       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10" />
-       <div className="relative z-10 w-3/4 aspect-square bg-card rounded-2xl border border-white/10 shadow-2xl p-6 flex flex-col gap-4 rotate-3 hover:rotate-0 transition-transform duration-700">
-          <div className="flex items-center gap-4 border-b border-white/5 pb-4">
-            <div className="w-3 h-3 rounded-full bg-red-500" />
-            <div className="w-3 h-3 rounded-full bg-yellow-500" />
-            <div className="w-3 h-3 rounded-full bg-green-500" />
-            <div className="ml-auto w-32 h-2 bg-white/10 rounded-full" />
+    <div className="w-full lg:w-1/2 bg-black relative flex items-center justify-center overflow-hidden p-12">
+       {/* Feature Showcase Grid */}
+       <div className="grid grid-cols-2 gap-4 w-full h-full relative z-10 opacity-90 rotate-[-2deg] scale-95 hover:rotate-0 hover:scale-100 transition-all duration-700 ease-out">
+          <div className="row-span-2 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+             <img src={imgHome} alt="Home Screen" className="w-full h-full object-cover" />
           </div>
-          <div className="grid grid-cols-2 gap-4 flex-1">
-             <div className="bg-white/5 rounded-lg p-4 space-y-2">
-                <div className="w-8 h-8 bg-primary/20 rounded mb-2" />
-                <div className="w-full h-2 bg-white/10 rounded" />
-                <div className="w-2/3 h-2 bg-white/10 rounded" />
-             </div>
-             <div className="bg-white/5 rounded-lg p-4 space-y-2">
-                <div className="w-8 h-8 bg-secondary/20 rounded mb-2" />
-                <div className="w-full h-2 bg-white/10 rounded" />
-                <div className="w-2/3 h-2 bg-white/10 rounded" />
-             </div>
-             <div className="col-span-2 bg-white/5 rounded-lg p-4 mt-auto">
-                <div className="flex justify-between items-end h-24 gap-2">
-                   {[40, 60, 30, 80, 50, 90, 70].map((h, i) => (
-                     <div key={i} className="w-full bg-primary/50 rounded-t" style={{height: `${h}%`}} />
-                   ))}
-                </div>
-             </div>
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+             <img src={imgDashboard} alt="Dashboard" className="w-full h-full object-cover" />
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+             <img src={imgPipeline} alt="Pipeline" className="w-full h-full object-cover" />
           </div>
        </div>
+       <div className="absolute inset-0 bg-gradient-to-l from-background via-transparent to-transparent pointer-events-none" />
     </div>
   </div>
 );
 
 // 4. Funcionalidades
 const Slide4_Funcionalidades = () => (
-  <div className="w-full h-full p-12 lg:p-20 bg-background relative">
-    <div className="text-center mb-12">
-      <h2 className="text-4xl font-display font-bold text-white mb-4">15 Funcionalidades Principais</h2>
+  <div className="w-full h-full p-8 lg:p-12 bg-background relative flex flex-col">
+    <div className="text-center mb-8 shrink-0">
+      <h2 className="text-3xl font-display font-bold text-white mb-2">15 Funcionalidades Principais</h2>
       <p className="text-slate-400">O stack completo para a operação</p>
     </div>
 
-    <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 max-w-7xl mx-auto">
-      {[
-        "Gestão de Veículos (Kanban)",
-        "Controle de Custos",
-        "Vendas e Comissões",
-        "Garantia",
-        "Obs. Internas",
-        "Contas a Pagar/Receber",
-        "CRM e Leads",
-        "Follow-ups",
-        "IA (VeloBot)",
-        "Dashboard",
-        "Usuários/Permissões",
-        "Configurações",
-        "Relatórios",
-        "Documentos",
-        "Checklists"
-      ].map((func, i) => (
-        <motion.div 
-          key={i}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: i * 0.05 }}
-          className="bg-card border border-white/5 p-4 rounded-xl flex items-center justify-center text-center hover:border-primary/50 hover:bg-white/5 transition-colors cursor-default"
-        >
-           <span className="text-sm font-medium text-slate-200">{func}</span>
-        </motion.div>
-      ))}
-    </div>
+    <div className="flex-1 grid grid-cols-12 gap-6 h-full overflow-hidden pb-4">
+       {/* Left Column: Visual Showcase */}
+       <div className="col-span-12 lg:col-span-7 grid grid-cols-2 gap-4 h-full overflow-y-auto pr-2 custom-scrollbar">
+          <div className="space-y-4">
+             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all">
+                <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Gestão de Veículos</div>
+                <img src={imgVeiculos} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
+             </div>
+             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all">
+                <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">CRM & Leads</div>
+                <img src={imgLead} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
+             </div>
+             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all">
+                <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Financeiro</div>
+                <img src={imgFinanceiro} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
+             </div>
+          </div>
+          <div className="space-y-4 mt-8">
+             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all">
+                <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Garantia</div>
+                <img src={imgGarantia} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
+             </div>
+             <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all">
+                <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Controle de Custos</div>
+                <img src={imgCustos} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
+             </div>
+              <div className="group relative rounded-xl overflow-hidden border border-white/10 bg-card hover:border-primary/50 transition-all">
+                <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Relatórios</div>
+                <img src={imgRelatorio} className="w-full opacity-80 group-hover:opacity-100 transition-opacity" />
+             </div>
+          </div>
+       </div>
 
-    <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-       <div className="glass-panel p-6 rounded-xl border-l-4 border-primary">
-         <h3 className="text-primary font-bold mb-2 flex items-center gap-2"><BrainCircuit size={18}/> VeloBot IA</h3>
-         <p className="text-xs text-slate-400">Assistente que cria anúncios, sugere preços e dá dicas de venda.</p>
-       </div>
-       <div className="glass-panel p-6 rounded-xl border-l-4 border-secondary">
-         <h3 className="text-secondary font-bold mb-2 flex items-center gap-2"><Target size={18}/> Rastreio Total</h3>
-         <p className="text-xs text-slate-400">Timeline completa de tudo que aconteceu com o veículo.</p>
-       </div>
-       <div className="glass-panel p-6 rounded-xl border-l-4 border-blue-500">
-         <h3 className="text-blue-500 font-bold mb-2 flex items-center gap-2"><ShieldCheck size={18}/> Financeiro</h3>
-         <p className="text-xs text-slate-400">Aprovação de custos por gerentes antes do gasto acontecer.</p>
+       {/* Right Column: Feature List */}
+       <div className="col-span-12 lg:col-span-5 flex flex-col justify-center gap-2">
+          {[
+            "Gestão de Veículos (Kanban)",
+            "Controle de Custos",
+            "Vendas e Comissões",
+            "Garantia",
+            "Obs. Internas",
+            "Contas a Pagar/Receber",
+            "CRM e Leads",
+            "Follow-ups",
+            "IA (VeloBot)",
+            "Dashboard",
+            "Usuários/Permissões",
+            "Configurações",
+            "Relatórios",
+            "Documentos",
+            "Checklists"
+          ].map((func, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.03 }}
+              className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors"
+            >
+               <div className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
+               <span className="text-sm text-slate-300 font-medium">{func}</span>
+            </motion.div>
+          ))}
        </div>
     </div>
   </div>
@@ -295,9 +310,9 @@ const Slide4_Funcionalidades = () => (
 // 5. Diferencial
 const Slide5_Diferencial = () => (
   <div className="w-full h-full p-12 lg:p-24 bg-background flex flex-col items-center">
-    <h2 className="text-4xl font-display font-bold text-white mb-16">Diferencial Competitivo</h2>
+    <h2 className="text-4xl font-display font-bold text-white mb-12">Diferencial Competitivo</h2>
     
-    <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
        <div className="space-y-8">
           <div className="relative pl-8 border-l border-white/10">
              <div className="absolute -left-3 top-0 w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs text-slate-500">VS</div>
@@ -312,14 +327,14 @@ const Slide5_Diferencial = () => (
           <div className="relative pl-8 border-l-4 border-primary">
              <h3 className="text-3xl font-bold text-white mb-4">Velostock</h3>
              <ul className="space-y-4 text-white">
-               <li className="flex items-center gap-3 bg-white/5 p-3 rounded-lg">
+               <li className="flex items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/5">
                  <CheckCircle className="text-secondary w-5 h-5 shrink-0" />
                  <div>
                    <span className="font-bold block">Visão 360°</span>
                    <span className="text-sm text-slate-400">Estoque + Fiscal + Publicidade + Operação</span>
                  </div>
                </li>
-               <li className="flex items-center gap-3 bg-white/5 p-3 rounded-lg">
+               <li className="flex items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/5">
                  <BrainCircuit className="text-primary w-5 h-5 shrink-0" />
                  <div>
                    <span className="font-bold block">IA Contextual</span>
@@ -330,33 +345,22 @@ const Slide5_Diferencial = () => (
           </div>
        </div>
 
-       <div className="bg-card p-8 rounded-2xl border border-white/10 shadow-2xl">
-          <h4 className="text-center text-slate-400 text-sm uppercase tracking-widest mb-6">Comparativo de Funcionalidades</h4>
-          <div className="space-y-4">
-             {[
-               { name: "Gestão de Estoque", comp: true, velo: true },
-               { name: "Integração Portais", comp: true, velo: true },
-               { name: "CRM Avançado", comp: false, velo: true },
-               { name: "Aprovação Custos", comp: false, velo: true },
-               { name: "IA Generativa", comp: false, velo: true },
-               { name: "Tarefas da Loja", comp: false, velo: true },
-             ].map((row, i) => (
-               <div key={i} className="flex items-center justify-between border-b border-white/5 pb-2 last:border-0">
-                 <span className="text-slate-300">{row.name}</span>
-                 <div className="flex gap-12 w-32 justify-end">
-                   <div className={`w-6 h-6 flex items-center justify-center ${row.comp ? 'text-slate-500' : 'text-slate-700'}`}>
-                     {row.comp ? '✓' : '-'}
-                   </div>
-                   <div className="w-6 h-6 flex items-center justify-center text-secondary font-bold">
-                     ✓
-                   </div>
+       <div className="relative">
+          <div className="absolute -inset-4 bg-gradient-to-r from-primary/30 to-secondary/30 blur-2xl rounded-full opacity-50" />
+          <div className="relative z-10 bg-card border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+              <div className="bg-black/50 p-4 border-b border-white/10 flex justify-between items-center">
+                 <span className="font-bold text-white text-sm">Observações da Loja</span>
+                 <div className="flex gap-2">
+                    <div className="w-2 h-2 rounded-full bg-red-500" />
+                    <div className="w-2 h-2 rounded-full bg-yellow-500" />
                  </div>
-               </div>
-             ))}
-             <div className="flex justify-end gap-12 w-full pt-2 text-xs text-slate-500 uppercase font-bold">
-               <span className="w-6 text-center">Outros</span>
-               <span className="w-6 text-center text-primary">Velo</span>
-             </div>
+              </div>
+              <img src={imgObs} alt="Observações Gerais" className="w-full opacity-90" />
+              <div className="p-4 bg-black/80 backdrop-blur absolute bottom-0 w-full border-t border-white/10">
+                 <p className="text-xs text-slate-300">
+                   <strong className="text-secondary">Exclusivo:</strong> Gerencie desde a compra de café até a manutenção do portão da loja. Nenhum concorrente faz isso.
+                 </p>
+              </div>
           </div>
        </div>
     </div>
