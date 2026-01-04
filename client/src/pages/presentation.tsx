@@ -279,68 +279,68 @@ const Slide3_Solucao = ({ onImageClick }: { onImageClick: (src: string) => void 
 
 // 4. Funcionalidades
 const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) => void }) => {
-  const [selectedFeature, setSelectedFeature] = useState<{title: string, desc: string} | null>(null);
+  const [selectedFeatureIndex, setSelectedFeatureIndex] = useState<number | null>(null);
 
   const features = [
     { 
       title: "Gestão de Veículos (Kanban)", 
-      desc: "Visualize todo o seu estoque em um quadro Kanban intuitivo. Arraste e solte veículos entre estágios como 'Em Preparação', 'Disponível', 'Em Negociação' e 'Vendido'. Tenha uma visão clara do fluxo de entrada e saída, identifique gargalos na preparação e saiba exatamente onde cada carro está no processo de venda." 
+      desc: "Visualize e organize todo o seu estoque através de um quadro Kanban intuitivo e interativo. Arraste e solte cartões de veículos entre estágios personalizáveis como 'Em Preparação', 'Disponível', 'Em Negociação', 'Reservado' e 'Vendido'. Tenha uma visão panorâmica e clara do fluxo de entrada e saída, identifique gargalos operacionais na preparação (ex: demora na funilaria) e saiba exatamente onde cada carro está no funil de vendas a qualquer momento, eliminando a necessidade de perguntar para a equipe." 
     },
     { 
-      title: "Controle de Custos", 
-      desc: "Registre cada centavo investido no veículo, desde a compra até a preparação final. Lance custos de funilaria, mecânica, peças e lavagem vinculados ao chassi. O sistema calcula automaticamente o custo total do veículo, permitindo que você saiba a margem de lucro real (e não a estimada) no momento da venda." 
+      title: "Controle de Custos Detalhado", 
+      desc: "Acabe com a ilusão de lucro. Registre cada centavo investido no veículo, desde o valor de compra até a preparação final. Lance custos de funilaria, mecânica, peças, lavagem, comissões de compra e taxas de despachante vinculados diretamente ao chassi do carro. O sistema soma tudo automaticamente, permitindo que você visualize o Custo Total real do veículo e a Margem de Contribuição líquida exata no momento da venda, evitando prejuízos disfarçados." 
     },
     { 
-      title: "Vendas e Comissões", 
-      desc: "Formalize vendas com facilidade. O sistema gera o pedido de venda, calcula automaticamente as comissões de vendedores (seja porcentagem ou valor fixo) e de parceiros/captadores. Evite disputas e erros de cálculo no fechamento do mês com um relatório transparente de comissões a pagar." 
+      title: "Vendas e Comissões Automatizadas", 
+      desc: "Formalize vendas com rapidez e segurança. O sistema gera automaticamente o pedido de venda digital, o contrato e o recibo. Configure regras de comissão flexíveis (porcentagem, valor fixo, escalonada) para vendedores, gerentes e captadores/parceiros. O cálculo é feito automaticamente no fechamento da venda, gerando um extrato financeiro de comissões a pagar transparente, eliminando planilhas paralelas, erros de cálculo e disputas com a equipe comercial no final do mês." 
     },
     { 
-      title: "Garantia", 
-      desc: "Gerencie prazos legais (90 dias) e garantias estendidas de forma profissional. Receba alertas automáticos de vencimento de garantias. Registre ocorrências e custos de reparo pós-venda para ter um histórico completo da qualidade do seu estoque e do custo de garantia por veículo." 
+      title: "Gestão Profissional de Garantia", 
+      desc: "Proteja sua loja juridicamente e financeiramente. Gerencie prazos de garantia legal (90 dias) e garantias estendidas contratuais. O sistema alerta automaticamente sobre o vencimento de garantias. Registre todas as ocorrências, aprovações de reparo e custos pós-venda vinculados à venda original. Tenha um histórico completo da qualidade do seu estoque e descubra qual modelo de carro ou fornecedor está gerando mais custo de garantia para o seu negócio." 
     },
     { 
-      title: "Obs. Internas", 
-      desc: "Elimine a comunicação perdida no WhatsApp. Adicione notas internas vinculadas a cada veículo ou cliente que apenas a equipe pode ver. Registre detalhes como 'pneu precisa trocar', 'cliente prefere contato à tarde' ou 'documento pendente no despachante'. Centralize a inteligência da operação." 
+      title: "Observações Internas Centralizadas", 
+      desc: "Elimine a comunicação descentralizada e perdida no WhatsApp. Adicione notas internas sigilosas vinculadas a cada veículo ou cliente que apenas a equipe autorizada pode ver. Registre detalhes cruciais como 'pneu precisa trocar antes da entrega', 'cliente prefere contato à tarde', 'documento pendente no despachante' ou 'avaliação de troca pendente'. Centralize a inteligência da operação em um único lugar acessível a todos os envolvidos." 
     },
     { 
-      title: "Contas a Pagar/Receber", 
-      desc: "Integração total entre operação e financeiro. Ao registrar uma compra ou custo de reparo, o contas a pagar é alimentado automaticamente. Ao fechar uma venda, o contas a receber é gerado com as parcelas e datas corretas. Controle seu fluxo de caixa sem precisar lançar a mesma informação duas vezes." 
+      title: "Financeiro Integrado (Contas a Pagar/Receber)", 
+      desc: "Integração total e automática entre operação e financeiro. Ao registrar uma compra de veículo ou lançar um custo de reparo, o contas a pagar é alimentado automaticamente. Ao fechar uma venda, o contas a receber é gerado com as parcelas, datas de vencimento e formas de pagamento corretas. Controle seu fluxo de caixa previsto e realizado, inadimplência e projeção financeira sem precisar lançar a mesma informação duas vezes em sistemas diferentes." 
     },
     { 
-      title: "CRM e Leads", 
-      desc: "Centralize todos os seus leads (Webmotors, OLX, Site, Instagram) em um único pipeline de vendas. Distribua leads automaticamente para os vendedores, agende tarefas, registre interações e acompanhe a taxa de conversão. Nunca mais perca uma venda por esquecer de responder um cliente." 
+      title: "CRM e Gestão de Leads", 
+      desc: "Centralize todos os seus leads vindos de portais (Webmotors, OLX), site próprio e redes sociais (Instagram, Facebook) em um único pipeline de vendas organizado. Distribua leads automaticamente para os vendedores (roleta), agende tarefas de contato, registre todo o histórico de conversas e acompanhe a taxa de conversão por canal e por vendedor. Garanta que nenhum cliente fique sem resposta e aumente suas vendas recuperando contatos antigos." 
     },
     { 
-      title: "Follow-ups", 
-      desc: "O sistema trabalha para você. Crie lembretes automáticos para retomar contato com clientes. Se um cliente disse 'me liga dia 10', o sistema vai te cobrar. Mantenha o relacionamento ativo com quem comprou para futuras trocas e indicações. Transforme o pós-venda em novas vendas." 
+      title: "Follow-ups Inteligentes", 
+      desc: "O sistema trabalha proativamente para você. Crie lembretes automáticos e cadências de contato para não deixar o cliente esfriar. Se um cliente disse 'me liga dia 10', o sistema vai te cobrar e notificar o vendedor. Mantenha o relacionamento ativo com quem já comprou para estimular futuras trocas, revisões ou indicações. Transforme o pós-venda em uma nova fonte de receita recorrente." 
     },
     { 
-      title: "IA (VeloBot)", 
-      desc: "Seu assistente virtual inteligente disponível 24/7. O VeloBot gera descrições de anúncios persuasivas e otimizadas para cada veículo com um clique. Ele também pode analisar dados do estoque para sugerir preços e responder dúvidas operacionais, economizando horas de trabalho manual da equipe." 
+      title: "IA (VeloBot) - Assistente Virtual", 
+      desc: "Potencialize sua equipe com Inteligência Artificial. O VeloBot é seu assistente virtual disponível 24/7. Ele gera descrições de anúncios completas, persuasivas e otimizadas para SEO para cada veículo com um único clique, economizando horas de digitação. Além disso, ele pode analisar dados do seu estoque para sugerir preços de venda baseados no mercado e responder dúvidas operacionais da equipe instantaneamente." 
     },
     { 
-      title: "Dashboard", 
-      desc: "Tome decisões baseadas em dados, não em achismos. Acompanhe em tempo real indicadores cruciais (KPIs) como MRR, Ticket Médio, Giro de Estoque, Carros parados há mais de 60 dias e Lucratividade por Venda. Uma visão de 'piloto de avião' para o dono da revenda." 
+      title: "Dashboard de Indicadores (BI)", 
+      desc: "Tome decisões estratégicas baseadas em dados reais, não em intuição. Acompanhe em tempo real indicadores chave de desempenho (KPIs) em painéis visuais. Monitore o Ticket Médio, Giro de Estoque, Tempo Médio de Pátio, Carros parados há mais de 60 dias, Lucratividade por Venda e Performance Financeira. Uma visão de 'piloto de avião' para o dono da revenda identificar tendências e corrigir rotas rapidamente." 
     },
     { 
-      title: "Usuários/Permissões", 
-      desc: "Segurança e controle total. Defina exatamente o que cada funcionário pode ver e fazer. O vendedor vê apenas seus leads e não tem acesso ao lucro real dos carros. O gerente tem visão operacional mas não altera configurações financeiras. Proteja os dados sensíveis do seu negócio." 
+      title: "Controle de Acesso e Permissões", 
+      desc: "Segurança total para os dados do seu negócio. Defina perfis de acesso granulares (Vendedor, Gerente, Financeiro, Sócio). O vendedor vê apenas seus próprios leads e não tem acesso ao custo de compra ou lucro real dos carros. O gerente tem visão operacional mas não altera configurações sensíveis. Garanta que cada colaborador tenha acesso apenas ao necessário para sua função, protegendo informações estratégicas." 
     },
     { 
-      title: "Configurações", 
-      desc: "Personalize o Velostock para a realidade da sua loja. Cadastre suas próprias categorias de despesas, origens de leads, bancos parceiros e metas de vendas. Configure os dados da sua empresa para que saiam automaticamente em todos os documentos e contratos gerados." 
+      title: "Configurações Personalizáveis", 
+      desc: "O Velostock se adapta à sua loja, e não o contrário. Personalize o sistema para refletir a realidade do seu negócio. Cadastre suas próprias categorias de despesas, origens de leads, bancos financiadores parceiros, formas de pagamento e metas de vendas mensais. Configure os dados fiscais e visuais da sua empresa para que saiam automaticamente padronizados em todos os documentos e contratos gerados." 
     },
     { 
-      title: "Relatórios", 
-      desc: "Relatórios detalhados para análise profunda. Gere DRE (Demonstrativo de Resultado do Exercício) gerencial, Curva ABC de estoque (quais carros dão mais lucro), Performance por Vendedor e Relatório de Custos por Categoria. Exporte tudo para PDF ou Excel para reuniões e contabilidade." 
+      title: "Relatórios Gerenciais Avançados", 
+      desc: "Vá além do básico com relatórios detalhados para análise profunda. Gere DRE (Demonstrativo de Resultado do Exercício) gerencial automático, Curva ABC de estoque (quais carros dão mais lucro ou giram mais rápido), Ranking de Vendas e Relatório de Custos por Categoria. Filtre por período, exporte tudo para PDF ou Excel para reuniões de diretoria e envio para a contabilidade, facilitando a gestão tributária." 
     },
     { 
-      title: "Documentos", 
-      desc: "Adeus Word e preenchimento manual. Gere contratos de compra e venda, recibos de sinal, termos de garantia e propostas comerciais automaticamente com os dados do sistema. Padronize a documentação da loja, evite erros de digitação e transmita muito mais profissionalismo ao cliente." 
+      title: "Geração Automática de Documentos", 
+      desc: "Abandone o Word e o preenchimento manual propenso a erros. Gere contratos de compra e venda, recibos de sinal, termos de garantia, procurações e propostas comerciais automaticamente, puxando os dados do cliente e do veículo direto do sistema. Padronize a identidade visual da documentação da loja, ganhe agilidade no fechamento da venda e transmita muito mais profissionalismo e segurança jurídica ao cliente." 
     },
     { 
-      title: "Checklists", 
-      desc: "Garanta a qualidade e evite prejuízos. Utilize checklists digitais padronizados na entrada do veículo (avaliação de compra) para não deixar passar defeitos, e na saída (entrega) para garantir que o cliente recebeu tudo acordado (manual, chave reserva, estepe), protegendo a loja juridicamente." 
+      title: "Checklists Digitais (Entrada e Saída)", 
+      desc: "Garanta a qualidade dos carros e evite prejuízos ocultos. Utilize checklists digitais padronizados via celular ou tablet na entrada do veículo (avaliação de compra) para registrar avarias e não deixar passar defeitos na negociação. Na saída (entrega), use o checklist para garantir e protocolar que o cliente recebeu tudo o que foi acordado (manual, chave reserva, estepe, acessórios), protegendo a loja contra reclamações infundadas futuras." 
     }
   ];
 
@@ -348,7 +348,7 @@ const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) 
     <div className="w-full h-full p-8 lg:p-12 bg-background relative flex flex-col">
       <div className="text-center mb-8 shrink-0">
         <h2 className="text-3xl font-display font-bold text-white mb-2">15 Funcionalidades Principais</h2>
-        <p className="text-slate-400">O stack completo para a operação. Clique para detalhes.</p>
+        <p className="text-slate-400">O stack completo para a operação. Clique para expandir os detalhes.</p>
       </div>
 
       <div className="flex-1 grid grid-cols-12 gap-6 h-full overflow-hidden pb-4">
@@ -384,56 +384,58 @@ const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) 
             </div>
          </div>
 
-         {/* Right Column: Feature List */}
+         {/* Right Column: Feature List - Accordion Style */}
          <div className="col-span-12 lg:col-span-5 flex flex-col gap-2 overflow-y-auto pr-2 custom-scrollbar relative">
             {features.map((feature, i) => (
-              <motion.button 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.03 }}
-                onClick={() => setSelectedFeature(feature)}
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors w-full text-left group border border-transparent hover:border-white/10 focus:outline-none focus:border-primary/50"
+                className={`rounded-xl border transition-all duration-300 overflow-hidden ${
+                  selectedFeatureIndex === i 
+                    ? "bg-white/10 border-primary/50 shadow-lg" 
+                    : "bg-transparent border-transparent hover:bg-white/5 hover:border-white/10"
+                }`}
               >
-                 <div className="w-2 h-2 rounded-full bg-secondary shrink-0 group-hover:scale-125 transition-transform" />
-                 <span className="text-sm text-slate-300 font-medium group-hover:text-white">{feature.title}</span>
-                 <ChevronRight className="w-4 h-4 text-slate-600 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
-              </motion.button>
+                <button 
+                  onClick={() => setSelectedFeatureIndex(selectedFeatureIndex === i ? null : i)}
+                  className="w-full flex items-center gap-3 p-3 text-left focus:outline-none"
+                >
+                   <div className={`w-2 h-2 rounded-full shrink-0 transition-transform duration-300 ${
+                     selectedFeatureIndex === i ? "bg-primary scale-125" : "bg-secondary group-hover:scale-110"
+                   }`} />
+                   
+                   <span className={`text-sm font-medium transition-colors ${
+                     selectedFeatureIndex === i ? "text-white font-bold" : "text-slate-300 group-hover:text-white"
+                   }`}>
+                     {feature.title}
+                   </span>
+                   
+                   <ChevronRight className={`w-4 h-4 text-slate-500 ml-auto transition-transform duration-300 ${
+                     selectedFeatureIndex === i ? "rotate-90 text-primary" : ""
+                   }`} />
+                </button>
+
+                <AnimatePresence>
+                  {selectedFeatureIndex === i && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="px-4 pb-4 pt-0 text-slate-300 text-sm leading-relaxed border-t border-white/5 mt-1">
+                        <div className="h-2" /> {/* Spacer */}
+                        {feature.desc}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             ))}
          </div>
       </div>
-
-      {/* Feature Modal */}
-      <AnimatePresence>
-        {selectedFeature && (
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="absolute inset-0 z-20 flex items-center justify-center bg-black/60 backdrop-blur-sm p-8"
-            onClick={() => setSelectedFeature(null)}
-          >
-             <div 
-               className="bg-card border border-white/10 rounded-2xl p-8 max-w-lg w-full shadow-2xl relative"
-               onClick={(e) => e.stopPropagation()}
-             >
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
-                  onClick={() => setSelectedFeature(null)}
-                  className="absolute top-4 right-4 text-slate-400 hover:text-white"
-                >
-                  <X size={20} />
-                </Button>
-                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-6">
-                   <Zap className="text-primary w-6 h-6" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">{selectedFeature.title}</h3>
-                <p className="text-slate-300 leading-relaxed text-lg">{selectedFeature.desc}</p>
-             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };
