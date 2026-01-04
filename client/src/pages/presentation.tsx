@@ -797,6 +797,11 @@ const Slide9_Encerramento = () => (
        <h2 className="text-6xl lg:text-8xl font-display font-bold text-white tracking-tighter">
          O Futuro é Agora.
        </h2>
+       
+       <h1 className="text-4xl lg:text-6xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary tracking-widest">
+         VELOSTOCK
+       </h1>
+
        <p className="text-2xl text-slate-400 font-light max-w-2xl mx-auto">
          Vamos acelerar o mercado automotivo juntos.
        </p>
@@ -959,7 +964,8 @@ export default function PresentationPage() {
     slide = pres.addSlide();
     slide.background = { color: "000000" };
     slide.addText("O Futuro é Agora.", { x: 1, y: 2.5, w: "80%", fontSize: 50, color: "FFFFFF", align: "center", bold: true });
-    slide.addText("Agende uma demo exclusiva", { x: 1, y: 4, w: "80%", fontSize: 20, color: "007AFF", align: "center" });
+    slide.addText("VELOSTOCK", { x: 1, y: 3.5, w: "80%", fontSize: 30, color: "007AFF", align: "center", bold: true });
+    slide.addText("Agende uma demo exclusiva", { x: 1, y: 4.5, w: "80%", fontSize: 20, color: "CCCCCC", align: "center" });
 
 
     pres.writeFile({ fileName: "Apresentacao_Velostock.pptx" });
