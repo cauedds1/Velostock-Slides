@@ -50,6 +50,8 @@ import imgObs from "@assets/image_1767533726985.png";
 import imgAdminDash from "@assets/image_1767534073146.png";
 import imgAdminBugs from "@assets/image_1767534076137.png";
 import imgLogo from "@assets/WhatsApp_Image_2026-01-04_at_11.17.29_1767536263145.jpeg";
+import pptxgen from "pptxgenjs";
+import { Download } from "lucide-react";
 
 // --- Data ---
 
@@ -853,6 +855,116 @@ export default function PresentationPage() {
     }
   };
 
+  const handleDownloadPPTX = () => {
+    const pres = new pptxgen();
+
+    // 1. Abertura
+    let slide = pres.addSlide();
+    slide.background = { color: "000000" };
+    slide.addText("VELOSTOCK", { x: 1, y: 2, w: "80%", fontSize: 60, color: "FFFFFF", bold: true, fontFace: "Arial" });
+    slide.addText("Revolução na Gestão Automotiva", { x: 1, y: 3, w: "80%", fontSize: 24, color: "CCCCCC", fontFace: "Arial" });
+    slide.addText("Gestão Operacional Inteligente. Não apenas controle de estoque.", { x: 1, y: 4, w: "80%", fontSize: 18, color: "007AFF", fontFace: "Arial" });
+
+    // 2. A Dor
+    slide = pres.addSlide();
+    slide.background = { color: "000000" };
+    slide.addText("O Problema: Caos da Gestão Tradicional", { x: 0.5, y: 0.5, w: "90%", fontSize: 32, color: "FFFFFF", bold: true });
+    
+    slide.addText("Descontrole Financeiro", { x: 1, y: 2, fontSize: 20, color: "FF3B30", bold: true });
+    slide.addText("Sem aprovação de custos, margens desconhecidas.", { x: 1, y: 2.5, fontSize: 14, color: "CCCCCC" });
+    
+    slide.addText("Processos Manuais", { x: 5, y: 2, fontSize: 20, color: "FF3B30", bold: true });
+    slide.addText("Dependência de planilhas e cadernos.", { x: 5, y: 2.5, fontSize: 14, color: "CCCCCC" });
+    
+    slide.addText("Cegueira Operacional", { x: 3, y: 4, fontSize: 20, color: "FF3B30", bold: true });
+    slide.addText("Sem rastreio de onde os carros estão.", { x: 3, y: 4.5, fontSize: 14, color: "CCCCCC" });
+
+    // 3. Solução
+    slide = pres.addSlide();
+    slide.background = { color: "000000" };
+    slide.addText("A Solução: Velostock", { x: 0.5, y: 0.5, fontSize: 32, color: "FFFFFF", bold: true });
+    slide.addText("Ecossistema de Controle Total", { x: 0.5, y: 1.2, fontSize: 24, color: "007AFF" });
+    
+    slide.addText("1. Entrada & Preparação: Checklist digital e aprovação de custos.", { x: 1, y: 2.5, w: "80%", fontSize: 16, color: "CCCCCC" });
+    slide.addText("2. Venda & Marketing: Anúncios automáticos e CRM.", { x: 1, y: 3.5, w: "80%", fontSize: 16, color: "CCCCCC" });
+    slide.addText("3. Pós-Venda & Financeiro: Gestão de garantia e DRE.", { x: 1, y: 4.5, w: "80%", fontSize: 16, color: "CCCCCC" });
+
+    // 4. Funcionalidades (Detailed)
+    // We will split features across multiple slides to fit text
+    const features = [
+        { title: "Gestão de Veículos (Kanban)", desc: "Visualize e organize todo o seu estoque através de um quadro Kanban intuitivo." },
+        { title: "Controle de Custos Detalhado", desc: "Registre cada centavo investido no veículo para saber o lucro real." },
+        { title: "Vendas e Comissões Automatizadas", desc: "O sistema gera automaticamente o pedido de venda e calcula comissões." },
+        { title: "Gestão Profissional de Garantia", desc: "Gerencie prazos de garantia legal e estendida com alertas automáticos." },
+        { title: "Observações Internas", desc: "Notas internas sigilosas vinculadas a cada veículo ou cliente." },
+        { title: "Financeiro Integrado", desc: "Contas a pagar e receber alimentados automaticamente pela operação." },
+        { title: "CRM e Gestão de Leads", desc: "Pipeline de vendas centralizado com distribuição automática de leads." },
+        { title: "Follow-ups Inteligentes", desc: "Lembretes automáticos para não deixar o cliente esfriar." },
+        { title: "IA (VeloBot)", desc: "Assistente virtual que gera descrições de anúncios e sugere preços." },
+        { title: "Dashboard de Indicadores", desc: "KPIs em tempo real: Ticket Médio, Giro, Lucratividade." },
+        { title: "Controle de Acesso", desc: "Perfis granulares (Vendedor, Gerente) para proteger dados sensíveis." },
+        { title: "Configurações Personalizáveis", desc: "Adapte categorias de despesas e metas à realidade da loja." },
+        { title: "Relatórios Avançados", desc: "DRE, Curva ABC e Ranking de Vendas." },
+        { title: "Documentos Automáticos", desc: "Contratos e recibos gerados com um clique." },
+        { title: "Checklists Digitais", desc: "Vistorias de entrada e saída padronizadas." }
+    ];
+
+    // Create summary slides for features
+    for (let i = 0; i < features.length; i += 5) {
+        slide = pres.addSlide();
+        slide.background = { color: "000000" };
+        slide.addText(`Funcionalidades (${i + 1}-${Math.min(i + 5, features.length)})`, { x: 0.5, y: 0.5, fontSize: 24, color: "FFFFFF", bold: true });
+        
+        const chunk = features.slice(i, i + 5);
+        chunk.forEach((feat, idx) => {
+            slide.addText(feat.title, { x: 0.5, y: 1.5 + (idx * 1.0), fontSize: 18, color: "007AFF", bold: true });
+            slide.addText(feat.desc, { x: 0.5, y: 1.8 + (idx * 1.0), w: "90%", fontSize: 14, color: "CCCCCC" });
+        });
+    }
+
+    // 5. Admin Panel
+    slide = pres.addSlide();
+    slide.background = { color: "000000" };
+    slide.addText("Painel Administrativo (Backoffice)", { x: 0.5, y: 0.5, fontSize: 32, color: "FFFFFF", bold: true });
+    slide.addText("Gestão completa do SaaS", { x: 0.5, y: 1.0, fontSize: 18, color: "CCCCCC" });
+    
+    slide.addText("• Dashboard Global (MRR, Churn)", { x: 1, y: 2, fontSize: 16, color: "FFFFFF" });
+    slide.addText("• Gestão de Clientes e Trials", { x: 1, y: 2.5, fontSize: 16, color: "FFFFFF" });
+    slide.addText("• Códigos de Convite Controlados", { x: 1, y: 3, fontSize: 16, color: "FFFFFF" });
+    slide.addText("• Sistema de Tickets/Bugs", { x: 1, y: 3.5, fontSize: 16, color: "FFFFFF" });
+
+    // 6. Diferencial
+    slide = pres.addSlide();
+    slide.background = { color: "000000" };
+    slide.addText("Diferencial Competitivo", { x: 0.5, y: 0.5, fontSize: 32, color: "FFFFFF", bold: true });
+    
+    slide.addText("Concorrentes", { x: 1, y: 2, fontSize: 20, color: "FF3B30", bold: true });
+    slide.addText("Focam apenas em estoque e anúncios basicos.", { x: 1, y: 2.5, w: "40%", fontSize: 14, color: "CCCCCC" });
+    
+    slide.addText("Velostock", { x: 5.5, y: 2, fontSize: 20, color: "007AFF", bold: true });
+    slide.addText("Visão 360°: Estoque + Fiscal + Publicidade + Operação.", { x: 5.5, y: 2.5, w: "40%", fontSize: 14, color: "CCCCCC" });
+    slide.addText("IA Contextual que ajuda a vender.", { x: 5.5, y: 3.5, w: "40%", fontSize: 14, color: "CCCCCC" });
+
+    // 7. Monetização
+    slide = pres.addSlide();
+    slide.background = { color: "000000" };
+    slide.addText("Monetização", { x: 0.5, y: 0.5, fontSize: 32, color: "FFFFFF", bold: true });
+    
+    slide.addShape(pres.ShapeType.rect, { x: 3, y: 1.5, w: 4, h: 3.5, fill: { color: "1A1A1A" }, line: { color: "007AFF", width: 2 } });
+    slide.addText("Plano Único", { x: 3.5, y: 2, w: 3, fontSize: 24, color: "FFFFFF", align: "center", bold: true });
+    slide.addText("R$ 149 / mês", { x: 3.5, y: 2.8, w: 3, fontSize: 40, color: "FFFFFF", align: "center", bold: true });
+    slide.addText("Tudo Incluso. Sem taxas.", { x: 3.5, y: 4, w: 3, fontSize: 16, color: "CCCCCC", align: "center" });
+
+    // 8. Encerramento
+    slide = pres.addSlide();
+    slide.background = { color: "000000" };
+    slide.addText("O Futuro é Agora.", { x: 1, y: 2.5, w: "80%", fontSize: 50, color: "FFFFFF", align: "center", bold: true });
+    slide.addText("Agende uma demo exclusiva", { x: 1, y: 4, w: "80%", fontSize: 20, color: "007AFF", align: "center" });
+
+
+    pres.writeFile({ fileName: "Apresentacao_Velostock.pptx" });
+  };
+
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -927,6 +1039,10 @@ export default function PresentationPage() {
               </div>
               <Button variant="ghost" size="icon" onClick={toggleFullscreen} className="rounded-full hover:bg-white/10 text-white z-50 cursor-pointer pointer-events-auto">
                  {isFullscreen ? <Minimize2 size={16}/> : <Maximize2 size={16}/>}
+              </Button>
+              <Button onClick={handleDownloadPPTX} className="ml-2 bg-primary hover:bg-primary/90 text-white rounded-full px-4 py-2 flex items-center gap-2 pointer-events-auto shadow-lg">
+                <Download size={16} />
+                <span className="text-xs font-bold">Baixar PPTX</span>
               </Button>
            </div>
         </div>
