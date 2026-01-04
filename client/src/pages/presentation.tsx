@@ -282,21 +282,66 @@ const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) 
   const [selectedFeature, setSelectedFeature] = useState<{title: string, desc: string} | null>(null);
 
   const features = [
-    { title: "Gestão de Veículos (Kanban)", desc: "Organize seu estoque visualmente. Arraste e solte carros entre estágios (Preparação, Venda, Entrega) como um quadro Trello." },
-    { title: "Controle de Custos", desc: "Registre cada centavo gasto no carro (peças, funilaria, lavagem) para saber o lucro real líquido na venda." },
-    { title: "Vendas e Comissões", desc: "Calcula automaticamente comissões de vendedores e parceiros no momento da venda, evitando erros de fechamento." },
-    { title: "Garantia", desc: "Controle prazos legais e estendidos. Saiba quais carros ainda estão cobertos e histórico de acionamentos." },
-    { title: "Obs. Internas", desc: "Comunicação interna vinculada ao carro. 'Trocar pneu', 'Cliente X interessado'. Nada se perde no WhatsApp." },
-    { title: "Contas a Pagar/Receber", desc: "Financeiro integrado. Vendeu o carro? O sistema lança o recebível. Gastou na oficina? Lança o a pagar." },
-    { title: "CRM e Leads", desc: "Centralize leads de portais e site. Pipeline de vendas para acompanhar cada negociação e não perder clientes." },
-    { title: "Follow-ups", desc: "Lembretes automáticos para ligar para clientes. 'O cliente ficou de voltar dia 10'. O sistema te cobra." },
-    { title: "IA (VeloBot)", desc: "Seu assistente virtual. Gera descrições de anúncios persuasivas e responde dúvidas sobre o estoque." },
-    { title: "Dashboard", desc: "Visão de piloto de avião. MRR, carros parados há muito tempo, fluxo de caixa e performance da loja em uma tela." },
-    { title: "Usuários/Permissões", desc: "Controle quem vê o que. Vendedor não vê lucro, Gerente vê tudo. Segurança total nos dados." },
-    { title: "Configurações", desc: "Personalize o sistema. Categorias de gastos, origens de leads, metas de vendas e dados da empresa." },
-    { title: "Relatórios", desc: "Dados para decisão. DRE, Curva ABC de estoque, performance por vendedor e relatório de custos." },
-    { title: "Documentos", desc: "Geração automática de contratos, recibos e termos de garantia. Menos papelada, mais vendas." },
-    { title: "Checklists", desc: "Padronize a entrada e saída. Checklist de avaliação na compra e checklist de entrega para o cliente." }
+    { 
+      title: "Gestão de Veículos (Kanban)", 
+      desc: "Visualize todo o seu estoque em um quadro Kanban intuitivo. Arraste e solte veículos entre estágios como 'Em Preparação', 'Disponível', 'Em Negociação' e 'Vendido'. Tenha uma visão clara do fluxo de entrada e saída, identifique gargalos na preparação e saiba exatamente onde cada carro está no processo de venda." 
+    },
+    { 
+      title: "Controle de Custos", 
+      desc: "Registre cada centavo investido no veículo, desde a compra até a preparação final. Lance custos de funilaria, mecânica, peças e lavagem vinculados ao chassi. O sistema calcula automaticamente o custo total do veículo, permitindo que você saiba a margem de lucro real (e não a estimada) no momento da venda." 
+    },
+    { 
+      title: "Vendas e Comissões", 
+      desc: "Formalize vendas com facilidade. O sistema gera o pedido de venda, calcula automaticamente as comissões de vendedores (seja porcentagem ou valor fixo) e de parceiros/captadores. Evite disputas e erros de cálculo no fechamento do mês com um relatório transparente de comissões a pagar." 
+    },
+    { 
+      title: "Garantia", 
+      desc: "Gerencie prazos legais (90 dias) e garantias estendidas de forma profissional. Receba alertas automáticos de vencimento de garantias. Registre ocorrências e custos de reparo pós-venda para ter um histórico completo da qualidade do seu estoque e do custo de garantia por veículo." 
+    },
+    { 
+      title: "Obs. Internas", 
+      desc: "Elimine a comunicação perdida no WhatsApp. Adicione notas internas vinculadas a cada veículo ou cliente que apenas a equipe pode ver. Registre detalhes como 'pneu precisa trocar', 'cliente prefere contato à tarde' ou 'documento pendente no despachante'. Centralize a inteligência da operação." 
+    },
+    { 
+      title: "Contas a Pagar/Receber", 
+      desc: "Integração total entre operação e financeiro. Ao registrar uma compra ou custo de reparo, o contas a pagar é alimentado automaticamente. Ao fechar uma venda, o contas a receber é gerado com as parcelas e datas corretas. Controle seu fluxo de caixa sem precisar lançar a mesma informação duas vezes." 
+    },
+    { 
+      title: "CRM e Leads", 
+      desc: "Centralize todos os seus leads (Webmotors, OLX, Site, Instagram) em um único pipeline de vendas. Distribua leads automaticamente para os vendedores, agende tarefas, registre interações e acompanhe a taxa de conversão. Nunca mais perca uma venda por esquecer de responder um cliente." 
+    },
+    { 
+      title: "Follow-ups", 
+      desc: "O sistema trabalha para você. Crie lembretes automáticos para retomar contato com clientes. Se um cliente disse 'me liga dia 10', o sistema vai te cobrar. Mantenha o relacionamento ativo com quem comprou para futuras trocas e indicações. Transforme o pós-venda em novas vendas." 
+    },
+    { 
+      title: "IA (VeloBot)", 
+      desc: "Seu assistente virtual inteligente disponível 24/7. O VeloBot gera descrições de anúncios persuasivas e otimizadas para cada veículo com um clique. Ele também pode analisar dados do estoque para sugerir preços e responder dúvidas operacionais, economizando horas de trabalho manual da equipe." 
+    },
+    { 
+      title: "Dashboard", 
+      desc: "Tome decisões baseadas em dados, não em achismos. Acompanhe em tempo real indicadores cruciais (KPIs) como MRR, Ticket Médio, Giro de Estoque, Carros parados há mais de 60 dias e Lucratividade por Venda. Uma visão de 'piloto de avião' para o dono da revenda." 
+    },
+    { 
+      title: "Usuários/Permissões", 
+      desc: "Segurança e controle total. Defina exatamente o que cada funcionário pode ver e fazer. O vendedor vê apenas seus leads e não tem acesso ao lucro real dos carros. O gerente tem visão operacional mas não altera configurações financeiras. Proteja os dados sensíveis do seu negócio." 
+    },
+    { 
+      title: "Configurações", 
+      desc: "Personalize o Velostock para a realidade da sua loja. Cadastre suas próprias categorias de despesas, origens de leads, bancos parceiros e metas de vendas. Configure os dados da sua empresa para que saiam automaticamente em todos os documentos e contratos gerados." 
+    },
+    { 
+      title: "Relatórios", 
+      desc: "Relatórios detalhados para análise profunda. Gere DRE (Demonstrativo de Resultado do Exercício) gerencial, Curva ABC de estoque (quais carros dão mais lucro), Performance por Vendedor e Relatório de Custos por Categoria. Exporte tudo para PDF ou Excel para reuniões e contabilidade." 
+    },
+    { 
+      title: "Documentos", 
+      desc: "Adeus Word e preenchimento manual. Gere contratos de compra e venda, recibos de sinal, termos de garantia e propostas comerciais automaticamente com os dados do sistema. Padronize a documentação da loja, evite erros de digitação e transmita muito mais profissionalismo ao cliente." 
+    },
+    { 
+      title: "Checklists", 
+      desc: "Garanta a qualidade e evite prejuízos. Utilize checklists digitais padronizados na entrada do veículo (avaliação de compra) para não deixar passar defeitos, e na saída (entrega) para garantir que o cliente recebeu tudo acordado (manual, chave reserva, estepe), protegendo a loja juridicamente." 
+    }
   ];
 
   return (
