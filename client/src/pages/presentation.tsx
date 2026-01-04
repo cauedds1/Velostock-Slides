@@ -646,7 +646,7 @@ const Slide6_Publico = () => (
              </div>
              <div className="bg-white/5 p-6 rounded-xl text-center">
                <div className="text-4xl font-bold text-white mb-1">R$ 12B</div>
-               <div className="text-xs text-slate-400 uppercase">Potencial de Mercado (TAM)</div>
+               <div className="text-xs text-slate-400 uppercase">Potencial de Mercado</div>
              </div>
           </div>
        </div>
@@ -950,7 +950,20 @@ export default function PresentationPage() {
     slide.addText("Visão 360°: Estoque + Fiscal + Publicidade + Operação.", { x: 5.5, y: 2.5, w: "40%", fontSize: 14, color: "CCCCCC" });
     slide.addText("IA Contextual que ajuda a vender.", { x: 5.5, y: 3.5, w: "40%", fontSize: 14, color: "CCCCCC" });
 
-    // 7. Monetização
+    // 7. Mercado (New Slide)
+    slide = pres.addSlide();
+    slide.background = { color: "000000" };
+    slide.addText("Público Alvo & Mercado", { x: 0.5, y: 0.5, fontSize: 32, color: "FFFFFF", bold: true });
+    
+    slide.addText("O Cliente Ideal", { x: 1, y: 1.5, fontSize: 18, color: "007AFF", bold: true });
+    slide.addText("Lojas de seminovos independentes (20-200 carros).", { x: 1, y: 2.0, w: "80%", fontSize: 14, color: "CCCCCC" });
+    slide.addText("Buscam profissionalização e controle.", { x: 1, y: 2.5, w: "80%", fontSize: 14, color: "CCCCCC" });
+    
+    slide.addText("Números do Mercado", { x: 1, y: 3.5, fontSize: 18, color: "007AFF", bold: true });
+    slide.addText("45k+ Revendas no Brasil", { x: 1, y: 4.0, fontSize: 16, color: "FFFFFF" });
+    slide.addText("R$ 12B Potencial de Mercado", { x: 5, y: 4.0, fontSize: 16, color: "FFFFFF" });
+
+    // 8. Monetização
     slide = pres.addSlide();
     slide.background = { color: "000000" };
     slide.addText("Monetização", { x: 0.5, y: 0.5, fontSize: 32, color: "FFFFFF", bold: true });
