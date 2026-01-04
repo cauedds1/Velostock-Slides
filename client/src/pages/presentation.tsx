@@ -738,27 +738,24 @@ const Slide6_Diferencial = () => (
            
            <div className="space-y-10">
               <div className="relative">
-                 <h3 className="text-slate-500 text-xs font-bold uppercase tracking-[0.2em] mb-4">Eficiência Operacional</h3>
-                 <div className="flex items-end gap-6 h-40">
-                    {efficiencyData.map((d, i) => (
-                       <div key={i} className="flex-1 flex flex-col items-center">
-                          <motion.div 
-                            initial={{ height: 0 }}
-                            animate={{ height: `${d.value}%` }}
-                            transition={{ duration: 1, delay: 0.5 + (i * 0.2) }}
-                            className={`w-full rounded-t-xl relative ${i === 0 ? 'bg-slate-800' : 'bg-gradient-to-t from-primary to-secondary shadow-lg shadow-primary/30'}`}
-                          >
-                             <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-white font-bold">{d.value}%</span>
-                          </motion.div>
-                          <span className="text-[10px] text-slate-500 mt-4 text-center font-bold uppercase">{d.name}</span>
-                       </div>
-                    ))}
+                 <h3 className="text-slate-500 text-xs font-bold uppercase tracking-[0.2em] mb-4 text-center">Eficiência Operacional</h3>
+                 <div className="grid grid-cols-2 gap-8 text-center mt-8">
+                    <div className="space-y-2">
+                      <div className="text-slate-500 font-bold text-xs uppercase tracking-widest">Tradicional</div>
+                      <div className="text-4xl lg:text-5xl font-black text-slate-700">Baixa</div>
+                      <div className="text-[10px] text-slate-600 uppercase">Processos Manuais</div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="text-primary font-bold text-xs uppercase tracking-widest">Com Velostock</div>
+                      <div className="text-4xl lg:text-5xl font-black text-white glow-text">Máxima</div>
+                      <div className="text-[10px] text-primary uppercase">Fluxo Automatizado</div>
+                    </div>
                  </div>
               </div>
               
               <div className="p-6 rounded-2xl bg-white/5 border border-white/5">
-                 <p className="text-slate-400 text-sm italic leading-relaxed">
-                   "A Velostock automatiza tarefas que hoje consomem 3 horas diárias de um gerente, devolvendo tempo para o que importa: vender."
+                 <p className="text-slate-400 text-sm italic leading-relaxed text-center">
+                   "A Velostock automatiza tarefas operacionais repetitivas, devolvendo tempo estratégico para a equipe focar no que realmente importa: fechar vendas."
                  </p>
               </div>
            </div>
