@@ -111,9 +111,16 @@ const Slide1_Abertura = () => (
       </motion.div>
     </div>
     
-    <div className="absolute lg:relative inset-0 lg:w-1/2 h-full overflow-hidden opacity-40 lg:opacity-100 mix-blend-lighten lg:mix-blend-normal">
-       <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-background via-transparent to-transparent z-10" />
-       <img src={heroBg} alt="Dashboard" className="w-full h-full object-cover" />
+    <div className="absolute lg:relative inset-0 lg:w-1/2 h-full overflow-hidden opacity-40 lg:opacity-100 mix-blend-normal">
+       <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-background via-background/50 to-transparent z-10" />
+       {/* Using actual dashboard image instead of generated concept */}
+       <div className="w-full h-full flex items-center justify-center p-8">
+          <img 
+            src={imgDashboard} 
+            alt="Velostock Dashboard" 
+            className="w-full h-auto object-contain rounded-xl shadow-2xl border border-white/10 rotate-[-2deg] hover:rotate-0 transition-transform duration-700" 
+          />
+       </div>
     </div>
   </div>
 );
