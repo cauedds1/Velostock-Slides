@@ -485,7 +485,7 @@ const Slide4_Arquitetura = () => (
 
 // 5. Funcionalidades (Old Style as requested)
 const Slide5_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) => void }) => {
-  const [activeFeature, setActiveFeature] = useState(0);
+  const [activeFeature, setActiveFeature] = useState(-1);
 
   const features = [
     { 
