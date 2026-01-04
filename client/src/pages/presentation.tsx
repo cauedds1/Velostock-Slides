@@ -393,7 +393,7 @@ const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) 
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.03 }}
-                className={`rounded-xl border transition-all duration-300 overflow-hidden ${
+                className={`rounded-xl border transition-all duration-300 overflow-hidden shrink-0 ${
                   selectedFeatureIndex === i 
                     ? "bg-white/10 border-primary/50 shadow-lg" 
                     : "bg-transparent border-transparent hover:bg-white/5 hover:border-white/10"
