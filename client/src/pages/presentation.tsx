@@ -89,8 +89,8 @@ const Slide1_Abertura = () => (
         <span className="text-secondary font-display font-bold tracking-widest uppercase text-sm mb-6 block glow-text">
           Revolução na Gestão Automotiva
         </span>
-        <h1 className="text-5xl lg:text-7xl font-display font-black text-white leading-none mb-6">
-          VELO<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">STOCK</span>
+        <h1 className="text-5xl lg:text-7xl font-display font-black text-white leading-none mb-6 pr-4">
+          VELO<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary pr-2">STOCK</span>
         </h1>
         <h2 className="text-2xl lg:text-3xl font-light text-slate-300 mb-8 border-l-4 border-primary pl-6 py-2">
           Gestão <strong className="text-white">Operacional</strong> Inteligente.<br/>
