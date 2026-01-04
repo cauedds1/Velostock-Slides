@@ -483,9 +483,9 @@ const Slide4_Arquitetura = () => (
   </div>
 );
 
-// 5. Funcionalidades
+// 5. Funcionalidades (Old Style as requested)
 const Slide5_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) => void }) => {
-  const [selectedFeatureIndex, setSelectedFeatureIndex] = useState<number | null>(null);
+  const [activeFeature, setActiveFeature] = useState(0);
 
   const features = [
     { 
@@ -550,106 +550,81 @@ const Slide5_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) 
     }
   ];
 
-  const handleFeatureClick = (index: number) => {
-    setSelectedFeatureIndex(index);
-  };
-
-  const closeFeatureModal = () => {
-    setSelectedFeatureIndex(null);
-  };
+  const screenshots = [
+    { src: imgVeiculos, label: "Veículos" },
+    { src: imgLead, label: "CRM & Leads" },
+    { src: imgFinanceiro, label: "Financeiro" },
+    { src: imgGarantia, label: "Garantia" },
+    { src: imgCustos, label: "Custos" },
+    { src: imgRelatorio, label: "Relatórios" }
+  ];
 
   return (
     <div className="w-full h-full flex flex-col p-8 lg:p-12 bg-background relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/30 via-secondary/30 to-primary/30 animate-pulse-slow" />
-      
-      <div className="flex justify-between items-end mb-8 relative z-10">
-        <div>
-          <span className="text-secondary font-bold tracking-widest uppercase text-xs mb-2 block">DIFERENCIAIS OPERACIONAIS</span>
-          <h2 className="text-4xl font-display font-bold text-white">Funcionalidades do VeloStock</h2>
-        </div>
-        <div className="hidden lg:flex gap-2">
-           <div className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-bold text-primary uppercase tracking-tighter">SaaS Multi-Tenant</div>
-           <div className="px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-[10px] font-bold text-secondary uppercase tracking-tighter">Cloud Native</div>
-        </div>
+      <div className="text-center mb-8">
+        <h2 className="text-4xl font-display font-bold text-white mb-2">15 Funcionalidades Principais</h2>
+        <p className="text-slate-400">O stack completo para a operação. Clique para expandir os detalhes.</p>
       </div>
 
-      <div className="flex-1 overflow-y-auto pr-4 custom-scrollbar relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05 }}
-              onClick={() => handleFeatureClick(index)}
-              className="bg-card/50 hover:bg-card border border-white/5 hover:border-primary/30 p-4 rounded-xl cursor-pointer transition-all duration-300 group flex flex-col justify-between h-40"
-            >
-              <div>
-                <h3 className="text-white font-bold text-sm mb-2 group-hover:text-primary transition-colors leading-tight">
-                  {feature.title}
-                </h3>
-                <p className="text-slate-500 text-xs line-clamp-3 leading-relaxed">
-                  {feature.desc}
-                </p>
-              </div>
-              <div className="flex justify-end">
-                <div className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
-                  <ChevronRight size={14} />
+      <div className="flex flex-1 gap-8 overflow-hidden">
+        {/* Left Side: Screenshots Grid */}
+        <div className="w-1/2 overflow-y-auto pr-4 custom-scrollbar">
+          <div className="grid grid-cols-1 gap-6">
+            {screenshots.map((s, i) => (
+              <div key={i} className="relative group cursor-zoom-in" onClick={() => onImageClick(s.src)}>
+                <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-white z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                  {s.label}
                 </div>
+                <img 
+                  src={s.src} 
+                  alt={s.label} 
+                  className="w-full h-auto rounded-xl border border-white/5 shadow-2xl group-hover:border-primary/50 transition-all" 
+                />
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* Right Side: Accordion Style Features */}
+        <div className="w-1/2 overflow-y-auto pr-4 custom-scrollbar">
+          <div className="space-y-3">
+            {features.map((f, i) => (
+              <div 
+                key={i}
+                className={`border border-white/5 rounded-2xl transition-all duration-300 overflow-hidden ${activeFeature === i ? 'bg-white/5 border-primary/30' : 'bg-transparent hover:bg-white/5'}`}
+              >
+                <button 
+                  onClick={() => setActiveFeature(i)}
+                  className="w-full p-5 flex items-center justify-between text-left"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`w-2 h-2 rounded-full ${activeFeature === i ? 'bg-primary animate-pulse' : 'bg-green-500'}`} />
+                    <span className={`font-bold transition-colors ${activeFeature === i ? 'text-white' : 'text-slate-400'}`}>
+                      {f.title}
+                    </span>
+                  </div>
+                  <ChevronRight size={16} className={`text-slate-600 transition-transform duration-300 ${activeFeature === i ? 'rotate-90 text-primary' : ''}`} />
+                </button>
+                
+                <AnimatePresence>
+                  {activeFeature === i && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="px-14 pb-6"
+                    >
+                      <p className="text-slate-400 text-sm leading-relaxed">
+                        {f.desc}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-
-      <AnimatePresence>
-        {selectedFeatureIndex !== null && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 lg:p-12"
-            onClick={closeFeatureModal}
-          >
-            <motion.div 
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              className="bg-card border border-white/10 w-full max-w-2xl p-8 rounded-3xl shadow-2xl relative"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                onClick={closeFeatureModal}
-                className="absolute top-4 right-4 text-slate-400 hover:text-white rounded-full"
-              >
-                <X size={20} />
-              </Button>
-              
-              <div className="mb-6">
-                 <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
-                    <Zap className="text-primary w-6 h-6" />
-                 </div>
-                 <h2 className="text-3xl font-display font-bold text-white mb-4">
-                   {features[selectedFeatureIndex].title}
-                 </h2>
-                 <div className="h-1 w-20 bg-primary rounded-full mb-8" />
-                 <p className="text-slate-300 text-lg leading-relaxed font-light italic">
-                   "{features[selectedFeatureIndex].desc}"
-                 </p>
-              </div>
-              
-              <div className="pt-8 border-t border-white/5 flex justify-between items-center">
-                 <div className="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest">
-                   <Target size={14} /> Funcionalidade Core
-                 </div>
-                 <Button onClick={closeFeatureModal}>Fechar Detalhes</Button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };
