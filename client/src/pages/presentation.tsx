@@ -594,7 +594,7 @@ const Slide5_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) 
                 className={`border border-white/5 rounded-2xl transition-all duration-300 overflow-hidden ${activeFeature === i ? 'bg-white/5 border-primary/30' : 'bg-transparent hover:bg-white/5'}`}
               >
                 <button 
-                  onClick={() => setActiveFeature(i)}
+                  onClick={() => setActiveFeature(activeFeature === i ? -1 : i)}
                   className="w-full p-5 flex items-center justify-between text-left"
                 >
                   <div className="flex items-center gap-4">
