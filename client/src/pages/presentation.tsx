@@ -46,6 +46,8 @@ import imgFinanceiro from "@assets/image_1767533541756.png";
 import imgRelatorio from "@assets/image_1767533606589.png";
 import imgCustos from "@assets/image_1767533643852.png";
 import imgObs from "@assets/image_1767533726985.png";
+import imgAdminDash from "@assets/image_1767534073146.png";
+import imgAdminBugs from "@assets/image_1767534076137.png";
 
 // --- Data ---
 
@@ -54,11 +56,12 @@ const slidesData = [
   { id: 1, label: "A Dor" },
   { id: 2, label: "A Solução" },
   { id: 3, label: "Funcionalidades" },
-  { id: 4, label: "Diferencial" },
-  { id: 5, label: "Mercado" },
-  { id: 6, label: "Monetização" },
-  { id: 7, label: "Desafios" },
-  { id: 8, label: "Encerramento" },
+  { id: 4, label: "Admin Panel" },
+  { id: 5, label: "Diferencial" },
+  { id: 6, label: "Mercado" },
+  { id: 7, label: "Monetização" },
+  { id: 8, label: "Desafios" },
+  { id: 9, label: "Encerramento" },
 ];
 
 const efficiencyData = [
@@ -309,6 +312,78 @@ const Slide4_Funcionalidades = () => (
                <span className="text-sm text-slate-300 font-medium">{func}</span>
             </motion.div>
           ))}
+       </div>
+    </div>
+  </div>
+);
+
+// 4.5. Admin Panel
+const Slide_Admin = () => (
+  <div className="w-full h-full p-12 lg:p-20 bg-background flex flex-col">
+    <div className="flex justify-between items-end mb-12">
+      <div>
+         <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-2 block">Backoffice</span>
+         <h2 className="text-4xl font-display font-bold text-white">Painel Administrativo</h2>
+         <p className="text-slate-400 mt-2">Gestão completa do SaaS: Métricas, Clientes e Segurança.</p>
+      </div>
+      <div className="flex gap-4">
+         <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 text-xs text-slate-300">
+           <span className="text-secondary font-bold">Autenticação:</span> Token Único ou Credenciais Admin
+         </div>
+         <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 text-xs text-slate-300">
+           <span className="text-secondary font-bold">Segurança:</span> Rate Limiting & HTTPS
+         </div>
+      </div>
+    </div>
+
+    <div className="grid grid-cols-12 gap-8 flex-1 overflow-hidden">
+       {/* Visuals - Left */}
+       <div className="col-span-7 flex flex-col gap-6 h-full">
+          <div className="flex-1 bg-card rounded-xl border border-white/10 overflow-hidden relative group">
+             <div className="absolute top-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-bold text-white z-10 border border-white/10">Dashboard Global (MRR & Clientes)</div>
+             <img src={imgAdminDash} className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity" />
+          </div>
+          <div className="h-1/3 bg-card rounded-xl border border-white/10 overflow-hidden relative group">
+             <div className="absolute top-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-bold text-white z-10 border border-white/10">Gestão de Bugs</div>
+             <img src={imgAdminBugs} className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity" />
+          </div>
+       </div>
+
+       {/* Features - Right */}
+       <div className="col-span-5 flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar">
+          {[
+            { t: "Dashboard de Métricas", d: "MRR, Churn Rate, LTV e total de empresas ativas em tempo real." },
+            { t: "Gestão de Empresas", d: "Controle total: estender trial, bloquear acesso e ver histórico." },
+            { t: "Códigos de Convite", d: "Geração de códigos de trial (7 a 90 dias) para onboarding controlado." },
+            { t: "Gestão de Admins", d: "Controle de acesso granular (Master vs. Visualizador)." },
+            { t: "Reports de Bugs", d: "Sistema de tickets integrado para suporte rápido aos usuários." },
+            { t: "Financeiro Global", d: "Listagem de assinaturas e controle de inadimplência." }
+          ].map((item, i) => (
+             <motion.div 
+               key={i}
+               initial={{ opacity: 0, x: 20 }}
+               animate={{ opacity: 1, x: 0 }}
+               transition={{ delay: 0.1 * i }}
+               className="bg-white/5 p-4 rounded-xl border border-white/5 hover:border-primary/50 transition-colors"
+             >
+                <h4 className="font-bold text-white text-sm mb-1 flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  {item.t}
+                </h4>
+                <p className="text-xs text-slate-400">{item.d}</p>
+             </motion.div>
+          ))}
+          
+          <div className="mt-auto pt-6 border-t border-white/10">
+             <h4 className="font-bold text-white text-sm mb-3">Fluxo de Criação</h4>
+             <div className="flex items-center gap-2 text-xs text-slate-400">
+               <span className="bg-white/10 px-2 py-1 rounded">Admin cria código</span>
+               <ChevronRight size={12} />
+               <span className="bg-white/10 px-2 py-1 rounded">Cliente usa no Signup</span>
+               <ChevronRight size={12} />
+               <span className="bg-green-500/20 text-green-400 px-2 py-1 rounded">Empresa Criada</span>
+             </div>
+          </div>
        </div>
     </div>
   </div>
@@ -565,6 +640,7 @@ export default function PresentationPage() {
     Slide2_Dor,
     Slide3_Solucao,
     Slide4_Funcionalidades,
+    Slide_Admin,
     Slide5_Diferencial,
     Slide6_Publico,
     Slide7_Monetizacao,
