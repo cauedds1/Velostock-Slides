@@ -49,6 +49,7 @@ import imgCustos from "@assets/image_1767533643852.png";
 import imgObs from "@assets/image_1767533726985.png";
 import imgAdminDash from "@assets/image_1767534073146.png";
 import imgAdminBugs from "@assets/image_1767534076137.png";
+import imgLogo from "@assets/WhatsApp_Image_2026-01-04_at_11.17.29_1767536263145.jpeg";
 
 // --- Data ---
 
@@ -426,9 +427,10 @@ const Slide4_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) 
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-4 pb-4 pt-0 text-slate-300 text-sm leading-relaxed border-t border-white/5 mt-1">
+                      <div className="px-4 pb-6 pt-0 text-slate-300 text-sm leading-relaxed border-t border-white/5 mt-1">
                         <div className="h-2" /> {/* Spacer */}
                         {feature.desc}
+                        <div className="h-2" /> {/* Bottom Spacer to prevent cutoff */}
                       </div>
                     </motion.div>
                   )}
@@ -527,9 +529,10 @@ const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) 
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="px-4 pb-4 pt-0 text-slate-300 text-xs leading-relaxed border-t border-white/5 mt-1">
+                        <div className="px-4 pb-6 pt-0 text-slate-300 text-xs leading-relaxed border-t border-white/5 mt-1">
                           <div className="h-2" />
                           {item.d}
+                          <div className="h-2" /> {/* Bottom Spacer */}
                         </div>
                       </motion.div>
                     )}
@@ -783,9 +786,11 @@ const Slide9_Encerramento = () => (
        animate={{ scale: 1, opacity: 1 }}
        transition={{ duration: 1 }}
      >
-       <div className="w-24 h-24 mx-auto bg-gradient-to-tr from-primary to-secondary rounded-2xl flex items-center justify-center mb-8 shadow-glow">
-          <span className="font-display font-black text-4xl text-white">V</span>
-       </div>
+       <img 
+         src={imgLogo} 
+         alt="Velostock Logo" 
+         className="w-32 h-32 mx-auto rounded-3xl shadow-glow mb-8 object-cover"
+       />
        
        <h2 className="text-6xl lg:text-8xl font-display font-bold text-white tracking-tighter">
          O Futuro é Agora.
@@ -795,7 +800,6 @@ const Slide9_Encerramento = () => (
        </p>
        
        <div className="pt-12 flex flex-col items-center gap-4">
-         <h3 className="text-3xl font-bold text-white">contato@velostock.com.br</h3>
          <p className="text-slate-500">Agende uma demo exclusiva</p>
        </div>
      </motion.div>
