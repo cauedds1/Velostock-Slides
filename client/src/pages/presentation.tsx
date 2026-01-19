@@ -216,6 +216,31 @@ const translations = {
         "Performance Reports", "Full Vehicle History", "Maintenance Alerts"
       ]
     },
+    admin: {
+      tag: "BACKOFFICE",
+      title: "Powerful Admin Panel",
+      desc: "Complete vision of the business health. MRR, Churn, and active stores in a single dashboard.",
+      mrr: "Monthly Recurring Revenue",
+      churn: "Churn Rate",
+      stores: "Active Stores",
+      bugs: "Bug Tracking & Support"
+    },
+    diferencial: {
+      tag: "THE EDGE",
+      title: "Why Velostock?",
+      desc: "We focus on real profit and operational efficiency, not just beautiful photos.",
+      ai: "AI-Powered Operations",
+      profit: "Real Profit Control",
+      automation: "Workflow Automation"
+    },
+    mercado: {
+      tag: "MARKET",
+      title: "A Growing Opportunity",
+      desc: "Targeting over 45,000 dealerships in Brazil alone.",
+      stores: "Total Dealerships",
+      target: "Primary Target",
+      growth: "Annual Growth"
+    },
     monetizacao: {
       tag: "STRATEGY",
       title: "Plans & Growth",
