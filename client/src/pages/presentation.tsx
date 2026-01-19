@@ -68,6 +68,100 @@ import pptxgen from "pptxgenjs";
 import { Download } from "lucide-react";
 import { useLocation } from "wouter";
 
+// --- i18n ---
+const translations = {
+  pt: {
+    langLabel: "EN",
+    abertura: {
+      sub: "Revolução na Gestão Automotiva",
+      tagline: "Gestão Operacional Inteligente. Não apenas controle de estoque.",
+      quote: "Hoje, revendas perdem até 40% de eficiência tentando gerenciar operações complexas com planilhas e sistemas incompletos.",
+      online: "Sistema Online",
+      ia: "IA Integrada"
+    },
+    dor: {
+      tag: "O PROBLEMA",
+      title: "O Caos da Gestão Tradicional",
+      sub: "Quem sofre? Proprietários de revendas médias (20-200 carros).",
+      items: [
+        { title: "Descontrole Financeiro", desc: "Sem aprovação de custos, as margens reais de lucro são desconhecidas. O dinheiro 'desaparece' em pequenos gastos." },
+        { title: "Processos Manuais", desc: "Dependência de planilhas, cadernos e WhatsApp descentralizado. Informação se perde e erros acontecem." },
+        { title: "Cegueira Operacional", desc: "Onde está o carro X? O que falta fazer nele? Sem rastreio, a operação para e a venda atrasa." }
+      ]
+    },
+    solucao: {
+      tag: "A SOLUÇÃO",
+      title: "Velostock: O Ecossistema de Controle Total",
+      desc: "Uma plataforma única que centraliza operação, financeiro e vendas. Saímos do \"apenas estocar\" para \"gerir o negócio\".",
+      steps: [
+        { title: "Entrada & Preparação", desc: "Checklist digital, fotos, aprovação de custos de reparo." },
+        { title: "Venda & Marketing", desc: "Anúncios automáticos, IA gerando textos, CRM integrado." },
+        { title: "Pós-Venda & Financeiro", desc: "Gestão de garantia, DRE em tempo real, comissões." }
+      ]
+    },
+    ciclo: {
+      tag: "FLUXO INTELIGENTE",
+      title: "O Ciclo da Revenda",
+      desc: "Acompanhe cada etapa da jornada do veículo, desde a entrada até a venda, com controle total em cada fase.",
+      steps: [
+        { label: "Chegada", sub: "Cadastro Inicial" },
+        { label: "Vistoria", sub: "Checklist Entrada" },
+        { label: "Revisão", sub: "Mecânica/Peças" },
+        { label: "Estética", sub: "Higienização" },
+        { label: "Marketing", sub: "Fotos/Anúncios" },
+        { label: "Venda", sub: "Apresentação" }
+      ],
+      boxTitle: "Ciclo Integrado",
+      boxDesc: "No Velostock, cada etapa libera automaticamente a próxima. O carro não vai para o pátio sem vistoria, e não é anunciado sem revisão de custos. Isso garante que nenhum veículo seja vendido com prejuízo invisível."
+    }
+  },
+  en: {
+    langLabel: "PT",
+    abertura: {
+      sub: "Automotive Management Revolution",
+      tagline: "Intelligent Operational Management. Not just inventory control.",
+      quote: "Today, dealerships lose up to 40% efficiency trying to manage complex operations with spreadsheets and incomplete systems.",
+      online: "Online System",
+      ia: "Integrated AI"
+    },
+    dor: {
+      tag: "THE PROBLEM",
+      title: "The Chaos of Traditional Management",
+      sub: "Who suffers? Owners of medium-sized dealerships (20-200 cars).",
+      items: [
+        { title: "Financial Lack of Control", desc: "Without cost approval, real profit margins are unknown. Money 'disappears' in small expenses." },
+        { title: "Manual Processes", desc: "Dependence on spreadsheets, notebooks and decentralized WhatsApp. Information is lost and errors happen." },
+        { title: "Operational Blindness", desc: "Where is car X? What needs to be done on it? Without tracking, the operation stops and sales are delayed." }
+      ]
+    },
+    solucao: {
+      tag: "THE SOLUTION",
+      title: "Velostock: The Total Control Ecosystem",
+      desc: "A unique platform that centralizes operations, finance and sales. We move from \"just stocking\" to \"managing the business\".",
+      steps: [
+        { title: "Entry & Preparation", desc: "Digital checklist, photos, repair cost approval." },
+        { title: "Sales & Marketing", desc: "Automatic ads, AI generating texts, integrated CRM." },
+        { title: "After-Sales & Finance", desc: "Warranty management, real-time DRE, commissions." }
+      ]
+    },
+    ciclo: {
+      tag: "SMART FLOW",
+      title: "The Dealership Cycle",
+      desc: "Follow each stage of the vehicle journey, from entry to sale, with total control at each phase.",
+      steps: [
+        { label: "Arrival", sub: "Initial Registration" },
+        { label: "Inspection", sub: "Entry Checklist" },
+        { label: "Review", sub: "Mechanics/Parts" },
+        { label: "Aesthetics", sub: "Cleaning" },
+        { label: "Marketing", sub: "Photos/Ads" },
+        { label: "Sale", sub: "Presentation" }
+      ],
+      boxTitle: "Integrated Cycle",
+      boxDesc: "At Velostock, each stage automatically unlocks the next. The car doesn't go to the lot without inspection, and isn't advertised without a cost review. This ensures no vehicle is sold with an invisible loss."
+    }
+  }
+};
+
 // --- Data ---
 
 const slidesData = [
@@ -131,249 +225,226 @@ const ImageModal = ({ src, onClose }: { src: string | null, onClose: () => void 
 // --- Slide Components ---
 
 // 1. Abertura
-const Slide1_Abertura = ({ onImageClick }: { onImageClick: (src: string) => void }) => (
-  <div className="w-full h-full flex flex-col lg:flex-row relative z-10">
-    <div className="w-full lg:w-1/2 h-full flex flex-col justify-center px-12 lg:px-24">
-      <motion.div 
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <span className="text-secondary font-display font-bold tracking-widest uppercase text-sm mb-6 block glow-text">
-          Revolução na Gestão Automotiva
-        </span>
-        <h1 className="text-5xl lg:text-7xl font-display font-black text-white leading-none mb-6 pr-4">
-          VELO<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary pr-2">STOCK</span>
-        </h1>
-        <h2 className="text-2xl lg:text-3xl font-light text-slate-300 mb-8 border-l-4 border-primary pl-6 py-2">
-          Gestão <strong className="text-white">Operacional</strong> Inteligente.<br/>
-          Não apenas controle de estoque.
-        </h2>
-        
-        <p className="text-slate-400 text-lg max-w-lg leading-relaxed mb-10">
-          "Hoje, revendas perdem até 40% de eficiência tentando gerenciar operações complexas com planilhas e sistemas incompletos."
-        </p>
-
-        <div className="flex gap-4">
-           <div className="px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center gap-3">
-             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-             <span className="text-sm font-medium text-white">Sistema Online</span>
-           </div>
-           <div className="px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center gap-3">
-             <BrainCircuit className="w-4 h-4 text-purple-400" />
-             <span className="text-sm font-medium text-white">IA Integrada</span>
-           </div>
-        </div>
-      </motion.div>
-    </div>
-    
-    <div className="absolute lg:relative inset-0 lg:w-1/2 h-full overflow-hidden opacity-40 lg:opacity-100 mix-blend-normal">
-       <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-background via-background/50 to-transparent z-10" />
-       {/* Using actual dashboard image instead of generated concept */}
-       <div className="w-full h-full flex items-center justify-center p-8">
-          <img 
-            src={imgDashboard} 
-            alt="Velostock Dashboard" 
-            onClick={() => onImageClick(imgDashboard)}
-            className="w-full h-auto object-contain rounded-xl shadow-2xl border border-white/10 rotate-[-2deg] hover:rotate-0 transition-transform duration-700 cursor-zoom-in hover:scale-[1.02]" 
-          />
-       </div>
-    </div>
-  </div>
-);
-
-// 2. Dor do Mercado
-const Slide2_Dor = () => (
-  <div className="w-full h-full flex flex-col items-center justify-center p-12 lg:p-24 relative overflow-hidden">
-    <div className="absolute top-0 right-0 w-96 h-96 bg-red-500/10 rounded-full blur-[100px] pointer-events-none" />
-    
-    <div className="text-center mb-16 z-10">
-      <div className="inline-block px-4 py-1 rounded-full bg-red-500/10 text-red-400 font-bold text-xs tracking-wider mb-4 border border-red-500/20">
-         O PROBLEMA
-      </div>
-      <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-4">
-        O Caos da Gestão Tradicional
-      </h2>
-      <p className="text-xl text-slate-400">Quem sofre? Proprietários de revendas médias (20-200 carros).</p>
-    </div>
-
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full max-w-6xl z-10">
-      {[
-        { 
-          title: "Descontrole Financeiro", 
-          desc: "Sem aprovação de custos, as margens reais de lucro são desconhecidas. O dinheiro 'desaparece' em pequenos gastos.",
-          icon: DollarSign
-        },
-        { 
-          title: "Processos Manuais", 
-          desc: "Dependência de planilhas, cadernos e WhatsApp descentralizado. Informação se perde e erros acontecem.",
-          icon: LayoutDashboard
-        },
-        { 
-          title: "Cegueira Operacional", 
-          desc: "Onde está o carro X? O que falta fazer nele? Sem rastreio, a operação para e a venda atrasa.",
-          icon: AlertTriangle
-        }
-      ].map((item, i) => (
+const Slide1_Abertura = ({ onImageClick, lang }: { onImageClick: (src: string) => void, lang: 'pt' | 'en' }) => {
+  const t = translations[lang].abertura;
+  return (
+    <div className="w-full h-full flex flex-col lg:flex-row relative z-10">
+      <div className="w-full lg:w-1/2 h-full flex flex-col justify-center px-12 lg:px-24">
         <motion.div 
-          key={i}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 * i }}
-          className="bg-card border border-white/5 p-8 rounded-2xl hover:border-red-500/30 transition-all hover:bg-white/5 group"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          <div className="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <item.icon className="text-red-500 w-6 h-6" />
-          </div>
-          <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-          <p className="text-slate-400 leading-relaxed text-sm">{item.desc}</p>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-);
+          <span className="text-secondary font-display font-bold tracking-widest uppercase text-sm mb-6 block glow-text">
+            {t.sub}
+          </span>
+          <h1 className="text-5xl lg:text-7xl font-display font-black text-white leading-none mb-6 pr-4">
+            VELO<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary pr-2">STOCK</span>
+          </h1>
+          <h2 className="text-2xl lg:text-3xl font-light text-slate-300 mb-8 border-l-4 border-primary pl-6 py-2">
+            {t.tagline.split('.')[0]}.<br/>
+            {t.tagline.split('.')[1]}
+          </h2>
+          
+          <p className="text-slate-400 text-lg max-w-lg leading-relaxed mb-10">
+            "{t.quote}"
+          </p>
 
-// 3. Solução
-const Slide3_Solucao = ({ onImageClick }: { onImageClick: (src: string) => void }) => (
-  <div className="w-full h-full flex flex-col lg:flex-row">
-    <div className="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-background z-10">
-       <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4">A SOLUÇÃO</span>
-       <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-8">
-         Velostock: O Ecossistema de Controle Total
-       </h2>
-       <p className="text-lg text-slate-300 mb-8 leading-relaxed">
-         Uma plataforma única que centraliza operação, financeiro e vendas. Saímos do "apenas estocar" para "gerir o negócio".
-       </p>
-       
-       <div className="space-y-6">
-         <div className="flex items-start gap-4">
-           <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center mt-1 shrink-0">
-             <span className="text-primary font-bold">1</span>
-           </div>
-           <div>
-             <h4 className="text-white font-bold text-lg">Entrada & Preparação</h4>
-             <p className="text-slate-400 text-sm">Checklist digital, fotos, aprovação de custos de reparo.</p>
-           </div>
-         </div>
-         <div className="w-px h-8 bg-white/10 ml-4 my-2" />
-         <div className="flex items-start gap-4">
-           <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center mt-1 shrink-0">
-             <span className="text-primary font-bold">2</span>
-           </div>
-           <div>
-             <h4 className="text-white font-bold text-lg">Venda & Marketing</h4>
-             <p className="text-slate-400 text-sm">Anúncios automáticos, IA gerando textos, CRM integrado.</p>
-           </div>
-         </div>
-         <div className="w-px h-8 bg-white/10 ml-4 my-2" />
-         <div className="flex items-start gap-4">
-           <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center mt-1 shrink-0">
-             <span className="text-primary font-bold">3</span>
-           </div>
-           <div>
-             <h4 className="text-white font-bold text-lg">Pós-Venda & Financeiro</h4>
-             <p className="text-slate-400 text-sm">Gestão de garantia, DRE em tempo real, comissões.</p>
-           </div>
-         </div>
-       </div>
-    </div>
-    <div className="w-full lg:w-1/2 bg-black relative flex items-center justify-center overflow-hidden p-12">
-       {/* Feature Showcase Grid */}
-       <div className="grid grid-cols-1 gap-6 w-full h-full relative z-10 opacity-90 rotate-[-2deg] scale-95 hover:rotate-0 hover:scale-100 transition-all duration-700 ease-out justify-center content-center">
-          <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative group cursor-zoom-in" onClick={() => onImageClick(imgHome)}>
-             <img src={imgHome} alt="Home Screen" className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform" />
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 cursor-zoom-in group" onClick={() => onImageClick(imgDashboard)}>
-               <img src={imgDashboard} alt="Dashboard" className="w-full h-full object-cover object-left-top group-hover:scale-[1.02] transition-transform" />
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 cursor-zoom-in group" onClick={() => onImageClick(imgPipeline)}>
-               <img src={imgPipeline} alt="Pipeline" className="w-full h-full object-cover object-left-top group-hover:scale-[1.02] transition-transform" />
-            </div>
-          </div>
-       </div>
-       <div className="absolute inset-0 bg-gradient-to-l from-background via-transparent to-transparent pointer-events-none" />
-    </div>
-  </div>
-);
-
-// 3.5 Ciclo Operacional (New)
-const Slide_Ciclo = () => (
-  <div className="w-full h-full flex flex-col items-center justify-center p-8 bg-background relative overflow-hidden">
-     {/* Background decorative elements */}
-     <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-y-1/2" />
-     
-     <div className="text-center mb-16 relative z-10">
-       <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4">FLUXO INTELIGENTE</span>
-       <h2 className="text-4xl lg:text-5xl font-display font-bold text-white">
-         O Ciclo da Revenda
-       </h2>
-       <p className="text-lg text-slate-400 mt-4 max-w-2xl mx-auto">
-         Acompanhe cada etapa da jornada do veículo, desde a entrada até a venda, com controle total em cada fase.
-       </p>
-     </div>
-
-     <div className="flex w-full max-w-7xl justify-between items-center relative z-10 px-8">
-        {[
-          { icon: Car, label: "Chegada", sub: "Cadastro Inicial" },
-          { icon: ClipboardCheck, label: "Vistoria", sub: "Checklist Entrada" },
-          { icon: Wrench, label: "Revisão", sub: "Mecânica/Peças" },
-          { icon: Sparkles, label: "Estética", sub: "Higienização" },
-          { icon: Camera, label: "Marketing", sub: "Fotos/Anúncios" },
-          { icon: Megaphone, label: "Venda", sub: "Apresentação" }
-        ].map((step, i) => (
-          <div key={i} className="flex flex-col items-center group relative">
-             {/* Connector Line */}
-             {i < 5 && (
-               <div className="absolute top-8 left-1/2 w-[200%] h-0.5 bg-gradient-to-r from-white/10 to-white/5 -z-10" />
-             )}
-             
-             <motion.div 
-               initial={{ scale: 0, opacity: 0 }}
-               animate={{ scale: 1, opacity: 1 }}
-               transition={{ delay: i * 0.15 }}
-               className="w-16 h-16 rounded-2xl bg-card border border-white/10 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(0,0,0,0.5)] group-hover:border-primary/50 group-hover:shadow-[0_0_30px_rgba(0,122,255,0.3)] transition-all duration-500 z-10"
-             >
-               <step.icon className="w-8 h-8 text-white group-hover:text-primary transition-colors duration-300" />
-             </motion.div>
-             
-             <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ delay: 0.5 + (i * 0.1) }}
-               className="text-center"
-             >
-               <h3 className="text-white font-bold mb-1">{step.label}</h3>
-               <p className="text-xs text-slate-500 uppercase tracking-wide">{step.sub}</p>
-             </motion.div>
-             
-             {/* Step Number Bubble */}
-             <div className="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[10px] font-bold text-slate-400">
-               {i + 1}
+          <div className="flex gap-4">
+             <div className="px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center gap-3">
+               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+               <span className="text-sm font-medium text-white">{t.online}</span>
+             </div>
+             <div className="px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center gap-3">
+               <BrainCircuit className="w-4 h-4 text-purple-400" />
+               <span className="text-sm font-medium text-white">{t.ia}</span>
              </div>
           </div>
-        ))}
-     </div>
+        </motion.div>
+      </div>
+      
+      <div className="absolute lg:relative inset-0 lg:w-1/2 h-full overflow-hidden opacity-40 lg:opacity-100 mix-blend-normal">
+         <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-background via-background/50 to-transparent z-10" />
+         <div className="w-full h-full flex items-center justify-center p-8">
+            <img 
+              src={imgDashboard} 
+              alt="Velostock Dashboard" 
+              onClick={() => onImageClick(imgDashboard)}
+              className="w-full h-auto object-contain rounded-xl shadow-2xl border border-white/10 rotate-[-2deg] hover:rotate-0 transition-transform duration-700 cursor-zoom-in hover:scale-[1.02]" 
+            />
+         </div>
+      </div>
+    </div>
+  );
+};
 
-     {/* Cycle explanation box */}
-     <motion.div 
-       initial={{ opacity: 0, y: 30 }}
-       animate={{ opacity: 1, y: 0 }}
-       transition={{ delay: 1.5 }}
-       className="mt-20 p-6 rounded-xl bg-white/5 border border-white/10 max-w-3xl w-full flex items-center gap-6"
-     >
-       <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
-         <Repeat className="text-green-500 w-6 h-6" />
-       </div>
-       <div>
-         <h4 className="text-white font-bold text-lg mb-1">Ciclo Integrado</h4>
-         <p className="text-slate-400 text-sm leading-relaxed">
-           No Velostock, cada etapa libera automaticamente a próxima. O carro não vai para o pátio sem vistoria, e não é anunciado sem revisão de custos. Isso garante que nenhum veículo seja vendido com prejuízo invisível.
+// 2. Dor do Mercado
+const Slide2_Dor = ({ lang }: { lang: 'pt' | 'en' }) => {
+  const t = translations[lang].dor;
+  return (
+    <div className="w-full h-full flex flex-col items-center justify-center p-12 lg:p-24 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-red-500/10 rounded-full blur-[100px] pointer-events-none" />
+      
+      <div className="text-center mb-16 z-10">
+        <div className="inline-block px-4 py-1 rounded-full bg-red-500/10 text-red-400 font-bold text-xs tracking-wider mb-4 border border-red-500/20">
+           {t.tag}
+        </div>
+        <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-4">
+          {t.title}
+        </h2>
+        <p className="text-xl text-slate-400">{t.sub}</p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full max-w-6xl z-10">
+        {t.items.map((item, i) => {
+          const icons = [DollarSign, LayoutDashboard, AlertTriangle];
+          const Icon = icons[i];
+          return (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 * i }}
+              className="bg-card border border-white/5 p-8 rounded-2xl hover:border-red-500/30 transition-all hover:bg-white/5 group"
+            >
+              <div className="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Icon className="text-red-500 w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+              <p className="text-slate-400 leading-relaxed text-sm">{item.desc}</p>
+            </motion.div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+// 3. Solução
+const Slide3_Solucao = ({ onImageClick, lang }: { onImageClick: (src: string) => void, lang: 'pt' | 'en' }) => {
+  const t = translations[lang].solucao;
+  return (
+    <div className="w-full h-full flex flex-col lg:flex-row">
+      <div className="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-background z-10">
+         <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4">{t.tag}</span>
+         <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-8">
+           {t.title}
+         </h2>
+         <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+           {t.desc}
+         </p>
+         
+         <div className="space-y-6">
+           {t.steps.map((step, i) => (
+             <React.Fragment key={i}>
+               <div className="flex items-start gap-4">
+                 <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center mt-1 shrink-0">
+                   <span className="text-primary font-bold">{i + 1}</span>
+                 </div>
+                 <div>
+                   <h4 className="text-white font-bold text-lg">{step.title}</h4>
+                   <p className="text-slate-400 text-sm">{step.desc}</p>
+                 </div>
+               </div>
+               {i < t.steps.length - 1 && <div className="w-px h-8 bg-white/10 ml-4 my-2" />}
+             </React.Fragment>
+           ))}
+         </div>
+      </div>
+      <div className="w-full lg:w-1/2 bg-black relative flex items-center justify-center overflow-hidden p-12">
+         <div className="grid grid-cols-1 gap-6 w-full h-full relative z-10 opacity-90 rotate-[-2deg] scale-95 hover:rotate-0 hover:scale-100 transition-all duration-700 ease-out justify-center content-center">
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative group cursor-zoom-in" onClick={() => onImageClick(imgHome)}>
+               <img src={imgHome} alt="Home Screen" className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform" />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 cursor-zoom-in group" onClick={() => onImageClick(imgDashboard)}>
+                 <img src={imgDashboard} alt="Dashboard" className="w-full h-full object-cover object-left-top group-hover:scale-[1.02] transition-transform" />
+              </div>
+              <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 cursor-zoom-in group" onClick={() => onImageClick(imgPipeline)}>
+                 <img src={imgPipeline} alt="Pipeline" className="w-full h-full object-cover object-left-top group-hover:scale-[1.02] transition-transform" />
+              </div>
+            </div>
+         </div>
+         <div className="absolute inset-0 bg-gradient-to-l from-background via-transparent to-transparent pointer-events-none" />
+      </div>
+    </div>
+  );
+};
+
+// 3.5 Ciclo Operacional (New)
+const Slide_Ciclo = ({ lang }: { lang: 'pt' | 'en' }) => {
+  const t = translations[lang].ciclo;
+  const icons = [Car, ClipboardCheck, Wrench, Sparkles, Camera, Megaphone];
+  
+  return (
+    <div className="w-full h-full flex flex-col items-center justify-center p-8 bg-background relative overflow-hidden">
+       <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-y-1/2" />
+       
+       <div className="text-center mb-16 relative z-10">
+         <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4">{t.tag}</span>
+         <h2 className="text-4xl lg:text-5xl font-display font-bold text-white">
+           {t.title}
+         </h2>
+         <p className="text-lg text-slate-400 mt-4 max-w-2xl mx-auto">
+           {t.desc}
          </p>
        </div>
-     </motion.div>
-  </div>
-);
+
+       <div className="flex w-full max-w-7xl justify-between items-center relative z-10 px-8">
+          {t.steps.map((step, i) => {
+            const Icon = icons[i];
+            return (
+              <div key={i} className="flex flex-col items-center group relative">
+                 {i < 5 && (
+                   <div className="absolute top-8 left-1/2 w-[200%] h-0.5 bg-gradient-to-r from-white/10 to-white/5 -z-10" />
+                 )}
+                 
+                 <motion.div 
+                   initial={{ scale: 0, opacity: 0 }}
+                   animate={{ scale: 1, opacity: 1 }}
+                   transition={{ delay: i * 0.15 }}
+                   className="w-16 h-16 rounded-2xl bg-card border border-white/10 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(0,0,0,0.5)] group-hover:border-primary/50 group-hover:shadow-[0_0_30px_rgba(0,122,255,0.3)] transition-all duration-500 z-10"
+                 >
+                   <Icon className="w-8 h-8 text-white group-hover:text-primary transition-colors duration-300" />
+                 </motion.div>
+                 
+                 <motion.div
+                   initial={{ opacity: 0, y: 20 }}
+                   animate={{ opacity: 1, y: 0 }}
+                   transition={{ delay: 0.5 + (i * 0.1) }}
+                   className="text-center"
+                 >
+                   <h3 className="text-white font-bold mb-1">{step.label}</h3>
+                   <p className="text-xs text-slate-500 uppercase tracking-wide">{step.sub}</p>
+                 </motion.div>
+                 
+                 <div className="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[10px] font-bold text-slate-400">
+                   {i + 1}
+                 </div>
+              </div>
+            );
+          })}
+       </div>
+
+       <motion.div 
+         initial={{ opacity: 0, y: 30 }}
+         animate={{ opacity: 1, y: 0 }}
+         transition={{ delay: 1.5 }}
+         className="mt-20 p-6 rounded-xl bg-white/5 border border-white/10 max-w-3xl w-full flex items-center gap-6"
+       >
+         <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
+           <Repeat className="text-green-500 w-6 h-6" />
+         </div>
+         <div>
+           <h4 className="text-white font-bold text-lg mb-1">{t.boxTitle}</h4>
+           <p className="text-slate-400 text-sm leading-relaxed">
+             {t.boxDesc}
+           </p>
+         </div>
+       </motion.div>
+    </div>
+  );
+};
 
 // 4. Arquitetura (New)
 const Slide4_Arquitetura = () => (
@@ -1080,6 +1151,7 @@ export default function PresentationPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [lang, setLang] = useState<'pt' | 'en'>('pt');
   const [, setLocation] = useLocation();
 
   // Components mapping
@@ -1100,6 +1172,8 @@ export default function PresentationPage() {
 
   const handleNext = () => setCurrentSlide((prev) => (prev + 1) % 12);
   const handlePrev = () => setCurrentSlide((prev) => (prev - 1 + 12) % 12);
+
+  const toggleLang = () => setLang(prev => prev === 'pt' ? 'en' : 'pt');
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
@@ -1192,6 +1266,17 @@ export default function PresentationPage() {
         </motion.div>
 
         <div className="flex items-center gap-2 pointer-events-auto">
+          {currentSlide === 0 && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={toggleLang}
+              className="bg-black/50 backdrop-blur border-white/10 hover:bg-white/10 text-white font-bold"
+            >
+              <Globe className="w-4 h-4 mr-2" />
+              {translations[lang].langLabel}
+            </Button>
+          )}
           <Button 
             variant="ghost" 
             size="icon" 
@@ -1223,7 +1308,7 @@ export default function PresentationPage() {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="w-full h-full"
           >
-            <CurrentSlideComponent onImageClick={setSelectedImage} />
+            <CurrentSlideComponent onImageClick={setSelectedImage} lang={lang} />
           </motion.div>
         </AnimatePresence>
       </main>
