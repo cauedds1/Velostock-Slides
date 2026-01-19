@@ -124,27 +124,53 @@ const translations = {
     },
     funcionalidades: {
       tag: "DIFERENCIAIS",
-      title: "Funcionalidades que Transformam",
+      title: "15 Key Features",
+      sub: "The complete stack for your operation. Click to expand details.",
       items: [
-        "Gestão Multi-Lojas", "IA para Descrição de Anúncios", "CRM de Vendas Integrado",
-        "Aprovação de Orçamentos", "Fluxo de Preparação Digital", "Checklist de Entrada c/ Fotos",
-        "DRE Automático por Carro", "Gestão de Comissões", "Rastreio de Documentação",
-        "App para Vistoriadores", "Integração com Portais", "Controle de Garantias",
-        "Relatórios de Performance", "Histórico Completo do Veículo", "Alertas de Revisão"
+        "Multi-Store Management", "AI for Ad Descriptions", "Integrated Sales CRM",
+        "Budget Approval", "Digital Preparation Flow", "Entry Checklist w/ Photos",
+        "Automatic DRE per Car", "Commission Management", "Documentation Tracking",
+        "App for Inspectors", "Portal Integration", "Warranty Control",
+        "Performance Reports", "Full Vehicle History", "Maintenance Alerts"
       ]
     },
+    admin: {
+      tag: "BACKOFFICE",
+      title: "Powerful Admin Panel",
+      desc: "Complete vision of the business health. MRR, Churn, and active stores in a single dashboard.",
+      mrr: "Monthly Recurring Revenue",
+      churn: "Churn Rate",
+      stores: "Active Stores",
+      bugs: "Bug Tracking & Support"
+    },
+    diferencial: {
+      tag: "THE EDGE",
+      title: "Why Velostock?",
+      desc: "We focus on real profit and operational efficiency, not just beautiful photos.",
+      ai: "AI-Powered Operations",
+      profit: "Real Profit Control",
+      automation: "Workflow Automation"
+    },
+    mercado: {
+      tag: "MARKET",
+      title: "A Growing Opportunity",
+      desc: "Targeting over 45,000 dealerships in Brazil alone.",
+      stores: "Total Dealerships",
+      target: "Primary Target",
+      growth: "Annual Growth"
+    },
     monetizacao: {
-      tag: "ESTRATÉGIA",
-      title: "Planos & Crescimento",
+      tag: "STRATEGY",
+      title: "Plans & Growth",
       metrics: [
-        { label: "CAC", value: "R$ 450", desc: "Custo de Aquisição" },
-        { label: "LTV", value: "R$ 12k", desc: "Lifetime Value" },
-        { label: "Churn", value: "< 2%", desc: "Taxa de Saída" }
+        { label: "CAC", value: "$ 450", desc: "Acquisition Cost" },
+        { label: "LTV", value: "$ 12k", desc: "Lifetime Value" },
+        { label: "Churn", value: "< 2%", desc: "Exit Rate" }
       ],
       plans: [
-        { name: "Starter", price: "R$ 499/mês", desc: "Até 30 carros" },
-        { name: "Pro", price: "R$ 899/mês", desc: "Até 100 carros" },
-        { name: "Enterprise", price: "Sob Consulta", desc: "Ilimitado + Multi-Lojas" }
+        { name: "Starter", price: "$ 499/mo", desc: "Up to 30 cars" },
+        { name: "Pro", price: "$ 899/mo", desc: "Up to 100 cars" },
+        { name: "Enterprise", price: "On Request", desc: "Unlimited + Multi-Store" }
       ]
     },
     nav: {
