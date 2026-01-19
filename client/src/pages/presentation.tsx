@@ -113,6 +113,44 @@ const translations = {
       ],
       boxTitle: "Ciclo Integrado",
       boxDesc: "No Velostock, cada etapa libera automaticamente a próxima. O carro não vai para o pátio sem vistoria, e não é anunciado sem revisão de custos. Isso garante que nenhum veículo seja vendido com prejuízo invisível."
+    },
+    arquitetura: {
+      tag: "STACK TECNOLÓGICA",
+      title: "Engenharia de Alta Performance",
+      desc: "Desenvolvido com tecnologias modernas para garantir escalabilidade horizontal, segurança de dados e uma experiência de usuário fluida.",
+      frontend: "Frontend & Interface",
+      backend: "Backend & APIs",
+      infra: "Infraestrutura & Cloud"
+    },
+    funcionalidades: {
+      tag: "DIFERENCIAIS",
+      title: "Funcionalidades que Transformam",
+      items: [
+        "Gestão Multi-Lojas", "IA para Descrição de Anúncios", "CRM de Vendas Integrado",
+        "Aprovação de Orçamentos", "Fluxo de Preparação Digital", "Checklist de Entrada c/ Fotos",
+        "DRE Automático por Carro", "Gestão de Comissões", "Rastreio de Documentação",
+        "App para Vistoriadores", "Integração com Portais", "Controle de Garantias",
+        "Relatórios de Performance", "Histórico Completo do Veículo", "Alertas de Revisão"
+      ]
+    },
+    monetizacao: {
+      tag: "ESTRATÉGIA",
+      title: "Planos & Crescimento",
+      metrics: [
+        { label: "CAC", value: "R$ 450", desc: "Custo de Aquisição" },
+        { label: "LTV", value: "R$ 12k", desc: "Lifetime Value" },
+        { label: "Churn", value: "< 2%", desc: "Taxa de Saída" }
+      ],
+      plans: [
+        { name: "Starter", price: "R$ 499/mês", desc: "Até 30 carros" },
+        { name: "Pro", price: "R$ 899/mês", desc: "Até 100 carros" },
+        { name: "Enterprise", price: "Sob Consulta", desc: "Ilimitado + Multi-Lojas" }
+      ]
+    },
+    nav: {
+      next: "Próximo",
+      prev: "Anterior",
+      export: "Exportar PPTX"
     }
   },
   en: {
@@ -158,6 +196,44 @@ const translations = {
       ],
       boxTitle: "Integrated Cycle",
       boxDesc: "At Velostock, each stage automatically unlocks the next. The car doesn't go to the lot without inspection, and isn't advertised without a cost review. This ensures no vehicle is sold with an invisible loss."
+    },
+    arquitetura: {
+      tag: "TECH STACK",
+      title: "High Performance Engineering",
+      desc: "Developed with modern technologies to ensure horizontal scalability, data security, and a fluid user experience.",
+      frontend: "Frontend & Interface",
+      backend: "Backend & APIs",
+      infra: "Infrastructure & Cloud"
+    },
+    funcionalidades: {
+      tag: "DIFFERENTIATORS",
+      title: "Transformative Features",
+      items: [
+        "Multi-Store Management", "AI for Ad Descriptions", "Integrated Sales CRM",
+        "Budget Approval", "Digital Preparation Flow", "Entry Checklist w/ Photos",
+        "Automatic DRE per Car", "Commission Management", "Documentation Tracking",
+        "App for Inspectors", "Portal Integration", "Warranty Control",
+        "Performance Reports", "Full Vehicle History", "Maintenance Alerts"
+      ]
+    },
+    monetizacao: {
+      tag: "STRATEGY",
+      title: "Plans & Growth",
+      metrics: [
+        { label: "CAC", value: "$ 450", desc: "Acquisition Cost" },
+        { label: "LTV", value: "$ 12k", desc: "Lifetime Value" },
+        { label: "Churn", value: "< 2%", desc: "Exit Rate" }
+      ],
+      plans: [
+        { name: "Starter", price: "$ 499/mo", desc: "Up to 30 cars" },
+        { name: "Pro", price: "$ 899/mo", desc: "Up to 100 cars" },
+        { name: "Enterprise", price: "On Request", desc: "Unlimited + Multi-Store" }
+      ]
+    },
+    nav: {
+      next: "Next",
+      prev: "Previous",
+      export: "Export PPTX"
     }
   }
 };
