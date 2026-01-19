@@ -984,7 +984,8 @@ const Slide7_Mercado = () => (
 );
 
 // 8. Monetização
-const Slide8_Monetizacao = () => {
+const Slide9_Monetizacao = ({ lang }: { lang: 'pt' | 'en' }) => {
+  const t = translations[lang].monetizacao;
   const projectionData = [
     { name: "50 Lojas", clients: 50, monthly: 7450, annual: 89400 },
     { name: "100 Lojas", clients: 100, monthly: 14900, annual: 178800 },
@@ -996,8 +997,8 @@ const Slide8_Monetizacao = () => {
        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
        
        <div className="text-center mb-12 relative z-10">
-          <span className="text-secondary font-bold tracking-widest uppercase text-xs mb-3 block">PROJEÇÃO E MODELO DE NEGÓCIO 2026</span>
-          <h2 className="text-4xl lg:text-5xl font-display font-black text-white mb-4">Escalabilidade & Receita</h2>
+          <span className="text-secondary font-bold tracking-widest uppercase text-xs mb-3 block">{t.tag}</span>
+          <h2 className="text-4xl lg:text-5xl font-display font-black text-white mb-4">{t.title}</h2>
           <div className="h-1.5 w-24 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
        </div>
        
@@ -1012,43 +1013,41 @@ const Slide8_Monetizacao = () => {
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-primary/30 transition-all" />
                 <div className="relative z-10">
                    <div className="mb-6">
-                      <h3 className="text-slate-400 font-bold text-xs uppercase mb-1 tracking-widest">Plano VeloFull 2026</h3>
+                      <h3 className="text-slate-400 font-bold text-xs uppercase mb-1 tracking-widest">{lang === 'pt' ? 'Plano VeloFull 2026' : 'VeloFull Plan 2026'}</h3>
                       <div className="flex items-baseline gap-2">
-                         <span className="text-3xl text-white font-light">R$</span>
+                         <span className="text-3xl text-white font-light">{lang === 'pt' ? 'R$' : '$'}</span>
                          <span className="text-6xl text-white font-black tracking-tighter">149</span>
-                         <span className="text-slate-500 font-medium text-sm">/mês</span>
+                         <span className="text-slate-500 font-medium text-sm">{lang === 'pt' ? '/mês' : '/mo'}</span>
                       </div>
                    </div>
                    
                    <div className="space-y-4 mb-8">
                       {[
-                        { text: "Usuários Ilimitados", desc: "Equipe completa conectada" },
-                        { text: "Veículos Ilimitados", desc: "Gestão total de pátio" },
-                        { text: "VeloBot IA Full", desc: "Automação de anúncios e preços" },
-                        { text: "Suporte Premium", desc: "Apoio estratégico operacional" },
-                        { text: "Ecossistema Multi-Tenant", desc: "Dados 100% isolados e seguros" }
-                      ].map((t, i) => (
+                        { text: lang === 'pt' ? "Usuários Ilimitados" : "Unlimited Users", desc: lang === 'pt' ? "Equipe completa conectada" : "Complete team connected" },
+                        { text: lang === 'pt' ? "Veículos Ilimitados" : "Unlimited Vehicles", desc: lang === 'pt' ? "Gestão total de pátio" : "Total yard management" },
+                        { text: lang === 'pt' ? "VeloBot IA Full" : "Full AI VeloBot", desc: lang === 'pt' ? "Automação de anúncios e preços" : "Ad and price automation" },
+                        { text: lang === 'pt' ? "Suporte Premium" : "Premium Support", desc: lang === 'pt' ? "Apoio estratégico operacional" : "Operational strategic support" },
+                        { text: lang === 'pt' ? "Ecossistema Multi-Tenant" : "Multi-Tenant Ecosystem", desc: lang === 'pt' ? "Dados 100% isolados e seguros" : "100% isolated and secure data" }
+                      ].map((item, i) => (
                         <div key={i} className="flex items-start gap-3">
                           <div className="mt-1 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                             <CheckCircle className="text-primary w-3 h-3" />
                           </div>
                           <div>
-                             <p className="text-white font-bold text-xs leading-none mb-1">{t.text}</p>
-                             <p className="text-slate-500 text-[10px] uppercase tracking-tighter">{t.desc}</p>
+                             <p className="text-white font-bold text-xs leading-none mb-1">{item.text}</p>
+                             <p className="text-slate-500 text-[10px] uppercase tracking-tighter">{item.desc}</p>
                           </div>
                         </div>
                       ))}
                    </div>
 
                    <div className="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-3">
-                      <div className="flex justify-between text-xs">
-                        <span className="text-slate-400">Churn Rate Médio (SaaS Ops)</span>
-                        <span className="text-green-400 font-bold">~2%</span>
-                      </div>
-                      <div className="flex justify-between text-xs">
-                        <span className="text-slate-400">CAC (Custo de Aquisição)</span>
-                        <span className="text-blue-400 font-bold">Otimizado</span>
-                      </div>
+                      {t.metrics.map((m, i) => (
+                        <div key={i} className="flex justify-between text-xs">
+                          <span className="text-slate-400">{m.label} ({m.desc})</span>
+                          <span className="text-primary font-bold">{m.value}</span>
+                        </div>
+                      ))}
                    </div>
                 </div>
              </motion.div>
@@ -1064,8 +1063,12 @@ const Slide8_Monetizacao = () => {
              >
                 <div className="flex justify-between items-start mb-10">
                    <div>
-                      <h4 className="text-white font-black text-xl uppercase tracking-tighter">Metas de Crescimento 2026</h4>
-                      <p className="text-slate-500 text-[10px] uppercase font-bold tracking-[0.2em]">Projeção baseada em volume de clientes</p>
+                      <h4 className="text-white font-black text-xl uppercase tracking-tighter">
+                        {lang === 'pt' ? 'Metas de Crescimento 2026' : '2026 Growth Goals'}
+                      </h4>
+                      <p className="text-slate-500 text-[10px] uppercase font-bold tracking-[0.2em]">
+                        {lang === 'pt' ? 'Projeção baseada em volume de clientes' : 'Projection based on customer volume'}
+                      </p>
                    </div>
                    <TrendingUp className="text-primary w-6 h-6 animate-pulse" />
                 </div>
@@ -1097,8 +1100,8 @@ const Slide8_Monetizacao = () => {
                                return (
                                  <div className="bg-black/90 backdrop-blur-xl border border-white/10 p-3 rounded-xl shadow-2xl">
                                    <p className="text-primary font-black text-sm mb-1">{payload[0].payload.name}</p>
-                                   <p className="text-white font-bold text-xs">Faturamento Mensal:</p>
-                                   <p className="text-green-400 font-black text-lg">R$ {payload[0].payload.monthly.toLocaleString('pt-BR')}</p>
+                                   <p className="text-white font-bold text-xs">{lang === 'pt' ? 'Faturamento Mensal:' : 'Monthly Revenue:'}</p>
+                                   <p className="text-green-400 font-black text-lg">{lang === 'pt' ? 'R$' : '$'} {payload[0].payload.monthly.toLocaleString(lang === 'pt' ? 'pt-BR' : 'en-US')}</p>
                                  </div>
                                );
                              }
@@ -1122,9 +1125,9 @@ const Slide8_Monetizacao = () => {
                    <div className="absolute -bottom-8 w-full flex justify-between px-4">
                       {projectionData.map((d, i) => (
                         <div key={i} className="text-center">
-                           <p className="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-1">Faturamento Anual</p>
+                           <p className="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-1">{lang === 'pt' ? 'Faturamento Anual' : 'Annual Revenue'}</p>
                            <p className="text-sm font-black text-white bg-primary/20 px-4 py-2 rounded-full border border-primary/30 shadow-lg shadow-primary/10">
-                             R$ {d.annual.toLocaleString('pt-BR')}
+                             {lang === 'pt' ? 'R$' : '$'} {d.annual.toLocaleString(lang === 'pt' ? 'pt-BR' : 'en-US')}
                            </p>
                         </div>
                       ))}
@@ -1133,12 +1136,20 @@ const Slide8_Monetizacao = () => {
 
                 <div className="grid grid-cols-2 gap-4 mt-16">
                    <div className="p-5 rounded-2xl bg-primary/5 border border-primary/10">
-                      <h5 className="text-primary font-black text-xs uppercase mb-2 tracking-widest">Escalabilidade</h5>
-                      <p className="text-slate-400 text-[11px] leading-relaxed">Infraestrutura SaaS permite margens superiores a 80% conforme o volume de clientes aumenta sem custos proporcionais.</p>
+                      <h5 className="text-primary font-black text-xs uppercase mb-2 tracking-widest">{lang === 'pt' ? 'Escalabilidade' : 'Scalability'}</h5>
+                      <p className="text-slate-400 text-[11px] leading-relaxed">
+                        {lang === 'pt' 
+                          ? 'Infraestrutura SaaS permite margens superiores a 80% conforme o volume de clientes aumenta sem custos proporcionais.'
+                          : 'SaaS infrastructure allows margins over 80% as customer volume increases without proportional costs.'}
+                      </p>
                    </div>
                    <div className="p-5 rounded-2xl bg-secondary/5 border border-secondary/10">
-                      <h5 className="text-secondary font-black text-xs uppercase mb-2 tracking-widest">Retenção</h5>
-                      <p className="text-slate-400 text-[11px] leading-relaxed">Sistema Core-Business (operacional + financeiro) cria alto custo de troca, garantindo LTV estendido.</p>
+                      <h5 className="text-secondary font-black text-xs uppercase mb-2 tracking-widest">{lang === 'pt' ? 'Retenção' : 'Retention'}</h5>
+                      <p className="text-slate-400 text-[11px] leading-relaxed">
+                        {lang === 'pt'
+                          ? 'Sistema Core-Business (operacional + financeiro) cria alto custo de troca, garantindo LTV estendido.'
+                          : 'Core-Business system (operational + financial) creates high switching costs, ensuring extended LTV.'}
+                      </p>
                    </div>
                 </div>
              </motion.div>
@@ -1148,35 +1159,47 @@ const Slide8_Monetizacao = () => {
   );
 };
 
-// 9. Desafios
-const Slide9_Desafios = () => (
+// 10. Desafios
+const Slide10_Desafios = ({ lang }: { lang: 'pt' | 'en' }) => (
   <div className="w-full h-full flex items-center justify-center p-12 lg:p-24 bg-background">
      <div className="max-w-4xl w-full">
-       <h2 className="text-4xl font-display font-bold text-white mb-12">Nossos Desafios Atuais</h2>
+       <h2 className="text-4xl font-display font-bold text-white mb-12">
+         {lang === 'pt' ? 'Nossos Desafios Atuais' : 'Our Current Challenges'}
+       </h2>
        
        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
          <div className="bg-card p-8 rounded-2xl border-l-4 border-yellow-500">
-           <h3 className="text-xl font-bold text-white mb-4">Tecnologia</h3>
+           <h3 className="text-xl font-bold text-white mb-4">{lang === 'pt' ? 'Tecnologia' : 'Technology'}</h3>
            <p className="text-slate-300">
-             Escalar a infraestrutura de IA para processar milhares de leads simultaneamente sem perder a performance.
+             {lang === 'pt'
+               ? 'Escalar a infraestrutura de IA para processar milhares de leads simultaneamente sem perder a performance.'
+               : 'Scaling AI infrastructure to process thousands of leads simultaneously without losing performance.'}
            </p>
          </div>
          <div className="bg-card p-8 rounded-2xl border-l-4 border-blue-500">
-           <h3 className="text-xl font-bold text-white mb-4">Comercial</h3>
+           <h3 className="text-xl font-bold text-white mb-4">{lang === 'pt' ? 'Comercial' : 'Commercial'}</h3>
            <p className="text-slate-300">
-             Atingir o CAC ideal e estruturar a máquina de vendas Outbound para atingir lojas fora dos grandes centros.
+             {lang === 'pt'
+               ? 'Atingir o CAC ideal e estruturar a máquina de vendas Outbound para atingir lojas fora dos grandes centros.'
+               : 'Reaching the ideal CAC and structuring the Outbound sales machine to reach stores outside large centers.'}
            </p>
          </div>
          <div className="bg-card p-8 rounded-2xl border-l-4 border-purple-500">
-           <h3 className="text-xl font-bold text-white mb-4">Parcerias</h3>
+           <h3 className="text-xl font-bold text-white mb-4">{lang === 'pt' ? 'Parcerias' : 'Partnerships'}</h3>
            <p className="text-slate-300">
-             Conectar com bancos e financeiras para integrar propostas de financiamento direto no checkout do sistema.
+             {lang === 'pt'
+               ? 'Conectar com bancos e financeiras para integrar propostas de financiamento direto no checkout do sistema.'
+               : 'Connecting with banks and financial institutions to integrate financing proposals directly into the system checkout.'}
            </p>
          </div>
          <div className="bg-card p-8 rounded-2xl border-l-4 border-green-500 flex items-center justify-center">
            <div className="text-center">
-             <h3 className="text-2xl font-bold text-white mb-2">Por que você?</h3>
-             <p className="text-slate-400">Precisamos da sua expertise para superar essas barreiras.</p>
+             <h3 className="text-2xl font-bold text-white mb-2">{lang === 'pt' ? 'Por que você?' : 'Why you?'}</h3>
+             <p className="text-slate-400">
+               {lang === 'pt'
+                 ? 'Precisamos da sua expertise para superar essas barreiras.'
+                 : 'We need your expertise to overcome these barriers.'}
+             </p>
            </div>
          </div>
        </div>
@@ -1184,8 +1207,8 @@ const Slide9_Desafios = () => (
   </div>
 );
 
-// 10. Encerramento
-const Slide10_Encerramento = () => (
+// 11. Encerramento
+const Slide11_Encerramento = ({ lang }: { lang: 'pt' | 'en' }) => (
   <div className="w-full h-full flex flex-col items-center justify-center bg-black relative overflow-hidden">
      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-black to-secondary/20 animate-pulse-slow" />
      
@@ -1202,7 +1225,7 @@ const Slide10_Encerramento = () => (
        />
        
        <h2 className="text-6xl lg:text-8xl font-display font-bold text-white tracking-tighter">
-         O Futuro é Agora.
+         {lang === 'pt' ? 'O Futuro é Agora.' : 'The Future is Now.'}
        </h2>
        
        <h1 className="text-4xl lg:text-6xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary tracking-widest">
@@ -1210,11 +1233,11 @@ const Slide10_Encerramento = () => (
        </h1>
 
        <p className="text-2xl text-slate-400 font-light max-w-2xl mx-auto">
-         Vamos acelerar o mercado automotivo juntos.
+         {lang === 'pt' ? 'Vamos acelerar o mercado automotivo juntos.' : 'Let\'s accelerate the automotive market together.'}
        </p>
        
        <div className="pt-12 flex flex-col items-center gap-4">
-         <p className="text-slate-500">Agende uma demo exclusiva</p>
+         <p className="text-slate-500">{lang === 'pt' ? 'Agende uma demo exclusiva' : 'Schedule an exclusive demo'}</p>
        </div>
      </motion.div>
   </div>
@@ -1241,9 +1264,9 @@ export default function PresentationPage() {
     Slide_Admin,
     Slide6_Diferencial,
     Slide7_Mercado,
-    Slide8_Monetizacao,
-    Slide9_Desafios,
-    Slide10_Encerramento
+    Slide9_Monetizacao,
+    Slide10_Desafios,
+    Slide11_Encerramento
   ];
 
   const handleNext = () => setCurrentSlide((prev) => (prev + 1) % 12);
@@ -1270,34 +1293,34 @@ export default function PresentationPage() {
     let slide = pres.addSlide();
     slide.background = { color: "000000" };
     slide.addText("VELOSTOCK", { x: 1, y: 2, w: "80%", fontSize: 60, color: "FFFFFF", bold: true, fontFace: "Arial" });
-    slide.addText("Revolução na Gestão Automotiva", { x: 1, y: 3, w: "80%", fontSize: 24, color: "CCCCCC", fontFace: "Arial" });
-    slide.addText("Gestão Operacional Inteligente. Não apenas controle de estoque.", { x: 1, y: 4, w: "80%", fontSize: 18, color: "007AFF", fontFace: "Arial" });
+    slide.addText(lang === 'pt' ? "Revolução na Gestão Automotiva" : "Automotive Management Revolution", { x: 1, y: 3, w: "80%", fontSize: 24, color: "CCCCCC", fontFace: "Arial" });
+    slide.addText(lang === 'pt' ? "Gestão Operacional Inteligente. Não apenas controle de estoque." : "Intelligent Operational Management. Not just inventory control.", { x: 1, y: 4, w: "80%", fontSize: 18, color: "007AFF", fontFace: "Arial" });
 
     // 2. A Dor
     slide = pres.addSlide();
     slide.background = { color: "000000" };
-    slide.addText("O Problema: Caos da Gestão Tradicional", { x: 0.5, y: 0.5, w: "90%", fontSize: 32, color: "FFFFFF", bold: true });
+    slide.addText(lang === 'pt' ? "O Problema: Caos da Gestão Tradicional" : "The Problem: Chaos of Traditional Management", { x: 0.5, y: 0.5, w: "90%", fontSize: 32, color: "FFFFFF", bold: true });
     
-    slide.addText("Descontrole Financeiro", { x: 1, y: 2, fontSize: 20, color: "FF3B30", bold: true });
-    slide.addText("Sem aprovação de custos, margens desconhecidas.", { x: 1, y: 2.5, fontSize: 14, color: "CCCCCC" });
+    slide.addText(lang === 'pt' ? "Descontrole Financeiro" : "Financial Loss of Control", { x: 1, y: 2, fontSize: 20, color: "FF3B30", bold: true });
+    slide.addText(lang === 'pt' ? "Sem aprovação de custos, margens desconhecidas." : "Without cost approval, unknown margins.", { x: 1, y: 2.5, fontSize: 14, color: "CCCCCC" });
     
-    slide.addText("Processos Manuais", { x: 5, y: 2, fontSize: 20, color: "FF3B30", bold: true });
-    slide.addText("Dependência de planilhas e cadernos.", { x: 5, y: 2.5, fontSize: 14, color: "CCCCCC" });
+    slide.addText(lang === 'pt' ? "Processos Manuais" : "Manual Processes", { x: 5, y: 2, fontSize: 20, color: "FF3B30", bold: true });
+    slide.addText(lang === 'pt' ? "Dependência de planilhas e cadernos." : "Dependence on spreadsheets and notebooks.", { x: 5, y: 2.5, fontSize: 14, color: "CCCCCC" });
     
-    slide.addText("Cegueira Operacional", { x: 3, y: 4, fontSize: 20, color: "FF3B30", bold: true });
-    slide.addText("Sem rastreio de onde os carros estão.", { x: 3, y: 4.5, fontSize: 14, color: "CCCCCC" });
+    slide.addText(lang === 'pt' ? "Cegueira Operacional" : "Operational Blindness", { x: 3, y: 4, fontSize: 20, color: "FF3B30", bold: true });
+    slide.addText(lang === 'pt' ? "Sem rastreio de onde os carros estão." : "No tracking of where the cars are.", { x: 3, y: 4.5, fontSize: 14, color: "CCCCCC" });
 
     // 3. Solução
     slide = pres.addSlide();
     slide.background = { color: "000000" };
-    slide.addText("A Solução: Velostock", { x: 0.5, y: 0.5, fontSize: 32, color: "FFFFFF", bold: true });
-    slide.addText("Ecossistema de Controle Total", { x: 0.5, y: 1.2, fontSize: 24, color: "007AFF" });
+    slide.addText(lang === 'pt' ? "A Solução: Velostock" : "The Solution: Velostock", { x: 0.5, y: 0.5, fontSize: 32, color: "FFFFFF", bold: true });
+    slide.addText(lang === 'pt' ? "Ecossistema de Controle Total" : "Total Control Ecosystem", { x: 0.5, y: 1.2, fontSize: 24, color: "007AFF" });
     
-    slide.addText("1. Entrada & Preparação: Checklist digital e aprovação de custos.", { x: 1, y: 2.5, w: "80%", fontSize: 16, color: "CCCCCC" });
-    slide.addText("2. Venda & Marketing: Anúncios automáticos e CRM.", { x: 1, y: 3.5, w: "80%", fontSize: 16, color: "CCCCCC" });
-    slide.addText("3. Pós-Venda & Financeiro: Gestão de garantia e DRE.", { x: 1, y: 4.5, w: "80%", fontSize: 16, color: "CCCCCC" });
+    slide.addText(lang === 'pt' ? "1. Entrada & Preparação: Checklist digital e aprovação de custos." : "1. Entry & Preparation: Digital checklist and cost approval.", { x: 1, y: 2.5, w: "80%", fontSize: 16, color: "CCCCCC" });
+    slide.addText(lang === 'pt' ? "2. Venda & Marketing: Anúncios automáticos e CRM." : "2. Sales & Marketing: Automatic ads and CRM.", { x: 1, y: 3.5, w: "80%", fontSize: 16, color: "CCCCCC" });
+    slide.addText(lang === 'pt' ? "3. Pós-Venda & Financeiro: Gestão de garantia e DRE." : "3. After-Sales & Finance: Warranty management and DRE.", { x: 1, y: 4.5, w: "80%", fontSize: 16, color: "CCCCCC" });
 
-    pres.writeFile({ fileName: "Apresentacao_Velostock.pptx" });
+    pres.writeFile({ fileName: `Apresentacao_Velostock_${lang.toUpperCase()}.pptx` });
   };
 
   // Keyboard navigation
@@ -1401,7 +1424,7 @@ export default function PresentationPage() {
              ))}
           </div>
           <span className="text-[10px] font-mono text-slate-600 uppercase tracking-widest">
-            Slide {currentSlide + 1} / 12 — {slidesData[currentSlide].label}
+            {lang === 'pt' ? 'Slide' : 'Slide'} {currentSlide + 1} / 12 — {slidesData[currentSlide].label}
           </span>
         </div>
 
@@ -1411,6 +1434,7 @@ export default function PresentationPage() {
             size="icon" 
             onClick={handlePrev}
             className="bg-black/50 backdrop-blur border-white/10 hover:bg-white/10 text-white rounded-full w-12 h-12"
+            data-testid="button-prev-slide"
           >
             <ChevronLeft size={24} />
           </Button>
@@ -1419,6 +1443,7 @@ export default function PresentationPage() {
             size="icon" 
             onClick={handleNext}
             className="bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 rounded-full w-12 h-12"
+            data-testid="button-next-slide"
           >
             <ChevronRight size={24} />
           </Button>
