@@ -194,9 +194,9 @@ const translations = {
       ]
     },
     nav: {
-      next: "Próximo",
-      prev: "Anterior",
-      export: "Exportar PPTX"
+      next: "Next",
+      prev: "Previous",
+      export: "Export PPTX"
     }
   },
   en: {
@@ -253,43 +253,193 @@ const translations = {
     },
     funcionalidades: {
       tag: "DIFFERENTIATORS",
-      title: "Transformative Features",
+      title: "15 Key Features",
+      sub: "The complete stack for your operation. Click to expand details.",
       items: [
-        "Multi-Store Management", "AI for Ad Descriptions", "Integrated Sales CRM",
-        "Budget Approval", "Digital Preparation Flow", "Entry Checklist w/ Photos",
-        "Automatic DRE per Car", "Commission Management", "Documentation Tracking",
-        "App for Inspectors", "Portal Integration", "Warranty Control",
-        "Performance Reports", "Full Vehicle History", "Maintenance Alerts"
+        "Vehicle Management (Kanban)", "Detailed Cost Control", "Automated Sales & Commissions",
+        "Professional Warranty Management", "Centralized Internal Notes", "Integrated Finance (A/P & A/R)",
+        "CRM & Lead Management", "Intelligent Follow-ups", "AI (VeloBot) - Virtual Assistant",
+        "Indicator Dashboard (BI)", "Access Control & Permissions", "Customizable Settings",
+        "Advanced Management Reports", "Document Management & Storage", "Digital Checklists (In/Out)"
       ]
     },
     admin: {
       tag: "BACKOFFICE",
       title: "Powerful Admin Panel",
       desc: "Complete vision of the business health. MRR, Churn, and active stores in a single dashboard.",
+      metrics: "Global Metrics",
+      tenancy: "Tenancy Management",
+      invites: "Controlled Invites",
+      bugs: "Bug Tracking & Support",
       mrr: "Monthly Recurring Revenue",
       churn: "Churn Rate",
-      stores: "Active Stores",
-      bugs: "Bug Tracking & Support"
+      stores: "Active Stores"
     },
     diferencial: {
       tag: "THE EDGE",
       title: "Why Velostock?",
       desc: "We focus on real profit and operational efficiency, not just beautiful photos.",
-      ai: "AI-Powered Operations",
-      profit: "Real Profit Control",
-      automation: "Workflow Automation"
+      ai: "Integrated AI that understands vehicle context.",
+      process: "Process-based management (Kanban), not just lists.",
+      profit: "Absolute focus on real profit, not just revenue.",
+      ux: "Modern and ultra-fast interface inspired by Linear.",
+      efficiency: "Operational Efficiency",
+      traditional: "Traditional",
+      low: "Low",
+      manual: "Manual Processes",
+      withVelostock: "With Velostock",
+      maximum: "Maximum",
+      automated: "Automated Flow",
+      quote: "Velostock automates repetitive operational tasks, giving strategic time back to the team to focus on what really matters: closing sales."
     },
     mercado: {
-      tag: "MARKET",
-      title: "A Growing Opportunity",
-      desc: "Targeting over 45,000 dealerships in Brazil alone.",
-      stores: "Total Dealerships",
-      target: "Primary Target",
-      growth: "Annual Growth"
+      tag: "MARKET & AUDIENCE",
+      title: "Who is our customer?",
+      dealershipsTitle: "Independent Dealerships",
+      dealershipsDesc: "Medium-sized multi-brand stores (20-200 cars) currently operating at the limit of administrative chaos.",
+      teamsTitle: "Growing Teams",
+      teamsDesc: "Stores that need to professionalize processes to scale without increasing administrative overhead.",
+      marketTitle: "Gigantic Market",
+      marketDesc: "In Brazil alone there are +45,000 active dealerships. Less than 15% use real operational management systems.",
+      potential: "Potential Dealerships",
+      footnote: "Most stores use only ad 'posters'. Velostock enters the heart of the operation."
     },
     monetizacao: {
       tag: "STRATEGY",
-      title: "Plans & Growth",
+      title: "Plans & Projections",
+      projection: "Growth Projection",
+      stores: "Stores",
+      monthly: "Monthly",
+      annual: "Annual",
+      metrics: [
+        { label: "CAC", value: "$ 450", desc: "Acquisition Cost" },
+        { label: "LTV", value: "$ 12k", desc: "Lifetime Value" },
+        { label: "Churn", value: "< 2%", desc: "Exit Rate" }
+      ],
+      plans: [
+        { name: "Starter", price: "$ 499/mo", desc: "Up to 30 cars" },
+        { name: "Pro", price: "$ 899/mo", desc: "Up to 100 cars" },
+        { name: "Enterprise", price: "On Request", desc: "Unlimited + Multi-Store" }
+      ]
+    },
+    nav: {
+      next: "Next",
+      prev: "Previous",
+      export: "Export PPTX"
+    }
+  },
+  en: {
+    langLabel: "PT",
+    abertura: {
+      sub: "Automotive Management Revolution",
+      tagline: "Intelligent Operational Management. Not just inventory control.",
+      quote: "Today, dealerships lose up to 40% efficiency trying to manage complex operations with spreadsheets and incomplete systems.",
+      online: "Online System",
+      ia: "Integrated AI"
+    },
+    dor: {
+      tag: "THE PROBLEM",
+      title: "The Chaos of Traditional Management",
+      sub: "Who suffers? Owners of medium-sized dealerships (20-200 cars).",
+      items: [
+        { title: "Financial Lack of Control", desc: "Without cost approval, real profit margins are unknown. Money 'disappears' in small expenses." },
+        { title: "Manual Processes", desc: "Dependence on spreadsheets, notebooks and decentralized WhatsApp. Information is lost and errors happen." },
+        { title: "Operational Blindness", desc: "Where is car X? What needs to be done on it? Without tracking, the operation stops and sales are delayed." }
+      ]
+    },
+    solucao: {
+      tag: "THE SOLUTION",
+      title: "Velostock: The Total Control Ecosystem",
+      desc: "A unique platform that centralizes operations, finance and sales. We move from \"just stocking\" to \"managing the business\".",
+      steps: [
+        { title: "Entry & Preparation", desc: "Digital checklist, photos, repair cost approval." },
+        { title: "Sales & Marketing", desc: "Automatic ads, AI generating texts, integrated CRM." },
+        { title: "After-Sales & Finance", desc: "Warranty management, real-time DRE, commissions." }
+      ]
+    },
+    ciclo: {
+      tag: "SMART FLOW",
+      title: "The Dealership Cycle",
+      desc: "Follow each stage of the vehicle journey, from entry to sale, with total control at each phase.",
+      steps: [
+        { label: "Arrival", sub: "Initial Registration" },
+        { label: "Inspection", sub: "Entry Checklist" },
+        { label: "Review", sub: "Mechanics/Parts" },
+        { label: "Aesthetics", sub: "Cleaning" },
+        { label: "Marketing", sub: "Photos/Ads" },
+        { label: "Sale", sub: "Presentation" }
+      ],
+      boxTitle: "Integrated Cycle",
+      boxDesc: "At Velostock, each stage automatically unlocks the next. The car doesn't go to the lot without inspection, and isn't advertised without a cost review. This ensures no vehicle is sold with an invisible loss."
+    },
+    arquitetura: {
+      tag: "TECH STACK",
+      title: "High Performance Engineering",
+      desc: "Developed with modern technologies to ensure horizontal scalability, data security, and a fluid user experience.",
+      frontend: "Frontend & Interface",
+      backend: "Backend & APIs",
+      infra: "Infrastructure & Cloud"
+    },
+    funcionalidades: {
+      tag: "DIFFERENTIATORS",
+      title: "15 Key Features",
+      sub: "The complete stack for your operation. Click to expand details.",
+      items: [
+        "Vehicle Management (Kanban)", "Detailed Cost Control", "Automated Sales & Commissions",
+        "Professional Warranty Management", "Centralized Internal Notes", "Integrated Finance (A/P & A/R)",
+        "CRM & Lead Management", "Intelligent Follow-ups", "AI (VeloBot) - Virtual Assistant",
+        "Indicator Dashboard (BI)", "Access Control & Permissions", "Customizable Settings",
+        "Advanced Management Reports", "Document Management & Storage", "Digital Checklists (In/Out)"
+      ]
+    },
+    admin: {
+      tag: "BACKOFFICE",
+      title: "Powerful Admin Panel",
+      desc: "Complete vision of the business health. MRR, Churn, and active stores in a single dashboard.",
+      metrics: "Global Metrics",
+      tenancy: "Tenancy Management",
+      invites: "Controlled Invites",
+      bugs: "Bug Tracking & Support",
+      mrr: "Monthly Recurring Revenue",
+      churn: "Churn Rate",
+      stores: "Active Stores"
+    },
+    diferencial: {
+      tag: "THE EDGE",
+      title: "Why Velostock?",
+      desc: "We focus on real profit and operational efficiency, not just beautiful photos.",
+      ai: "Integrated AI that understands vehicle context.",
+      process: "Process-based management (Kanban), not just lists.",
+      profit: "Absolute focus on real profit, not just revenue.",
+      ux: "Modern and ultra-fast interface inspired by Linear.",
+      efficiency: "Operational Efficiency",
+      traditional: "Traditional",
+      low: "Low",
+      manual: "Manual Processes",
+      withVelostock: "With Velostock",
+      maximum: "Maximum",
+      automated: "Automated Flow",
+      quote: "Velostock automates repetitive operational tasks, giving strategic time back to the team to focus on what really matters: closing sales."
+    },
+    mercado: {
+      tag: "MARKET & AUDIENCE",
+      title: "Who is our customer?",
+      dealershipsTitle: "Independent Dealerships",
+      dealershipsDesc: "Medium-sized multi-brand stores (20-200 cars) currently operating at the limit of administrative chaos.",
+      teamsTitle: "Growing Teams",
+      teamsDesc: "Stores that need to professionalize processes to scale without increasing administrative overhead.",
+      marketTitle: "Gigantic Market",
+      marketDesc: "In Brazil alone there are +45,000 active dealerships. Less than 15% use real operational management systems.",
+      potential: "Potential Dealerships",
+      footnote: "Most stores use only ad 'posters'. Velostock enters the heart of the operation."
+    },
+    monetizacao: {
+      tag: "STRATEGY",
+      title: "Plans & Projections",
+      projection: "Growth Projection",
+      stores: "Stores",
+      monthly: "Monthly",
+      annual: "Annual",
       metrics: [
         { label: "CAC", value: "$ 450", desc: "Acquisition Cost" },
         { label: "LTV", value: "$ 12k", desc: "Lifetime Value" },
