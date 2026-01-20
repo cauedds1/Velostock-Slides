@@ -198,264 +198,6 @@ const translations = {
       prev: "Previous",
       export: "Export PPTX"
     }
-  },
-  en: {
-    langLabel: "PT",
-    abertura: {
-      sub: "Automotive Management Revolution",
-      tagline: "Intelligent Operational Management. Not just inventory control.",
-      quote: "Today, dealerships lose up to 40% efficiency trying to manage complex operations with spreadsheets and incomplete systems.",
-      online: "Online System",
-      ia: "Integrated AI"
-    },
-    dor: {
-      tag: "THE PROBLEM",
-      title: "The Chaos of Traditional Management",
-      sub: "Who suffers? Owners of medium-sized dealerships (20-200 cars).",
-      items: [
-        { title: "Financial Lack of Control", desc: "Without cost approval, real profit margins are unknown. Money 'disappears' in small expenses." },
-        { title: "Manual Processes", desc: "Dependence on spreadsheets, notebooks and decentralized WhatsApp. Information is lost and errors happen." },
-        { title: "Operational Blindness", desc: "Where is car X? What needs to be done on it? Without tracking, the operation stops and sales are delayed." }
-      ]
-    },
-    solucao: {
-      tag: "THE SOLUTION",
-      title: "Velostock: The Total Control Ecosystem",
-      desc: "A unique platform that centralizes operations, finance and sales. We move from \"just stocking\" to \"managing the business\".",
-      steps: [
-        { title: "Entry & Preparation", desc: "Digital checklist, photos, repair cost approval." },
-        { title: "Sales & Marketing", desc: "Automatic ads, AI generating texts, integrated CRM." },
-        { title: "After-Sales & Finance", desc: "Warranty management, real-time DRE, commissions." }
-      ]
-    },
-    ciclo: {
-      tag: "SMART FLOW",
-      title: "The Dealership Cycle",
-      desc: "Follow each stage of the vehicle journey, from entry to sale, with total control at each phase.",
-      steps: [
-        { label: "Arrival", sub: "Initial Registration" },
-        { label: "Inspection", sub: "Entry Checklist" },
-        { label: "Review", sub: "Mechanics/Parts" },
-        { label: "Aesthetics", sub: "Cleaning" },
-        { label: "Marketing", sub: "Photos/Ads" },
-        { label: "Sale", sub: "Presentation" }
-      ],
-      boxTitle: "Integrated Cycle",
-      boxDesc: "At Velostock, each stage automatically unlocks the next. The car doesn't go to the lot without inspection, and isn't advertised without a cost review. This ensures no vehicle is sold with an invisible loss."
-    },
-    arquitetura: {
-      tag: "TECH STACK",
-      title: "High Performance Engineering",
-      desc: "Developed with modern technologies to ensure horizontal scalability, data security, and a fluid user experience.",
-      frontend: "Frontend & Interface",
-      backend: "Backend & APIs",
-      infra: "Infrastructure & Cloud"
-    },
-    funcionalidades: {
-      tag: "DIFFERENTIATORS",
-      title: "15 Key Features",
-      sub: "The complete stack for your operation. Click to expand details.",
-      items: [
-        "Vehicle Management (Kanban)", "Detailed Cost Control", "Automated Sales & Commissions",
-        "Professional Warranty Management", "Centralized Internal Notes", "Integrated Finance (A/P & A/R)",
-        "CRM & Lead Management", "Intelligent Follow-ups", "AI (VeloBot) - Virtual Assistant",
-        "Indicator Dashboard (BI)", "Access Control & Permissions", "Customizable Settings",
-        "Advanced Management Reports", "Document Management & Storage", "Digital Checklists (In/Out)"
-      ]
-    },
-    admin: {
-      tag: "BACKOFFICE",
-      title: "Powerful Admin Panel",
-      desc: "Complete vision of the business health. MRR, Churn, and active stores in a single dashboard.",
-      metrics: "Global Metrics",
-      tenancy: "Tenancy Management",
-      invites: "Controlled Invites",
-      bugs: "Bug Tracking & Support",
-      mrr: "Monthly Recurring Revenue",
-      churn: "Churn Rate",
-      stores: "Active Stores"
-    },
-    diferencial: {
-      tag: "THE EDGE",
-      title: "Why Velostock?",
-      desc: "We focus on real profit and operational efficiency, not just beautiful photos.",
-      ai: "Integrated AI that understands vehicle context.",
-      process: "Process-based management (Kanban), not just lists.",
-      profit: "Absolute focus on real profit, not just revenue.",
-      ux: "Modern and ultra-fast interface inspired by Linear.",
-      efficiency: "Operational Efficiency",
-      traditional: "Traditional",
-      low: "Low",
-      manual: "Manual Processes",
-      withVelostock: "With Velostock",
-      maximum: "Maximum",
-      automated: "Automated Flow",
-      quote: "Velostock automates repetitive operational tasks, giving strategic time back to the team to focus on what really matters: closing sales."
-    },
-    mercado: {
-      tag: "MARKET & AUDIENCE",
-      title: "Who is our customer?",
-      dealershipsTitle: "Independent Dealerships",
-      dealershipsDesc: "Medium-sized multi-brand stores (20-200 cars) currently operating at the limit of administrative chaos.",
-      teamsTitle: "Growing Teams",
-      teamsDesc: "Stores that need to professionalize processes to scale without increasing administrative overhead.",
-      marketTitle: "Gigantic Market",
-      marketDesc: "In Brazil alone there are +45,000 active dealerships. Less than 15% use real operational management systems.",
-      potential: "Potential Dealerships",
-      footnote: "Most stores use only ad 'posters'. Velostock enters the heart of the operation."
-    },
-    monetizacao: {
-      tag: "STRATEGY",
-      title: "Plans & Projections",
-      projection: "Growth Projection",
-      stores: "Stores",
-      monthly: "Monthly",
-      annual: "Annual",
-      metrics: [
-        { label: "CAC", value: "$ 450", desc: "Acquisition Cost" },
-        { label: "LTV", value: "$ 12k", desc: "Lifetime Value" },
-        { label: "Churn", value: "< 2%", desc: "Exit Rate" }
-      ],
-      plans: [
-        { name: "Starter", price: "$ 499/mo", desc: "Up to 30 cars" },
-        { name: "Pro", price: "$ 899/mo", desc: "Up to 100 cars" },
-        { name: "Enterprise", price: "On Request", desc: "Unlimited + Multi-Store" }
-      ]
-    },
-    nav: {
-      next: "Next",
-      prev: "Previous",
-      export: "Export PPTX"
-    }
-  },
-  en: {
-    langLabel: "PT",
-    abertura: {
-      sub: "Automotive Management Revolution",
-      tagline: "Intelligent Operational Management. Not just inventory control.",
-      quote: "Today, dealerships lose up to 40% efficiency trying to manage complex operations with spreadsheets and incomplete systems.",
-      online: "Online System",
-      ia: "Integrated AI"
-    },
-    dor: {
-      tag: "THE PROBLEM",
-      title: "The Chaos of Traditional Management",
-      sub: "Who suffers? Owners of medium-sized dealerships (20-200 cars).",
-      items: [
-        { title: "Financial Lack of Control", desc: "Without cost approval, real profit margins are unknown. Money 'disappears' in small expenses." },
-        { title: "Manual Processes", desc: "Dependence on spreadsheets, notebooks and decentralized WhatsApp. Information is lost and errors happen." },
-        { title: "Operational Blindness", desc: "Where is car X? What needs to be done on it? Without tracking, the operation stops and sales are delayed." }
-      ]
-    },
-    solucao: {
-      tag: "THE SOLUTION",
-      title: "Velostock: The Total Control Ecosystem",
-      desc: "A unique platform that centralizes operations, finance and sales. We move from \"just stocking\" to \"managing the business\".",
-      steps: [
-        { title: "Entry & Preparation", desc: "Digital checklist, photos, repair cost approval." },
-        { title: "Sales & Marketing", desc: "Automatic ads, AI generating texts, integrated CRM." },
-        { title: "After-Sales & Finance", desc: "Warranty management, real-time DRE, commissions." }
-      ]
-    },
-    ciclo: {
-      tag: "SMART FLOW",
-      title: "The Dealership Cycle",
-      desc: "Follow each stage of the vehicle journey, from entry to sale, with total control at each phase.",
-      steps: [
-        { label: "Arrival", sub: "Initial Registration" },
-        { label: "Inspection", sub: "Entry Checklist" },
-        { label: "Review", sub: "Mechanics/Parts" },
-        { label: "Aesthetics", sub: "Cleaning" },
-        { label: "Marketing", sub: "Photos/Ads" },
-        { label: "Sale", sub: "Presentation" }
-      ],
-      boxTitle: "Integrated Cycle",
-      boxDesc: "At Velostock, each stage automatically unlocks the next. The car doesn't go to the lot without inspection, and isn't advertised without a cost review. This ensures no vehicle is sold with an invisible loss."
-    },
-    arquitetura: {
-      tag: "TECH STACK",
-      title: "High Performance Engineering",
-      desc: "Developed with modern technologies to ensure horizontal scalability, data security, and a fluid user experience.",
-      frontend: "Frontend & Interface",
-      backend: "Backend & APIs",
-      infra: "Infrastructure & Cloud"
-    },
-    funcionalidades: {
-      tag: "DIFFERENTIATORS",
-      title: "15 Key Features",
-      sub: "The complete stack for your operation. Click to expand details.",
-      items: [
-        "Vehicle Management (Kanban)", "Detailed Cost Control", "Automated Sales & Commissions",
-        "Professional Warranty Management", "Centralized Internal Notes", "Integrated Finance (A/P & A/R)",
-        "CRM & Lead Management", "Intelligent Follow-ups", "AI (VeloBot) - Virtual Assistant",
-        "Indicator Dashboard (BI)", "Access Control & Permissions", "Customizable Settings",
-        "Advanced Management Reports", "Document Management & Storage", "Digital Checklists (In/Out)"
-      ]
-    },
-    admin: {
-      tag: "BACKOFFICE",
-      title: "Powerful Admin Panel",
-      desc: "Complete vision of the business health. MRR, Churn, and active stores in a single dashboard.",
-      metrics: "Global Metrics",
-      tenancy: "Tenancy Management",
-      invites: "Controlled Invites",
-      bugs: "Bug Tracking & Support",
-      mrr: "Monthly Recurring Revenue",
-      churn: "Churn Rate",
-      stores: "Active Stores"
-    },
-    diferencial: {
-      tag: "THE EDGE",
-      title: "Why Velostock?",
-      desc: "We focus on real profit and operational efficiency, not just beautiful photos.",
-      ai: "Integrated AI that understands vehicle context.",
-      process: "Process-based management (Kanban), not just lists.",
-      profit: "Absolute focus on real profit, not just revenue.",
-      ux: "Modern and ultra-fast interface inspired by Linear.",
-      efficiency: "Operational Efficiency",
-      traditional: "Traditional",
-      low: "Low",
-      manual: "Manual Processes",
-      withVelostock: "With Velostock",
-      maximum: "Maximum",
-      automated: "Automated Flow",
-      quote: "Velostock automates repetitive operational tasks, giving strategic time back to the team to focus on what really matters: closing sales."
-    },
-    mercado: {
-      tag: "MARKET & AUDIENCE",
-      title: "Who is our customer?",
-      dealershipsTitle: "Independent Dealerships",
-      dealershipsDesc: "Medium-sized multi-brand stores (20-200 cars) currently operating at the limit of administrative chaos.",
-      teamsTitle: "Growing Teams",
-      teamsDesc: "Stores that need to professionalize processes to scale without increasing administrative overhead.",
-      marketTitle: "Gigantic Market",
-      marketDesc: "In Brazil alone there are +45,000 active dealerships. Less than 15% use real operational management systems.",
-      potential: "Potential Dealerships",
-      footnote: "Most stores use only ad 'posters'. Velostock enters the heart of the operation."
-    },
-    monetizacao: {
-      tag: "STRATEGY",
-      title: "Plans & Projections",
-      projection: "Growth Projection",
-      stores: "Stores",
-      monthly: "Monthly",
-      annual: "Annual",
-      metrics: [
-        { label: "CAC", value: "$ 450", desc: "Acquisition Cost" },
-        { label: "LTV", value: "$ 12k", desc: "Lifetime Value" },
-        { label: "Churn", value: "< 2%", desc: "Exit Rate" }
-      ],
-      plans: [
-        { name: "Starter", price: "$ 499/mo", desc: "Up to 30 cars" },
-        { name: "Pro", price: "$ 899/mo", desc: "Up to 100 cars" },
-        { name: "Enterprise", price: "On Request", desc: "Unlimited + Multi-Store" }
-      ]
-    },
-    nav: {
-      next: "Next",
-      prev: "Previous",
-      export: "Export PPTX"
-    }
   }
 };
 
@@ -744,126 +486,132 @@ const Slide_Ciclo = ({ lang }: { lang: 'pt' | 'en' }) => {
 };
 
 // 4. Arquitetura (New)
-const Slide4_Arquitetura = () => (
-  <div className="w-full h-full flex flex-col items-center justify-center p-8 lg:p-20 bg-background relative overflow-hidden">
-     <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] pointer-events-none" />
-     <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] pointer-events-none" />
+const Slide4_Arquitetura = ({ lang }: { lang: 'pt' | 'en' }) => {
+  const t = translations[lang].arquitetura;
+  return (
+    <div className="w-full h-full flex flex-col items-center justify-center p-8 lg:p-20 bg-background relative overflow-hidden">
+       <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] pointer-events-none" />
+       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] pointer-events-none" />
 
-     <div className="mb-12 text-center relative z-10">
-        <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">STACK TECNOLÓGICA</span>
-        <h2 className="text-4xl lg:text-6xl font-display font-black text-white mb-4">Engenharia de Alta Performance</h2>
-        <p className="text-slate-400 max-w-2xl mx-auto text-sm">
-           Desenvolvido com tecnologias modernas para garantir escalabilidade horizontal, 
-           segurança de dados e uma experiência de usuário fluida.
-        </p>
-     </div>
+       <div className="mb-12 text-center relative z-10">
+          <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">{t.tag}</span>
+          <h2 className="text-4xl lg:text-6xl font-display font-black text-white mb-4">{t.title}</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto text-sm">
+             {t.desc}
+          </p>
+       </div>
 
-     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-7xl relative z-10">
-        {/* Frontend */}
-        <motion.div 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          className="bg-card/40 backdrop-blur-xl border border-white/10 p-8 rounded-[2rem] shadow-xl group hover:border-primary/50 transition-all"
-        >
-           <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Layers className="text-primary w-6 h-6" />
-           </div>
-           <h3 className="text-xl font-bold text-white mb-4">Frontend & Interface</h3>
-           <ul className="space-y-3">
-              {[
-                { name: "React 18 + TypeScript", desc: "Tipagem estrita e UI declarativa" },
-                { name: "Tailwind CSS", desc: "Estilização utilitária de alta performance" },
-                { name: "Shadcn/UI + Radix", desc: "Componentes acessíveis e consistentes" },
-                { name: "Framer Motion", desc: "Animações fluidas de 60 FPS" },
-                { name: "TanStack Query", desc: "Gerenciamento de estado e cache" }
-              ].map((item, i) => (
-                <li key={i} className="flex flex-col">
-                   <span className="text-white text-sm font-bold">{item.name}</span>
-                   <span className="text-slate-500 text-[10px] uppercase">{item.desc}</span>
-                </li>
-              ))}
-           </ul>
-        </motion.div>
+       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-7xl relative z-10">
+          {/* Frontend */}
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="bg-card/40 backdrop-blur-xl border border-white/10 p-8 rounded-[2rem] shadow-xl group hover:border-primary/50 transition-all"
+          >
+             <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Layers className="text-primary w-6 h-6" />
+             </div>
+             <h3 className="text-xl font-bold text-white mb-4">{t.frontend}</h3>
+             <ul className="space-y-3">
+                {[
+                  { name: "React 18 + TypeScript", desc: lang === 'pt' ? "Tipagem estrita e UI declarativa" : "Strict typing and declarative UI" },
+                  { name: "Tailwind CSS", desc: lang === 'pt' ? "Estilização utilitária de alta performance" : "High-performance utility styling" },
+                  { name: "Shadcn/UI + Radix", desc: lang === 'pt' ? "Componentes acessíveis e consistentes" : "Accessible and consistent components" },
+                  { name: "Framer Motion", desc: lang === 'pt' ? "Animações fluidas de 60 FPS" : "Fluid 60 FPS animations" },
+                  { name: "TanStack Query", desc: lang === 'pt' ? "Gerenciamento de estado e cache" : "State and cache management" }
+                ].map((item, i) => (
+                  <li key={i} className="flex flex-col">
+                     <span className="text-white text-sm font-bold">{item.name}</span>
+                     <span className="text-slate-500 text-[10px] uppercase">{item.desc}</span>
+                  </li>
+                ))}
+             </ul>
+          </motion.div>
 
-        {/* Backend */}
-        <motion.div 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.1 }}
-          className="bg-card/40 backdrop-blur-xl border border-white/10 p-8 rounded-[2rem] shadow-xl group hover:border-secondary/50 transition-all"
-        >
-           <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Cpu className="text-secondary w-6 h-6" />
-           </div>
-           <h3 className="text-xl font-bold text-white mb-4">Backend & APIs</h3>
-           <ul className="space-y-3">
-              {[
-                { name: "Node.js + Express", desc: "Runtime assíncrono e escalável" },
-                { name: "Drizzle ORM", desc: "Type-safe SQL e performance máxima" },
-                { name: "Passport.js", desc: "Autenticação segura e robusta" },
-                { name: "Zod", desc: "Validação de dados em tempo de execução" },
-                { name: "Socket.io", desc: "Comunicação real-time bidirecional" }
-              ].map((item, i) => (
-                <li key={i} className="flex flex-col">
-                   <span className="text-white text-sm font-bold">{item.name}</span>
-                   <span className="text-slate-500 text-[10px] uppercase">{item.desc}</span>
-                </li>
-              ))}
-           </ul>
-        </motion.div>
+          {/* Backend */}
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.1 }}
+            className="bg-card/40 backdrop-blur-xl border border-white/10 p-8 rounded-[2rem] shadow-xl group hover:border-secondary/50 transition-all"
+          >
+             <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Cpu className="text-secondary w-6 h-6" />
+             </div>
+             <h3 className="text-xl font-bold text-white mb-4">{t.backend}</h3>
+             <ul className="space-y-3">
+                {[
+                  { name: "Node.js + Express", desc: lang === 'pt' ? "Runtime assíncrono e escalável" : "Asynchronous and scalable runtime" },
+                  { name: "Drizzle ORM", desc: lang === 'pt' ? "Type-safe SQL e performance máxima" : "Type-safe SQL and maximum performance" },
+                  { name: "Passport.js", desc: lang === 'pt' ? "Autenticação segura e robusta" : "Secure and robust authentication" },
+                  { name: "Zod", desc: lang === 'pt' ? "Validação de dados em tempo de execução" : "Runtime data validation" },
+                  { name: "Socket.io", desc: lang === 'pt' ? "Comunicação real-time bidirecional" : "Real-time bidirectional communication" }
+                ].map((item, i) => (
+                  <li key={i} className="flex flex-col">
+                     <span className="text-white text-sm font-bold">{item.name}</span>
+                     <span className="text-slate-500 text-[10px] uppercase">{item.desc}</span>
+                  </li>
+                ))}
+             </ul>
+          </motion.div>
 
-        {/* Infra & DB */}
-        <motion.div 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="bg-card/40 backdrop-blur-xl border border-white/10 p-8 rounded-[2rem] shadow-xl group hover:border-green-500/50 transition-all"
-        >
-           <div className="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Database className="text-green-500 w-6 h-6" />
-           </div>
-           <h3 className="text-xl font-bold text-white mb-4">Dados & Infra</h3>
-           <ul className="space-y-3">
-              {[
-                { name: "PostgreSQL (Railway)", desc: "Banco de dados relacional de alta escala" },
-                { name: "Multi-Tenancy", desc: "Isolamento lógico total por empresa" },
-                { name: "Railway Hosting", desc: "Infraestrutura Cloud CI/CD moderna" },
-                { name: "OpenAI API", desc: "Inteligência Artificial generativa" },
-                { name: "SSL/TLS Everywhere", desc: "Criptografia de ponta a ponta" }
-              ].map((item, i) => (
-                <li key={i} className="flex flex-col">
-                   <span className="text-white text-sm font-bold">{item.name}</span>
-                   <span className="text-slate-500 text-[10px] uppercase">{item.desc}</span>
-                </li>
-              ))}
-           </ul>
-        </motion.div>
-     </div>
+          {/* Infra & DB */}
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="bg-card/40 backdrop-blur-xl border border-white/10 p-8 rounded-[2rem] shadow-xl group hover:border-green-500/50 transition-all"
+          >
+             <div className="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Database className="text-green-500 w-6 h-6" />
+             </div>
+             <h3 className="text-xl font-bold text-white mb-4">{t.infra}</h3>
+             <ul className="space-y-3">
+                {[
+                  { name: "PostgreSQL (Railway)", desc: lang === 'pt' ? "Banco de dados relacional de alta escala" : "High-scale relational database" },
+                  { name: "Multi-Tenancy", desc: lang === 'pt' ? "Isolamento lógico total por empresa" : "Total logical isolation per company" },
+                  { name: "Railway Hosting", desc: lang === 'pt' ? "Infraestrutura Cloud CI/CD moderna" : "Modern Cloud CI/CD infrastructure" },
+                  { name: "OpenAI API", desc: lang === 'pt' ? "Inteligência Artificial generativa" : "Generative AI" },
+                  { name: "SSL/TLS Everywhere", desc: lang === 'pt' ? "Criptografia de ponta a ponta" : "End-to-end encryption" }
+                ].map((item, i) => (
+                  <li key={i} className="flex flex-col">
+                     <span className="text-white text-sm font-bold">{item.name}</span>
+                     <span className="text-slate-500 text-[10px] uppercase">{item.desc}</span>
+                  </li>
+                ))}
+             </ul>
+          </motion.div>
+       </div>
 
-     {/* Code Organization */}
-     <motion.div 
-       initial={{ y: 20, opacity: 0 }}
-       animate={{ y: 0, opacity: 1 }}
-       transition={{ delay: 0.3 }}
-       className="mt-8 w-full max-w-7xl bg-black/40 backdrop-blur-md border border-white/5 p-6 rounded-2xl flex items-center justify-between"
-     >
-        <div className="flex items-center gap-4">
-           <div className="p-2 bg-blue-500/10 rounded-lg">
-              <Code2 className="text-blue-500 w-5 h-5" />
-           </div>
-           <div>
-              <p className="text-white font-bold text-sm">Arquitetura de Código Limpo</p>
-              <p className="text-slate-500 text-[10px] uppercase">Padronização seguindo princípios SOLID e DRY</p>
-           </div>
-        </div>
-        <div className="flex gap-4 text-[10px] font-mono text-slate-400">
-           <span className="bg-white/5 px-3 py-1 rounded">/shared/schema.ts</span>
-           <span className="bg-white/5 px-3 py-1 rounded">/server/routes.ts</span>
-           <span className="bg-white/5 px-3 py-1 rounded">/client/src/pages</span>
-        </div>
-     </motion.div>
-  </div>
-);
+       {/* Code Organization */}
+       <motion.div 
+         initial={{ y: 20, opacity: 0 }}
+         animate={{ y: 0, opacity: 1 }}
+         transition={{ delay: 0.3 }}
+         className="mt-8 w-full max-w-7xl bg-black/40 backdrop-blur-md border border-white/5 p-6 rounded-2xl flex items-center justify-between"
+       >
+          <div className="flex items-center gap-4">
+             <div className="p-2 bg-blue-500/10 rounded-lg">
+                <Code2 className="text-blue-500 w-5 h-5" />
+             </div>
+             <div>
+                <p className="text-white font-bold text-sm">
+                  {lang === 'pt' ? "Arquitetura de Código Limpo" : "Clean Code Architecture"}
+                </p>
+                <p className="text-slate-500 text-[10px] uppercase">
+                  {lang === 'pt' ? "Padronização seguindo princípios SOLID e DRY" : "Standardization following SOLID and DRY principles"}
+                </p>
+             </div>
+          </div>
+          <div className="flex gap-4 text-[10px] font-mono text-slate-400">
+             <span className="bg-white/5 px-3 py-1 rounded">/shared/schema.ts</span>
+             <span className="bg-white/5 px-3 py-1 rounded">/server/routes.ts</span>
+             <span className="bg-white/5 px-3 py-1 rounded">/client/src/pages</span>
+          </div>
+       </motion.div>
+    </div>
+  );
+};
 
 // 5. Funcionalidades (Old Style as requested)
 const Slide5_Funcionalidades = ({ onImageClick, lang }: { onImageClick: (src: string) => void, lang: 'pt' | 'en' }) => {
