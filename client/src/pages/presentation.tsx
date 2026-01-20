@@ -123,45 +123,65 @@ const translations = {
       infra: "Infraestrutura & Cloud"
     },
     funcionalidades: {
-      tag: "DIFERENCIAIS",
+      tag: "DIFFERENTIATORS",
       title: "15 Key Features",
       sub: "The complete stack for your operation. Click to expand details.",
       items: [
-        "Multi-Store Management", "AI for Ad Descriptions", "Integrated Sales CRM",
-        "Budget Approval", "Digital Preparation Flow", "Entry Checklist w/ Photos",
-        "Automatic DRE per Car", "Commission Management", "Documentation Tracking",
-        "App for Inspectors", "Portal Integration", "Warranty Control",
-        "Performance Reports", "Full Vehicle History", "Maintenance Alerts"
+        "Vehicle Management (Kanban)", "Detailed Cost Control", "Automated Sales & Commissions",
+        "Professional Warranty Management", "Centralized Internal Notes", "Integrated Finance (A/P & A/R)",
+        "CRM & Lead Management", "Intelligent Follow-ups", "AI (VeloBot) - Virtual Assistant",
+        "Indicator Dashboard (BI)", "Access Control & Permissions", "Customizable Settings",
+        "Advanced Management Reports", "Document Management & Storage", "Digital Checklists (In/Out)"
       ]
     },
     admin: {
       tag: "BACKOFFICE",
       title: "Powerful Admin Panel",
       desc: "Complete vision of the business health. MRR, Churn, and active stores in a single dashboard.",
+      metrics: "Global Metrics",
+      tenancy: "Tenancy Management",
+      invites: "Controlled Invites",
+      bugs: "Bug Tracking & Support",
       mrr: "Monthly Recurring Revenue",
       churn: "Churn Rate",
-      stores: "Active Stores",
-      bugs: "Bug Tracking & Support"
+      stores: "Active Stores"
     },
     diferencial: {
       tag: "THE EDGE",
       title: "Why Velostock?",
       desc: "We focus on real profit and operational efficiency, not just beautiful photos.",
-      ai: "AI-Powered Operations",
-      profit: "Real Profit Control",
-      automation: "Workflow Automation"
+      ai: "Integrated AI that understands vehicle context.",
+      process: "Process-based management (Kanban), not just lists.",
+      profit: "Absolute focus on real profit, not just revenue.",
+      ux: "Modern and ultra-fast interface inspired by Linear.",
+      efficiency: "Operational Efficiency",
+      traditional: "Traditional",
+      low: "Low",
+      manual: "Manual Processes",
+      withVelostock: "With Velostock",
+      maximum: "Maximum",
+      automated: "Automated Flow",
+      quote: "Velostock automates repetitive operational tasks, giving strategic time back to the team to focus on what really matters: closing sales."
     },
     mercado: {
-      tag: "MARKET",
-      title: "A Growing Opportunity",
-      desc: "Targeting over 45,000 dealerships in Brazil alone.",
-      stores: "Total Dealerships",
-      target: "Primary Target",
-      growth: "Annual Growth"
+      tag: "MARKET & AUDIENCE",
+      title: "Who is our customer?",
+      dealershipsTitle: "Independent Dealerships",
+      dealershipsDesc: "Medium-sized multi-brand stores (20-200 cars) currently operating at the limit of administrative chaos.",
+      teamsTitle: "Growing Teams",
+      teamsDesc: "Stores that need to professionalize processes to scale without increasing administrative overhead.",
+      marketTitle: "Gigantic Market",
+      marketDesc: "In Brazil alone there are +45,000 active dealerships. Less than 15% use real operational management systems.",
+      potential: "Potential Dealerships",
+      footnote: "Most stores use only ad 'posters'. Velostock enters the heart of the operation."
     },
     monetizacao: {
       tag: "STRATEGY",
-      title: "Plans & Growth",
+      title: "Plans & Projections",
+      projection: "Growth Projection",
+      stores: "Stores",
+      monthly: "Monthly",
+      annual: "Annual",
       metrics: [
         { label: "CAC", value: "$ 450", desc: "Acquisition Cost" },
         { label: "LTV", value: "$ 12k", desc: "Lifetime Value" },
@@ -696,86 +716,117 @@ const Slide4_Arquitetura = () => (
 );
 
 // 5. Funcionalidades (Old Style as requested)
-const Slide5_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) => void }) => {
+const Slide5_Funcionalidades = ({ onImageClick, lang }: { onImageClick: (src: string) => void, lang: 'pt' | 'en' }) => {
   const [activeFeature, setActiveFeature] = useState(-1);
+  const t = translations[lang].funcionalidades;
 
   const features = [
     { 
-      title: "Gestão de Veículos (Kanban)", 
-      desc: "Visualize e organize todo o seu estoque através de um quadro Kanban intuitivo e interativo. Arraste e solte cartões de veículos entre estágios personalizáveis como 'Em Preparação', 'Disponível', 'Em Negociação', 'Reservado' e 'Vendido'. Tenha uma visão panorâmica e clara do fluxo de entrada e saída, identifique gargalos operacionais na preparação (ex: demora na funilaria) e saiba exatamente onde cada carro está no funil de vendas a qualquer momento, eliminando a necessidade de perguntar para a equipe." 
+      title: lang === 'pt' ? "Gestão de Veículos (Kanban)" : "Vehicle Management (Kanban)", 
+      desc: lang === 'pt' 
+        ? "Visualize e organize todo o seu estoque através de um quadro Kanban intuitivo e interativo. Arraste e solte cartões de veículos entre estágios personalizáveis como 'Em Preparação', 'Disponível', 'Em Negociação', 'Reservado' e 'Vendido'. Tenha uma visão panorâmica e clara do fluxo de entrada e saída, identifique gargalos operacionais na preparação (ex: demora na funilaria) e saiba exatamente onde cada carro está no funil de vendas a qualquer momento, eliminando a necessidade de perguntar para a equipe."
+        : "Visualize and organize your entire inventory through an intuitive and interactive Kanban board. Drag and drop vehicle cards between customizable stages like 'In Preparation', 'Available', 'In Negotiation', 'Reserved', and 'Sold'. Get a panoramic and clear view of the inflow and outflow, identify operational bottlenecks in preparation (e.g., bodywork delays), and know exactly where each car is in the sales funnel at any time, eliminating the need to ask the team."
     },
     { 
-      title: "Controle de Custos Detalhado", 
-      desc: "Acabe com a ilusão de lucro. Registre cada centavo investido no veículo, desde o valor de compra até a preparação final. Lance custos de funilaria, mecânica, peças, lavagem, comissões de compra e taxas de despachante vinculados diretamente ao chassi do carro. O sistema soma tudo automaticamente, permitindo que você visualize o Custo Total real do veículo e a Margem de Contribuição líquida exata no momento da venda, evitando prejuízos disfarçados." 
+      title: lang === 'pt' ? "Controle de Custos Detalhado" : "Detailed Cost Control", 
+      desc: lang === 'pt'
+        ? "Acabe com a ilusão de lucro. Registre cada centavo investido no veículo, desde o valor de compra até a preparação final. Lance custos de funilaria, mecânica, peças, lavagem, comissões de compra e taxas de despachante vinculados diretamente ao chassi do carro. O sistema soma tudo automaticamente, permitindo que você visualize o Custo Total real do veículo e a Margem de Contribuição líquida exata no momento da venda, evitando prejuízos disfarçados."
+        : "End the illusion of profit. Record every cent invested in the vehicle, from the purchase price to final preparation. Post costs for bodywork, mechanics, parts, washing, purchase commissions, and dispatcher fees linked directly to the car's chassis. The system automatically sums everything, allowing you to visualize the real Total Cost of the vehicle and the exact net Contribution Margin at the time of sale, avoiding disguised losses."
     },
     { 
-      title: "Vendas e Comissões Automatizadas", 
-      desc: "Formalize vendas com rapidez e segurança. O sistema registra a venda e calcula comissões automaticamente. Configure regras de comissão flexíveis (porcentagem, valor fixo, escalonada) para vendedores, gerentes e captadores/parceiros. O cálculo é feito automaticamente no fechamento da venda, gerando um extrato financeiro de comissões a pagar transparente, eliminando planilhas paralelas, erros de cálculo e disputas com a equipe comercial no final do mês." 
+      title: lang === 'pt' ? "Vendas e Comissões Automatizadas" : "Automated Sales & Commissions", 
+      desc: lang === 'pt'
+        ? "Formalize vendas com rapidez e segurança. O sistema registra a venda e calcula comissões automaticamente. Configure regras de comissão flexíveis (porcentagem, valor fixo, escalonada) para vendedores, gerentes e captadores/parceiros. O cálculo é feito automaticamente no fechamento da venda, gerando um extrato financeiro de comissões a pagar transparente, eliminando planilhas paralelas, erros de cálculo e disputas com a equipe comercial no final do mês."
+        : "Formalize sales quickly and securely. The system records the sale and calculates commissions automatically. Set up flexible commission rules (percentage, fixed amount, tiered) for salespeople, managers, and scouts/partners. Calculation is done automatically upon closing the sale, generating a transparent financial statement of commissions payable, eliminating parallel spreadsheets, calculation errors, and disputes with the sales team at the end of the month."
     },
     { 
-      title: "Gestão Profissional de Garantia", 
-      desc: "Controle total sobre veículos que retornam para garantia. Registre o problema reportado pelo cliente, o diagnóstico da oficina e os custos de reparo (peças e mão de obra). O sistema calcula automaticamente o gasto total com garantias por veículo e por período, permitindo identificar quais modelos ou fornecedores geram mais prejuízo pós-venda, protegendo a margem real da loja." 
+      title: lang === 'pt' ? "Gestão Profissional de Garantia" : "Professional Warranty Management", 
+      desc: lang === 'pt'
+        ? "Controle total sobre veículos que retornam para garantia. Registre o problema reportado pelo cliente, o diagnóstico da oficina e os custos de reparo (peças e mão de obra). O sistema calcula automaticamente o gasto total com garantias por veículo e por período, permitindo identificar quais modelos ou fornecedores geram mais prejuízo pós-venda, protegendo a margem real da loja."
+        : "Total control over vehicles returning for warranty. Record the problem reported by the customer, the workshop diagnosis, and the repair costs (parts and labor). The system automatically calculates the total warranty expenditure per vehicle and per period, allowing you to identify which models or suppliers generate more post-sales loss, protecting the store's real margin."
     },
     { 
-      title: "Observações Internas Centralizadas", 
-      desc: "Elimine a comunicação descentralizada e perdida no WhatsApp. Adicione notas internas sigilosas vinculadas a cada veículo ou cliente que apenas a equipe autorizada pode ver. Registre detalhes cruciais como 'pneu precisa trocar antes da entrega', 'cliente prefere contato à tarde', 'documento pendente no despachante' ou 'avaliação de troca pendente'. Centralize a inteligência da operação em um único lugar acessível a todos os envolvidos." 
+      title: lang === 'pt' ? "Observações Internas Centralizadas" : "Centralized Internal Notes", 
+      desc: lang === 'pt'
+        ? "Elimine a comunicação descentralizada e perdida no WhatsApp. Adicione notas internas sigilosas vinculadas a cada veículo ou cliente que apenas a equipe autorizada pode ver. Registre detalhes cruciais como 'pneu precisa trocar antes da entrega', 'cliente prefere contato à tarde', 'documento pendente no despachante' ou 'avaliação de troca pendente'. Centralize a inteligência da operação em um único lugar acessível a todos os envolvidos."
+        : "Eliminate decentralized and lost communication on WhatsApp. Add confidential internal notes linked to each vehicle or customer that only authorized staff can see. Record crucial details like 'tire needs changing before delivery', 'customer prefers contact in the afternoon', 'document pending at the dispatcher', or 'trade-in appraisal pending'. Centralize operational intelligence in a single place accessible to all involved."
     },
     { 
-      title: "Financeiro Integrado (Contas a Pagar/Receber)", 
-      desc: "Integração total e automática entre operação e financeiro. Ao registrar uma compra de veículo ou lançar um custo de reparo, o contas a pagar é alimentado automaticamente. Ao fechar uma venda, o contas a receber é gerado com as parcelas, datas de vencimento e formas de pagamento corretas. Controle seu fluxo de caixa previsto e realizado, inadimplência e projeção financeira sem precisar lançar a mesma informação duas vezes em sistemas diferentes." 
+      title: lang === 'pt' ? "Financeiro Integrado (Contas a Pagar/Receber)" : "Integrated Finance (A/P & A/R)", 
+      desc: lang === 'pt'
+        ? "Integração total e automática entre operação e financeiro. Ao registrar uma compra de veículo ou lançar um custo de reparo, o contas a pagar é alimentado automaticamente. Ao fechar uma venda, o contas a receber é gerado com as parcelas, datas de vencimento e formas de pagamento corretas. Controle seu fluxo de caixa previsto e realizado, inadimplência e projeção financeira sem precisar lançar a mesma informação duas vezes em sistemas diferentes."
+        : "Total and automatic integration between operations and finance. When recording a vehicle purchase or posting a repair cost, accounts payable is automatically fed. Upon closing a sale, accounts receivable is generated with the correct installments, due dates, and payment methods. Control your forecasted and realized cash flow, delinquency, and financial projection without needing to enter the same information twice in different systems."
     },
     { 
-      title: "CRM e Gestão de Leads", 
-      desc: "Centralize todos os seus leads vindos de portais (Webmotors, OLX), site próprio e redes sociais (Instagram, Facebook) em um único pipeline de vendas organizado. Distribua leads automaticamente para os vendedores (roleta), agende tarefas de contato, registre todo o histórico de conversas e acompanhe a taxa de conversão por canal e por vendedor. Garanta que nenhum cliente fique sem resposta e aumente suas vendas recuperando contatos antigos." 
+      title: lang === 'pt' ? "CRM e Gestão de Leads" : "CRM & Lead Management", 
+      desc: lang === 'pt'
+        ? "Centralize todos os seus leads vindos de portais (Webmotors, OLX), site próprio e redes sociais (Instagram, Facebook) em um único pipeline de vendas organizado. Distribua leads automaticamente para os vendedores (roleta), agende tarefas de contato, registre todo o histórico de conversas e acompanhe a taxa de conversão por canal e por vendedor. Garanta que nenhum cliente fique sem resposta e aumente suas vendas recuperando contatos antigos."
+        : "Centralize all your leads from portals (Webmotors, OLX), your own website, and social networks (Instagram, Facebook) into a single organized sales pipeline. Automatically distribute leads to salespeople (round-robin), schedule contact tasks, record the entire conversation history, and track conversion rates by channel and salesperson. Ensure no customer is left without a response and increase your sales by recovering old contacts."
     },
     { 
-      title: "Follow-ups Inteligentes", 
-      desc: "O sistema trabalha proativamente para você. Crie lembretes automáticos e cadências de contato para não deixar o cliente esfriar. Se um cliente disse 'me liga dia 10', o sistema vai te cobrar e notificar o vendedor. Mantenha o relacionamento ativo com quem já comprou para estimular futuras trocas, revisões ou indicações. Transforme o pós-venda em uma nova fonte de receita recorrente." 
+      title: lang === 'pt' ? "Follow-ups Inteligentes" : "Intelligent Follow-ups", 
+      desc: lang === 'pt'
+        ? "O sistema trabalha proativamente para você. Crie lembretes automáticos e cadências de contato para não deixar o cliente esfriar. Se um cliente disse 'me liga dia 10', o sistema vai te cobrar e notificar o vendedor. Mantenha o relacionamento ativo com quem já comprou para estimular futuras trocas, revisões ou indicações. Transforme o pós-venda em uma nova fonte de receita recorrente."
+        : "The system works proactively for you. Create automatic reminders and contact cadences to keep the customer from cooling off. If a customer said 'call me on the 10th', the system will remind you and notify the salesperson. Keep the relationship active with those who have already bought to stimulate future trade-ins, service, or referrals. Turn after-sales into a new source of recurring revenue."
     },
     { 
-      title: "IA (VeloBot) - Assistente Virtual", 
-      desc: "Potencialize sua equipe com Inteligência Artificial. O VeloBot é seu assistente virtual disponível 24/7. Ele gera descrições de anúncios completas, persuasivas e otimizadas para SEO para cada veículo com um único clique, economizando horas de digitação. Além disso, ele pode analisar dados do seu estoque para sugerir preços de venda baseados no mercado e responder dúvidas operacionais da equipe instantaneamente." 
+      title: lang === 'pt' ? "IA (VeloBot) - Assistente Virtual" : "AI (VeloBot) - Virtual Assistant", 
+      desc: lang === 'pt'
+        ? "Potencialize sua equipe com Inteligência Artificial. O VeloBot é seu assistente virtual disponível 24/7. Ele gera descrições de anúncios completas, persuasivas e otimizadas para SEO para cada veículo com um único clique, economizando horas de digitação. Além disso, ele pode analisar dados do seu estoque para sugerir preços de venda baseados no mercado e responder dúvidas operacionais da equipe instantaneamente."
+        : "Empower your team with Artificial Intelligence. VeloBot is your virtual assistant available 24/7. It generates complete, persuasive, and SEO-optimized ad descriptions for each vehicle with a single click, saving hours of typing. Additionally, it can analyze your inventory data to suggest selling prices based on the market and answer the team's operational questions instantly."
     },
     { 
-      title: "Dashboard de Indicadores (BI)", 
-      desc: "Tome decisões estratégicas baseadas em dados reais, não em intuição. Acompanhe em tempo real indicadores chave de desempenho (KPIs) em painéis visuais. Monitore o Ticket Médio, Giro de Estoque, Tempo Médio de Pátio, Carros parados há mais de 60 dias, Lucratividade por Venda e Performance Financeira. Uma visão de 'piloto de avião' para o dono da revenda identificar tendências e corrigir rotas rapidamente." 
+      title: lang === 'pt' ? "Dashboard de Indicadores (BI)" : "Indicator Dashboard (BI)", 
+      desc: lang === 'pt'
+        ? "Tome decisões estratégicas baseadas em dados reais, não em intuição. Acompanhe em tempo real indicadores chave de desempenho (KPIs) em painéis visuais. Monitore o Ticket Médio, Giro de Estoque, Tempo Médio de Pátio, Carros parados há mais de 60 dias, Lucratividade por Venda e Performance Financeira. Uma visão de 'piloto de avião' para o dono da revenda identificar tendências e corrigir rotas rapidamente."
+        : "Make strategic decisions based on real data, not intuition. Track key performance indicators (KPIs) in real-time on visual dashboards. Monitor Average Ticket, Inventory Turnover, Average Yard Time, Cars sitting for over 60 days, Profitability per Sale, and Financial Performance. An 'airplane pilot' view for the dealership owner to identify trends and correct course quickly."
     },
     { 
-      title: "Controle de Acesso e Permissões", 
-      desc: "Segurança total para os dados do seu negócio. Defina perfis de acesso granulares (Vendedor, Gerente, Financeiro, Sócio). O vendedor vê apenas seus próprios leads e não tem acesso ao custo de compra ou lucro real dos carros. O gerente tem visão operacional mas não altera configurações sensíveis. Garanta que cada colaborador tenha acesso apenas ao necessário para sua função, protegendo informações estratégicas." 
+      title: lang === 'pt' ? "Controle de Acesso e Permissões" : "Access Control & Permissions", 
+      desc: lang === 'pt'
+        ? "Segurança total para os dados do seu negócio. Defina perfis de acesso granulares (Vendedor, Gerente, Financeiro, Sócio). O vendedor vê apenas seus próprios leads e não tem acesso ao custo de compra ou lucro real dos carros. O gerente tem visão operacional mas não altera configurações sensíveis. Garanta que cada colaborador tenha acesso apenas ao necessário para sua função, protegendo informações estratégicas."
+        : "Total security for your business data. Define granular access profiles (Salesperson, Manager, Finance, Partner). The salesperson sees only their own leads and has no access to the purchase cost or real profit of the cars. The manager has operational visibility but does not change sensitive settings. Ensure each employee has access only to what is necessary for their role, protecting strategic information."
     },
     { 
-      title: "Configurações Personalizáveis", 
-      desc: "O Velostock se adapta à sua loja, e não o contrário. Personalize o sistema para refletir a realidade do seu negócio. Cadastre suas próprias categorias de despesas, origens de leads, formas de pagamento e metas de vendas mensais. Configure os dados visuais da sua empresa para que saiam padronizados na plataforma." 
+      title: lang === 'pt' ? "Configurações Personalizáveis" : "Customizable Settings", 
+      desc: lang === 'pt'
+        ? "O Velostock se adapta à sua loja, e não o contrário. Personalize o sistema para refletir a realidade do seu negócio. Cadastre suas próprias categorias de despesas, origens de leads, formas de pagamento e metas de vendas mensais. Configure os dados visuais da sua empresa para que saiam padronizados na plataforma."
+        : "Velostock adapts to your store, not the other way around. Customize the system to reflect your business reality. Register your own expense categories, lead sources, payment methods, and monthly sales goals. Configure your company's visual data so they are standardized across the platform."
     },
     { 
-      title: "Relatórios Gerenciais Avançados", 
-      desc: "Vá além do básico com relatórios detalhados para análise profunda. Gere DRE (Demonstrativo de Resultado do Exercício) gerencial automático, Curva ABC de estoque (quais carros dão mais lucro ou giram mais rápido), Ranking de Vendas e Relatório de Custos por Categoria. Filtre por período, exporte tudo para PDF ou Excel para reuniões de diretoria e análise de performance." 
+      title: lang === 'pt' ? "Relatórios Gerenciais Avançados" : "Advanced Management Reports", 
+      desc: lang === 'pt'
+        ? "Vá além do básico com relatórios detalhados para análise profunda. Gere DRE (Demonstrativo de Resultado do Exercício) gerencial automático, Curva ABC de estoque (quais carros dão mais lucro ou giram mais rápido), Ranking de Vendas e Relatório de Custos por Categoria. Filtre por período, exporte tudo para PDF ou Excel para reuniões de diretoria e análise de performance."
+        : "Go beyond the basics with detailed reports for deep analysis. Generate automatic management P&L, inventory ABC Curve (which cars yield more profit or turn faster), Sales Ranking, and Cost Report by Category. Filter by period, export everything to PDF or Excel for board meetings and performance analysis."
     },
     { 
-      title: "Gestão e Armazenamento de Documentos", 
-      desc: "Mantenha a documentação organizada e acessível. Armazene documentos digitalizados como CRLV, laudos de vistoria, contratos e notas fiscais vinculados diretamente ao cadastro do veículo ou do cliente. Centralize o histórico documental da loja em um ambiente seguro na nuvem, eliminando arquivos físicos bagunçados e facilitando a consulta rápida por qualquer membro da equipe autorizado." 
+      title: lang === 'pt' ? "Gestão e Armazenamento de Documentos" : "Document Management & Storage", 
+      desc: lang === 'pt'
+        ? "Mantenha a documentação organizada e acessível. Armazene documentos digitalizados como CRLV, laudos de vistoria, contratos e notas fiscais vinculados diretamente ao cadastro do veículo ou do cliente. Centralize o histórico documental da loja em um ambiente seguro na nuvem, eliminando arquivos físicos bagunçados e facilitando a consulta rápida por qualquer membro da equipe autorizado."
+        : "Keep documentation organized and accessible. Store scanned documents like vehicle registrations, inspection reports, contracts, and invoices linked directly to the vehicle or customer record. Centralize the store's documentary history in a secure cloud environment, eliminating messy physical files and facilitating quick lookup by any authorized team member."
     },
     { 
-      title: "Checklists Digitais (Entrada e Saída)", 
-      desc: "Garanta a qualidade dos carros e evite prejuízos ocultos. Utilize checklists digitais padronizados via celular ou tablet na entrada do veículo (avaliação de compra) para registrar avarias e não deixar passar defeitos na negociação. Na saída (entrega), use o checklist para garantir e protocolar que o cliente recebeu tudo o que foi acordado (manual, chave reserva, estepe, acessórios), protegendo a loja contra reclamações infundadas futuras." 
+      title: lang === 'pt' ? "Checklists Digitais (Entrada e Saída)" : "Digital Checklists (In/Out)", 
+      desc: lang === 'pt'
+        ? "Garanta a qualidade dos carros e evite prejuízos ocultos. Utilize checklists digitais padronizados via celular ou tablet na entrada do veículo (avaliação de compra) para registrar avarias e não deixar passar defeitos na negociação. Na saída (entrega), use o checklist para garantir e protocolar que o cliente recebeu tudo o que foi acordado (manual, chave reserva, estepe, acessórios), protegendo a loja contra reclamações infundadas futuras."
+        : "Ensure car quality and avoid hidden losses. Use standardized digital checklists via phone or tablet upon vehicle entry (purchase appraisal) to record damages and not let defects pass during negotiation. Upon exit (delivery), use the checklist to ensure and document that the customer received everything agreed upon (manual, spare key, spare tire, accessories), protecting the store against future unfounded claims."
     }
   ];
 
   const screenshots = [
-    { src: imgVeiculos, label: "Veículos" },
-    { src: imgLead, label: "CRM & Leads" },
-    { src: imgFinanceiro, label: "Financeiro" },
-    { src: imgGarantia, label: "Garantia" },
-    { src: imgCustos, label: "Custos" },
-    { src: imgRelatorio, label: "Relatórios" }
+    { src: imgVeiculos, label: lang === 'pt' ? "Veículos" : "Vehicles" },
+    { src: imgLead, label: lang === 'pt' ? "CRM & Leads" : "CRM & Leads" },
+    { src: imgFinanceiro, label: lang === 'pt' ? "Financeiro" : "Finance" },
+    { src: imgGarantia, label: lang === 'pt' ? "Garantia" : "Warranty" },
+    { src: imgCustos, label: lang === 'pt' ? "Custos" : "Costs" },
+    { src: imgRelatorio, label: lang === 'pt' ? "Relatórios" : "Reports" }
   ];
 
   return (
     <div className="w-full h-full flex flex-col p-8 lg:p-12 bg-background relative overflow-hidden">
       <div className="text-center mb-8">
-        <h2 className="text-4xl font-display font-bold text-white mb-2">15 Funcionalidades Principais</h2>
-        <p className="text-slate-400">O stack completo para a operação. Clique para expandir os detalhes.</p>
+        <h2 className="text-4xl font-display font-bold text-white mb-2">{t.title}</h2>
+        <p className="text-slate-400">{t.sub}</p>
       </div>
 
       <div className="flex flex-1 gap-8 overflow-hidden">
@@ -842,205 +893,214 @@ const Slide5_Funcionalidades = ({ onImageClick }: { onImageClick: (src: string) 
 };
 
 // 5. Admin Panel (New)
-const Slide_Admin = ({ onImageClick }: { onImageClick: (src: string) => void }) => (
-  <div className="w-full h-full flex flex-col lg:flex-row bg-background overflow-hidden">
-    <div className="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center z-10">
-       <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4">CONTROLE MESTRE</span>
-       <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-8 leading-tight">
-         Painel Administrativo: O Backoffice do SaaS
-       </h2>
-       <p className="text-lg text-slate-300 mb-10 leading-relaxed">
-         Uma visão completa para os gestores da plataforma. Controle MRR, gerencie clientes, bugs e infraestrutura em um só lugar.
-       </p>
-       
-       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-         <div className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-primary/30 transition-all group">
-            <TrendingUp className="text-primary w-6 h-6 mb-3 group-hover:scale-110 transition-transform" />
-            <h4 className="text-white font-bold mb-1 text-sm uppercase tracking-wide">Métricas Globais</h4>
-            <p className="text-slate-500 text-xs">Monitore MRR, Churn e crescimento em tempo real.</p>
+const Slide_Admin = ({ onImageClick, lang }: { onImageClick: (src: string) => void, lang: 'pt' | 'en' }) => {
+  const t = translations[lang].admin;
+  return (
+    <div className="w-full h-full flex flex-col lg:flex-row bg-background overflow-hidden">
+      <div className="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center z-10">
+         <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4">{t.tag}</span>
+         <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-8 leading-tight">
+           {t.title}
+         </h2>
+         <p className="text-lg text-slate-300 mb-10 leading-relaxed">
+           {t.desc}
+         </p>
+         
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+           <div className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-primary/30 transition-all group">
+              <TrendingUp className="text-primary w-6 h-6 mb-3 group-hover:scale-110 transition-transform" />
+              <h4 className="text-white font-bold mb-1 text-sm uppercase tracking-wide">{t.metrics}</h4>
+              <p className="text-slate-500 text-xs">{lang === 'pt' ? 'Monitore MRR, Churn e crescimento em tempo real.' : 'Monitor MRR, Churn and growth in real-time.'}</p>
+           </div>
+           <div className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-secondary/30 transition-all group">
+              <Users className="text-secondary w-6 h-6 mb-3 group-hover:scale-110 transition-transform" />
+              <h4 className="text-white font-bold mb-1 text-sm uppercase tracking-wide">{t.tenancy}</h4>
+              <p className="text-slate-500 text-xs">{lang === 'pt' ? 'Gerencie contas, trials e permissões de empresas.' : 'Manage accounts, trials and company permissions.'}</p>
+           </div>
+           <div className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-yellow-500/30 transition-all group">
+              <Zap className="text-yellow-500 w-6 h-6 mb-3 group-hover:scale-110 transition-transform" />
+              <h4 className="text-white font-bold mb-1 text-sm uppercase tracking-wide">{t.invites}</h4>
+              <p className="text-slate-500 text-xs">{lang === 'pt' ? 'Gere códigos de convite para expansão estratégica.' : 'Generate invite codes for strategic expansion.'}</p>
+           </div>
+           <div className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-red-500/30 transition-all group">
+              <AlertTriangle className="text-red-500 w-6 h-6 mb-3 group-hover:scale-110 transition-transform" />
+              <h4 className="text-white font-bold mb-1 text-sm uppercase tracking-wide">{t.bugs}</h4>
+              <p className="text-slate-500 text-xs">{lang === 'pt' ? 'Suporte integrado e resolução rápida de problemas.' : 'Integrated support and fast problem resolution.'}</p>
+           </div>
          </div>
-         <div className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-secondary/30 transition-all group">
-            <Users className="text-secondary w-6 h-6 mb-3 group-hover:scale-110 transition-transform" />
-            <h4 className="text-white font-bold mb-1 text-sm uppercase tracking-wide">Gestão de Tenancy</h4>
-            <p className="text-slate-500 text-xs">Gerencie contas, trials e permissões de empresas.</p>
+      </div>
+      
+      <div className="w-full lg:w-1/2 bg-black/50 relative p-12 lg:p-24 flex items-center justify-center">
+         <div className="relative w-full h-full flex flex-col items-center justify-center gap-8 z-10">
+            <motion.div 
+              whileHover={{ scale: 1.05, rotate: 1 }}
+              className="w-full max-w-md relative cursor-zoom-in"
+              onClick={() => onImageClick(imgAdminDash)}
+            >
+              <div className="absolute -inset-4 bg-primary/20 blur-2xl rounded-full opacity-50" />
+              <img 
+                src={imgAdminDash} 
+                alt="Admin Dashboard" 
+                className="w-full h-auto rounded-2xl shadow-2xl border border-white/10 relative z-10"
+              />
+              <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">{lang === 'pt' ? 'Dashboard Admin' : 'Admin Dashboard'}</div>
+            </motion.div>
+            
+            <motion.div 
+              whileHover={{ scale: 1.05, rotate: -1 }}
+              className="w-full max-w-md relative cursor-zoom-in self-end lg:-mr-12"
+              onClick={() => onImageClick(imgAdminBugs)}
+            >
+              <div className="absolute -inset-4 bg-secondary/20 blur-2xl rounded-full opacity-50" />
+              <img 
+                src={imgAdminBugs} 
+                alt="Admin Bugs Support" 
+                className="w-full h-auto rounded-2xl shadow-2xl border border-white/10 relative z-10"
+              />
+              <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">{lang === 'pt' ? 'Suporte & Tickets' : 'Support & Tickets'}</div>
+            </motion.div>
          </div>
-         <div className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-yellow-500/30 transition-all group">
-            <Zap className="text-yellow-500 w-6 h-6 mb-3 group-hover:scale-110 transition-transform" />
-            <h4 className="text-white font-bold mb-1 text-sm uppercase tracking-wide">Convites Controlados</h4>
-            <p className="text-slate-500 text-xs">Gere códigos de convite para expansão estratégica.</p>
-         </div>
-         <div className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-red-500/30 transition-all group">
-            <AlertTriangle className="text-red-500 w-6 h-6 mb-3 group-hover:scale-110 transition-transform" />
-            <h4 className="text-white font-bold mb-1 text-sm uppercase tracking-wide">Central de Bugs</h4>
-            <p className="text-slate-500 text-xs">Suporte integrado e resolução rápida de problemas.</p>
-         </div>
-       </div>
+         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(0,122,255,0.1)_0%,transparent_100%)]" />
+      </div>
     </div>
-    
-    <div className="w-full lg:w-1/2 bg-black/50 relative p-12 lg:p-24 flex items-center justify-center">
-       <div className="relative w-full h-full flex flex-col items-center justify-center gap-8 z-10">
-          <motion.div 
-            whileHover={{ scale: 1.05, rotate: 1 }}
-            className="w-full max-w-md relative cursor-zoom-in"
-            onClick={() => onImageClick(imgAdminDash)}
-          >
-            <div className="absolute -inset-4 bg-primary/20 blur-2xl rounded-full opacity-50" />
-            <img 
-              src={imgAdminDash} 
-              alt="Admin Dashboard" 
-              className="w-full h-auto rounded-2xl shadow-2xl border border-white/10 relative z-10"
-            />
-            <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Dashboard Admin</div>
-          </motion.div>
-          
-          <motion.div 
-            whileHover={{ scale: 1.05, rotate: -1 }}
-            className="w-full max-w-md relative cursor-zoom-in self-end lg:-mr-12"
-            onClick={() => onImageClick(imgAdminBugs)}
-          >
-            <div className="absolute -inset-4 bg-secondary/20 blur-2xl rounded-full opacity-50" />
-            <img 
-              src={imgAdminBugs} 
-              alt="Admin Bugs Support" 
-              className="w-full h-auto rounded-2xl shadow-2xl border border-white/10 relative z-10"
-            />
-            <div className="absolute top-3 left-3 bg-black/70 backdrop-blur px-2 py-1 rounded text-xs font-bold text-white z-10">Suporte & Tickets</div>
-          </motion.div>
-       </div>
-       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(0,122,255,0.1)_0%,transparent_100%)]" />
-    </div>
-  </div>
-);
+  );
+};
 
 // 6. Diferencial
-const Slide6_Diferencial = () => (
-  <div className="w-full h-full flex items-center justify-center p-12 lg:p-24 bg-background overflow-hidden relative">
-     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,122,255,0.05)_0%,transparent_70%)]" />
-     
-     <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-10">
-        <div className="space-y-8">
-           <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block">DIFERENCIAL</span>
-           <h2 className="text-5xl lg:text-6xl font-display font-black text-white leading-tight">
-             Por que o<br/>
-             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Velostock?</span>
-           </h2>
-           <p className="text-xl text-slate-400 font-light leading-relaxed">
-             Não somos apenas mais um software de estoque. Somos a inteligência operacional da sua loja.
-           </p>
-           
-           <div className="space-y-4">
-              {[
-                "IA Integrada que entende o contexto do veículo.",
-                "Gestão baseada em processos (Kanban), não em listas.",
-                "Foco absoluto no lucro real, não apenas faturamento.",
-                "Interface moderna e ultra-rápida inspirada no Linear."
-              ].map((text, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
-                    <CheckCircle className="text-green-500 w-3 h-3" />
+const Slide6_Diferencial = ({ lang }: { lang: 'pt' | 'en' }) => {
+  const t = translations[lang].diferencial;
+  return (
+    <div className="w-full h-full flex items-center justify-center p-12 lg:p-24 bg-background overflow-hidden relative">
+       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,122,255,0.05)_0%,transparent_70%)]" />
+       
+       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-10">
+          <div className="space-y-8">
+             <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block">{t.tag}</span>
+             <h2 className="text-5xl lg:text-6xl font-display font-black text-white leading-tight">
+               {lang === 'pt' ? 'Por que o' : 'Why'}<br/>
+               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Velostock?</span>
+             </h2>
+             <p className="text-xl text-slate-400 font-light leading-relaxed">
+               {t.desc}
+             </p>
+             
+             <div className="space-y-4">
+                {[
+                  t.ai,
+                  t.process,
+                  t.profit,
+                  t.ux
+                ].map((text, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
+                      <CheckCircle className="text-green-500 w-3 h-3" />
+                    </div>
+                    <span className="text-slate-300">{text}</span>
                   </div>
-                  <span className="text-slate-300">{text}</span>
+                ))}
+             </div>
+          </div>
+          
+          <div className="bg-card border border-white/10 p-8 lg:p-12 rounded-[2.5rem] relative">
+             <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl" />
+             
+             <div className="space-y-10">
+                <div className="relative">
+                   <h3 className="text-slate-500 text-xs font-bold uppercase tracking-[0.2em] mb-4 text-center">{t.efficiency}</h3>
+                   <div className="grid grid-cols-2 gap-8 text-center mt-8">
+                      <div className="space-y-2">
+                        <div className="text-slate-500 font-bold text-xs uppercase tracking-widest">{t.traditional}</div>
+                        <div className="text-4xl lg:text-5xl font-black text-slate-700">{t.low}</div>
+                        <div className="text-[10px] text-slate-600 uppercase">{t.manual}</div>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="text-primary font-bold text-xs uppercase tracking-widest">{t.withVelostock}</div>
+                        <div className="text-4xl lg:text-5xl font-black text-white glow-text">{t.maximum}</div>
+                        <div className="text-[10px] text-primary uppercase">{t.automated}</div>
+                      </div>
+                   </div>
                 </div>
-              ))}
-           </div>
-        </div>
-        
-        <div className="bg-card border border-white/10 p-8 lg:p-12 rounded-[2.5rem] relative">
-           <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl" />
-           
-           <div className="space-y-10">
-              <div className="relative">
-                 <h3 className="text-slate-500 text-xs font-bold uppercase tracking-[0.2em] mb-4 text-center">Eficiência Operacional</h3>
-                 <div className="grid grid-cols-2 gap-8 text-center mt-8">
-                    <div className="space-y-2">
-                      <div className="text-slate-500 font-bold text-xs uppercase tracking-widest">Tradicional</div>
-                      <div className="text-4xl lg:text-5xl font-black text-slate-700">Baixa</div>
-                      <div className="text-[10px] text-slate-600 uppercase">Processos Manuais</div>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="text-primary font-bold text-xs uppercase tracking-widest">Com Velostock</div>
-                      <div className="text-4xl lg:text-5xl font-black text-white glow-text">Máxima</div>
-                      <div className="text-[10px] text-primary uppercase">Fluxo Automatizado</div>
-                    </div>
-                 </div>
-              </div>
-              
-              <div className="p-6 rounded-2xl bg-white/5 border border-white/5">
-                 <p className="text-slate-400 text-sm italic leading-relaxed text-center">
-                   "A Velostock automatiza tarefas operacionais repetitivas, devolvendo tempo estratégico para a equipe focar no que realmente importa: fechar vendas."
-                 </p>
-              </div>
-           </div>
-        </div>
-     </div>
-  </div>
-);
+                
+                <div className="p-6 rounded-2xl bg-white/5 border border-white/5">
+                   <p className="text-slate-400 text-sm italic leading-relaxed text-center">
+                     "{t.quote}"
+                   </p>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+  );
+};
 
 // 7. Mercado
-const Slide7_Mercado = () => (
-  <div className="w-full h-full flex flex-col lg:flex-row bg-background">
-     <div className="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-card relative z-10">
-        <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4">MERCADO & PÚBLICO</span>
-        <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-8">
-          Quem é o nosso cliente?
-        </h2>
-        
-        <div className="space-y-8">
-           <div className="flex gap-6">
-              <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
-                 <Target className="text-primary w-8 h-8" />
-              </div>
-              <div>
-                 <h4 className="text-white font-bold text-xl mb-2">Revendas Independentes</h4>
-                 <p className="text-slate-400">Lojas multimarcas médias (20-200 carros no pátio) que hoje operam no limite do caos administrativo.</p>
-              </div>
-           </div>
-           
-           <div className="flex gap-6">
-              <div className="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center shrink-0">
-                 <Users className="text-secondary w-8 h-8" />
-              </div>
-              <div>
-                 <h4 className="text-white font-bold text-xl mb-2">Equipes em Crescimento</h4>
-                 <p className="text-slate-400">Lojas que precisam profissionalizar processos para escalar sem aumentar o overhead administrativo.</p>
-              </div>
-           </div>
+const Slide7_Mercado = ({ lang }: { lang: 'pt' | 'en' }) => {
+  const t = translations[lang].mercado;
+  return (
+    <div className="w-full h-full flex flex-col lg:flex-row bg-background">
+       <div className="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-card relative z-10">
+          <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4">{t.tag}</span>
+          <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-8">
+            {t.title}
+          </h2>
+          
+          <div className="space-y-8">
+             <div className="flex gap-6">
+                <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
+                   <Target className="text-primary w-8 h-8" />
+                </div>
+                <div>
+                   <h4 className="text-white font-bold text-xl mb-2">{t.dealershipsTitle}</h4>
+                   <p className="text-slate-400">{t.dealershipsDesc}</p>
+                </div>
+             </div>
+             
+             <div className="flex gap-6">
+                <div className="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center shrink-0">
+                   <Users className="text-secondary w-8 h-8" />
+                </div>
+                <div>
+                   <h4 className="text-white font-bold text-xl mb-2">{t.teamsTitle}</h4>
+                   <p className="text-slate-400">{t.teamsDesc}</p>
+                </div>
+             </div>
 
-           <div className="flex gap-6">
-              <div className="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center shrink-0">
-                 <TrendingUp className="text-purple-500 w-8 h-8" />
-              </div>
-              <div>
-                 <h4 className="text-white font-bold text-xl mb-2">Mercado Gigantesco</h4>
-                 <p className="text-slate-400">Só no Brasil existem +45.000 revendas ativas. Menos de 15% utilizam sistemas de gestão operacional real.</p>
-              </div>
-           </div>
-        </div>
-     </div>
-     
-     <div className="w-full lg:w-1/2 flex items-center justify-center p-12 bg-black relative">
-        <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
-        
-        <div className="relative z-10 text-center space-y-4">
-           <div className="text-7xl font-display font-black text-white mb-2">45.000+</div>
-           <div className="text-xl text-primary font-bold uppercase tracking-widest">Revendas Potenciais</div>
-           <div className="w-20 h-1 bg-white/20 mx-auto my-8" />
-           <p className="text-slate-400 max-w-sm mx-auto">
-             A maioria das lojas usa apenas "postadores" de anúncio. A Velostock entra no coração da operação.
-           </p>
-        </div>
-     </div>
-  </div>
-);
+             <div className="flex gap-6">
+                <div className="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center shrink-0">
+                   <TrendingUp className="text-purple-500 w-8 h-8" />
+                </div>
+                <div>
+                   <h4 className="text-white font-bold text-xl mb-2">{t.marketTitle}</h4>
+                   <p className="text-slate-400">{t.marketDesc}</p>
+                </div>
+             </div>
+          </div>
+       </div>
+       
+       <div className="w-full lg:w-1/2 flex items-center justify-center p-12 bg-black relative">
+          <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
+          
+          <div className="relative z-10 text-center space-y-4">
+             <div className="text-7xl font-display font-black text-white mb-2">45.000+</div>
+             <div className="text-xl text-primary font-bold uppercase tracking-widest">{t.potential}</div>
+             <div className="w-20 h-1 bg-white/20 mx-auto my-8" />
+             <p className="text-slate-400 max-w-sm mx-auto">
+               {t.footnote}
+             </p>
+          </div>
+       </div>
+    </div>
+  );
+};
 
 // 8. Monetização
 const Slide9_Monetizacao = ({ lang }: { lang: 'pt' | 'en' }) => {
   const t = translations[lang].monetizacao;
   const projectionData = [
-    { name: "50 Lojas", clients: 50, monthly: 7450, annual: 89400 },
-    { name: "100 Lojas", clients: 100, monthly: 14900, annual: 178800 },
-    { name: "150 Lojas", clients: 150, monthly: 22350, annual: 268200 },
+    { name: lang === 'pt' ? "50 Lojas" : "50 Stores", clients: 50, monthly: 7450, annual: 89400 },
+    { name: lang === 'pt' ? "100 Lojas" : "100 Stores", clients: 100, monthly: 14900, annual: 178800 },
+    { name: lang === 'pt' ? "150 Lojas" : "150 Stores", clients: 150, monthly: 22350, annual: 268200 },
   ];
 
   return (
@@ -1115,7 +1175,7 @@ const Slide9_Monetizacao = ({ lang }: { lang: 'pt' | 'en' }) => {
                 <div className="flex justify-between items-start mb-10">
                    <div>
                       <h4 className="text-white font-black text-xl uppercase tracking-tighter">
-                        {lang === 'pt' ? 'Metas de Crescimento 2026' : '2026 Growth Goals'}
+                        {t.projection}
                       </h4>
                       <p className="text-slate-500 text-[10px] uppercase font-bold tracking-[0.2em]">
                         {lang === 'pt' ? 'Projeção baseada em volume de clientes' : 'Projection based on customer volume'}
