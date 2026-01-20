@@ -69,7 +69,7 @@ import { Download } from "lucide-react";
 import { useLocation } from "wouter";
 
 // --- i18n ---
-const translations = {
+const translations: Record<'pt' | 'en', any> = {
   pt: {
     langLabel: "PT",
     abertura: {
@@ -121,6 +121,152 @@ const translations = {
       frontend: "Frontend & Interface",
       backend: "Backend & APIs",
       infra: "Infraestrutura & Cloud"
+    },
+    funcionalidades: {
+      tag: "DIFERENCIAIS",
+      title: "15 Funcionalidades Chave",
+      sub: "O stack completo para sua operação. Clique para expandir detalhes.",
+      items: [
+        "Gestão de Veículos (Kanban)", "Controle de Custos Detalhado", "Vendas e Comissões Automatizadas",
+        "Gestão Profissional de Garantia", "Observações Internas Centralizadas", "Financeiro Integrado (A/P & A/R)",
+        "CRM e Gestão de Leads", "Follow-ups Inteligentes", "IA (VeloBot) - Assistente Virtual",
+        "Dashboard de Indicadores (BI)", "Controle de Acesso e Permissões", "Configurações Personalizáveis",
+        "Relatórios Gerenciais Avançados", "Gestão e Armazenamento de Documentos", "Checklists Digitais (Entrada e Saída)"
+      ]
+    },
+    admin: {
+      tag: "BACKOFFICE",
+      title: "Painel Administrativo Poderoso",
+      desc: "Visão completa da saúde do negócio. MRR, Churn e lojas ativas em um único dashboard.",
+      metrics: "Métricas Globais",
+      tenancy: "Gestão de Tenancy",
+      invites: "Convites Controlados",
+      bugs: "Tracking de Bugs & Suporte",
+      mrr: "Receita Recorrente Mensal",
+      churn: "Taxa de Cancelamento",
+      stores: "Lojas Ativas"
+    },
+    diferencial: {
+      tag: "O DIFERENCIAL",
+      title: "Por que Velostock?",
+      desc: "Focamos no lucro real e na eficiência operacional, não apenas em fotos bonitas.",
+      ai: "IA integrada que entende o contexto do veículo.",
+      process: "Gestão baseada em processos (Kanban), não apenas listas.",
+      profit: "Foco absoluto no lucro real, não apenas faturamento.",
+      ux: "Interface moderna e ultra-rápida inspirada no Linear.",
+      efficiency: "Eficiência Operacional",
+      traditional: "Tradicional",
+      low: "Baixa",
+      manual: "Processos Manuais",
+      withVelostock: "Com Velostock",
+      maximum: "Máxima",
+      automated: "Fluxo Automatizado",
+      quote: "O Velostock automatiza as tarefas operacionais repetitivas, devolvendo tempo estratégico para a equipe focar no que realmente importa: fechar vendas."
+    },
+    mercado: {
+      tag: "MERCADO & PÚBLICO",
+      title: "Quem é nosso cliente?",
+      dealershipsTitle: "Revendas Independentes",
+      dealershipsDesc: "Lojas multimarcas de médio porte (20-200 carros) que hoje operam no limite do caos administrativo.",
+      teamsTitle: "Equipes em Crescimento",
+      teamsDesc: "Lojas que precisam profissionalizar processos para escalar sem aumentar o overhead administrativo.",
+      marketTitle: "Mercado Gigantesco",
+      marketDesc: "Só no Brasil existem +45,000 revendas ativas. Menos de 15% usam sistemas de gestão operacional real.",
+      potential: "Revendas Potenciais",
+      footnote: "A maioria das lojas usa apenas 'posters' de anúncios. O Velostock entra no coração da operação."
+    },
+    monetizacao: {
+      tag: "ESTRATÉGIA",
+      title: "Planos & Projeções",
+      projection: "Projeção de Crescimento",
+      stores: "Lojas",
+      monthly: "Mensal",
+      annual: "Anual",
+      metrics: [
+        { label: "CAC", value: "R$ 450", desc: "Custo de Aquisição" },
+        { label: "LTV", value: "R$ 12k", desc: "Valor do Tempo de Vida" },
+        { label: "Churn", value: "< 2%", desc: "Taxa de Saída" }
+      ],
+      plans: [
+        { name: "Starter", price: "R$ 499/mês", desc: "Até 30 carros" },
+        { name: "Pro", price: "R$ 899/mês", desc: "Até 100 carros" },
+        { name: "Enterprise", price: "Sob Consulta", desc: "Ilimitado + Multi-Loja" }
+      ]
+    },
+    desafios: {
+      tag: "OPPORTUNITY",
+      title: "The Road to Scale",
+      sub: "We've overcome the technical challenge. Now we're scaling the operation.",
+      items: [
+        { title: "Stability", desc: "Robust architecture already tested with real data and complex operations." },
+        { title: "Acquisition", desc: "Scalable model based on product value and administrative relief." },
+        { title: "Expansion", desc: "Ready for multi-tenancy and rapid deployment in new regions." }
+      ]
+    },
+    encerramento: {
+      title: "Velostock",
+      subtitle: "Management for those who understand the business.",
+      cta: "Schedule a Demo",
+      email: "contato@velostock.com.br",
+      thanks: "Thank you for your attention."
+    },
+    nav: {
+      next: "Next",
+      prev: "Previous",
+      export: "Export PPTX"
+    }
+  },
+  en: {
+    langLabel: "EN",
+    abertura: {
+      sub: "Automotive Management Revolution",
+      tagline: "Intelligent Operational Management. Not just inventory control.",
+      quote: "Today, dealerships lose up to 40% efficiency trying to manage complex operations with spreadsheets and incomplete systems.",
+      online: "Online System",
+      ia: "Integrated AI"
+    },
+    dor: {
+      tag: "THE PROBLEM",
+      title: "The Chaos of Traditional Management",
+      sub: "Who suffers? Owners of medium-sized dealerships (20-200 cars).",
+      items: [
+        { title: "Financial Loss of Control", desc: "Without cost approval, real profit margins are unknown. Money 'disappears' in small expenses." },
+        { title: "Manual Processes", desc: "Dependence on spreadsheets, notebooks and decentralized WhatsApp. Information gets lost and errors happen." },
+        { title: "Operational Blindness", desc: "Where is car X? What's missing to do on it? Without tracking, the operation stops and the sale is delayed." }
+      ]
+    },
+    solucao: {
+      tag: "THE SOLUTION",
+      title: "Velostock: The Total Control Ecosystem",
+      desc: "A single platform that centralizes operations, finance and sales. We move from \"just stocking\" to \"managing the business\".",
+      steps: [
+        { title: "Entry & Preparation", desc: "Digital checklist, photos, repair cost approval." },
+        { title: "Sales & Marketing", desc: "Automatic ads, AI generating texts, integrated CRM." },
+        { title: "After-Sales & Finance", desc: "Warranty management, real-time P&L, commissions." }
+      ]
+    },
+    ciclo: {
+      tag: "SMART FLOW",
+      title: "The Dealership Cycle",
+      desc: "Follow each stage of the vehicle journey, from entry to sale, with total control in each phase.",
+      steps: [
+        { label: "Arrival", sub: "Initial Registration" },
+        { label: "Inspection", sub: "Entry Checklist" },
+        { label: "Review", sub: "Mechanics/Parts" },
+        { label: "Aesthetics", sub: "Cleaning" },
+        { label: "Marketing", sub: "Photos/Ads" },
+        { label: "Sale", sub: "Presentation" }
+      ],
+      boxTitle: "Integrated Cycle",
+      boxDesc: "In Velostock, each stage automatically releases the next. The car doesn't go to the yard without inspection, and isn't advertised without cost review. This ensures that no vehicle is sold with invisible loss."
+    },
+    arquitetura: {
+      tag: "TECH STACK",
+      title: "High Performance Engineering",
+      desc: "Developed with modern technologies to ensure horizontal scalability, data security and a smooth user experience.",
+      frontend: "Frontend & Interface",
+      backend: "Backend & APIs",
+      infra: "Infrastructure & Cloud"
     },
     funcionalidades: {
       tag: "DIFFERENTIATORS",
@@ -192,6 +338,23 @@ const translations = {
         { name: "Pro", price: "$ 899/mo", desc: "Up to 100 cars" },
         { name: "Enterprise", price: "On Request", desc: "Unlimited + Multi-Store" }
       ]
+    },
+    desafios: {
+      tag: "OPPORTUNITY",
+      title: "The Road to Scale",
+      sub: "We've overcome the technical challenge. Now we're scaling the operation.",
+      items: [
+        { title: "Stability", desc: "Robust architecture already tested with real data and complex operations." },
+        { title: "Acquisition", desc: "Scalable model based on product value and administrative relief." },
+        { title: "Expansion", desc: "Ready for multi-tenancy and rapid deployment in new regions." }
+      ]
+    },
+    _encerramento: {
+      title: "Velostock",
+      subtitle: "Management for those who understand the business.",
+      cta: "Schedule a Demo",
+      email: "contato@velostock.com.br",
+      thanks: "Thank you for your attention."
     },
     nav: {
       next: "Next",
@@ -1281,7 +1444,9 @@ export default function PresentationPage() {
   const handleNext = () => setCurrentSlide((prev) => (prev + 1) % 12);
   const handlePrev = () => setCurrentSlide((prev) => (prev - 1 + 12) % 12);
 
-  const toggleLang = () => setLang(prev => prev === 'pt' ? 'en' : 'pt');
+  const toggleLang = () => {
+    setLang(lang === 'pt' ? 'en' : 'pt');
+  };
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
