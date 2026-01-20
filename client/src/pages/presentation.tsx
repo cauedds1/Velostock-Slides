@@ -71,7 +71,7 @@ import { useLocation } from "wouter";
 // --- i18n ---
 const translations = {
   pt: {
-    langLabel: "EN",
+    langLabel: "PT",
     abertura: {
       sub: "Revolução na Gestão Automotiva",
       tagline: "Gestão Operacional Inteligente. Não apenas controle de estoque.",
@@ -1374,17 +1374,15 @@ export default function PresentationPage() {
         </motion.div>
 
         <div className="flex items-center gap-2 pointer-events-auto">
-          {currentSlide === 0 && (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={toggleLang}
-              className="bg-black/50 backdrop-blur border-white/10 hover:bg-white/10 text-white font-bold"
-            >
-              <Globe className="w-4 h-4 mr-2" />
-              {translations[lang].langLabel}
-            </Button>
-          )}
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={toggleLang}
+            className="bg-black/50 backdrop-blur border-white/10 hover:bg-white/10 text-white font-bold"
+          >
+            <Globe className="w-4 h-4 mr-2" />
+            {lang.toUpperCase()}
+          </Button>
           <Button 
             variant="ghost" 
             size="icon" 
